@@ -1,3 +1,5 @@
-.row {
+div.event,
+div.dinner,
+div.nightCap {
     margin-bottom: 0;
 }

@@ -5,108 +5,145 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <link rel="stylesheet" href="result.css">
     <title>Event Results</title>
 </head>
 <body>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo">Logo</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a href="sass.html">Sass</a>
+                </li>
+                <li>
+                    <a href="badges.html">Components</a>
+                </li>
+                <li>
+                    <a href="collapsible.html">Javascript</a>
+                </li>
+                <li>
+                    <a href="mobile.html">Mobile</a>
+                </li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+                <li>
+                    <a href="sass.html">Sass</a>
+                </li>
+                <li>
+                    <a href="badges.html">Components</a>
+                </li>
+                <li>
+                    <a href="collapsible.html">Javascript</a>
+                </li>
+                <li>
+                    <a href="mobile.html">Mobile</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <div class='container'>
-        <div class="header row">
-            <div class="col s11">
-
-            </div>
-            <div class="col s1">
-                <a>=</a>
-            </div>
-        </div>
-        <div class="row event">Event/Entertainment
-            <div class="row">
-                <div class="col s6">
-                    <img src="" alt=""/>
-                </div>
-                <div class="col s6">
-                    <div class="row">
-                        <a>start time</a>
-                    </div>
-                    <div class="row">
-                        <a>address</a>
-                    </div>
-                    <div class="row">
-                        <a>contact #</a>
-                    </div>
-                </div>
+        <div class="container">
+            <div class="row event">Event/Entertainment
                 <div class="row">
-                    <div class="col s12 center-align">
-                        <a>save</a>
+                    <div class="col s6">
+                        <img src="" alt=""/>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col s6 left-align">
-                        <a>arrow left</a>
+                    <div class="col s6">
+                        <div class="row">
+                            <a>start time</a>
+                        </div>
+                        <div class="row">
+                            <a>address</a>
+                        </div>
+                        <div class="row">
+                            <a>contact #</a>
+                        </div>
                     </div>
-                    <div class="col s6 right-align">
-                        <a class='right-align'>arrow right</a>
+                    <div class="row">
+                        <div class="col s12 center-align">
+                            <a>save</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6">
+                            <i class="small material-icons">arrow_back</i>
+                        </div>
+                        <div class="col s6 right-align">
+                            <i class="small material-icons">arrow_forward</i>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row dinner">Dinner
-            <div class="row">
-                <div class="col s6">
-                    <img src="" alt=""/>
-                </div>
-                <div class="col s6">
-                    <div class="row">
-                        <a>start time</a>
-                    </div>
-                    <div class="row">
-                        <a>address</a>
-                    </div>
-                    <div class="row">
-                        <a>contact #</a>
-                    </div>
-                </div>
+        <div class="container">
+            <div class="row dinner">Dinner
                 <div class="row">
-                    <div class="col s12">
-                        <a class='center-align'>save</a>
+                    <div class="col s6">
+                        <img src="" alt=""/>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col s6 left-align">
-                        <a>arrow left</a>
+                    <div class="col s6">
+                        <div class="row">
+                            <a>start time</a>
+                        </div>
+                        <div class="row">
+                            <a>address</a>
+                        </div>
+                        <div class="row">
+                            <a>contact #</a>
+                        </div>
                     </div>
-                    <div class="col s6 right-align">
-                        <a class='right-align'>arrow right</a>
+                    <div class="row">
+                        <div class="col s12 center-align">
+                            <a>save</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6">
+                            <i class="small material-icons">arrow_back</i>
+                        </div>
+                        <div class="col s6 right-align">
+                            <i class="small material-icons">arrow_forward</i>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row nightcap">NightCap
-            <div class="row">
-                <div class="col s6">
-                    <img src="" alt=""/>
-                </div>
-                <div class="col s6">
-                    <div class="row">
-                        <a>start time</a>
-                    </div>
-                    <div class="row">
-                        <a>address</a>
-                    </div>
-                    <div class="row">
-                        <a>contact #</a>
-                    </div>
-                </div>
+        <div class="container">
+            <div class="row nightcap">NightCap
                 <div class="row">
-                    <div class="col s12">
-                        <a class='center-align'>save</a>
+                    <div class="col s6">
+                        <img src="" alt=""/>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col s6 left-align">
-                        <a>arrow left</a>
+                    <div class="col s6">
+                        <div class="row">
+                            <a>start time</a>
+                        </div>
+                        <div class="row">
+                            <a>address</a>
+                        </div>
+                        <div class="row">
+                            <a>contact #</a>
+                        </div>
                     </div>
-                    <div class="col s6 right-align">
-                        <a class='right-align'>arrow right</a>
+                    <div class="row">
+                        <div class="col s12 center-align">
+                            <a>save</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6">
+                            <i class="small material-icons">arrow_back</i>
+                        </div>
+                        <div class="col s6 right-align">
+                            <i class="small material-icons">arrow_forward</i>
+                        </div>
                     </div>
                 </div>
             </div>
