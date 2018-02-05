@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="result.css">
+    <title>Event Results</title>
+
+    <script>
+        $(document).ready(()=>{
+            $('.button-collapse').sideNav();
+            $('.btn').on('click', (event)=>{
+                this.options[event.target.name] = event.target;
+            });
+            $('.last').on('click', (event)=>{
+                //show last option
+            });
+            $('.next').on('click', (event)=>{
+                //show next option
+            });
+        })
+    </script>
+</head>
+<body>
+    <nav>
+        <div class="nav-wrapper amber">
+            <a href="#!" class="brand-logo"><img class='logoImg' src="./assets/images/DN-logo.jpg" alt="Date Night"></>
+            <a href="#!" data-activates="mobile-demo" class="button-collapse">
+                <i class="material-icons blue-grey-text">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a href="#">Account</a>
+                </li>
+                <li>
+                    <a href="#">New Event</a>
+                </li>
+                <li>
+                    <a href="#">History</a>
+                </li>
+                <li>
+                    <a href="#">Contact Us</a>
+                </li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+                <li>
+                    <a href="#">Account</a>
+                </li>
+                <li>
+                    <a href="#">New Event</a>
+                </li>
+                <li>
+                    <a href="#">History</a>
+                </li>
+                <li>
+                    <a href="#">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row valign-wrapper">
+            <div class="col s6">
+                <h4>Event</h4>
+            </div>
+            <div class="col s6 right-align">
+                <div class="switch">
+                    <label>
+                    Off
+                    <input type="checkbox">
+                    <span class="lever"></span>
+                    Save
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row valign-wrapper">
+            <div class="col s1">
+                <i class="small material-icons last">chevron_left</i>
+            </div>
+            <div class="col s10">
+                <div class="row">
+                    <div class="col s6">
+                        <img  class='event' src="https://s3-media3.fl.yelpcdn.com/bphoto/F0bA_xlUEPqSQW8XY3UEjQ/o.jpg" alt=""/>
+                    </div>
+                    <div class="col s6">
+                        <h5>Eskape Rooms</h5>
+                        <p>2575 Mccabe Way</p>
+                        <p>Irvine, CA 92614</p>
+                        <p>(949) 387-8073</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s1">
+                <i class="small material-icons next">chevron_right</i>
+            </div>
+        </div>
+
+        <hr class='grey darken-4'/>
+
+        <div class="row valign-wrapper">
+            <div class="col s6">
+                <h4>Dinner</h4>
+            </div>
+            <div class="col s6 right-align">
+                <div class="switch">
+                    <label>
+                    Off
+                    <input type="checkbox">
+                    <span class="lever"></span>
+                    Save
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row valign-wrapper">
+            <div class="col s1">
+                <i class="small material-icons last">chevron_left</i>
+            </div>
+            <div class="col s10">
+                <div class="row">
+                    <div class="col s6">
+                        <img class='event' src="https://s3-media2.fl.yelpcdn.com/bphoto/_hmbyUiPwjoZwB023UWzjQ/o.jpg" alt=""/>
+                    </div>
+                    <div class="col s6">
+                        <div class="row">
+                            <h5>North Italia</h5>
+                            <p>2957 Michelson Dr</p>
+                            <p>Irvine, CA 92612</p>
+                            <p>(949)629-7060</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s1">
+                <i class="small material-icons next">chevron_right</i>
+            </div>
+        </div>
+
+        <hr class='grey darken-4'/>
+        
+        <div class="row valign-wrapper">
+            <div class="col s6">
+                <h4>NightCap</h4>
+            </div>
+            <div class="col s6 right-align">
+                <div class="switch">
+                    <label>
+                    Off
+                    <input type="checkbox">
+                    <span class="lever"></span>
+                    Save
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row valign-wrapper">
+            <div class="col s1">
+                <i class="small material-icons last">chevron_left</i>
+            </div>
+            <div class="col s10">
+                <div class="row">
+                    <div class="col s6">
+                        <img  class='event' src="https://s3-media3.fl.yelpcdn.com/bphoto/2Y6gapmbBAmW6ua4bQ0ptA/o.jpg" alt=""/>     
+                   
+                    </div>
+                    <div class="col s6">
+                        <div class="row">
+                            <h5>Puesto-Park Place</h5>
+                            <p>3311 Michelson Dr</p>
+                            <p>Irvine, CA 92612</p>
+                            <p>(949) 608-7272</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s1">
+                <i class="small material-icons next">chevron_right</i>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 center-align">
+                <a class='btn deep-purple' href="">Continue</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

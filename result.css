@@ -1,0 +1,40 @@
+.title {
+    font-family: 'splendid_italic'
+}
+
+div.event,
+div.dinner,
+div.nightCap {
+    margin-bottom: 0;
+}
+
+.logoImg {
+    height: 25px;
+}
+.event {
+    margin-top: 10%;
+    width: 100%;
+    height: 50%;
+}
+
+div.row.valign-wrapper {
+    margin-bottom: 0;
+}
+
+p {
+    margin: .5rem 0;
+}
+h5 {
+    margin-top: 0;
+}
+
+h4 {
+    margin-bottom: 0;
+    margin-top: .75rem;
+}
+
+.last:hover,
+.next:hover,
+.btn:hover {
+    cursor: pointer;
+}
