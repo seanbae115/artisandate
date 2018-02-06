@@ -2,10 +2,69 @@
 <html>
 <head>
     <title>Date Night</title>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="eventPage.css">
+    <script>
+            $(document).ready(()=>{
+                $('.button-collapse').sideNav();
+                $('.btn').on('click', (event)=>{
+                    this.options[event.target.name] = event.target;
+                });
+                $('.last').on('click', (event)=>{
+                    //show last option
+                });
+                $('.next').on('click', (event)=>{
+                    //show next option
+                });
+            })
+        </script>
 </head>
 <body>
-    
+    <nav>
+        <div class="nav-wrapper amber">
+            <a href="#!" class="brand-logo"><img class='logoImg' src="./assets/images/DN-logo.jpg" alt="Date Night"></>
+            <a href="#!" data-activates="mobile-demo" class="button-collapse">
+                <i class="material-icons blue-grey-text">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a href="#">Account</a>
+                </li>
+                <li>
+                    <a href="#">New Event</a>
+                </li>
+                <li>
+                    <a href="#">History</a>
+                </li>
+                <li>
+                    <a href="#">Contact Us</a>
+                </li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+                <li>
+                    <a href="#">Account</a>
+                </li>
+                <li>
+                    <a href="#">New Event</a>
+                </li>
+                <li>
+                    <a href="#">History</a>
+                </li>
+                <li>
+                    <a href="#">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div id="title">
+        <div class="row">
+            <div class="col s12">
+                <h1>Lola Gaspar</h1>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
