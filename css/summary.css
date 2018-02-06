@@ -1,0 +1,43 @@
+html{
+    font-size: 62.5%;
+}
+body{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: scroll;
+}
+div>i.nav-icon-size{
+    font-size: 5.6rem;
+}
+.body-buffer{
+    margin-top: 5%;
+    height: 94%;
+}
+.event-contain{
+    border-bottom: 1px solid #64b5f6;
+    height: 5vh;
+}
+div.s2.event-contain{
+    justify-content: flex-end;
+}
+.event-font{
+    color: #546e7a;
+    font-size: 3.4rem;
+}
+.event-title{
+    font-size: 1.8rem;
+    color: #90a4ae;
+    margin-bottom: 0;
+}
+.btn-confirm{
+    width: 80%;
+}
+#map{
+    width: 100%;
+    height: 60vh;
+}
+.map-contain{
+    width: 100%;
+    height: 90%;
+}
