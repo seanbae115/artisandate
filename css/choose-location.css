@@ -1,0 +1,19 @@
+/* choose-location */
+
+.transparent-input {
+    background-color: transparent !important;
+    border: 2px solid #fff;
+    font-size: 2em;
+    padding: 0;        
+}
+.transparent-input input {
+    font-size: 1.2em !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+    width: 150px !important;
+    text-align: center;
+}
+::placeholder {
+    color: #fff;
+    opacity: 1;
+}
