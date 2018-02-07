@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/choose-location.css">
+    <title>Date Nite - Choose Location</title>
+    <script>
+            $(document).ready(()=>{
+                $('.button-collapse').sideNav();
+                $('.btn').on('click', (event)=>{
+                    this.options[event.target.name] = event.target;
+                });
+                $('.last').on('click', (event)=>{
+                    //show last option
+                });
+                $('.next').on('click', (event)=>{
+                    //show next option
+                });
+            })
+        </script>
+    </head> 
+</head>
+<body class="amber">
+    <nav>
+        <div class="nav-wrapper amber">
+            <a href="index.html" class="brand-logo"><img class='logoImg' src="../assets/images/date-night-small.png" alt="Date Night"></>
+            <a href="#!" data-activates="mobile-demo" class="button-collapse">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down" style="text-transform: uppercase;">
+                <li>
+                    <a href="#">Account</a>
+                </li>
+                <li>
+                    <a href="#">New Event</a>
+                </li>
+                <li>
+                    <a href="#">History</a>
+                </li>
+                <li>
+                    <a href="#">Contact Us</a>
+                </li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+                <li>
+                    <a href="#">Account</a>
+                </li>
+                <li>
+                    <a href="#">New Event</a>
+                </li>
+                <li>
+                    <a href="#">History</a>
+                </li>
+                <li>
+                    <a href="#">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row" style="height:75vh; ">
+            <div style="text-align: center;">
+                    <div class="grey-text text-darken-3" style="font-size: 2em; margin-top: 60px;">Let us know your date location to get started.</div>
+                    <div style="margin-top: 60px; font-size: 1.2em;">Zip Code</div>
+                    <div class="btn-large input-field transparent-input" style="width: 200px;">
+                            <input placeholder="zip code" id="zip-code" type="text" class="validate">
+                    </div> 
+                    <div style="margin-top:60px"></div>            
+                    <div class="btn-large blue" style="padding: 0 40px; font-size: 1.4em;">Go</div>
+                    <div style="margin-top:100px"></div> 
+                    <div class="btn-large green" style="text-transform: uppercase;">Advanced Options</div>
+            </div>            
+        </div>  
+    </div>
+</body>
+</html>

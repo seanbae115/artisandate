@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/index.css">
+
+    <title>Date Nite - Best Date Night Ideas Ever. - Datennite!</title>
+
+    <script>
+            $(document).ready(()=>{
+                $('.button-collapse').sideNav();
+                $('.btn').on('click', (event)=>{
+                    this.options[event.target.name] = event.target;
+                });
+                $('.last').on('click', (event)=>{
+                    //show last option
+                });
+                $('.next').on('click', (event)=>{
+                    //show next option
+                });
+            })
+        </script>
+    </head>
+</head>
+<body class="amber">
+    <nav>
+        <div class="nav-wrapper amber">
+            <a href="index.html" class="brand-logo"><img class='logoImg' src="../assets/images/date-night-small.png" alt="Date Night"></>
+            <a href="#!" data-activates="mobile-demo" class="button-collapse">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a href="#">Account</a>
+                </li>
+                <li>
+                    <a href="#">New Event</a>
+                </li>
+                <li>
+                    <a href="#">History</a>
+                </li>
+                <li>
+                    <a href="#">Contact Us</a>
+                </li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+                <li>
+                    <a href="#">Account</a>
+                </li>
+                <li>
+                    <a href="#">New Event</a>
+                </li>
+                <li>
+                    <a href="#">History</a>
+                </li>
+                <li>
+                    <a href="#">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row" style="height:75vh; ">
+            <div class="hero-image">
+                <div class="hero-image-container">
+                    <div>
+                            <div class="grey-text text-darken-3">Planning a date is hard.</div>
+                            <div class="white-text" style="margin-top: 10px;">Need ideas?<br>We've got you covered.</div> 
+                            <a href="choose-location.html"><div class="btn-large blue" style="font-size: .4em; margin-top: 30px; text-transform: initial;">Get Started</div></a>
+                    </div>                     
+                </div>
+                <div class="top-phones" style="margin-left: 30px;"><img src="../assets/images/phones.png"></div>                
+            </div>
+            <div class="bottom-phones-container">
+                    <div class="bottom-phones"><img src="../assets/images/phones.png"></div>
+            </div>
+        </div>  
+    </div>
+</body>
+</html>
