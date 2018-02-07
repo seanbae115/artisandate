@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {NavLink} from "react-router-dom";
 
-class Button extends Component {
+class ContinueButton extends Component {
     render(){
 
     return (
@@ -11,7 +11,7 @@ class Button extends Component {
     )}
 }
 
-export default Button;
+export default ContinueButton;
 
 //results button routes to summary
 // summary buttons one creates an email
