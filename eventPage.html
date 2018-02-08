@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Date Night</title>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="eventPage.css">
+    <script>
+            $(document).ready(()=>{
+                $('.button-collapse').sideNav();
+                $('.btn').on('click', (event)=>{
+                    this.options[event.target.name] = event.target;
+                });
+                $('.last').on('click', (event)=>{
+                    //show last option
+                });
+                $('.next').on('click', (event)=>{
+                    //show next option
+                });
+            })
+        </script>
+</head>
+<body>
+    <nav>
+        <div class="nav-wrapper amber">
+            <a href="#!" class="brand-logo"><img class='logoImg' src="./images/date-night-small.png" alt="Date Night"></>
+            <a href="#!" data-activates="mobile-demo" class="button-collapse">
+                <i class="material-icons blue-grey-text">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a href="#">Account</a>
+                </li>
+                <li>
+                    <a href="#">New Event</a>
+                </li>
+                <li>
+                    <a href="#">History</a>
+                </li>
+                <li>
+                    <a href="#">Contact Us</a>
+                </li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+                <li>
+                    <a href="#">Account</a>
+                </li>
+                <li>
+                    <a href="#">New Event</a>
+                </li>
+                <li>
+                    <a href="#">History</a>
+                </li>
+                <li>
+                    <a href="#">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div id="title">
+        <div class="row">
+            <div class="col s12">
+                <h1 class = 'center-align lobster'>Lola Gaspar</h1>
+            </div>
+        </div>
+    </div>
+    <div id="jumboImg">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 center-align">
+                    <img  class = 'multi' src="./images/lola.jpg" alt="Lola Gaspar">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="rating">
+        <div class="container">
+            <div class="row">
+                <div class="col s6">
+                    <img class = 'responsive-img'src="./images/Yelp-Stars.png" alt="Stars">
+                </div>
+                <div class="col s6 center-align">
+                    <i class="medium material-icons">attach_money</i>
+                    <i class="medium material-icons">attach_money</i>
+                    <i class="medium material-icons">attach_money</i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="description">
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <p class = 'flow-text justify roboto'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime architecto illo perspiciatis dolorem at? Iure quis rem recusandae animi veritatis commodi. Laboriosam assumenda odit, aut veritatis voluptate nisi cupiditate vitae!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="environment">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 center-align">
+                    <h1 class = 'roboto'>Environment</h1>
+                </div>
+            </div>
+            <div class="row">
+                    <div class="col s12 center-align">
+                        <h2 class = 'roboto'>Loud</h2>
+                    </div>
+                </div>
+        </div>
+    </div>
+</body>
+</html>
