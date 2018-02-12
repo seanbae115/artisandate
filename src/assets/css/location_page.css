@@ -1,0 +1,70 @@
+/* choose-location */
+
+.transparent-input {
+    background-color: transparent !important;
+    border: 2px solid #fff;
+    font-size: 2em;
+    padding: 0;
+}
+.transparent-input input {
+    font-size: 1.2em !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+    width: 150px !important;
+    text-align: center;
+}
+::placeholder {
+    color: #fff;
+    opacity: 1;
+}
+
+.text-align-center {
+    text-align: center;
+}
+
+.zip-code {
+    margin-top: 60px;
+    font-size: 1.2em;
+}
+
+.location-page-row {
+    height: 75vh;
+}
+
+.date-location {
+    font-size: 2em;
+    margin-top: 60px;
+}
+
+.location-page-input {
+    width: 200px;
+}
+
+.margin-top-60 {
+    margin-top: 60px;
+}
+
+.margin-top-100 {
+    margin-top: 100px;
+}
+
+.advanced-options {
+    text-transform: uppercase;
+}
+
+.go {
+    padding: 0 40px;
+    font-size: 1.4em;
+}
+
+.text-transform-uppercase {
+    text-transform: uppercase;
+}
+
+/*maybe delete this class*/
+.location-page-container {
+    /*height: 100%;*/
+    /*width: 100%;*/
+    background-color: #ffc107;
+}
+
