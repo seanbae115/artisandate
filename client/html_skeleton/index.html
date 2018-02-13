@@ -8,14 +8,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="../css/theme.css">
-    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../assets/css/theme.css">
+    <link rel="stylesheet" href="../assets/css/index.css">
 
     <title>Date Nite - Best Date Night Ideas Ever. - Datennite!</title>
 
     <script>
             $(document).ready(()=>{
-                $('.button-collapse').sideNav();
+                $('.button-collapse').sideNav({ edge: 'right' });
                 $('.btn').on('click', (event)=>{
                     this.options[event.target.name] = event.target;
                 });
@@ -73,7 +73,7 @@
                     <div>
                             <div class="grey-text text-darken-3">Planning a date is hard.</div>
                             <div class="white-text" style="margin-top: 10px;">Need ideas?<br>We've got you covered.</div> 
-                            <a href="choose-location.html"><div class="btn-large blue" style="font-size: .4em; margin-top: 30px; text-transform: initial;">Get Started</div></a>
+                            <a href="choose"><div class="btn-large blue" style="font-size: .4em; margin-top: 30px; text-transform: initial;">Get Started</div></a>
                     </div>                     
                 </div>
                 <div class="top-phones" style="margin-left: 30px;"><img src="../assets/images/phones.png"></div>                
