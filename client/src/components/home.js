@@ -25,7 +25,7 @@ export default class Home extends Component {
                                 <div className="white-text need-ideas">Need ideas?<br/>We've got you covered.</div>
                                 <div className="button">
                                     {/*div will be a <NavLink to="/choose-location*/}
-                                    <div className="btn-large blue get-started-button">Get Started</div> /* onClick={this.handleGetStarted} */
+                                    <div className="btn-large blue get-started-button">Get Started</div>
                                 </div>
                             </div>
                         </div>
