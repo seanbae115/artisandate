@@ -10,8 +10,8 @@ export default class LocationPage extends Component {
         this.state = {
             zip: '',
         }
-        this.handleZipCodeChange = this.handleZipCodeChange.bind(this);
-        this.handleGoButtonPressed = this.handleGoButtonPressed.bind(this);
+        // this.handleZipCodeChange = this.handleZipCodeChange.bind(this);
+        // this.handleGoButtonPressed = this.handleGoButtonPressed.bind(this);
     }
 
     handleZipCodeChange(event) {
