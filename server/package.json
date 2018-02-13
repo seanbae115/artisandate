@@ -1,0 +1,23 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "dateNight webserver",
+  "main": "sqlcredentials.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Learning-Fuze/c12.17_datenight.git"
+  },
+  "author": "Jonathan Tiritilli",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Learning-Fuze/c12.17_datenight/issues"
+  },
+  "homepage": "https://github.com/Learning-Fuze/c12.17_datenight#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "path": "^0.12.7"
+  }
+}

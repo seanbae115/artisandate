@@ -8,12 +8,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="../css/theme.css">
-    <link rel="stylesheet" href="../css/choose-location.css">
+    <link rel="stylesheet" href="../assets/css/theme.css">
+    <link rel="stylesheet" href="../assets/css/choose-location.css">
     <title>Date Nite - Choose Location</title>
     <script>
             $(document).ready(()=>{
-                $('.button-collapse').sideNav();
+                $('.button-collapse').sideNav({edge: 'right'});
                 $('.btn').on('click', (event)=>{
                     this.options[event.target.name] = event.target;
                 });
@@ -39,7 +39,7 @@
                     <a href="#">Account</a>
                 </li>
                 <li>
-                    <a href="#">New Event</a>
+                    <a href="/">New Event</a>
                 </li>
                 <li>
                     <a href="#">History</a>
@@ -53,7 +53,7 @@
                     <a href="#">Account</a>
                 </li>
                 <li>
-                    <a href="#">New Event</a>
+                    <a href="/">New Event</a>
                 </li>
                 <li>
                     <a href="#">History</a>
@@ -73,7 +73,7 @@
                             <input placeholder="zip code" id="zip-code" type="text" class="validate">
                     </div> 
                     <div style="margin-top:60px"></div>            
-                    <div class="btn-large blue" style="padding: 0 40px; font-size: 1.4em;">Go</div>
+                    <a href="results"><div class="btn-large blue" style="padding: 0 40px; font-size: 1.4em;">Go</div></a>
                     <div style="margin-top:100px"></div> 
                     <div class="btn-large green" style="text-transform: uppercase;">Advanced Options</div>
             </div>            
