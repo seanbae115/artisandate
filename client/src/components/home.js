@@ -6,6 +6,14 @@ import {NavLink} from "react-router-dom";
 import Phones from '../assets/images/phones.png';
 
 export default class Home extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+
+        }
+        this.handleGetStarted = this.handleGetStarted.bind(this);
+    }
+
     render(){
         return (
             <div className="container amber">
@@ -17,7 +25,7 @@ export default class Home extends Component {
                                 <div className="white-text need-ideas">Need ideas?<br/>We've got you covered.</div>
                                 <div className="button">
                                     {/*div will be a <NavLink to="/choose-location*/}
-                                    <div className="btn-large blue get-started-button">Get Started</div>
+                                    <div onClick={this.handleGetStarted} className="btn-large blue get-started-button">Get Started</div>
                                 </div>
                             </div>
                         </div>
