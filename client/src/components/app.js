@@ -7,7 +7,7 @@ import EventPage from './eventPage'
 
 const App = () => (
     <div>
-        <EventPage/>
+        <Home/>
     </div>
 );
 
