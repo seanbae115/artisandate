@@ -1,4 +1,6 @@
 import React from 'react';
+import 'materialize-css';
+import 'materialize-css/dist/css/materialize.min.css';
 import '../assets/css/environment.css';
 
 function Environment (props){
