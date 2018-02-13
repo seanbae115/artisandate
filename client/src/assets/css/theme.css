@@ -25,18 +25,18 @@ h4 {
 
 /* Responsive Media Queries Below From Materialize*/
 /* Small Breakpoint and Up */
-@media (min-width: 600px) {
+@media (min-width: 600px) { 
 
 }
 
 /* Large Breakpoint and Up */
-@media (min-width: 992px) {
-    .logoImg {
-        margin-left: 20px;
-    }
+@media (min-width: 992px) { 
+   .logoImg {
+       margin-left: 20px;
+   }
 }
 
 /* XL Breakpoint and Up */
-@media (min-width: 1200px) {
+@media (min-width: 1200px) { 
 
 }
