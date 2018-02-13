@@ -1,0 +1,12 @@
+#rating .container{
+    margin-top: 5vh;
+}
+.roboto{
+    font-family: 'Roboto', sans-serif;
+}
+#description p{
+    font-size: 2rem;
+}
+.justify{
+    text-align: justify;
+}
