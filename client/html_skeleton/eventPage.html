@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../assets/css/eventPage.css">
     <script>
             $(document).ready(()=>{
-                $('.button-collapse').sideNav();
+                $('.button-collapse').sideNav({edge: 'right'});
                 $('.btn').on('click', (event)=>{
                     this.options[event.target.name] = event.target;
                 });
@@ -35,7 +35,7 @@
                     <a href="#">Account</a>
                 </li>
                 <li>
-                    <a href="#">New Event</a>
+                    <a href="/">New Event</a>
                 </li>
                 <li>
                     <a href="#">History</a>
@@ -49,7 +49,7 @@
                     <a href="#">Account</a>
                 </li>
                 <li>
-                    <a href="#">New Event</a>
+                    <a href="/">New Event</a>
                 </li>
                 <li>
                     <a href="#">History</a>
