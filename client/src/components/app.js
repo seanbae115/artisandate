@@ -5,7 +5,7 @@ import Results from './resultContainer';
 
 const App = () => (
     <div>
-        <Results/>
+        <Home/>
     </div>
 );
 
