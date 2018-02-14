@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import 'materialize-css';
-import 'materialize-css/dist/css/materialize.min.css';
 import '../assets/css/home.css';
 import {NavLink} from "react-router-dom";
 import Phones from '../assets/images/phones.png';
