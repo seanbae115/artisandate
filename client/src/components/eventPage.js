@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import 'materialize-css';
-import 'materialize-css/dist/css/materialize.min.css';
 import '../assets/css/eventPage.css'
 import Nav from './nav_bar';
 import Title from './title';
