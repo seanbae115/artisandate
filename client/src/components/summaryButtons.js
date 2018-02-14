@@ -7,13 +7,16 @@ class SummaryButtons extends Component {
         return (
             <div className="row">
                 <div className="col s4 center">/>
-                    <NavLink to="/calendarPage" className="btn btn-large waves-effect waves-light blue btn-confirm">Email</NavLink>
+                    {/*Will change these to Link later but they don't exist yet and it blows up without Router being in place*/}
+                    <div to="/calendarPage" className="btn btn-large waves-effect waves-light blue btn-confirm">Email</div>
                 </div>
                 <div className="col s4 center">
-                    <NavLink to="/emailPage" className="btn btn-large waves-effect waves-light blue btn-confirm">Add Calendar</NavLink>
+                    {/*Will change these to Link later but they don't exist yet and it blows up without Router being in place*/}
+                    <div to="/emailPage" className="btn btn-large waves-effect waves-light blue btn-confirm">Add Calendar</div>
                 </div>
                 <div className="col s4 center">
-                    <NavLink to="/home" className="btn btn-large waves-effect waves-light blue btn-confirm">Home</NavLink>
+                    {/*Will change these to Link later but they don't exist yet and it blows up without Router being in place*/}
+                    <div to="/home" className="btn btn-large waves-effect waves-light blue btn-confirm">Home</div>
                 </div>
             </div>
         )}
