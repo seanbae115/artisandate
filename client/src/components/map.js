@@ -1,50 +1,98 @@
-import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import { compose, withProps, withStateHandlers } from "recompose";
+// import FaAnchor from 'react-icons/lib/fa/anchor';
+import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps";
+import {MarkerWithLabel} from "react-google-maps/lib/components/addons/MarkerWithLabel";
 
-class Map extends React.Component{
+const MyMapComponent = compose(
+    withStateHandlers(() => ({
+        isOpen: false,
+    }), {
+        onToggleOpen: ({ isOpen }) => () => ({
+            isOpen: !isOpen,
+        })
+    }),
+    withProps({
+        googleMapURL: "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places",
+        loadingElement: <div style={{ height: `100%` }} />,
+        containerElement: <div style={{ height: `400px` }} />,
+        mapElement: <div style={{ height: `100%` }} />,
+    }),
+    withScriptjs,
+    withGoogleMap
+)((props) =>
+    <GoogleMap
+        defaultZoom={11}
+        defaultCenter={{ lat: 33.7743, lng: -117.9380 }}
+    >
 
-    componentDidMount(){
-        this.loadMap();
-        this.forceUpdate();
+
+        <MarkerWithLabel
+            // onClick={}
+            position={{ lat:33.7743, lng: -117.9380 }}
+            labelAnchor={new google.maps.Point(0,0)}
+            labelStyle={{background: 'rgba(255,0,0, 0.6)', fontSize: "20px", padding: "8px",  }}
+            >
+            <div>
+                <p>Pho 76
+                    <br/>
+                    Garden Grove,
+                    <br/>
+                    CA, 91740
+                </p>
+            </div>
+        </MarkerWithLabel>
+
+        <MarkerWithLabel
+            // onClick={}
+            position={{ lat:33.7846, lng: -117.8265 }}
+            labelAnchor={new google.maps.Point(-20,3)}
+            labelStyle={{background: 'rgba(255,255,0, 0.6)', fontSize: "20px", padding: "8px",  }}
+        >
+            <div>
+                <p>The Block<br/>Orange, CA, 91740</p>
+            </div>
+        </MarkerWithLabel>
+
+        <MarkerWithLabel
+            // onClick={}
+            position={{ lat:33.9184, lng: -117.7265 }}
+            labelAnchor={new google.maps.Point(-20,3)}
+            labelStyle={{background: 'rgba(0,0,255, 0.6)', fontSize: "20px", padding: "8px",  }}
+        >
+            <div>
+                <p>The Shoppes<br/>Chino Hills</p>
+            </div>
+        </MarkerWithLabel>
+    </GoogleMap>
+)
+
+export class MapComponent extends React.PureComponent {
+    state = {
+        isMarkerShown: false,
     }
 
-    componentDidUpdate(prevProps, prevState){
-        if(prevProps.google !== this.props.google){
-            console.log('updating props');
-            this.loadMap();
-        }
+    componentDidMount() {
+        this.delayedShowMarker()
     }
 
-    loadMap(){
-        if(this.props && this.props.google){
-            const {google} = this.props;
-            const maps = google.maps;
-
-            const mapRef = this.refs.map;
-            const node = ReactDOM.findDOMNode(mapRef);
-
-            let zoom =14;
-            let lat = 33.6846;
-            let lng = -117.8265;
-            const center = new maps.LatLng(lat, lng);
-            const mapConfig = Object.assign({}, {
-                center: center,
-                zoom: zoom
-            })
-            this.map = new maps.Map(node, mapConfig);
-            console.log(this.map);
-        }
+    delayedShowMarker = () => {
+        setTimeout(() => {
+            this.setState({ isMarkerShown: true })
+        }, 3000)
     }
 
-    render(){
-        const style = {
-            width: '100vw',
-            height: '60vh'
-        };
+    handleMarkerClick = () => {
+        this.setState({ isMarkerShown: false })
+        this.delayedShowMarker()
+    }
+
+    render() {
         return (
-            <div style={style} ref="map">map will come here</div>
-        );
+            <MyMapComponent
+                isMarkerShown={this.state.isMarkerShown}
+                onMarkerClick={this.handleMarkerClick}
+            />
+        )
     }
 }
-
-export default Map;
