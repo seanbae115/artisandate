@@ -9,7 +9,7 @@ import Summary from "./summary";
 
 const App = () => (
     <div>
-        <Home/>
+        <Summary/>
     </div>
 );
 
