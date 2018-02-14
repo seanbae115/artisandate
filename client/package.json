@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "express": "^4.16.2",
     "material-icons-react": "^1.0.0",
     "materialize-css": "^0.100.2",
     "react": "^15.6.1",
