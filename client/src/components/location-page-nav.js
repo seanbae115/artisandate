@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import 'materialize-css';
-import 'materialize-css/dist/css/materialize.min.css';
 import '../assets/css/location_page.css';
 import DateNightSmallPng from "../assets/images/date-night-small.png";
 
