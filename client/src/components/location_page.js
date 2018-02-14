@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import 'materialize-css';
-import 'materialize-css/dist/css/materialize.min.css';
 import '../assets/css/location_page.css';
 import {NavLink} from "react-router-dom";
 
@@ -44,7 +42,7 @@ export default class LocationPage extends Component {
                         <div className="margin-top-60"></div>
                         <div className="button">
                             {/*div will become a <NavLink to="/result">*/}
-                            <div  className="btn-large blue go">Go</div> /* onClick={this.handleGoButtonPressed} might add this not sure */
+                            <div  className="btn-large blue go">Go</div>
                         </div>
                         <div className="margin-top-100"></div>
                         <div className="button">
