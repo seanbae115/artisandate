@@ -1,6 +1,6 @@
 import React from 'react';
-import lola from '../assets/images/lola.jpg';
-import '../assets/css/jumboImg.css';
+import lola from '../../assets/images/lola.jpg';
+import './jumboImg.css';
 
 
 
