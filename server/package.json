@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Learning-Fuze/c12.17_datenight#readme",
   "dependencies": {
     "express": "^4.16.2",
+    "mysql": "^2.15.0",
     "path": "^0.12.7"
   }
 }
