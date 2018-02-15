@@ -17,24 +17,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, '..', 'client')));
 
-app.get('/', (req,res)=>{
-    res.sendFile(path.join(__dirname, '..', 'client', 'html_skeleton', 'index.html'))
-})
-
-app.get('/choose', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'client', 'html_skeleton', 'choose-location.html'))
-})
-
-app.get('/results', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'client', 'html_skeleton', 'result.html'))
-})
-
-app.get('/event', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'client', 'html_skeleton', 'eventPage.html'))
-})
-
-app.get('/signup', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'client', 'html_skeleton', 'signup.html'))
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'client', 'html_skeleton', 'apitest.html'))
 })
 
 app.post('/signup', (req, res) => {
