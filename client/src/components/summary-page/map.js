@@ -65,12 +65,12 @@ const MyMapComponent = compose(
             </div>
         </MarkerWithLabel>
     </GoogleMap>
-)
+);
 
 export class MapComponent extends React.PureComponent {
     state = {
         isMarkerShown: false,
-    }
+    };
 
     componentDidMount() {
         this.delayedShowMarker()
@@ -78,14 +78,14 @@ export class MapComponent extends React.PureComponent {
 
     delayedShowMarker = () => {
         setTimeout(() => {
-            this.setState({ isMarkerShown: true })
+            this.setState({ isMarkerShown: true });
         }, 3000)
-    }
+    };
 
     handleMarkerClick = () => {
-        this.setState({ isMarkerShown: false })
-        this.delayedShowMarker()
-    }
+        this.setState({ isMarkerShown: false });
+        this.delayedShowMarker();
+    };
 
     render() {
         return (
@@ -93,6 +93,6 @@ export class MapComponent extends React.PureComponent {
                 isMarkerShown={this.state.isMarkerShown}
                 onMarkerClick={this.handleMarkerClick}
             />
-        )
+        );
     }
 }

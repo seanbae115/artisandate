@@ -1,6 +1,6 @@
 import React from 'react';
-import '../assets/css/info.css';
-import yelp from '../assets/images/Yelp-Stars.png';
+import './info.css';
+import yelp from '../../assets/images/Yelp-Stars.png';
 
 function Info(props){
     return (
