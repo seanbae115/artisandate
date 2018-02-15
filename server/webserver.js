@@ -4,10 +4,12 @@ const PORT = process.env.PORT || 9000;
 const mysql = require('mysql');
 const credentials = require('./sqlcredentials.js');
 const con = mysql.createConnection(credentials);
+const googleMaps = require('@google/maps').createClient({
+    key: 'AIzaSyBAluNpWLyHEqQ8d28jmDMPsQLdtYVPV1A'
+});
 
 con.connect(function(err) {
     if (err) throw err;
-
     console.log("connected to db");
 });
 
@@ -17,28 +19,11 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, '..', 'client')));
 
-app.get('/', (req,res)=>{
-    res.sendFile(path.join(__dirname, '..', 'client', 'html_skeleton', 'index.html'))
-})
-
-app.get('/choose', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'client', 'html_skeleton', 'choose-location.html'))
-})
-
-app.get('/results', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'client', 'html_skeleton', 'result.html'))
-})
-
-app.get('/event', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'client', 'html_skeleton', 'eventPage.html'))
-})
-
 app.get('/signup', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'client', 'html_skeleton', 'signup.html'))
 })
 
 app.post('/signup', (req, res) => {
-    console.log(req);
     const {first, last, email, username, password} = req.body
     const status = 'active'
     let query = 'INSERT INTO ?? (??, ??, ??, ??, ??, ??)VALUES (?, ?, ?, ?, ?, ?)';
@@ -54,6 +39,21 @@ app.post('/signup', (req, res) => {
         res.json(output);
     })
 })
+
+app.get('/getdata', (req, res) => {
+    console.log(req.body);
+    const address = {
+        address: '92618'
+    }
+    googleMaps.geocode(address, function(err, response){
+        if (!err) {
+            console.log(response.json.results[0].geometry.location.lat);
+            console.log(response.json.results[0].geometry.location.lng);
+        }
+        res.json(response.json.results[0].geometry.location);
+    });
+})
+
 
 app.listen(PORT, ()=>{
     console.log('the system is down on port 9000')
