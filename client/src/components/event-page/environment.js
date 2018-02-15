@@ -1,5 +1,5 @@
 import React from 'react';
-import '../assets/css/environment.css';
+import './environment.css';
 
 function Environment (props){
     return (

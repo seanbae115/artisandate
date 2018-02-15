@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import '../assets/css/home.css';
+import './home.css';
 import {NavLink} from "react-router-dom";
-import Phones from '../assets/images/phones.png';
+import Phones from '../../assets/images/phones.png';
 
 export default class Home extends Component {
     constructor(props){
