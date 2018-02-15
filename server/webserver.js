@@ -4,10 +4,12 @@ const PORT = process.env.PORT || 9000;
 const mysql = require('mysql');
 const credentials = require('./sqlcredentials.js');
 const con = mysql.createConnection(credentials);
+const googleMaps = require('@google/maps').createClient({
+    key: 'AIzaSyBAluNpWLyHEqQ8d28jmDMPsQLdtYVPV1A'
+});
 
 con.connect(function(err) {
     if (err) throw err;
-
     console.log("connected to db");
 });
 
@@ -22,7 +24,6 @@ app.get('/', (req, res) => {
 })
 
 app.post('/signup', (req, res) => {
-    console.log(req);
     const {first, last, email, username, password} = req.body
     const status = 'active'
     let query = 'INSERT INTO ?? (??, ??, ??, ??, ??, ??)VALUES (?, ?, ?, ?, ?, ?)';
@@ -38,6 +39,21 @@ app.post('/signup', (req, res) => {
         res.json(output);
     })
 })
+
+app.get('/getdata', (req, res) => {
+    console.log(req.body);
+    const address = {
+        address: '92618'
+    }
+    googleMaps.geocode(address, function(err, response){
+        if (!err) {
+            console.log(response.json.results[0].geometry.location.lat);
+            console.log(response.json.results[0].geometry.location.lng);
+        }
+        res.json(response.json.results[0].geometry.location);
+    });
+})
+
 
 app.listen(PORT, ()=>{
     console.log('the system is down on port 9000')
