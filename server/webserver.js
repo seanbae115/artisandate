@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const PORT = process.env.PORT || 9000;
 const mysql = require('mysql');
+const axios = require('axios')
 const credentials = require('./sqlcredentials.js');
 const con = mysql.createConnection(credentials);
 const googleMaps = require('@google/maps').createClient({
@@ -47,14 +48,39 @@ app.get('/getdata', (req, res) => {
     }
     googleMaps.geocode(address, function(err, response){
         if (!err) {
-            console.log(response.json.results[0].geometry.location.lat);
-            console.log(response.json.results[0].geometry.location.lng);
+            let lat = response.json.results[0].geometry.location.lat
+            let lng = response.json.results[0].geometry.location.lng
         }
         res.json(response.json.results[0].geometry.location);
     });
+    
 })
-
+app.get('/getDinner', (req, res)=>{
+    axios({
+        method: 'get',
+        url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
+        params: {
+            key: 'AIzaSyBQzvigXgukz_X2Ii05aUywXroY4776EFE',
+            location: '33.665242, -117.7490656',
+            radius: 5000,
+            type: 'restaurant'
+        },
+        responseType: 'json'
+    }) 
+        .then(function(response){
+            var results = response.data.results;
+            console.log(response.data.results);
+            res.json(results[0].photos[0].photo_reference);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+})
 
 app.listen(PORT, ()=>{
     console.log('the system is down on port 9000')
 })
+
+
+
+
