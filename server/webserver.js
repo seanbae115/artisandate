@@ -64,9 +64,9 @@ app.get('/getEverything', (req, res) => {
         limit: 3
     }).then(response => {
         output.events = response.jsonBody.businesses;
-        if(output.dinner && output.bars){
-            res.send(output)
-        }
+        // // if(output.dinner && output.bars){
+        // //     res.send(output)
+        // }
     }).catch(e => {
         console.log('error',e);
     });
