@@ -1,8 +1,8 @@
 import React from "react";
-import NavBar from "./nav_bar";
-import SummaryEvent from "./summary_event";
+import NavBar from "../nav-bar/navBar";
+import SummaryEvent from "./summaryEvent";
 import SummaryButtons from "./summaryButtons";
-import "../assets/css/summary.css";
+import "./summaryPage.css";
 import {MapComponent} from './map';
 
 
