@@ -6,3 +6,6 @@
 >>>Events
 >>>Dinners
 >>>Bars
+
+#Ensure that you set up a sqlcredential.js file
+##Contact Jonathan for a credential to enter, in order to run a local server, and connect to the database.
