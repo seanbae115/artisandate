@@ -62,15 +62,15 @@ app.get('/getDinner', (req, res)=>{
         params: {
             key: 'AIzaSyBQzvigXgukz_X2Ii05aUywXroY4776EFE',
             location: '33.665242, -117.7490656',
-            radius: 5000,
-            type: 'restaurant'
+            keyword: 'restaurant',
+            rankby: 'distance'
         },
         responseType: 'json'
     }) 
         .then(function(response){
             var results = response.data.results;
             console.log(response.data.results);
-            res.json(results[0].photos[0].photo_reference);
+            res.json(results[3].photos[0].photo_reference);
         })
         .catch(err => {
             console.log(err);
