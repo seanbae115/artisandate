@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import '../assets/css/eventPage.css'
-import Nav from './nav_bar';
+import './eventPage.css'
+import NavBar from '../nav-bar/navBar';
 import Title from './title';
 import JumboImg from './jumboImg';
 import Info from './info';
@@ -10,7 +10,7 @@ class EventPage extends Component{
     render(){
         return (
             <div className = 'structure'>
-                <Nav/>
+                <NavBar/>
                 <Title/>
                 <JumboImg/>
                 <Info/>
