@@ -34,6 +34,8 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'client', 'html_skeleton', 'apitest.html'))
 })
 
+
+//Database interactions
 app.post('/signup', (req, res) => {
     const {first, last, email, username, password} = req.body
     const status = 'active'
@@ -56,18 +58,19 @@ const output = {
     dinner: null,
     bars: null
 }
-//get evreything endpoint, use this to access and gather data for the 
-app.get('/getEverything', (req, res) => {
-    client.search({
+
+//content enpoint
+app.get('/getEverything', async (req, res) => {
+    const resp = await client.search({
         term: 'hike, beaches',
         location: 'huntington beach, ca',
         radius: 8000,
         limit: 3
     }).then(response => {
         output.events = response.jsonBody.businesses;
-        // // if(output.dinner && output.bars){
-        // //     res.send(output)
-        // }
+        if(output.dinner && output.bars){
+            res.send(output)
+        }
     }).catch(e => {
         console.log('error',e);
     });
