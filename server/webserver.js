@@ -59,6 +59,44 @@ const output = {
     bars: null
 }
 
+
+//promises testing
+
+app.post('/promiseTest', (req, res)=>{
+    var promise1 = client.search({
+            term: 'hike, beach, park',
+            location: 90742,
+            radius: 8000,
+            limit: 3
+        })
+        .then(
+            response => response.jsonBody.businesses
+        );
+    var promise2 = client.search({
+            term: 'restaurant',
+            location: 90742,
+            radius: 8000,
+            limit: 3
+        })
+        .then(
+            response => response.jsonBody.businesses
+        );
+    var promise3 = client.search({
+            term: 'coffee',
+            location: 90742,
+            radius: 8000,
+            limit: 3
+        })
+        .then(
+            response => output.bars = response.jsonBody.businesses
+        )
+
+    Promise.all([promise1,promise2,promise3]).then(function (values) {
+        console.log(values);
+        res.end();
+    });
+})
+
 //content enpoint
 app.post('/getEverything', (req, res) => {
     console.log('request', req.body)
@@ -122,6 +160,7 @@ app.get('/getdata', (req, res) => {
     });
     
 })
+//google places call for food
 app.get('/getDinner', (req, res)=>{
     axios({
         method: 'get',
