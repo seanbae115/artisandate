@@ -60,10 +60,14 @@ const output = {
 }
 
 //content enpoint
-app.get('/getEverything', async (req, res) => {
-    const resp = await client.search({
-        term: 'hike, beaches',
-        location: 'huntington beach, ca',
+app.post('/getEverything', (req, res) => {
+    console.log('request', req.body)
+    const zip = req.body.zipcode;
+    const drink = req.body.drinks;
+    const food = req.body.cuisine;
+    client.search({
+        term: 'hike, beaches, park, nightlife',
+        location: zip,
         radius: 8000,
         limit: 3
     }).then(response => {
@@ -76,8 +80,8 @@ app.get('/getEverything', async (req, res) => {
     });
     //dinner
     client.search({
-        term: 'restaurants',
-        location: 'huntington beach, ca',
+        term: food || 'restaurants',
+        location: zip,
         radius: 8000,
         limit: 3
     }).then(response => {
@@ -90,8 +94,8 @@ app.get('/getEverything', async (req, res) => {
     })
     //bars
     client.search({
-        term: 'bars',
-        location: 'huntington beach, ca',
+        term: drink || 'bars, coffee, tea, beer',
+        location: zip,
         radius: 8000,
         limit: 3
     }).then(response => {
