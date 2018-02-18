@@ -62,9 +62,9 @@ const output = {
 //content enpoint
 app.post('/getEverything', (req, res) => {
     console.log('request', req.body)
-    const zip = req.body.zipcode;
-    const drink = req.body.drinks;
-    const food = req.body.cuisine;
+    const zip = req.body.zipcode || 90742;
+    const drink = req.body.drinks || 'bars, coffee, tea, beer';
+    const food = req.body.cuisine || 'restaurants';
     client.search({
         term: 'hike, beaches, park, nightlife',
         location: zip,
@@ -80,7 +80,7 @@ app.post('/getEverything', (req, res) => {
     });
     //dinner
     client.search({
-        term: food || 'restaurants',
+        term: food,
         location: zip,
         radius: 8000,
         limit: 3
@@ -94,7 +94,7 @@ app.post('/getEverything', (req, res) => {
     })
     //bars
     client.search({
-        term: drink || 'bars, coffee, tea, beer',
+        term: drink,
         location: zip,
         radius: 8000,
         limit: 3
