@@ -66,14 +66,14 @@ app.post('/getEverything', (req, res) => {
     const drink = req.body.drinks || 'bars, coffee, tea, beer';
     const food = req.body.cuisine || 'restaurants';
     client.search({
-        term: 'hike, beaches, park, nightlife',
+        term: 'hike, beach, park',
         location: zip,
         radius: 8000,
         limit: 3
     }).then(response => {
         output.events = response.jsonBody.businesses;
         if(output.dinner && output.bars){
-            res.send(output)
+            res.json(output)
         }
     }).catch(e => {
         console.log('error',e);
@@ -87,7 +87,7 @@ app.post('/getEverything', (req, res) => {
     }).then(response => {
         output.dinner = response.jsonBody.businesses;
         if (output.events && output.bars) {
-            res.send(output)
+            res.json(output)
         }
     }).catch(e => {
         console.log('error', e);
@@ -101,7 +101,7 @@ app.post('/getEverything', (req, res) => {
     }).then(response => {
         output.bars = response.jsonBody.businesses;
         if (output.dinner && output.events) {
-            res.send(output)
+            res.json(output)
         }
     }).catch(e => {
         console.log('error', e);
