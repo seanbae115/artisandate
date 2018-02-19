@@ -91,9 +91,9 @@ app.post('/promiseTest', (req, res)=>{
             response => output.bars = response.jsonBody.businesses
         )
 
-    Promise.all([promise1,promise2,promise3]).then(function (values) {
+    Promise.all([promise1, promise2, promise3]).then(function (values) {
         console.log(values);
-        res.end();
+        res.send(values);
     });
 })
 
