@@ -35,7 +35,9 @@ app.get('/', (req, res) => {
 })
 
 
-//Database interactions
+//DATABASE INTERACTIONS
+
+//new user
 app.post('/signup', (req, res) => {
     const {first, last, email, username, password} = req.body
     const status = 'active'
@@ -53,15 +55,37 @@ app.post('/signup', (req, res) => {
     })
 })
 
+//save date
+app.post('/addCompletedDate', (req, res) => {
+    console.log(req.body)
+    let request = JSON.parse(req.body.dateData);
+    console.log(request)
+    let events = (request.events, request.food, request.drinks);
+    console.log(events);
+    for(var i = 0 ; i > events.length ; i++){
+        const {name, id, location, url, image_url, coordinates} = events[i];
+        console.log('for loop at '[i]);
+        let query = 'INSERT INTO locations (??, ??, ??, ??, ??, ??, ??) VALUES (?, ?, ?, ?, ?, ?, ?)';
+        let table = 'locations';
+        let inserts = ['name', 'city', 'address', 'yelpID', 'primaryPhoto', 'lat', 'lng', name, location.city, location.address1, id, image_url, coordinates.latitude, coordinates.longitude];
+        let sql = mysql.format(query, inserts);
+        con.query(sql, (err, results, fields) => {
+            if (err) throw err;
+            const output = {
+                success: true,
+                data: results
+            }
+            res.json(output);
+        })
+    }
+})
 const output = {
     events: null,
     food: null,
     drinks: null
 }
 
-
 //results endpoint
-
 app.post('/getEverything', (req, res)=>{
     var events = client.search({
             term: 'hike, beach, park',
