@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './locationPage.css';
 import NavBar from "../nav-bar/navBar"
-import {NavLink} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default class LocationPage extends Component {
     constructor(props) {
@@ -43,10 +43,7 @@ export default class LocationPage extends Component {
                                 <input placeholder="zip code" id="zip-code" type="text" className="validate" name="zip" value={zip} onChange={this.handleZipCodeChange} />
                             </div>
                             <div className="margin-top-60"></div>
-                            <div className="button">
-                                {/*div will become a <NavLink to="/result">*/}
-                                <div  className="btn-large blue go">Go</div>
-                            </div>
+                                <Link to = '/results-page' className="btn-large blue go">Go</Link>
                             <div className="margin-top-100"></div>
                             <div className="button">
                                 {/*div will be a <NavLink to="/advanced"*/}

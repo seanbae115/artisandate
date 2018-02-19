@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Header from './resultHeader';
 import Body from './resultBody';
 import NavBar from "../nav-bar/navBar";
@@ -19,6 +20,7 @@ const ResultsPage = props => {
         <div>
             <NavBar/>
             {result}
+            <Link to = '/summary-page' className='btn'>Confirm</Link>
         </div>
     )
 };
