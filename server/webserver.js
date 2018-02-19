@@ -55,15 +55,15 @@ app.post('/signup', (req, res) => {
 
 const output = {
     events: null,
-    dinner: null,
-    bars: null
+    food: null,
+    drinks: null
 }
 
 
-//promises testing
+//results endpoint
 
-app.post('/promiseTest', (req, res)=>{
-    var promise1 = client.search({
+app.post('/getEverything', (req, res)=>{
+    var events = client.search({
             term: 'hike, beach, park',
             location: 90742,
             radius: 8000,
@@ -72,7 +72,8 @@ app.post('/promiseTest', (req, res)=>{
         .then(
             response => response.jsonBody.businesses
         );
-    var promise2 = client.search({
+        
+    var food = client.search({
             term: 'restaurant',
             location: 90742,
             radius: 8000,
@@ -81,70 +82,33 @@ app.post('/promiseTest', (req, res)=>{
         .then(
             response => response.jsonBody.businesses
         );
-    var promise3 = client.search({
+
+    var drinks = client.search({
             term: 'coffee',
             location: 90742,
             radius: 8000,
             limit: 3
         })
         .then(
-            response => output.bars = response.jsonBody.businesses
+            response => response.jsonBody.businesses
         )
 
-    Promise.all([promise1, promise2, promise3]).then(function (values) {
-        console.log(values);
-        res.send(values);
+    events.then((v)=>{
+        output.events = v;
+    })
+    food.then((v) => {
+        output.food = v;
+    })
+    drinks.then((v) => {
+        output.drinks = v;
+    })
+    var p = Promise.all([events, food, drinks])
+    
+    p.then(function (v) {
+        console.log(output)
+        res.send(output);
     });
 })
-
-//content enpoint
-app.post('/getEverything', (req, res) => {
-    console.log('request', req.body)
-    const zip = req.body.zipcode || 90742;
-    const drink = req.body.drinks || 'bars, coffee, tea, beer';
-    const food = req.body.cuisine || 'restaurants';
-    client.search({
-        term: 'hike, beach, park',
-        location: zip,
-        radius: 8000,
-        limit: 3
-    }).then(response => {
-        output.events = response.jsonBody.businesses;
-        if(output.dinner && output.bars){
-            res.json(output)
-        }
-    }).catch(e => {
-        console.log('error',e);
-    });
-    //dinner
-    client.search({
-        term: food,
-        location: zip,
-        radius: 8000,
-        limit: 3
-    }).then(response => {
-        output.dinner = response.jsonBody.businesses;
-        if (output.events && output.bars) {
-            res.json(output)
-        }
-    }).catch(e => {
-        console.log('error', e);
-    })
-    //bars
-    client.search({
-        term: drink,
-        location: zip,
-        radius: 8000,
-        limit: 3
-    }).then(response => {
-        output.bars = response.jsonBody.businesses;
-        if (output.dinner && output.events) {
-            res.json(output)
-        }
-    }).catch(e => {
-        console.log('error', e);
-    })
-});
 
 app.get('/getdata', (req, res) => {
     console.log(req.body);
