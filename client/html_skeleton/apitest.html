@@ -9,9 +9,11 @@
 </head>
 <body>
     <div class="container center-align">
-        <form action="/getEverything" method='get'>
+        <form action="/getEverything" method='post'>
             <div class="row center-align">
-                <input type="text" class='col s6 offset-s3' placeholder='enter zip'>
+                <input type="text" name='cuisine' class='col s6 offset-s3' placeholder='enter a type of food'/>
+                <input type="text" name='drinks' class='col s6 offset-s3' placeholder='enter a type of drink'/>
+                <input type="text" name='zipcode' class='col s6 offset-s3' placeholder='enter zip'/>
             </div>
             <div class="row">
                 <button class='btn amber darken-2'>Get Data</button>

@@ -34,6 +34,8 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'client', 'html_skeleton', 'apitest.html'))
 })
 
+
+//Database interactions
 app.post('/signup', (req, res) => {
     const {first, last, email, username, password} = req.body
     const status = 'active'
@@ -53,53 +55,60 @@ app.post('/signup', (req, res) => {
 
 const output = {
     events: null,
-    dinner: null,
-    bars: null
+    food: null,
+    drinks: null
 }
-//get evreything endpoint, use this to access and gather data for the 
-app.get('/getEverything', (req, res) => {
-    client.search({
-        term: 'hike, beaches',
-        location: 'huntington beach, ca',
-        radius: 8000,
-        limit: 3
-    }).then(response => {
-        output.events = response.jsonBody.businesses;
-        // // if(output.dinner && output.bars){
-        // //     res.send(output)
-        // }
-    }).catch(e => {
-        console.log('error',e);
+
+
+//results endpoint
+
+app.post('/getEverything', (req, res)=>{
+    var events = client.search({
+            term: 'hike, beach, park',
+            location: 90742,
+            radius: 8000,
+            limit: 3
+        })
+        .then(
+            response => response.jsonBody.businesses
+        );
+        
+    var food = client.search({
+            term: 'restaurant',
+            location: 90742,
+            radius: 8000,
+            limit: 3
+        })
+        .then(
+            response => response.jsonBody.businesses
+        );
+
+    var drinks = client.search({
+            term: 'coffee',
+            location: 90742,
+            radius: 8000,
+            limit: 3
+        })
+        .then(
+            response => response.jsonBody.businesses
+        )
+
+    events.then((v)=>{
+        output.events = v;
+    })
+    food.then((v) => {
+        output.food = v;
+    })
+    drinks.then((v) => {
+        output.drinks = v;
+    })
+    var p = Promise.all([events, food, drinks])
+    
+    p.then(function (v) {
+        console.log(output)
+        res.send(output);
     });
-    //dinner
-    client.search({
-        term: 'restaurants',
-        location: 'huntington beach, ca',
-        radius: 8000,
-        limit: 3
-    }).then(response => {
-        output.dinner = response.jsonBody.businesses;
-        if (output.events && output.bars) {
-            res.send(output)
-        }
-    }).catch(e => {
-        console.log('error', e);
-    })
-    //bars
-    client.search({
-        term: 'bars',
-        location: 'huntington beach, ca',
-        radius: 8000,
-        limit: 3
-    }).then(response => {
-        output.bars = response.jsonBody.businesses;
-        if (output.dinner && output.events) {
-            res.send(output)
-        }
-    }).catch(e => {
-        console.log('error', e);
-    })
-});
+})
 
 app.get('/getdata', (req, res) => {
     console.log(req.body);
@@ -115,6 +124,7 @@ app.get('/getdata', (req, res) => {
     });
     
 })
+//google places call for food
 app.get('/getDinner', (req, res)=>{
     axios({
         method: 'get',
