@@ -1,5 +1,5 @@
 {
-	"events": [{
+	"events": {
 		"id": "huntington-dog-beach-huntington-beach",
 		"name": "Huntington Dog Beach",
 		"image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/WaMW9DXPPJdusyrEwXPfsw/o.jpg",
@@ -32,8 +32,8 @@
 		"phone": "+17148418644",
 		"display_phone": "(714) 841-8644",
 		"distance": 7307.723654053903
-	}],
-	"food": [{
+	},
+	"food": {
 		"id": "fit-bar-superfood-cafe-seal-beach",
 		"name": "Fit Bar Superfood Cafe",
 		"image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/zQHso7UbOXFX1XInLduCjA/o.jpg",
@@ -67,8 +67,8 @@
 		"phone": "+15623417675",
 		"display_phone": "(562) 341-7675",
 		"distance": 1032.773122232542
-	}],
-	"drinks": [{
+	},
+	"drinks": {
 		"id": "aosa-coffee-huntington-beach",
 		"name": "AoSA Coffee",
 		"image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/FWiZHE5ihWZEJUmcHfcOmg/o.jpg",
@@ -105,5 +105,5 @@
 		"phone": "+17148405700",
 		"display_phone": "(714) 840-5700",
 		"distance": 1772.08807701612
-	}]
+	}
 }
