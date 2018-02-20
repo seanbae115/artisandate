@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const cors = require("cors");
 
 const PORT = process.env.PORT || 9000;
 
@@ -14,6 +15,9 @@ const credentials = require('./sqlcredentials.js');
 
 const con = mysql.createConnection(credentials);
 
+
+
+
 const googleMaps = require('@google/maps').createClient({
     key: 'AIzaSyBAluNpWLyHEqQ8d28jmDMPsQLdtYVPV1A'
 });
@@ -26,9 +30,13 @@ con.connect(function(err) {
 
 const app = express();
 
+app.use(cors());
+
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, '..', 'client')));
+
+
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'client', 'html_skeleton', 'apitest.html'))
