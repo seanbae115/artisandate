@@ -1,8 +1,9 @@
 const express = require('express');
 const path = require('path');
 const cors = require("cors");
+const testObject = require('./test.js')
 
-const PORT = process.env.PORT || 9000;
+const PORT = process.env.PORT || 8000;
 
 const mysql = require('mysql');
 
@@ -21,7 +22,6 @@ const con = mysql.createConnection(credentials);
 const googleMaps = require('@google/maps').createClient({
     key: 'AIzaSyBAluNpWLyHEqQ8d28jmDMPsQLdtYVPV1A'
 });
-
 
 con.connect(function(err) {
     if (err) throw err;
@@ -42,8 +42,11 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'client', 'html_skeleton', 'apitest.html'))
 })
 
+app.use(express.urlencoded());
+app.use(express.json());
+//DATABASE INTERACTIONS
 
-//Database interactions
+//new user
 app.post('/signup', (req, res) => {
     const {first, last, email, username, password} = req.body
     const status = 'active'
@@ -61,15 +64,63 @@ app.post('/signup', (req, res) => {
     })
 })
 
+
+
+//save date
+app.post('/addCompletedDate', (req, res) => {
+    let request = testObject;
+    console.log(request)
+
+    var events = function() { 
+        const {name, id, location, url, image_url, coordinates} = request.events;
+        let query = 'INSERT INTO locations (??, ??, ??, ??, ??, ??, ??) VALUES (?, ?, ?, ?, ?, ?, ?)';
+        let table = 'locations';
+        let inserts = ['name', 'city', 'address', 'yelpID', 'primaryPhoto', 'lat', 'lng', name, location.city, location.address1, id, image_url, coordinates.latitude, coordinates.longitude];
+        let sql = mysql.format(query, inserts);
+        con.query(sql, (err, results, fields) => {
+            if (err) return next(err);
+            const output = {
+                success: true
+            }
+        });
+    }()
+
+    var food = function() {
+        const { name, id, location, url, image_url, coordinates } = request.food;
+        let query = 'INSERT INTO locations (??, ??, ??, ??, ??, ??, ??) VALUES (?, ?, ?, ?, ?, ?, ?)';
+        let table = 'locations';
+        let inserts = ['name', 'city', 'address', 'yelpID', 'primaryPhoto', 'lat', 'lng', name, location.city, location.address1, id, image_url, coordinates.latitude, coordinates.longitude];
+        let sql = mysql.format(query, inserts);
+        con.query(sql, (err, results, fields) => {
+            if (err) next(err);
+            const output = {
+                success: true
+            }
+        });
+    }()
+
+    var drinks = function() {
+        const { name, id, location, url, image_url, coordinates } = request.drinks;
+        let query = 'INSERT INTO locations (??, ??, ??, ??, ??, ??, ??) VALUES (?, ?, ?, ?, ?, ?, ?)';
+        let table = 'locations';
+        let inserts = ['name', 'city', 'address', 'yelpID', 'primaryPhoto', 'lat', 'lng', name, location.city, location.address1, id, image_url, coordinates.latitude, coordinates.longitude];
+        let sql = mysql.format(query, inserts);
+        con.query(sql, (err, results, fields) => {
+            if (err) next(err);
+            const output = {
+                success: true
+            }
+        });
+    }()
+})
+
 const output = {
     events: null,
     food: null,
     drinks: null
 }
 
-
 //results endpoint
-
 app.post('/getEverything', (req, res)=>{
     var events = client.search({
         term: 'hike, beach, park',
@@ -119,9 +170,11 @@ app.post('/getEverything', (req, res)=>{
     events.then((v)=>{
         output.events = v;
     })
+
     food.then((v) => {
         output.food = v;
     })
+
     drinks.then((v) => {
         output.drinks = v;
     })
@@ -137,11 +190,11 @@ app.get('/getdata', (req, res) => {
     console.log(req.body);
     const address = {
         address: '92618'
-    }
+    };
     googleMaps.geocode(address, function(err, response){
         if (!err) {
-            let lat = response.json.results[0].geometry.location.lat
-            let lng = response.json.results[0].geometry.location.lng
+            let lat = response.json.results[0].geometry.location.lat;
+            let lng = response.json.results[0].geometry.location.lng;
         }
         res.json(response.json.results[0].geometry.location);
     });
@@ -216,7 +269,7 @@ app.get('/getPhotos', (req, res) => {
  })
 
 app.listen(PORT, ()=>{
-    console.log('the system is down on port 9000')
+    console.log('the system is down on port', PORT)
 })
 
 
