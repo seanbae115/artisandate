@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import {getEvent} from "../../actions";
+import {getPlanner} from "../../actions";
 import { Link } from 'react-router-dom';
 import Header from './resultHeader';
 import Body from './resultBody';
@@ -10,22 +10,21 @@ import resultArray from './resultContents';
 
 class ResultsPage extends Component {
     componentDidMount(){
-        this.props.getEvent();
-        console.log("DID MOUNT", this.props.getEvent())
+        this.props.getPlanner();
     }
 
     render() {
-        // console.log("in render", this.props.dinner);
-        const result = resultArray.map((item, index) => {
-            const {title, image, name, address} = resultArray[index];
+        const result = this.props.dinner.map((item, index) => {
+            const {title, image_url, name, location, display_phone} = item;
             return (
                 <div key={index}>
                     <Header title={title}/>
-                    <Body name={name} image={image} address={address}/>
+                    <Body name={name} image={image_url} address={location} phone={display_phone}/>
                     <hr className='grey darken-4'/>
                 </div>
             )
         });
+
         return (
             <div>
                 <NavBar/>
@@ -37,10 +36,12 @@ class ResultsPage extends Component {
 }
 
 function mapStateToProps(state){
-    console.log("Map to props date event", state.dateEvent.dinner);
     return {
-        dinner: state.dateEvent
+        event: state.datePlan.events,
+        dinner: state.datePlan.food,
+        drinks: state.datePlan.drinks
+
     }
 }
 
-export default connect(mapStateToProps, {getEvent})(ResultsPage);
+export default connect(mapStateToProps, {getPlanner})(ResultsPage);
