@@ -1,4 +1,6 @@
 .idea
 .vscode
 logins.rtf
+sqlcredentials.js
 .DS_Store
+node_modules
