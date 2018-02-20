@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './home.css';
-import {NavLink} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Phones from '../../assets/images/phones.png';
 
 export default class Home extends Component {
@@ -22,8 +22,7 @@ export default class Home extends Component {
                                 <div className="grey-text text-darken-3">Planning a date is hard.</div>
                                 <div className="white-text need-ideas">Need ideas?<br/>We've got you covered.</div>
                                 <div className="button">
-                                    {/*div will be a <NavLink to="/choose-location*/}
-                                    <div className="btn-large blue get-started-button">Get Started</div>
+                                    <Link to = '/location-page' className="btn-large blue get-started-button">Get Started</Link>
                                 </div>
                             </div>
                         </div>

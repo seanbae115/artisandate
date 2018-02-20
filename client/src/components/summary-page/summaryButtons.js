@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {NavLink} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class SummaryButtons extends Component {
     render(){
@@ -16,7 +16,7 @@ class SummaryButtons extends Component {
                 </div>
                 <div className="col s4 center">
                     {/*Will change these to Link later but they don't exist yet and it blows up without Router being in place*/}
-                    <div to="/home" className="btn btn-large waves-effect waves-light blue btn-confirm">Home</div>
+                    <Link to="/" className="btn btn-large waves-effect waves-light blue btn-confirm">Home</Link>
                 </div>
             </div>
         )}
