@@ -122,7 +122,8 @@ const output = {
 
 //results endpoint
 app.post('/getEverything', (req, res)=>{
-    var events = client.search({
+    var temp = {};
+    var places = client.search({
         term: 'hike, beach, park',
         location: 90742,
         radius: 8000,
@@ -131,21 +132,21 @@ app.post('/getEverything', (req, res)=>{
     .then(
         response => response.jsonBody.businesses
     );
-    // var events = axios({
-    //     url: 'https://api.yelp.com/v3/events',
-    //     headers: {'Authorization': 'Bearer xkA9Hp5U6wElMNSf3MGcF_L6R0Io18O69Xsth-G-OsV50MIfoVyiWfQmmQgFHpmFvgFatiEW8sppCiAVWrfRgpy1-pNH905xO-Okl1TV6nIqp_RXCSDmvJFOEqKLWnYx'},
-    //     params:{
-    //         location: 90742,
-    //         radius: 8000,
-    //         limit: 3,
-    //         sort_on: 'popularity',
-    //         start_date: 1519104023
-    //     },
-    //     responseType: 'json'
-    // })
-    //     .then(
-    //         response => response.data.events
-    //     )
+    var events = axios({
+        url: 'https://api.yelp.com/v3/events',
+        headers: {'Authorization': 'Bearer xkA9Hp5U6wElMNSf3MGcF_L6R0Io18O69Xsth-G-OsV50MIfoVyiWfQmmQgFHpmFvgFatiEW8sppCiAVWrfRgpy1-pNH905xO-Okl1TV6nIqp_RXCSDmvJFOEqKLWnYx'},
+        params:{
+            location: 90742,
+            radius: 8000,
+            limit: 3,
+            sort_on: 'popularity',
+            start_date: 1519104023
+        },
+        responseType: 'json'
+    })
+        .then(
+            response => response.data.events
+        )
         
     var food = client.search({
             term: 'restaurant',
@@ -167,8 +168,12 @@ app.post('/getEverything', (req, res)=>{
             response => response.jsonBody.businesses
         )
 
+    places.then((v)=> {
+        temp.places = v;
+    })
+
     events.then((v)=>{
-        output.events = v;
+        temp.events = v;
     })
 
     food.then((v) => {
@@ -178,12 +183,15 @@ app.post('/getEverything', (req, res)=>{
     drinks.then((v) => {
         output.drinks = v;
     })
-    var p = Promise.all([events, food, drinks])
+    var p = Promise.all([places, events, food, drinks])
     
     p.then(function (v) {
+        var result = temp.places.concat(temp.events);
+        output.events = result;
         console.log(output)
         res.send(output);
     });
+    
 })
 
 app.get('/getdata', (req, res) => {
