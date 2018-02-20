@@ -60,23 +60,23 @@ app.post('/signup', (req, res) => {
         res.json(output);
     })
 })
-app.post('/summary', (req, res) => {
-    const {name, city, address, yelpId, primaryPhoto} = req.body
-    const lat = null;
-    const lng = null;
-    let query = 'INSERT INTO ?? (??, ??, ??, ??, ??, ??, ??) VALUES (?, ?, ?, ?, ?, ?, ?)';
-    let inserts = ['locations', 'name', 'city', 'address','yelpId','primaryPhoto','lat','lng', name, city, address, yelpId, primaryPhoto, lat, lng];
-    let sql = mysql.format(query, insters);
-    con.query(sql, (err, results, fields) => {
-        if (err) throw err;
+// app.post('/summary', (req, res) => {
+//     const {name, city, address, yelpId, primaryPhoto} = req.body
+//     const lat = null;
+//     const lng = null;
+//     let query = 'INSERT INTO ?? (??, ??, ??, ??, ??, ??, ??) VALUES (?, ?, ?, ?, ?, ?, ?)';
+//     let inserts = ['locations', 'name', 'city', 'address','yelpId','primaryPhoto','lat','lng', name, city, address, yelpId, primaryPhoto, lat, lng];
+//     let sql = mysql.format(query, insters);
+//     con.query(sql, (err, results, fields) => {
+//         if (err) throw err;
 
-        const output = {
-            success: true,
-            data: results
-        }
-        res.json(output);
-    })
-})
+//         const output = {
+//             success: true,
+//             data: results
+//         }
+//         res.json(output);
+//     })
+// })
 const output = {
     events: null,
     food: null,
@@ -185,8 +185,15 @@ app.get('/getEvents', (req, res) => {
         responseType: 'json'
     })
     .then(function(response){
-            console.log(response.data);
-            res.json(response.data);
+        var results = response.data.events
+        var output = [];
+        for(var i = 0; i < results.length; i++){
+            var img = '<img src='+results[i].image_url+' height="300" width="300">'
+            output.push(img);
+        }
+
+        console.log(response.data.events);
+        res.send(output.join('\n'));
     })
     .catch(function(err){
         console.log(err);
