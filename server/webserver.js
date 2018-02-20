@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const cors = require("cors");
 
 const PORT = process.env.PORT || 8000;
 
@@ -14,6 +15,9 @@ const credentials = require('./sqlcredentials.js');
 
 const con = mysql.createConnection(credentials);
 
+
+
+
 const googleMaps = require('@google/maps').createClient({
     key: 'AIzaSyBAluNpWLyHEqQ8d28jmDMPsQLdtYVPV1A'
 });
@@ -25,9 +29,13 @@ con.connect(function(err) {
 
 const app = express();
 
+app.use(cors());
+
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, '..', 'client')));
+
+
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'client', 'html_skeleton', 'apitest.html'))
@@ -181,24 +189,56 @@ app.get('/getDinner', (req, res)=>{
         params: {
             key: 'AIzaSyBQzvigXgukz_X2Ii05aUywXroY4776EFE',
             location: '33.665242, -117.7490656',
-            radius: 5000,
-            type: 'restaurant'
+            keyword: 'restaurant',
+            rankby: 'distance'
         },
         responseType: 'json'
     }) 
         .then(function(response){
             var results = response.data.results;
             console.log(response.data.results);
-            res.json(results[0].photos[0].photo_reference);
+            res.json(results[3].photos[0].photo_reference);
         })
         .catch(err => {
             console.log(err);
         })
 })
 
+app.get('/getEvents', (req, res) => {
+    axios({
+        url: 'https://api.yelp.com/v3/events',
+        headers: {'Authorization': 'Bearer xkA9Hp5U6wElMNSf3MGcF_L6R0Io18O69Xsth-G-OsV50MIfoVyiWfQmmQgFHpmFvgFatiEW8sppCiAVWrfRgpy1-pNH905xO-Okl1TV6nIqp_RXCSDmvJFOEqKLWnYx'},
+        params:{
+            location: 90742,
+            radius: 8000,
+            limit: 10,
+            sort_on: 'popularity',
+            start_date: 1519104023
+        },
+        responseType: 'json'
+    })
+    .then(function(response){
+        var results = response.data.events
+        var output = [];
+        for(var i = 0; i < results.length; i++){
+            var img = '<img src='+results[i].image_url+' height="300" width="300">'
+            output.push(img);
+        }
+
+        console.log(response.data.events);
+        res.send(output.join('\n'));
+    })
+    .catch(function(err){
+        console.log(err);
+    })
+})
+
+
 app.listen(PORT, ()=>{
     console.log('the system is down on port', PORT)
 })
+
+
 
 
 
