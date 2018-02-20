@@ -1,4 +1,4 @@
-{
+module.exports = {
 	"events": {
 		"id": "huntington-dog-beach-huntington-beach",
 		"name": "Huntington Dog Beach",

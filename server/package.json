@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/Learning-Fuze/c12.17_datenight/issues"
   },
-  "homepage": "https://github.com/Learning-Fuze/c12.17_datenight#readme",
+  "homepage": "https://github.com/Learning-Fuze/c12.17_datenight",
   "dependencies": {
     "@google/maps": "^0.4.5",
     "axios": "^0.17.1",

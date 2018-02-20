@@ -18,11 +18,12 @@
         }
         function submit(){
             const dateData = $('#dateData').val();
+            console.log(JSON.stringify(dateData));
             $.ajax({
                 url: '/addCompletedDate',
                 method: 'post',
-                dataType: 'json',
                 data: dateData,
+                dataType: 'JSON',
                 success: res => {
                     console.log('add data response', res)
                 },
