@@ -64,6 +64,8 @@ app.post('/signup', (req, res) => {
     })
 })
 
+
+
 //save date
 app.post('/addCompletedDate', (req, res) => {
     let request = testObject;
@@ -111,6 +113,7 @@ app.post('/addCompletedDate', (req, res) => {
         });
     }()
 })
+
 const output = {
     events: null,
     food: null,
@@ -120,14 +123,29 @@ const output = {
 //results endpoint
 app.post('/getEverything', (req, res)=>{
     var events = client.search({
-            term: 'hike, beach, park',
-            location: 90742,
-            radius: 8000,
-            limit: 3
-        })
-        .then(
-            response => response.jsonBody.businesses
-        );
+        term: 'hike, beach, park',
+        location: 90742,
+        radius: 8000,
+        limit: 3
+    })
+    .then(
+        response => response.jsonBody.businesses
+    );
+    // var events = axios({
+    //     url: 'https://api.yelp.com/v3/events',
+    //     headers: {'Authorization': 'Bearer xkA9Hp5U6wElMNSf3MGcF_L6R0Io18O69Xsth-G-OsV50MIfoVyiWfQmmQgFHpmFvgFatiEW8sppCiAVWrfRgpy1-pNH905xO-Okl1TV6nIqp_RXCSDmvJFOEqKLWnYx'},
+    //     params:{
+    //         location: 90742,
+    //         radius: 8000,
+    //         limit: 3,
+    //         sort_on: 'popularity',
+    //         start_date: 1519104023
+    //     },
+    //     responseType: 'json'
+    // })
+    //     .then(
+    //         response => response.data.events
+    //     )
         
     var food = client.search({
             term: 'restaurant',
@@ -137,7 +155,7 @@ app.post('/getEverything', (req, res)=>{
         })
         .then(
             response => response.jsonBody.businesses
-        );
+        )
 
     var drinks = client.search({
             term: 'coffee',
@@ -234,6 +252,21 @@ app.get('/getEvents', (req, res) => {
     })
 })
 
+app.get('/getPhotos', (req, res) => {
+    axios({
+        url: 'https://api.yelp.com/v3/businesses/four-sons-brewing-huntington-beach-5',
+        headers: {'Authorization': 'Bearer xkA9Hp5U6wElMNSf3MGcF_L6R0Io18O69Xsth-G-OsV50MIfoVyiWfQmmQgFHpmFvgFatiEW8sppCiAVWrfRgpy1-pNH905xO-Okl1TV6nIqp_RXCSDmvJFOEqKLWnYx'},
+        responseType: 'json'
+    })
+    .then(function(response){
+            console.log(response.data);
+            console.log('=========   Photos:  =========',response.data.photos);
+            res.json(response.data);
+    })
+    .catch(function(err){
+        console.log(err);
+    })
+ })
 
 app.listen(PORT, ()=>{
     console.log('the system is down on port', PORT)
