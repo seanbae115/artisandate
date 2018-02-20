@@ -1,6 +1,6 @@
 import {combineReducers} from "redux";
-import resultsReducer from "./dateReducer";
+import resultsReducer from "./resultsPageReducer";
 
 export default combineReducers({
-    dateEvent: resultsReducer
+    datePlan: resultsReducer
 });
