@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const cors = require("cors");
+const testObject = require('./test.js')
 
 const PORT = process.env.PORT || 8000;
 
@@ -65,52 +66,50 @@ app.post('/signup', (req, res) => {
 
 //save date
 app.post('/addCompletedDate', (req, res) => {
-    let request = req.body;
-    console.log(JSON.parse(request));
-    let events = []
-    events.push(...request.events, ...request.food, ...request.drinks);
-    const {name, id, location, url, image_url, coordinates} = events[0];
-    let query = 'INSERT INTO locations (??, ??, ??, ??, ??, ??, ??) VALUES (?, ?, ?, ?, ?, ?, ?)';
-    let table = 'locations';
-    let inserts = ['name', 'city', 'address', 'yelpID', 'primaryPhoto', 'lat', 'lng', name, location.city, location.address1, id, image_url, coordinates.latitude, coordinates.longitude];
-    let sql = mysql.format(query, inserts);
-    con.query(sql, (err, results, fields) => {
-        if (err) return done(err);
-        const output = {
-            success: true,
-            data: results
-        }
-        res.json(output);
-    });
+    let request = testObject;
+    console.log(request)
 
-    // const { name, id, location, url, image_url, coordinates } = events[1];
-    // let query = 'INSERT INTO locations (??, ??, ??, ??, ??, ??, ??) VALUES (?, ?, ?, ?, ?, ?, ?)';
-    // let table = 'locations';
-    // let inserts = ['name', 'city', 'address', 'yelpID', 'primaryPhoto', 'lat', 'lng', name, location.city, location.address1, id, image_url, coordinates.latitude, coordinates.longitude];
-    // let sql = mysql.format(query, inserts);
-    // con.query(sql, (err, results, fields) => {
-    //     if (err) throw err;
-    //     const output = {
-    //         success: true,
-    //         data: results
-    //     }
-    //     res.json(output);
-    // });
+    var events = function() { 
+        const {name, id, location, url, image_url, coordinates} = request.events;
+        let query = 'INSERT INTO locations (??, ??, ??, ??, ??, ??, ??) VALUES (?, ?, ?, ?, ?, ?, ?)';
+        let table = 'locations';
+        let inserts = ['name', 'city', 'address', 'yelpID', 'primaryPhoto', 'lat', 'lng', name, location.city, location.address1, id, image_url, coordinates.latitude, coordinates.longitude];
+        let sql = mysql.format(query, inserts);
+        con.query(sql, (err, results, fields) => {
+            if (err) return next(err);
+            const output = {
+                success: true
+            }
+        });
+    }()
 
-    // const { name, id, location, url, image_url, coordinates } = events[2];
-    // let query = 'INSERT INTO locations (??, ??, ??, ??, ??, ??, ??) VALUES (?, ?, ?, ?, ?, ?, ?)';
-    // let table = 'locations';
-    // let inserts = ['name', 'city', 'address', 'yelpID', 'primaryPhoto', 'lat', 'lng', name, location.city, location.address1, id, image_url, coordinates.latitude, coordinates.longitude];
-    // let sql = mysql.format(query, inserts);
-    // con.query(sql, (err, results, fields) => {
-    //     if (err) throw err;
-    //     const output = {
-    //         success: true,
-    //         data: results
-    //     }
-    //     res.json(output);
-    // });
+    var food = function() {
+        const { name, id, location, url, image_url, coordinates } = request.food;
+        let query = 'INSERT INTO locations (??, ??, ??, ??, ??, ??, ??) VALUES (?, ?, ?, ?, ?, ?, ?)';
+        let table = 'locations';
+        let inserts = ['name', 'city', 'address', 'yelpID', 'primaryPhoto', 'lat', 'lng', name, location.city, location.address1, id, image_url, coordinates.latitude, coordinates.longitude];
+        let sql = mysql.format(query, inserts);
+        con.query(sql, (err, results, fields) => {
+            if (err) next(err);
+            const output = {
+                success: true
+            }
+        });
+    }()
 
+    var drinks = function() {
+        const { name, id, location, url, image_url, coordinates } = request.drinks;
+        let query = 'INSERT INTO locations (??, ??, ??, ??, ??, ??, ??) VALUES (?, ?, ?, ?, ?, ?, ?)';
+        let table = 'locations';
+        let inserts = ['name', 'city', 'address', 'yelpID', 'primaryPhoto', 'lat', 'lng', name, location.city, location.address1, id, image_url, coordinates.latitude, coordinates.longitude];
+        let sql = mysql.format(query, inserts);
+        con.query(sql, (err, results, fields) => {
+            if (err) next(err);
+            const output = {
+                success: true
+            }
+        });
+    }()
 })
 const output = {
     events: null,
@@ -153,9 +152,11 @@ app.post('/getEverything', (req, res)=>{
     events.then((v)=>{
         output.events = v;
     })
+
     food.then((v) => {
         output.food = v;
     })
+
     drinks.then((v) => {
         output.drinks = v;
     })
