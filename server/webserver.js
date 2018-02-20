@@ -60,7 +60,23 @@ app.post('/signup', (req, res) => {
         res.json(output);
     })
 })
+app.post('/summary', (req, res) => {
+    const {name, city, address, yelpId, primaryPhoto} = req.body
+    const lat = null;
+    const lng = null;
+    let query = 'INSERT INTO ?? (??, ??, ??, ??, ??, ??, ??) VALUES (?, ?, ?, ?, ?, ?, ?)';
+    let inserts = ['locations', 'name', 'city', 'address','yelpId','primaryPhoto','lat','lng', name, city, address, yelpId, primaryPhoto, lat, lng];
+    let sql = mysql.format(query, insters);
+    con.query(sql, (err, results, fields) => {
+        if (err) throw err;
 
+        const output = {
+            success: true,
+            data: results
+        }
+        res.json(output);
+    })
+})
 const output = {
     events: null,
     food: null,
