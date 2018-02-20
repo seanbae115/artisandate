@@ -140,24 +140,49 @@ app.get('/getDinner', (req, res)=>{
         params: {
             key: 'AIzaSyBQzvigXgukz_X2Ii05aUywXroY4776EFE',
             location: '33.665242, -117.7490656',
-            radius: 5000,
-            type: 'restaurant'
+            keyword: 'restaurant',
+            rankby: 'distance'
         },
         responseType: 'json'
     }) 
         .then(function(response){
             var results = response.data.results;
             console.log(response.data.results);
-            res.json(results[0].photos[0].photo_reference);
+            res.json(results[3].photos[0].photo_reference);
         })
         .catch(err => {
             console.log(err);
         })
 })
 
+app.get('/getEvents', (req, res) => {
+    axios({
+        url: 'https://api.yelp.com/v3/events',
+        headers: {'Authorization': 'Bearer xkA9Hp5U6wElMNSf3MGcF_L6R0Io18O69Xsth-G-OsV50MIfoVyiWfQmmQgFHpmFvgFatiEW8sppCiAVWrfRgpy1-pNH905xO-Okl1TV6nIqp_RXCSDmvJFOEqKLWnYx'},
+        params:{
+            location: 90742,
+            radius: 8000,
+            limit: 10,
+            sort_on: 'popularity',
+            start_date: 1519104023
+        },
+        responseType: 'json'
+    })
+    .then(function(response){
+            console.log(response.data);
+            res.json(response.data);
+    })
+    .catch(function(err){
+        console.log(err);
+    })
+})
+
+
 app.listen(PORT, ()=>{
     console.log('the system is down on port 9000')
 })
+
+
 
 
 
