@@ -4,6 +4,7 @@
   "description": "dateNight webserver",
   "main": "sqlcredentials.js",
   "scripts": {
+    "start": "nodemon webserver.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,5 +24,8 @@
     "mysql": "^2.15.0",
     "path": "^0.12.7",
     "yelp-fusion": "^2.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.15.1"
   }
 }
