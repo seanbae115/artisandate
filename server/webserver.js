@@ -155,9 +155,34 @@ app.get('/getDinner', (req, res)=>{
         })
 })
 
+app.get('/getEvents', (req, res) => {
+    axios({
+        url: 'https://api.yelp.com/v3/events',
+        headers: {'Authorization': 'Bearer xkA9Hp5U6wElMNSf3MGcF_L6R0Io18O69Xsth-G-OsV50MIfoVyiWfQmmQgFHpmFvgFatiEW8sppCiAVWrfRgpy1-pNH905xO-Okl1TV6nIqp_RXCSDmvJFOEqKLWnYx'},
+        params:{
+            location: 90742,
+            radius: 8000,
+            limit: 10,
+            sort_on: 'popularity',
+            start_date: 1519104023
+        },
+        responseType: 'json'
+    })
+    .then(function(response){
+            console.log(response.data);
+            res.json(response.data);
+    })
+    .catch(function(err){
+        console.log(err);
+    })
+})
+
+
 app.listen(PORT, ()=>{
     console.log('the system is down on port 9000')
 })
+
+
 
 
 
