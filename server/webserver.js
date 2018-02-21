@@ -70,7 +70,6 @@ app.post('/signup', (req, res) => {
 app.post('/addCompletedDate', (req, res) => {
     let request = testObject;
     console.log(request)
-
     var events = function() { 
         const {name, id, location, url, image_url, coordinates} = request.events;
         let query = 'INSERT INTO locations (??, ??, ??, ??, ??, ??, ??) VALUES (?, ?, ?, ?, ?, ?, ?)';
@@ -82,6 +81,7 @@ app.post('/addCompletedDate', (req, res) => {
             const output = {
                 success: true
             }
+            console.log('events added')
         });
     }()
 
@@ -96,6 +96,7 @@ app.post('/addCompletedDate', (req, res) => {
             const output = {
                 success: true
             }
+            console.log('food added')
         });
     }()
 
@@ -110,6 +111,7 @@ app.post('/addCompletedDate', (req, res) => {
             const output = {
                 success: true
             }
+            console.log('drinks added')
         });
     }()
 })
