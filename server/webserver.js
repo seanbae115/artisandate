@@ -123,7 +123,8 @@ const output = {
 //results endpoint
 app.post('/getEverything', (req, res)=>{
     var temp = {};
-    var zip = req.body.zip
+    var zip = req.body.zip;
+    var ts = Math.floor(new Date().getTime()/1000);
 
     var places = client.search({
         term: 'hike, beach, park',
@@ -142,7 +143,7 @@ app.post('/getEverything', (req, res)=>{
             radius: 8000,
             limit: 3,
             sort_on: 'popularity',
-            start_date: new Date().getTime()
+            start_date: ts
         },
         responseType: 'json'
     })
