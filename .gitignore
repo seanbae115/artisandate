@@ -1,9 +1,6 @@
 .idea
 .vscode
 logins.rtf
-<<<<<<< HEAD
-=======
-sqlcredentials.js
->>>>>>> 28507bf0a1867e17281d71b7ceb696ea08e1e057
 .DS_Store
 node_modules
+sqlcredentials.js

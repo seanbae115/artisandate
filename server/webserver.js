@@ -123,9 +123,11 @@ const output = {
 //results endpoint
 app.post('/getEverything', (req, res)=>{
     var temp = {};
+    var zip = req.body.zip
+
     var places = client.search({
         term: 'hike, beach, park',
-        location: 90742,
+        location: 90742 || zip,
         radius: 8000,
         limit: 3
     })
@@ -136,11 +138,11 @@ app.post('/getEverything', (req, res)=>{
         url: 'https://api.yelp.com/v3/events',
         headers: {'Authorization': 'Bearer xkA9Hp5U6wElMNSf3MGcF_L6R0Io18O69Xsth-G-OsV50MIfoVyiWfQmmQgFHpmFvgFatiEW8sppCiAVWrfRgpy1-pNH905xO-Okl1TV6nIqp_RXCSDmvJFOEqKLWnYx'},
         params:{
-            location: 90742,
+            location: 90742 || zip,
             radius: 8000,
             limit: 3,
             sort_on: 'popularity',
-            start_date: 1519104023
+            start_date: new Date().getTime()
         },
         responseType: 'json'
     })
@@ -150,7 +152,7 @@ app.post('/getEverything', (req, res)=>{
         
     var food = client.search({
             term: 'restaurant',
-            location: 90742,
+            location: 90742 || zip,
             radius: 8000,
             limit: 3
         })
@@ -160,7 +162,7 @@ app.post('/getEverything', (req, res)=>{
 
     var drinks = client.search({
             term: 'coffee',
-            location: 90742,
+            location: 90742 || zip,
             radius: 8000,
             limit: 3
         })
