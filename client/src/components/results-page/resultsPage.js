@@ -11,6 +11,7 @@ import resultArray from './resultContents';
 class ResultsPage extends Component {
     componentDidMount(){
         this.props.getPlanner();
+        console.log('ZIP:', this.props.match.params.zip);
     }
 
     render() {

@@ -128,7 +128,7 @@ app.post('/getEverything', (req, res)=>{
 
     var places = client.search({
         term: 'hike, beach, park',
-        location: 90742 || zip,
+        location: zip || 90742,
         radius: 8000,
         limit: 3
     })
@@ -139,7 +139,7 @@ app.post('/getEverything', (req, res)=>{
         url: 'https://api.yelp.com/v3/events',
         headers: {'Authorization': 'Bearer xkA9Hp5U6wElMNSf3MGcF_L6R0Io18O69Xsth-G-OsV50MIfoVyiWfQmmQgFHpmFvgFatiEW8sppCiAVWrfRgpy1-pNH905xO-Okl1TV6nIqp_RXCSDmvJFOEqKLWnYx'},
         params:{
-            location: 90742 || zip,
+            location: zip || 90742,
             radius: 8000,
             limit: 3,
             sort_on: 'popularity',
@@ -153,7 +153,7 @@ app.post('/getEverything', (req, res)=>{
         
     var food = client.search({
             term: 'restaurant',
-            location: 90742 || zip,
+            location: zip || 90742,
             radius: 8000,
             limit: 3
         })
@@ -163,7 +163,7 @@ app.post('/getEverything', (req, res)=>{
 
     var drinks = client.search({
             term: 'coffee',
-            location: 90742 || zip,
+            location: zip || 90742,
             radius: 8000,
             limit: 3
         })
@@ -191,7 +191,9 @@ app.post('/getEverything', (req, res)=>{
     p.then(function (v) {
         var result = temp.places.concat(temp.events);
         output.events = result;
-        console.log(zip)
+        console.log('Zip is: ', zip)
+        console.log('Data transferred back: ', result);
+
         res.send(output);
     });
     

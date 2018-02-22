@@ -8,13 +8,8 @@ import { sendZip } from '../../actions';
 
 class LocationPage extends Component {
     sendData(zip){
-        console.log('zip to send: ', zip);
-        console.log('props are:', this.props);
-        this.props.sendZip(zip).then(()=> {
-            console.log('zip sent to server');
-
-            this.props.history.push('/results-page');
-        });
+        console.log('Zip:', zip);
+        this.props.history.push(`/results-page/${zip.zip}`);
     }
     renderInput(props){
         return (
@@ -24,6 +19,7 @@ class LocationPage extends Component {
         )
     }
     render(){
+        console.log('location props:', this.props);
         return (
             <div>
                 <NavBar/>
@@ -37,7 +33,7 @@ class LocationPage extends Component {
                                         <Field label = 'zip' name = 'zip' component = {this.renderInput}/>    
                                 </div>
                                 <div className="margin-top-60"></div>
-                                    <button to = '/results-page' className="btn-large blue go">Go</button>
+                                    <button className="btn-large blue go">Go</button>
                                 <div className="margin-top-100"></div>
                             </form>
                         </div>
