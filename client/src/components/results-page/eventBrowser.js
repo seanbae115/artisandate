@@ -3,6 +3,7 @@ import"./resultsPage.css"
 import Header from './resultHeader';
 import Body from './resultBody';
 import MaterialIcon, { colorPallet } from 'material-icons-react';
+import {Carousel} from "react-responsive-carousel";
 
  const EventBrowser = props => {
     console.log(props);
@@ -20,7 +21,9 @@ import MaterialIcon, { colorPallet } from 'material-icons-react';
                     <MaterialIcon icon='chevron_left' size='small'/>
                 </div>
                 <div className="col s10 content-list">
-                    {result}
+                    <Carousel showThumbs={false}>
+                        {result}
+                    </Carousel>
                 </div>
                 <div className="col s1">
                     <MaterialIcon icon='chevron_right' size='small'/>

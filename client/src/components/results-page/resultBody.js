@@ -1,4 +1,5 @@
 import React from 'react';
+import {Carousel} from "react-responsive-carousel"
 import "./resultsPage.css"
 
 export default props => {
@@ -14,7 +15,6 @@ export default props => {
     };
 
     return (
-        <div>
                 <div className="row">
                     <div className="col s6">
                         <div style={locationImage} className="z-depth-2"></div>
@@ -28,7 +28,6 @@ export default props => {
                         </div>
                     </div>
                 </div>
-        </div>
 
     )
 }
