@@ -1,7 +1,7 @@
 import types from "./types";
 import axios from "axios";
 
-const BASE_URL = "http://localhost:9000/getEverything";
+const BASE_URL = "http://localhost:8000/getEverything";
 
 
 export function getPlanner(){
