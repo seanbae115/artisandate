@@ -12,4 +12,12 @@ export function getPlanner(){
     }
 }
 
+export function sendZip(zip){
+    const request = axios.post(`${BASE_URL}`,zip);
+    return{
+        type: types.SEND_ZIP,
+        payload:request
+    }
+}
+
 
