@@ -1,17 +1,28 @@
 import React from 'react';
+import "./resultsPage.css"
 import MaterialIcon, { colorPallet } from 'material-icons-react';
 
 export default props => {
+
     const {name, image, address, phone} = props;
+    const locationImage = {
+        backgroundImage: `url("${image}")`,
+        backgroundPosition: "center center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        height: "19vh",
+        width: "100%"
+    };
+
     return (
         <div className="row valign-wrapper">
             <div className="col s1">
-                <MaterialIcon icon='chevron_left' size='small' />
+                <MaterialIcon icon='chevron_left' size='small'/>
             </div>
             <div className="col s10">
                 <div className="row">
                     <div className="col s6">
-                        <img className='event' src={image}/>
+                        <div style={locationImage} className="z-depth-2"></div>
                     </div>
                     <div className="col s6">
                         <div className="row">

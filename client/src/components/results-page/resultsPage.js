@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
+import"./resultsPage.css"
 import {getPlanner} from "../../actions";
 import { Link } from 'react-router-dom';
 import Header from './resultHeader';
 import Body from './resultBody';
 import NavBar from "../nav-bar/navBar";
-import resultArray from './resultContents';
 
 
 class ResultsPage extends Component {
@@ -15,12 +15,12 @@ class ResultsPage extends Component {
 
     render() {
         const result = this.props.dinner.map((item, index) => {
-            const {title, image_url, name, location, display_phone} = item;
+            const {image_url, name, location, display_phone} = item;
             return (
-                <div key={index}>
-                    <Header title={title}/>
+                <div className="location-info-group" key={index}>
                     <Body name={name} image={image_url} address={location} phone={display_phone}/>
-                    <hr className='grey darken-4'/>
+                    <Header/>
+                    <div className="divider"></div>
                 </div>
             )
         });
@@ -29,7 +29,9 @@ class ResultsPage extends Component {
             <div>
                 <NavBar/>
                 {result}
-                <Link to='/summary-page' className='btn'>Confirm</Link>
+                <div className="center-align location-info-group">
+                    <Link to='/summary-page' className='btn btn-large'>Confirm</Link>
+                </div>
             </div>
         )
     }

@@ -1,0 +1,29 @@
+.row.valign-wrapper{
+    margin-bottom: 0;
+}
+
+div.row {
+    margin-bottom: 0;
+}
+
+.location-info-group{
+    margin-top: 2vh;
+}
+
+.bottom-pad{
+    padding: 1vh 0;
+}
+
+.thin-btn{
+    height: 21px;
+    line-height: 21px;
+}
+
+.content-list{
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+}
