@@ -1,0 +1,26 @@
+{
+  "name": "c12.17_datenight",
+  "version": "1.0.0",
+  "description": "> Returned object will contain three properties:\r >> + Events\r >>> + asdf\r >> + Dinners\r >> + Bars",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "npm run server --prefix server",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Learning-Fuze/c12.17_datenight.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Learning-Fuze/c12.17_datenight/issues"
+  },
+  "homepage": "https://github.com/Learning-Fuze/c12.17_datenight#readme",
+  "devDependencies": {
+    "concurrently": "^3.5.1"
+  }
+}
