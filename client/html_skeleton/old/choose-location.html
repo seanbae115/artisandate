@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,13 +9,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/theme.css">
-    <link rel="stylesheet" href="css/index.css">
-
-    <title>Date Nite - Best Date Night Ideas Ever. - Datennite!</title>
-
+    <link rel="stylesheet" href="css/chooseLocation.css">
+    <title>Date Nite - Choose Location</title>
     <script>
             $(document).ready(()=>{
-                $('.button-collapse').sideNav({ edge: 'right' });
+                $('.button-collapse').sideNav({edge: 'right'});
                 $('.btn').on('click', (event)=>{
                     this.options[event.target.name] = event.target;
                 });
@@ -28,7 +25,7 @@
                 });
             })
         </script>
-    </head>
+    </head> 
 </head>
 <body class="amber">
     <nav>
@@ -37,12 +34,12 @@
             <a href="#!" data-activates="mobile-demo" class="button-collapse">
                 <i class="material-icons">menu</i>
             </a>
-            <ul class="right hide-on-med-and-down">
+            <ul class="right hide-on-med-and-down" style="text-transform: uppercase;">
                 <li>
                     <a href="#">Account</a>
                 </li>
                 <li>
-                    <a href="#">New Event</a>
+                    <a href="/">New Event</a>
                 </li>
                 <li>
                     <a href="#">History</a>
@@ -56,7 +53,7 @@
                     <a href="#">Account</a>
                 </li>
                 <li>
-                    <a href="#">New Event</a>
+                    <a href="/">New Event</a>
                 </li>
                 <li>
                     <a href="#">History</a>
@@ -69,44 +66,18 @@
     </nav>
     <div class="container">
         <div class="row" style="height:75vh; ">
-            <div class="hero-image">
-                <div class="hero-image-container">
-                    <div>
-                            <div class="grey-text text-darken-3">Planning a date is hard.</div>
-                            <div class="white-text" style="margin-top: 10px;">Need ideas?<br>We've got you covered.</div> 
-                            <a href="choose"><div class="btn-large blue" style="font-size: .4em; margin-top: 30px; text-transform: initial;">Get Started</div></a>
-                    </div>                     
-                </div>
-                <div class="top-phones" style="margin-left: 30px;"><img src="../src/assets/images/phones.png"></div>
-            </div>
-            <div class="bottom-phones-container">
-                    <div class="bottom-phones"><img src="../src/assets/images/phones.png"></div>
-            </div>
+            <div style="text-align: center;">
+                    <div class="grey-text text-darken-3" style="font-size: 2em; margin-top: 60px;">Let us know your date location to get started.</div>
+                    <div style="margin-top: 60px; font-size: 1.2em;">Zip Code</div>
+                    <div class="btn-large input-field transparent-input" style="width: 200px;">
+                            <input placeholder="zip code" id="zip-code" type="text" class="validate">
+                    </div> 
+                    <div style="margin-top:60px"></div>            
+                    <a href="results"><div class="btn-large blue" style="padding: 0 40px; font-size: 1.4em;">Go</div></a>
+                    <div style="margin-top:100px"></div> 
+                    <div class="btn-large green" style="text-transform: uppercase;">Advanced Options</div>
+            </div>            
         </div>  
     </div>
-=======
-<html>
-<head>
-    <title>Node Authentication</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
-    <style>
-        body        { padding-top:80px; }
-    </style>
-</head>
-<body>
-<div class="container">
-
-    <div class="jumbotron text-center">
-        <h1><span class="fa fa-lock"></span> Node Authentication</h1>
-
-        <p>Login or Register with:</p>
-
-        <a href="/login" class="btn btn-default"><span class="fa fa-user"></span> Local Login</a>
-        <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Local Signup</a>
-    </div>
-
-</div>
->>>>>>> 2cec8537caf8ac949f07427f901731d98452ccbf
 </body>
 </html>
