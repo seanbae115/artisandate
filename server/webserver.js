@@ -2,19 +2,14 @@ const express = require('express');
 const path = require('path');
 const cors = require("cors");
 const testObject = require('./test.js')
-
 const PORT = process.env.PORT || 8000;
-
 const mysql = require('mysql');
-
+const bcrypt = require('bcrypt');
 const yelp = require('yelp-fusion');
-
-const client = yelp.client('7-Nigq6mj6nZN9yVrEGNS3IqPJhwAX7a0DoedYIDkJX19U22nM5FH4-pf69tCOASbCSKyj8oMkH5XWSbvYnFeLneeagBXTYOC697leKz21iN6Ogpkm059vnbwsx0WnYx');
-
 const axios = require('axios')
 const credentials = require('./sqlcredentials.js');
-
 const con = mysql.createConnection(credentials);
+const client = yelp.client('7-Nigq6mj6nZN9yVrEGNS3IqPJhwAX7a0DoedYIDkJX19U22nM5FH4-pf69tCOASbCSKyj8oMkH5XWSbvYnFeLneeagBXTYOC697leKz21iN6Ogpkm059vnbwsx0WnYx');
 
 
 
@@ -39,7 +34,7 @@ app.use(express.static(path.join(__dirname, '..', 'client')));
 
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'client', 'html_skeleton', 'apitest.html'))
+    res.sendFile(path.join(__dirname, '..', 'client', 'html_skeleton', 'signup.html'))
 })
 
 app.use(express.urlencoded());
@@ -50,18 +45,21 @@ app.use(express.json());
 app.post('/signup', (req, res) => {
     const {first, last, email, username, password} = req.body
     const status = 'active'
-    let query = 'INSERT INTO ?? (??, ??, ??, ??, ??, ??)VALUES (?, ?, ?, ?, ?, ?)';
-    let inserts = ['user','first', 'last', 'email', 'username', 'password', 'status', first, last, email, username, password, status];
-    let sql = mysql.format(query, inserts);
-    con.query(sql, (err, results, fields) => {
-        if (err) throw err;
-
-        const output = {
-            success: true,
-            data: results
-        }
-        res.json(output);
+    bcrypt.hash(password, 10, function(err, hash) {
+        let query = 'INSERT INTO ?? (??, ??, ??, ??, ??, ??)VALUES (?, ?, ?, ?, ?, ?)';
+        let inserts = ['user','first', 'last', 'email', 'username', 'password', 'status', first, last, email, username, hash, status];
+        let sql = mysql.format(query, inserts);
+        con.query(sql, (err, results, fields) => {
+            if (err) throw err;
+    
+            const output = {
+                success: true,
+                data: results
+            }
+            res.json(output);
+        })
     })
+    
 })
 
 
@@ -70,7 +68,6 @@ app.post('/signup', (req, res) => {
 app.post('/addCompletedDate', (req, res) => {
     let request = testObject;
     console.log(request)
-
     var events = function() { 
         const {name, id, location, url, image_url, coordinates} = request.events;
         let query = 'INSERT INTO locations (??, ??, ??, ??, ??, ??, ??) VALUES (?, ?, ?, ?, ?, ?, ?)';
@@ -82,6 +79,7 @@ app.post('/addCompletedDate', (req, res) => {
             const output = {
                 success: true
             }
+            console.log('events added')
         });
     }()
 
@@ -96,6 +94,7 @@ app.post('/addCompletedDate', (req, res) => {
             const output = {
                 success: true
             }
+            console.log('food added')
         });
     }()
 
@@ -110,6 +109,7 @@ app.post('/addCompletedDate', (req, res) => {
             const output = {
                 success: true
             }
+            console.log('drinks added')
         });
     }()
 })
@@ -123,9 +123,12 @@ const output = {
 //results endpoint
 app.post('/getEverything', (req, res)=>{
     var temp = {};
+    var zip = req.body.zip;
+    var ts = Math.floor(new Date().getTime()/1000);
+
     var places = client.search({
         term: 'hike, beach, park',
-        location: 90742,
+        location: 90742 || zip,
         radius: 8000,
         limit: 3
     })
@@ -136,11 +139,11 @@ app.post('/getEverything', (req, res)=>{
         url: 'https://api.yelp.com/v3/events',
         headers: {'Authorization': 'Bearer xkA9Hp5U6wElMNSf3MGcF_L6R0Io18O69Xsth-G-OsV50MIfoVyiWfQmmQgFHpmFvgFatiEW8sppCiAVWrfRgpy1-pNH905xO-Okl1TV6nIqp_RXCSDmvJFOEqKLWnYx'},
         params:{
-            location: 90742,
+            location: 90742 || zip,
             radius: 8000,
             limit: 3,
             sort_on: 'popularity',
-            start_date: 1519104023
+            start_date: ts
         },
         responseType: 'json'
     })
@@ -150,7 +153,7 @@ app.post('/getEverything', (req, res)=>{
         
     var food = client.search({
             term: 'restaurant',
-            location: 90742,
+            location: 90742 || zip,
             radius: 8000,
             limit: 3
         })
@@ -160,7 +163,7 @@ app.post('/getEverything', (req, res)=>{
 
     var drinks = client.search({
             term: 'coffee',
-            location: 90742,
+            location: 90742 || zip,
             radius: 8000,
             limit: 3
         })
@@ -188,7 +191,7 @@ app.post('/getEverything', (req, res)=>{
     p.then(function (v) {
         var result = temp.places.concat(temp.events);
         output.events = result;
-        console.log(output)
+        console.log(zip)
         res.send(output);
     });
     
