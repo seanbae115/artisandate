@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Header from './resultHeader';
 import Body from './resultBody';
 import NavBar from "../nav-bar/navBar";
+import MaterialIcon, { colorPallet } from 'material-icons-react';
 
 
 class ResultsPage extends Component {
@@ -17,18 +18,30 @@ class ResultsPage extends Component {
         const result = this.props.dinner.map((item, index) => {
             const {image_url, name, location, display_phone} = item;
             return (
-                <div className="location-info-group" key={index}>
-                    <Body name={name} image={image_url} address={location} phone={display_phone}/>
-                    <Header/>
-                    <div className="divider"></div>
-                </div>
+
+                    <Body key={index} name={name} image={image_url} address={location} phone={display_phone}/>
+
             )
         });
 
         return (
             <div>
                 <NavBar/>
-                {result}
+                <div className="location-info-group">
+                    <div className="row valign-wrapper">
+                        <div className="col s1">
+                             <MaterialIcon icon='chevron_left' size='small'/>
+                        </div>
+                        <div className="col s10">
+                            {result}
+                        </div>
+                        <div className="col s1">
+                            <MaterialIcon icon='chevron_right' size='small'/>
+                        </div>
+                    </div>
+                    <Header/>
+                    <div className="divider"></div>
+                </div>
                 <div className="center-align location-info-group">
                     <Link to='/summary-page' className='btn btn-large'>Confirm</Link>
                 </div>

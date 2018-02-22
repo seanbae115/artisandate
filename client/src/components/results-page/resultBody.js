@@ -15,11 +15,7 @@ export default props => {
     };
 
     return (
-        <div className="row valign-wrapper">
-            <div className="col s1">
-                <MaterialIcon icon='chevron_left' size='small'/>
-            </div>
-            <div className="col s10">
+
                 <div className="row">
                     <div className="col s6">
                         <div style={locationImage} className="z-depth-2"></div>
@@ -33,10 +29,6 @@ export default props => {
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="col s1">
-                <MaterialIcon icon='chevron_right' size='small'/>
-            </div>
-        </div>
+
     )
 }
