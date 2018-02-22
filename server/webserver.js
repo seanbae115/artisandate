@@ -2,19 +2,14 @@ const express = require('express');
 const path = require('path');
 const cors = require("cors");
 const testObject = require('./test.js')
-
 const PORT = process.env.PORT || 8000;
-
 const mysql = require('mysql');
-
+const bcrypt = require('bcrypt');
 const yelp = require('yelp-fusion');
-
-const client = yelp.client('7-Nigq6mj6nZN9yVrEGNS3IqPJhwAX7a0DoedYIDkJX19U22nM5FH4-pf69tCOASbCSKyj8oMkH5XWSbvYnFeLneeagBXTYOC697leKz21iN6Ogpkm059vnbwsx0WnYx');
-
 const axios = require('axios')
 const credentials = require('./sqlcredentials.js');
-
 const con = mysql.createConnection(credentials);
+const client = yelp.client('7-Nigq6mj6nZN9yVrEGNS3IqPJhwAX7a0DoedYIDkJX19U22nM5FH4-pf69tCOASbCSKyj8oMkH5XWSbvYnFeLneeagBXTYOC697leKz21iN6Ogpkm059vnbwsx0WnYx');
 
 
 
@@ -39,7 +34,7 @@ app.use(express.static(path.join(__dirname, '..', 'client')));
 
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'client', 'html_skeleton', 'apitest.html'))
+    res.sendFile(path.join(__dirname, '..', 'client', 'html_skeleton', 'signup.html'))
 })
 
 app.use(express.urlencoded());
@@ -50,18 +45,21 @@ app.use(express.json());
 app.post('/signup', (req, res) => {
     const {first, last, email, username, password} = req.body
     const status = 'active'
-    let query = 'INSERT INTO ?? (??, ??, ??, ??, ??, ??)VALUES (?, ?, ?, ?, ?, ?)';
-    let inserts = ['user','first', 'last', 'email', 'username', 'password', 'status', first, last, email, username, password, status];
-    let sql = mysql.format(query, inserts);
-    con.query(sql, (err, results, fields) => {
-        if (err) throw err;
-
-        const output = {
-            success: true,
-            data: results
-        }
-        res.json(output);
+    bcrypt.hash(password, 10, function(err, hash) {
+        let query = 'INSERT INTO ?? (??, ??, ??, ??, ??, ??)VALUES (?, ?, ?, ?, ?, ?)';
+        let inserts = ['user','first', 'last', 'email', 'username', 'password', 'status', first, last, email, username, hash, status];
+        let sql = mysql.format(query, inserts);
+        con.query(sql, (err, results, fields) => {
+            if (err) throw err;
+    
+            const output = {
+                success: true,
+                data: results
+            }
+            res.json(output);
+        })
     })
+    
 })
 
 
