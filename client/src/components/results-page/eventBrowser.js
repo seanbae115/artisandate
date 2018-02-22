@@ -9,9 +9,7 @@ import MaterialIcon, { colorPallet } from 'material-icons-react';
     const result = props.locations.map((item, index) => {
         const {image_url, name, location, display_phone} = item;
         return (
-
             <Body key={index} name={name} image={image_url} address={location} phone={display_phone}/>
-
         )
     });
 
@@ -21,7 +19,7 @@ import MaterialIcon, { colorPallet } from 'material-icons-react';
                 <div className="col s1">
                     <MaterialIcon icon='chevron_left' size='small'/>
                 </div>
-                <div className="col s10">
+                <div className="col s10 content-list">
                     {result}
                 </div>
                 <div className="col s1">

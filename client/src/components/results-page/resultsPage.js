@@ -3,7 +3,6 @@ import {connect} from "react-redux";
 import"./resultsPage.css"
 import {getPlanner} from "../../actions";
 import { Link } from 'react-router-dom';
-import Body from './resultBody';
 import NavBar from "../nav-bar/navBar";
 import EventBrowser from "./eventBrowser";
 
