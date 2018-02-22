@@ -9,7 +9,7 @@ import EventBrowser from "./eventBrowser";
 
 class ResultsPage extends Component {
     componentDidMount(){
-        this.props.getPlanner();
+        this.props.getPlanner(this.props.match.params.zip);
         console.log('ZIP:', this.props.match.params.zip);
     }
 

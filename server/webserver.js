@@ -188,7 +188,7 @@ app.post('/getEverything', (req, res)=>{
     })
     var p = Promise.all([places, events, food, drinks])
     
-    p.then(function (v) {
+    p.then(function (zip) {
         var result = temp.places.concat(temp.events);
         output.events = result;
         console.log('Zip is: ', zip)
