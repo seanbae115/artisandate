@@ -1,16 +1,27 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import Phones from '../../assets/images/phones.png';
-import NavBar from '../nav-bar/navBar'
+import axios from 'axios';
+import { reduxForm, Field } from 'redux-form';
+import { connect } from 'react-redux';
+import { renderInput } from '../../helpers';
+import NavBar from '../nav-bar/navBar';
 
-export default class Login extends Component {
+class SignInPage extends Component {
     constructor(props){
         super(props);
         this.state = {
         }
     }
 
+    login() {
+        const serverRoute = "http://localhost:8000/login";
+        const request = axios.post()
+    }
+
     render(){
+        var noAccountStyle = {
+            'marginTop': '20px'
+        };
         return ( 
             <div>
                 <NavBar/>
@@ -20,13 +31,19 @@ export default class Login extends Component {
                             <form>
                                 <h3 className='center-align'>Sign In</h3>
                                 <label>Email</label>
-                                <input id='email-signIn' name='email' type="text"/>
+                                <Field id='email-signin' name='email' value='email' type="text" component={renderInput}/>
                                 <label>Password</label>
-                                <input id='password-signIn' name='password' type="password"/>
+                                <Field id='password-signin' name='password' value='password' type="password" component={renderInput}/>
                                 <div className='center-align'>
-                                    <Link to='/location-page' id='signIn' className='btn amber darken-3' type='button'>Sign In</Link>
+                                    <Link to='/location-page' id='signIn' className='btn amber darken-3' type='submit'>Sign In</Link>
                                 </div>
                             </form>
+                        </div>
+                        <div className='no-account container center-align' style={noAccountStyle}>
+                            <h4 className='col s12'>Don't have an account?</h4>
+                            <div>
+                                <Link to='/signup' className='btn green'>Create one</Link>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -34,3 +51,9 @@ export default class Login extends Component {
         )
     }
 }
+
+SignInPage = reduxForm({
+    form: 'signin-form'
+})(SignInPage);
+
+export default connect(null, {})(SignInPage);

@@ -11,7 +11,7 @@ module.exports = function (app, passport) {
 
 	app.post('/login',
 		passport.authenticate('local-signin', {
-			successRedirect: '/profile',
+			successRedirect: '/location',
 			failureRedirect: '/signup'
 		})
 	);
@@ -22,7 +22,7 @@ module.exports = function (app, passport) {
 
 	app.post('/signup',
 		passport.authenticate('local-signup', {
-			successRedirect: '/profile',
+			successRedirect: '/location', //need to redirect to proper location for React
 			failureRedirect: '/login'
 		})
 	);
@@ -41,6 +41,5 @@ function isLoggedIn(req, res, next) {
 	if (req.isAuthenticated()) {
 		return next();
 	}
-
 	res.redirect('/');
 }
