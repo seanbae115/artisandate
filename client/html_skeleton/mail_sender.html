@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('#email').on('click', function(){
+				$.ajax({
+					dataType: 'json',
+					url: './server/mail.php',
+					type: 'POST',
+					data: $('#contact').html()
+				})
+			})
+		})
+	</script> -->
+</head>
+<body>
+	<form id="contact" method="POST", action="http://localhost:8888/c12.17_datenight/server/mail.php">
+		<input name="name" placeholder="your name" value="Sean"><br>
+		<input name="email" placeholder="your email address" value="seanbae115@gmail.com"><br>
+		<input name="subject" placeholder="Subject" value="Hello"><br>
+		<textarea name="body">
+Your Date dlasjdlasjdal
+		</textarea><br>
+		<button type="submit" name="submit" value="submit" id="email">Send Mail</button>
+	</form>
+</body>
+</html>
