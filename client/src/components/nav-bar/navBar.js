@@ -53,7 +53,7 @@ class NavBar extends Component {
         return (
             <nav>
                 <div className="amber nav-wrapper">
-                    <a href="#!" className="brand-logo">MasterDater</a>
+                    <a href="#!" className="brand-logo">Artisan Date</a>
                     <a href="#" className="right button-collapse" onClick={this.slideOutMenu}>
                         <i className="material-icons amber-text text-darken-3">menu</i>
                     </a>
@@ -61,7 +61,7 @@ class NavBar extends Component {
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to='/location-page'>Get Started</Link></li>
                         <li><Link to='/signup-page'>Sign Up</Link></li>
-                        <li><Link to='/login-page'>Sign In</Link></li>
+                        <li><Link to='/signin-page'>Sign In</Link></li>
                         <li><Link to='/ourteam-page'>Our Team</Link></li>
                         <li><Link to='/logout'>Log Out</Link></li>
                     </ul>
@@ -70,7 +70,7 @@ class NavBar extends Component {
                             <li><Link to='/'>Home</Link></li>
                             <li><Link to='/location-page'>Get Started</Link></li>
                             <li><Link to='/signup-page'>Sign Up</Link></li>
-                            <li><Link to='/login-page'>Sign In</Link></li>
+                            <li><Link to='/signin-page'>Sign In</Link></li>
                             <li><Link to='/ourteam-page'>Our Team</Link></li>
                             <li><Link to='/logout'>Log Out</Link></li>
                         </ul>
