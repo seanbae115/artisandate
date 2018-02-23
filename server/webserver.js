@@ -28,9 +28,3 @@ require('./routes/index.js')(app, path);
 app.listen(PORT, ()=>{
     console.log('the system is down on port', PORT)
 })
-
-
-
-
-
-
