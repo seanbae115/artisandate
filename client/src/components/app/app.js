@@ -6,12 +6,16 @@ import ResultsPage from '../results-page/resultsPage';
 import LocationPage from '../location-page/locationPage';
 import EventPage from '../event-page/eventPage';
 import SummaryPage from "../summary-page/summaryPage";
+import SignUp from '../signup-page/signup';
+import Login from '../signin-page/signin';
 
 
 
 const App = () => (
         <div>
             <Route exact path = '/' component = {Home}/>
+            <Route path = '/signup-page' component = {SignUp}/>
+            <Route path = '/login-page' component = {Login}/>
             <Route path = '/location-page' component = {LocationPage}/>
             <Route path = '/results-page' component = {ResultsPage}/>
             <Route path = '/event-page' component = {EventPage}/>
