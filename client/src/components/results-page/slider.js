@@ -2,13 +2,13 @@ import React from 'react';
 
 export default props => {
     return (
-        <div className="col s4 right-align">
+        <div className="col s5">
             <div className="switch">
                 <label>
-                    Off
+                    Omit
                     <input type="checkbox"/>
                         <span className="lever"></span>
-                        Save
+                        Include
                 </label>
             </div>
         </div>
