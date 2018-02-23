@@ -1,11 +1,13 @@
 {
-  "name": "server",
+  "name": "dateplans-server",
   "version": "1.0.0",
   "description": "dateNight webserver",
   "main": "sqlcredentials.js",
   "scripts": {
-    "start": "nodemon webserver.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node webserver.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon webserver.js",
+    "dev": "npm run dev --prefix .."
   },
   "repository": {
     "type": "git",
