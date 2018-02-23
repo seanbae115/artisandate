@@ -3,10 +3,6 @@ import { browserHistory } from 'react-router';
 import types from './types';
 
 const BASE_URL = "http://localhost:8000";
-<<<<<<< HEAD
-
-=======
->>>>>>> fc2ee0377f88ce36236ea49c8a16efcfad6a59c6
 
 export function getPlanner(zip){
     const request = axios.post(`${BASE_URL}/getEverything`, zip);
@@ -16,13 +12,14 @@ export function getPlanner(zip){
     }
 }
 
-<<<<<<< HEAD
 export function getIndividual(id){
     const request = axios.post(`${BASE_URL}/getOneBusiness`, id);
     return {
         type: types.GET_DETAILS,
         payload: request
-=======
+    }
+}
+
 export function signUp(cred) {
     return async dispatch => {
         try {
@@ -56,6 +53,5 @@ export function signIn(cred) {
                 error: 'Invalid Username and/or Password'
             });
         });
->>>>>>> fc2ee0377f88ce36236ea49c8a16efcfad6a59c6
     }
 }
