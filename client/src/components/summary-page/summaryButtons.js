@@ -6,7 +6,7 @@ class SummaryButtons extends Component {
 
         return (
             <div className="row">
-                <div className="col s4 center">/>
+                <div className="col s4 center">
                     {/*Will change these to Link later but they don't exist yet and it blows up without Router being in place*/}
                     <div to="/calendarPage" className="btn btn-large waves-effect waves-light blue btn-confirm">Email</div>
                 </div>
