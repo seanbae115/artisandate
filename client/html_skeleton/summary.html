@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Summary</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+        <link rel="stylesheet" href="../src/components/summary-page/summaryPage.css">
+        <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB221KZ3-4brTzx6apPe94xVbwQvy1CYAM"></script>
+        <script src="../js/summary.js"></script>
+    </head>
+    <body>
+        <nav>
+            <div class="nav-wrapper amber">
+                <div class="row">
+                    <div class="col s1">
+                        <i class="nav-icon-size material-icons">menu</i>
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+        <div class="container body-buffer">
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="row event-title">
+                            <div class="col s12">
+                                Event category
+                            </div>
+                        </div>
+                        <div class="col s10 event-contain valign-wrapper">
+                            <div><span class="event-font">the event name</span></div>
+
+                        </div>
+                        <div class="col s2 event-contain valign-wrapper">
+                            <a class="btn-floating waves-effect waves-light blue right"><i
+                                    class="material-icons">create</i></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="row event-title">
+                            <div class="col s12">
+                                Event category
+                            </div>
+                        </div>
+                        <div class="col s10 event-contain valign-wrapper">
+                            <div><span class="event-font">the event name</span></div>
+
+                        </div>
+                        <div class="col s2 event-contain valign-wrapper">
+                            <a class="btn-floating waves-effect waves-light blue right"><i
+                                    class="material-icons">create</i></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="row event-title">
+                            <div class="col s12">
+                                Event category
+                            </div>
+                        </div>
+                        <div class="col s10 event-contain valign-wrapper">
+                            <div><span class="event-font">the event name</span></div>
+
+                        </div>
+                        <div class="col s2 event-contain valign-wrapper ">
+                            <a class="btn-floating waves-effect waves-light blue"><i
+                                    class="material-icons">create</i></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div style="width: 100%; height: 73%">
+                <div class="row map-contain">
+                    <div class="col s12">
+                        <div id="map"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s4 center">
+                        <button type="button" class="btn btn-large waves-effect waves-light blue btn-confirm">email</button>
+                    </div>
+                    <div class="col s4 center">
+                        <button type="button" class="btn btn-large waves-effect waves-light blue btn-confirm">add calendar</button>
+                    </div>
+                    <div class="col s4 center">
+                        <button type="button" class="btn btn-large waves-effect waves-light blue btn-confirm">home</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
