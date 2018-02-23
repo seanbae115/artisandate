@@ -1,77 +1,46 @@
+const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const localConfig = require('./strategies/local');
-
+const { sqlcredentials, crypt, secret } = require('./credentials');
+const JwtStrategy = require('passport-jwt').Strategy;
+const ExtractJwt = require('passport-jwt').ExtractJwt;
+const Users = require('../models/users');
 const mysql = require('mysql');
-const { sqlcredentials, crypt } = require('./credentials.js');
 const connection = mysql.createConnection(sqlcredentials);
+const bcrypt = require('bcrypt-nodejs');
 
-function userSearchSQL(email) {
-	let sql = "SELECT * FROM ?? WHERE ?? = ?";
-	let inserts = ['user', 'email', email];
-	return mysql.format(sql, inserts);
-}
+const localOptions = { usernameField: 'email' };
 
-function userCreateSQL(email, password) {
-	let status = 'active'
-	let sql = "INSERT INTO ?? (??, ??, ??, ??) VALUES (?, ?, ?, ?)";
-	let inserts = ['user', 'id', 'email', 'password', 'status', null, email, crypt.createHash(password), status];
-	return mysql.format(sql, inserts);
-}
-
-module.exports = function (passport) {
-	passport.serializeUser(function (user, done) {
-		done(null, user);
-	});
-
-	passport.deserializeUser(function (user, done) {
-		let sql = "SELECT * FROM ?? WHERE ?? = ?";
-		let inserts = ['user', 'id', user[0].ID];
-		sql = mysql.format(sql, inserts);
-		connection.query(sql, 
-			function (err, results, fields) {
-				done(err, results[0].ID)
-			}
-		);	
-	});
-
-	passport.use('local-signup', new LocalStrategy(localConfig,
-		function (req, email, password, done) {
-			process.nextTick(function () {
-				let sql = userSearchSQL(email);
-
-				connection.query(sql, function (err, results, fields) {
-					if (err) { return done(err) }
-
-					if (results[0]) {
-						return done(null, false);
-					} else {
-						let sql = userCreateSQL(email, password);
-
-						connection.query(sql, function (err, results, fields) {
-							if (err) throw err;
-
-							return done(null, results.insertId);
-						});
-					}
-
-				});
-			});
-		}));
-
-	passport.use('local-signin', new LocalStrategy(localConfig,
-		function (req, email, password, done) { // callback with email and password from our form
-			let sql = userSearchSQL(email);
-
+const localLogin = new LocalStrategy(localOptions, (email, password, done) => {
+	let sql = Users.userSearchSQL(email);
+	connection.query(sql, function (err, results, fields) {
+		if (err) { return done(err) }
+		if (results[0]) {
+			return done(null, false);
+		} else {
+			let sql = userCreateSQL(email, password);
 			connection.query(sql, function (err, results, fields) {
+				if (err) throw err;
 
-				if (err) { return done(err); }
-
-				if (!results[0]) { return done(null, false); }
-
-				if (!crypt.checkPassword(password, results[0].password)) { return done(null, false); }
-
-				return done(null, results);
+				return done(null, results.insertId);
 			});
-		}));
-	
-};
+		}
+	});
+});
+
+const jwtOptions = {
+	jwtFromRequest: ExtractJwt.fromHeader('authorization'),
+	secretOrKey: secret
+}
+
+const jwtLogin = new JwtStrategy(jwtOptions, (payload, done) => { // callback with email and password from our form
+	let sql = Users.userSearchSQL(payload.email);
+	connection.query(sql, function (err, results, fields) {
+		if (err) { return done(err); }
+		if (!results[0]) { return done(null, false); }
+		if (!crypt.checkPassword(payload.password, results[0].password)) { return done(null, false); }
+		return done(null, results);
+	});
+});
+
+passport.use(jwtLogin);
+passport.use(localLogin);

@@ -1,8 +1,7 @@
 import {combineReducers} from "redux";
-import resultsReducer from "./resultsPageReducer";
-import { reducer as formReducer } from 'redux-form';
+import results from "./resultsPageReducer";
+import { reducer as form } from 'redux-form';
+import user from './user_reducer';
 
-export default combineReducers({
-    datePlan: resultsReducer,
-    form: formReducer
+export default combineReducers({results, form, user
 });

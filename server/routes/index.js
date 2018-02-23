@@ -1,14 +1,13 @@
-const { googleKey, yelpKey} = require('../config/credentials.js');
-
 const axios = require('axios');
 const yelp = require('yelp-fusion');
+const { sqlcredentials, crypt, googleKey, yelpKey } = require('../config/credentials');
+
 const client = yelp.client(yelpKey);
 const googleMaps = require('@google/maps').createClient({
     key: googleKey
 });
 
 const mysql = require('mysql');
-const { sqlcredentials, crypt } = require('../config/credentials.js');
 const connection = mysql.createConnection(sqlcredentials);
 
 connection.connect(function (err) {
@@ -195,15 +194,17 @@ module.exports = function(app,  path){
         })
     });
 
-    app.get('/getPhotos', (req, res) => {
+    app.get('/getOneBusiness', (req, res) => {
+        const id= req.body.id;
         axios({
-            url: 'https://api.yelp.com/v3/businesses/four-sons-brewing-huntington-beach-5',
+            url: `https://api.yelp.com/v3/businesses/${id}`,
+            // url: `https://api.yelp.com/v3/businesses/four-sons-brewing-huntington-beach-5`,
             headers: {'Authorization': 'Bearer xkA9Hp5U6wElMNSf3MGcF_L6R0Io18O69Xsth-G-OsV50MIfoVyiWfQmmQgFHpmFvgFatiEW8sppCiAVWrfRgpy1-pNH905xO-Okl1TV6nIqp_RXCSDmvJFOEqKLWnYx'},
             responseType: 'json'
         })
         .then(function(response){
                 console.log('=========   Photos:  =========',response.data.photos);
-                res.json(response.data);
+                res.send(response.data);
         })
         .catch(function(err){
             console.log(err);
@@ -222,27 +223,6 @@ module.exports = function(app,  path){
 //         }
 //         res.json(response.json.results[0].geometry.location);
 //     });
-
-// })
-
-//new user
-// app.post('/signup', (req, res) => {
-//     const {first, last, email, username, password} = req.body
-//     const status = 'active'
-//     bcrypt.hash(password, 10, function(err, hash) {
-//         let query = 'INSERT INTO ?? (??, ??, ??, ??, ??, ??)VALUES (?, ?, ?, ?, ?, ?)';
-//         let inserts = ['user','first', 'last', 'email', 'username', 'password', 'status', first, last, email, username, hash, status];
-//         let sql = mysql.format(query, inserts);
-//         con.query(sql, (err, results, fields) => {
-//             if (err) throw err;
-
-//             const output = {
-//                 success: true,
-//                 data: results
-//             }
-//             res.json(output);
-//         })
-//     })
 
 // })
 };

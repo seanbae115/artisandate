@@ -1,49 +1,10 @@
-const path = require('path');
+const passport = require('passport'); 
+const Authentication = require('../controllers/authentication');
 
-module.exports = function (app, passport) {
-	app.get('/', function (req, res) {
-		res.sendFile(path.join(__dirname, '..', '..', 'client', 'html_skeleton', 'index.html'));
-	});
+const requireAuth = passport.authenticate('jwt', { session: false });
+const requireSignin = passport.authenticate('local', { session: false });
 
-	app.get('/login', function (req, res) {
-		res.sendFile(path.join(__dirname, '..', '..', 'client', 'html_skeleton', 'login.html'));
-	});
-
-	app.post('/login',
-		passport.authenticate('local-signin', {
-			successRedirect: '/location',
-			failureRedirect: '/signup'
-		})
-	);
-
-	app.get('/signup', function (req, res) {
-		res.sendFile(path.join(__dirname, '..', '..', 'client', 'html_skeleton', 'signup.html'));
-	});
-
-	app.post('/signup',
-		passport.authenticate('local-signup', {
-			successRedirect: '/location', //need to redirect to proper location for React
-			failureRedirect: '/login'
-		})
-	);
-
-	app.get('/profile', isLoggedIn, function (req, res) {
-		res.sendFile(path.join(__dirname, '..', '..', 'client', 'html_skeleton', 'profile.html'));
-	});
-
-	app.get('/logout', function (req, res) {
-		req.logout();
-		res.redirect('/');
-	});
-
-	app.get('/mail_sender', function (req, res) {
-		res.sendFile(path.join(__dirname, '..', '..', 'client', 'html_skeleton', 'mail_sender.html'));
-	});
-}
-
-function isLoggedIn(req, res, next) {
-	if (req.isAuthenticated()) {
-		return next();
-	}
-	res.redirect('/');
+module.exports = app => {
+	app.post('/auth/signin', requireSignin, Authentication.signin);
+	app.post('/auth/signup', Authentication.signup);
 }

@@ -1,12 +1,9 @@
 const express = require('express');
-
 const cors = require('cors');
 const path = require('path');
-
 const passport = require('passport');
-const session = require('express-session');
 
-const { secret } = require('./config/credentials.js');
+const { secret } = require('./config/credentials');
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -15,14 +12,10 @@ const PORT = process.env.PORT || 8000;
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-app.use(express.static(path.join(__dirname, '..', 'client')));
-app.use(session({secret}));
-app.use(passport.initialize());
-app.use(passport.session());
 
-require('./config/passport.js')(passport);
+require('./config/passport.js');
 
-require('./routes/auth.js')(app, passport);
+require('./routes/auth.js')(app);
 
 require('./routes/index.js')(app, path);
 
