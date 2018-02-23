@@ -11,7 +11,6 @@ class ResultsPage extends Component {
     componentDidMount(){
         this.props.getPlanner(this.props.match.params);
     }
-
     render() {
         return (
             <div>
