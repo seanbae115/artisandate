@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import{Link} from 'react-router-dom';
 import "./navBar.css"
 
 class NavBar extends Component {
@@ -52,7 +53,7 @@ class NavBar extends Component {
         return (
             <nav>
                 <div className="amber nav-wrapper">
-                    <a href="#!" className="brand-logo">Menu</a>
+                    <a href="#!" className="brand-logo">MasterDater</a>
                     <a href="#" className="right button-collapse" onClick={this.slideOutMenu}>
                         <i className="material-icons amber-text text-darken-3">menu</i>
                     </a>
@@ -64,10 +65,11 @@ class NavBar extends Component {
                     </ul>
                     <div>
                         <ul className="side-nav right-aligned" style={this.state.navStyle}>
-                            <li><a href="#">Account</a></li>
-                            <li><a href="#">New Event</a></li>
-                            <li><a href="#">History</a></li>
-                            <li><a href="#">Contact Us</a></li>
+                            <li><Link to='/'>Home</Link></li>
+                            <li><Link to='/location-page'>Get Started</Link></li>
+                            <li><Link to='/signup-page'>Sign Up</Link></li>
+                            <li><Link to='/login-page'>Sign In</Link></li>
+                            <li><Link to='##'>Our Team</Link></li>
                         </ul>
                         <div onClick={this.returnMenu} className="drag-target" style={this.state.dragStyle}></div>
                     </div>
