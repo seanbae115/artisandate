@@ -1,6 +1,6 @@
 const { googleKey, yelpKey} = require('../config/credentials.js');
 
-const axios = require('axios')
+const axios = require('axios');
 const yelp = require('yelp-fusion');
 const client = yelp.client(yelpKey);
 const googleMaps = require('@google/maps').createClient({
@@ -19,7 +19,7 @@ connection.connect(function (err) {
 module.exports = function(app,  path){
     app.post('/addCompletedDate', (req, res) => {
         let request = testObject;
-        console.log(request)
+        console.log(request);
         var events = function () {
             const { name, id, location, url, image_url, coordinates } = request.events;
             let query = 'INSERT INTO locations (??, ??, ??, ??, ??, ??, ??) VALUES (?, ?, ?, ?, ?, ?, ?)';
@@ -33,7 +33,7 @@ module.exports = function(app,  path){
                 }
                 console.log('events added')
             });
-        }()
+        }();
 
         var food = function () {
             const { name, id, location, url, image_url, coordinates } = request.food;
@@ -45,10 +45,10 @@ module.exports = function(app,  path){
                 if (err) next(err);
                 const output = {
                     success: true
-                }
+                };
                 console.log('food added')
             });
-        }()
+        }();
 
         var drinks = function () {
             const { name, id, location, url, image_url, coordinates } = request.drinks;
@@ -60,17 +60,17 @@ module.exports = function(app,  path){
                 if (err) next(err);
                 const output = {
                     success: true
-                }
+                };
                 console.log('drinks added')
             });
         }()
-    })
+    });
 
     const output = {
         events: null,
         food: null,
         drinks: null
-    }
+    };
 
     //results endpoint
     app.post('/getEverything', (req, res) => {
@@ -80,7 +80,7 @@ module.exports = function(app,  path){
 
         var places = client.search({
             term: 'hike, beach, park',
-            location: 90742 || zip,
+            location: zip || 90742,
             radius: 8000,
             limit: 3
         })
@@ -101,7 +101,7 @@ module.exports = function(app,  path){
         })
             .then(
                 response => response.data.events
-            )
+            );
 
         var food = client.search({
             term: 'restaurant',
@@ -111,7 +111,7 @@ module.exports = function(app,  path){
         })
             .then(
                 response => response.jsonBody.businesses
-            )
+            );
 
         var drinks = client.search({
             term: 'coffee',
@@ -121,31 +121,31 @@ module.exports = function(app,  path){
         })
             .then(
                 response => response.jsonBody.businesses
-            )
+            );
 
         places.then((v) => {
             temp.places = v;
-        })
+        });
 
         events.then((v) => {
             temp.events = v;
-        })
+        });
 
         food.then((v) => {
             output.food = v;
-        })
+        });
 
         drinks.then((v) => {
             output.drinks = v;
-        })
-        var p = Promise.all([places, events, food, drinks])
+        });
+        var p = Promise.all([places, events, food, drinks]);
 
         p.then(function (v) {
             var result = temp.places.concat(temp.events);
             output.events = result;
             res.send(output);
         });
-    })
+    });
     //google places call for food
     app.get('/getDinner', (req, res)=>{
         axios({
@@ -166,7 +166,7 @@ module.exports = function(app,  path){
             .catch(err => {
                 console.log(err);
             })
-    })
+    });
 
     app.get('/getEvents', (req, res) => {
         axios({
@@ -182,10 +182,10 @@ module.exports = function(app,  path){
             responseType: 'json'
         })
         .then(function(response){
-            var results = response.data.events
+            var results = response.data.events;
             var output = [];
             for(var i = 0; i < results.length; i++){
-                var img = '<img src='+results[i].image_url+' height="300" width="300">'
+                var img = '<img src='+results[i].image_url+' height="300" width="300">';
                 output.push(img);
             }
             res.send(output.join('\n'));
@@ -193,7 +193,7 @@ module.exports = function(app,  path){
         .catch(function(err){
             console.log(err);
         })
-    })
+    });
 
     app.get('/getPhotos', (req, res) => {
         axios({
@@ -245,4 +245,4 @@ module.exports = function(app,  path){
 //     })
 
 // })
-}
+};
