@@ -80,9 +80,9 @@ module.exports = function(app,  path){
 
         var places = client.search({
             term: 'hike, beach, park',
-            location: zip || 90742,
+            location: zip,
             radius: 8000,
-            limit: 3
+            limit: 10
         })
             .then(
                 response => response.jsonBody.businesses
@@ -91,9 +91,9 @@ module.exports = function(app,  path){
             url: 'https://api.yelp.com/v3/events',
             headers: { 'Authorization': 'Bearer xkA9Hp5U6wElMNSf3MGcF_L6R0Io18O69Xsth-G-OsV50MIfoVyiWfQmmQgFHpmFvgFatiEW8sppCiAVWrfRgpy1-pNH905xO-Okl1TV6nIqp_RXCSDmvJFOEqKLWnYx' },
             params: {
-                location: zip || 90742,
+                location: zip,
                 radius: 8000,
-                limit: 3,
+                limit: 10,
                 sort_on: 'popularity',
                 start_date: ts
             },
@@ -105,9 +105,9 @@ module.exports = function(app,  path){
 
         var food = client.search({
             term: 'restaurant',
-            location: zip || 90742,
+            location: zip,
             radius: 8000,
-            limit: 3
+            limit: 10
         })
             .then(
                 response => response.jsonBody.businesses
@@ -115,9 +115,9 @@ module.exports = function(app,  path){
 
         var drinks = client.search({
             term: 'coffee',
-            location: zip || 90742,
+            location: zip,
             radius: 8000,
-            limit: 3
+            limit: 10
         })
             .then(
                 response => response.jsonBody.businesses
