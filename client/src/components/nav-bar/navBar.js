@@ -69,7 +69,7 @@ class NavBar extends Component {
                             <li><Link to='/location-page'>Get Started</Link></li>
                             <li><Link to='/signup-page'>Sign Up</Link></li>
                             <li><Link to='/login-page'>Sign In</Link></li>
-                            <li><Link to='##'>Our Team</Link></li>
+                            <li><Link to='/ourteam-page'>Our Team</Link></li>
                         </ul>
                         <div onClick={this.returnMenu} className="drag-target" style={this.state.dragStyle}></div>
                     </div>
