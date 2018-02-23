@@ -22,6 +22,7 @@ const App = () => (
             <Route path = '/event-page' component = {EventPage}/>
             <Route path = '/summary-page' component = {SummaryPage}/>
             <Route path = '/ourteam-page' component = {OurTeam}/>
+            <Route path = '/logout' component = {Home}/>
         </div>
 );
 

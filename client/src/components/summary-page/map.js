@@ -20,13 +20,8 @@ const MyMapComponent = compose(
     }),
     withScriptjs,
     withGoogleMap
-)((props) =>
-    <GoogleMap
-        defaultZoom={11}
-        defaultCenter={{ lat: 33.7743, lng: -117.9380 }}
-    >
-
-
+)((props) => {
+    <GoogleMap defaultZoom={11} defaultCenter={{ lat: 33.7743, lng: -117.9380 }}>
         <MarkerWithLabel
             // onClick={}
             position={{ lat:33.7743, lng: -117.9380 }}
@@ -65,7 +60,7 @@ const MyMapComponent = compose(
             </div>
         </MarkerWithLabel>
     </GoogleMap>
-);
+});
 
 export class MapComponent extends React.PureComponent {
     state = {
@@ -89,10 +84,7 @@ export class MapComponent extends React.PureComponent {
 
     render() {
         return (
-            <MyMapComponent
-                isMarkerShown={this.state.isMarkerShown}
-                onMarkerClick={this.handleMarkerClick}
-            />
+            <MyMapComponent isMarkerShown={this.state.isMarkerShown} onMarkerClick={this.handleMarkerClick}/>
         );
     }
 }

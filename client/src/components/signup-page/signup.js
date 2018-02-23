@@ -1,13 +1,21 @@
 import React, {Component} from 'react';
 import { Link } from "react-router-dom";
-import Phones from '../../assets/images/phones.png';
+import axios from 'axios';
+import { reduxForm, Field } from 'redux-form';
+import { connect } from 'react-redux';
+import { renderInput } from '../../helpers';
 import NavBar from '../nav-bar/navBar';
 
-export default class SignUp extends Component {
+class SignUpPage extends Component {
     constructor(props){
         super(props);
         this.state = {
         }
+    }
+
+    signup(){
+        const serverRoute = "http://localhost:8000/signup";
+        const request = axios.post()
     }
 
     render(){
@@ -20,10 +28,14 @@ export default class SignUp extends Component {
                             <form>
                                 <h3 className='center-align'>Sign Up</h3>
                                 <label>Email</label>
-                                <input id='email' name='email' type="text"/>
+                                <Field id='email-signup' name='email' value='name' type="email" component={renderInput}/>
                                 <label>Password</label>
-                                <input id='password' name='password' type="password"/>
-                                <Link to='/login-page 'id='register' className='btn amber darken-3' type='button'>Sign Up</Link>
+                                <Field id='password-signup' name='password' value='password' type='password' component={renderInput}/>
+                                <label>Confirm Password</label>
+                                <Field id='conf-password' name='conf-password' value='conf-password' type='password' component={renderInput} />
+                                <div className='center-align'>
+                                    <Link to='/login-page 'id='register' className='btn amber darken-3' type='button'>Sign Up</Link>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -32,3 +44,9 @@ export default class SignUp extends Component {
         )
     }
 }
+
+SignUpPage = reduxForm({
+    form: 'signup-form'
+})(SignUpPage);
+
+export default connect(null, {})(SignUpPage);
