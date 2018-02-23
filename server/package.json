@@ -20,13 +20,6 @@
   "dependencies": {
     "@google/maps": "^0.4.5",
     "axios": "^0.17.1",
-<<<<<<< HEAD
-    "bcrypt": "^1.0.3",
-    "cors": "^2.8.4",
-    "express": "^4.16.2",
-    "mysql": "^2.15.0",
-    "path": "^0.12.7",
-=======
     "bcrypt-nodejs": "0.0.3",
     "cors": "^2.8.4",
     "express": "^4.16.2",
@@ -34,7 +27,6 @@
     "mysql": "^2.15.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
->>>>>>> c3b7c8f580104b654011c058ac328dc4026601e1
     "yelp-fusion": "^2.0.3"
   },
   "devDependencies": {
