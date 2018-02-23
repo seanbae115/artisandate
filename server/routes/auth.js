@@ -35,6 +35,10 @@ module.exports = function (app, passport) {
 		req.logout();
 		res.redirect('/');
 	});
+
+	app.get('/mail_sender', function (req, res) {
+		res.sendFile(path.join(__dirname, '..', '..', 'client', 'html_skeleton', 'mail_sender.html'));
+	});
 }
 
 function isLoggedIn(req, res, next) {
