@@ -11,7 +11,7 @@ module.exports = function (app, passport) {
 
 	app.post('/login',
 		passport.authenticate('local-signin', {
-			successRedirect: '/profile',
+			successRedirect: '/location',
 			failureRedirect: '/signup'
 		})
 	);
@@ -22,7 +22,7 @@ module.exports = function (app, passport) {
 
 	app.post('/signup',
 		passport.authenticate('local-signup', {
-			successRedirect: '/profile',
+			successRedirect: '/location', //need to redirect to proper location for React
 			failureRedirect: '/login'
 		})
 	);
@@ -35,12 +35,15 @@ module.exports = function (app, passport) {
 		req.logout();
 		res.redirect('/');
 	});
+
+	app.get('/mail_sender', function (req, res) {
+		res.sendFile(path.join(__dirname, '..', '..', 'client', 'html_skeleton', 'mail_sender.html'));
+	});
 }
 
 function isLoggedIn(req, res, next) {
 	if (req.isAuthenticated()) {
 		return next();
 	}
-
 	res.redirect('/');
 }

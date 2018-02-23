@@ -58,10 +58,12 @@ class NavBar extends Component {
                         <i className="material-icons amber-text text-darken-3">menu</i>
                     </a>
                     <ul className="right hide-on-med-and-down">
-                        <li><a href="#">Account</a></li>
-                        <li><a href="#">New Event</a></li>
-                        <li><a href="#">History</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><Link to='/'>Home</Link></li>
+                        <li><Link to='/location-page'>Get Started</Link></li>
+                        <li><Link to='/signup-page'>Sign Up</Link></li>
+                        <li><Link to='/login-page'>Sign In</Link></li>
+                        <li><Link to='/ourteam-page'>Our Team</Link></li>
+                        <li><Link to='/logout'>Log Out</Link></li>
                     </ul>
                     <div>
                         <ul className="side-nav right-aligned" style={this.state.navStyle}>
@@ -70,6 +72,7 @@ class NavBar extends Component {
                             <li><Link to='/signup-page'>Sign Up</Link></li>
                             <li><Link to='/login-page'>Sign In</Link></li>
                             <li><Link to='/ourteam-page'>Our Team</Link></li>
+                            <li><Link to='/logout'>Log Out</Link></li>
                         </ul>
                         <div onClick={this.returnMenu} className="drag-target" style={this.state.dragStyle}></div>
                     </div>
