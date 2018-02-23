@@ -17,8 +17,8 @@ export default class Home extends Component {
         return (
             <div>
                 <NavBar/>
-                <div className="container amber">
-                    <div className="row row-height-75">
+                <div className="amber">
+                    <div className="row">
                         <div className="hero-image">
                             <div className="hero-image-container amber">
                                 <div>

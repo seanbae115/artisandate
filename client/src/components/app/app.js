@@ -20,6 +20,7 @@ const App = () => (
             <Route path = '/results-page/:zip' component = {ResultsPage}/>
             <Route path = '/event-page' component = {EventPage}/>
             <Route path = '/summary-page' component = {SummaryPage}/>
+            <Route path = '/logout' component = {Home}/>
         </div>
 );
 
