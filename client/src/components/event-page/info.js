@@ -6,7 +6,7 @@ function Info(props){
     return (
         <div>
             <div id="rating">
-                <div className="container">
+                <div>
                     <div className="row">
                         <div className="col s6">
                             <img className = 'responsive-img'src={yelp} alt="Stars"/>
@@ -20,7 +20,7 @@ function Info(props){
                 </div>
             </div>
             <div id="description">
-                <div className="container">
+                <div>
                     <div className="row">
                         <div className="col s12">
                             <p className = 'flow-text justify roboto'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, porro!</p>
