@@ -8,6 +8,9 @@ import EventBrowser from "./eventBrowser";
 
 
 class ResultsPage extends Component {
+    sendId(id){
+        this.props.history.push('/event-page');
+    }
     componentDidMount(){
         this.props.getPlanner();
         this.props.getPlanner(this.props.match.params);
@@ -20,7 +23,7 @@ class ResultsPage extends Component {
                 <EventBrowser locations={this.props.dinner}/>
                 <EventBrowser locations={this.props.drinks}/>
                 <div className="center-align location-info-group">
-                    <Link to='/summary-page' className='btn btn-large'>Confirm</Link>
+                    <button onClick = {this.sendId.bind(this)} className='btn btn-large'>Confirm</button>
                 </div>
             </div>
         )

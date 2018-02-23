@@ -30,7 +30,7 @@ export default class Home extends Component {
                             </div>
                             <div className="row">
                                 <div className="col s12 center-align">
-                                    <Link to='/login-page' className="btn home-btn">Sign In</Link>
+                                    <Link to='/signin-page' className="btn home-btn">Sign In</Link>
                                 </div>
                             </div>
                             <div className="row">

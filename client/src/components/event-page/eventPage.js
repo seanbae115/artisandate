@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './eventPage.css'
-import {getDetail} from '../../actions';
+import { getIndividual } from '../../actions';
 import NavBar from '../nav-bar/navBar';
 import Title from './title';
 import JumboImg from './jumboImg';
@@ -10,7 +10,8 @@ import Environment from './environment';
 
 class EventPage extends Component{
     componentDidMount(){
-        this.props.getDetail();
+        console.log('props are: ', this.props)
+        this.props.getIndividual();
     }
     render(){
         return (
@@ -31,5 +32,5 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, { getDetail })(EventPage);
+export default connect(mapStateToProps, { getIndividual })(EventPage);
 
