@@ -27,3 +27,6 @@ div.row {
     right: 0;
     overflow: hidden;
 }
+.flow{
+    display: block;
+}

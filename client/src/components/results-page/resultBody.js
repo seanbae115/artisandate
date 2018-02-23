@@ -14,18 +14,18 @@ export default props => {
     };
 
     return (
-        <div className="row">
-            <div className="col s6">
-                <div style={locationImage} className="z-depth-2"></div>
-            </div>
-            <div className="col s6">
-                <div className="row">
-                    <h5 className="truncate">{name}</h5>
-                    <p>{address.address1}</p>
-                    <p>{`${address.city}, ${address.state} ${address.zip_code}`}</p>
-                    <p>{phone}</p>
+            <div className="row">
+                <div className="col s6">
+                    <div style={locationImage} className="z-depth-2"></div>
+                </div>
+                <div className="col s6">
+                    <div className="row">
+                        <h5 className="truncate">{name}</h5>
+                        <p>{address.address1}</p>
+                        <p>{`${address.city}, ${address.state} ${address.zip_code}`}</p>
+                        <p>{phone}</p>
+                    </div>
                 </div>
             </div>
-        </div>
     )
 }
