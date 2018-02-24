@@ -5,10 +5,16 @@ import types from './types';
 const BASE_URL = "http://localhost:8000";
 
 export function getPlanner(zip){
-    const request = axios.post(`${BASE_URL}/getEverything`, zip);
-    return {
-        type: types.GET_EVENT,
-        payload: request
+    return async dispatch => {
+        try {
+            const request = await axios.post(`${BASE_URL}/getEverything`, zip);
+            dispatch({
+                type: types.GET_EVENT,
+                payload: request
+            })
+        } catch (err) {
+            console.log(err)
+        }
     }
 }
 
