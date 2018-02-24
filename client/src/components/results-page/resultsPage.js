@@ -12,9 +12,7 @@ class ResultsPage extends Component {
         this.props.history.push('/event-page');
     }
     componentDidMount(){
-        console.log("before get planner", this.props);
         this.props.getPlanner(this.props.match.params);
-        console.log("AFTER", this.props);
     }
     render() {
         const { history } = this.props;
@@ -34,7 +32,6 @@ class ResultsPage extends Component {
 }
 
 function mapStateToProps(state){
-    console.log("MSTP", state)
     return {
         events: state.datePlan.events,
         eventsId: "",
