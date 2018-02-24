@@ -1,15 +1,22 @@
 import types from "../actions/types";
 
 const DEFAULT_STATE = {
-    locationId: "",
-    locationSaved: true
+        mainEvent: {},
+        mainFood: {},
+        mainDrinks: {}
 };
 
 export default function (state = DEFAULT_STATE, action){
     switch (action.type){
-        case types.LOCATION_ID:
-            console.log("GOT INFO IN THE REDUCER", action.payload);
-            return {...state, locationId: action.payload};
+        case "events":
+            console.log("LBR EVENT", {...state, mainEvent: action.payload});
+            return {...state, mainEvent: action.payload};
+        case "food":
+            console.log("LBR Food",{...state, mainFood: action.payload});
+            return {...state, mainFood: action.payload};
+        case "drinks":
+            console.log("LBR DRINKS",{...state, mainDrinks: action.payload});
+            return {...state, mainDrinks: action.payload};
         default:
             return state;
     }

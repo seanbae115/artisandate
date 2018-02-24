@@ -14,25 +14,53 @@ class LocationBrowser extends Component {
         super(props);
 
         this.locationId = "";
-        this.locationIndex = 0;
+        // this.locationIndex = 0;
         this.details = {};
         this.updateLocation = this.updateLocation.bind(this);
         this.goToDetails = this.goToDetails.bind(this);
     }
 
-    updateLocation(index){
-        this.locationIndex = index;
-        this.compileDetails(this.locationIndex)
+    componentDidMount(){
+        // this.updateLocation(0);
     }
 
-    compileDetails(index){
+    componentWillReceiveProps(nextProps){
+        console.log('==========CWRP=========:', nextProps);
+
+        if(!this.props.initial.complete){
+            console.log('Not Complete');
+            this.updateLocation(0, nextProps.locations);
+            this.props.initial[nextProps.name] = true;
+
+            if(this.props.initial.events && this.props.initial.food && this.props.initial.drinks){
+                console.log('All data loaded');
+                this.props.initial.complete = true;
+            }
+        }
+    }
+
+    updateLocation(index, locations){
+
+        console.log('Update Location:', index, locations);
+
+        if(locations){
+            console.log('Given location...');
+            this.locationId = locations[index].id;
+            this.props.locationDetails(locations[index], this.props.name);
+            return;
+        }
+
+        console.log("BROWSER PROPS: ", this.props);
         this.locationId = this.props.locations[index].id;
         this.details = this.props.locations[index];
+        this.props.locationDetails(this.details, this.props.name);
+        console.log("the new detail: ", this.details);
     }
 
     goToDetails(){
         this.props.history.push(`/event-page/${this.locationId}`);
     }
+
 
     render() {
         const { locations } = this.props;
@@ -40,7 +68,6 @@ class LocationBrowser extends Component {
         if(!locations.length){
             return <p>Loading...</p>;
         }
-        this.updateLocation(0);
 
         const result = locations.map((item, index) => {
             const {image_url, name, location, display_phone, id} = item;
@@ -86,5 +113,18 @@ class LocationBrowser extends Component {
     }
 }
 
+// function mapStateToProps(state){
+//     if (this.props === undefined){
+//         return {};
+//     }
+//     switch (this.props.name){
+//         case "events":
+//             return {mainEvent: state.datePlan.mainEvent};
+//         case "food":
+//             return {mainFood: state.datePlan.mainFood};
+//         case "drinks":
+//             return {mainDrinks: state.datePlan.mainDrinks}
+//     }
+// }
 
-export default LocationBrowser;
+export default connect(null, {locationDetails})(LocationBrowser);
