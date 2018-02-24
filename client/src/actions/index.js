@@ -56,6 +56,7 @@ export function signIn(cred) {
 }
 /**********************NON AXIOS****************************/
 export function locationDetails(id) {
+    console.log("IN ACTIONS: ", id)
     return{
         type: types.LOCATION_ID,
         payload: id
