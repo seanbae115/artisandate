@@ -12,9 +12,7 @@ class LocationPage extends Component {
     }
     renderInput(props){
         return (
-            <div>
-                <input {...props.input} placeholder = 'zipcode' type = 'number'/>
-            </div>
+            <input {...props.input} placeholder = 'Zip Code' type = 'number'/>
         )
     }
     render(){

@@ -1,17 +1,15 @@
 import types from "../actions/types";
 
 const DEFAULT_STATE = {
-    events: [],
-    food: [],
-    drinks: []
+    locationIndex: "",
+    locationId: ""
 };
 
 export default function (state = DEFAULT_STATE, action){
     switch (action.type){
-        case types.SEND_ZIP:
+        case types.LOCATION_ID:
             console.log("GOT INFO", action.payload);
-            const {food, events, drinks} = action.payload.data;
-            return {...state, food, events, drinks};
+            return{...state};
         default:
             return state;
     }

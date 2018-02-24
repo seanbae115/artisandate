@@ -5,6 +5,7 @@ import types from './types';
 const BASE_URL = "http://localhost:8000";
 
 export function getPlanner(zip){
+
     return async dispatch => {
         try {
             const request = await axios.post(`${BASE_URL}/getEverything`, zip);
@@ -51,5 +52,12 @@ export function signIn(cred) {
                 error: 'Invalid Username and/or Password'
             });
         });
+    }
+}
+/**********************NON AXIOS****************************/
+export function locationDetails(id) {
+    return{
+        type: types.LOCATION_ID,
+        payload: id
     }
 }
