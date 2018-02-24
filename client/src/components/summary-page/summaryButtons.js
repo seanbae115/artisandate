@@ -1,28 +1,47 @@
 import React, {Component} from 'react';
 import { Link } from "react-router-dom";
+import { sendMail } from "../../actions";
+import { connect } from "react-redux";
+import axios from 'axios';
+
 
 class SummaryButtons extends Component {
-    render(){
+    constructor(props){
+        super(props);
+        this.state = {};
+        this.data = {
+            email: this.props.email
+        };
+    };
+    
+    
 
+    render(){
         return (
             <div className="row">
                 <div className="col s4 center">
                     {/*Will change these to Link later but they don't exist yet and it blows up without Router being in place*/}
-                    <div to="/calendarPage" className="btn btn-large waves-effect waves-light blue btn-confirm">Email</div>
+                    
+                    <div onClick={()=>sendMail(this.data)} className="btn blue">Email</div>
                 </div>
                 <div className="col s4 center">
                     {/*Will change these to Link later but they don't exist yet and it blows up without Router being in place*/}
-                    <div to="/emailPage" className="btn btn-large waves-effect waves-light blue btn-confirm">Add Calendar</div>
+                    <div to="/emailPage" className="btn blue">Add Calendar</div>
                 </div>
                 <div className="col s4 center">
                     {/*Will change these to Link later but they don't exist yet and it blows up without Router being in place*/}
-                    <Link to="/" className="btn btn-large waves-effect waves-light blue btn-confirm">Home</Link>
+                    <Link to="/" className="btn blue">Home</Link>
                 </div>
             </div>
         )}
-}
+};
 
-export default SummaryButtons;
+function mapStateToProps(state){
+    return {
+        email: state.user.email
+    }
+}
+export default connect(mapStateToProps, {sendMail})(SummaryButtons);
 
 
 //calendarPage button must route to "calendar page to make a google calendar? How to do this?"

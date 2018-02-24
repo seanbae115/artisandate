@@ -10,9 +10,9 @@ const Summary = props => {
     return(
         <div>
             <NavBar/>
-            <SummaryEvent/>
-            <SummaryEvent/>
-            <SummaryEvent/>
+            <SummaryEvent eventType="Event" eventName="name1"/>
+            <SummaryEvent eventType="Food" eventName="name2"/>
+            <SummaryEvent eventType="Drink" eventName="name3"/>
             <MapComponent/>
             <SummaryButtons/>
            </div>
