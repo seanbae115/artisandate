@@ -213,7 +213,6 @@ module.exports = (app,  path) => {
             responseType: 'json'
         })
         .then(function(response){
-                console.log('=========   Photos:  =========',response.data);
                 res.send(response.data);
         })
         .catch(function(err){
