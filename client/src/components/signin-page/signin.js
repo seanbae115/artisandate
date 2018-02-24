@@ -57,7 +57,6 @@ class SignInPage extends Component {
 
 function validate(values) {
     const error = {};
-
     if (!values.email) {
         error.email = 'please enter an email'
     }
@@ -68,10 +67,11 @@ function validate(values) {
     return error;
 }
 
-function mapStateToProps(state){
-    console.log('this is state',state)
+function mapStateToProps(state) {
+    console.log('this is state', state)
     return {
         auth: state.user.auth,
+        email: state.user.email,
         error: state.user.error
     }
 }

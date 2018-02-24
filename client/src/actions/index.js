@@ -25,7 +25,8 @@ export function signUp(cred) {
             const request = await axios.post(`${BASE_URL}/auth/signup`, cred);
             localStorage.setItem('token', request.data.token);
             dispatch({
-                type: types.SIGN_UP
+                type: types.SIGN_UP,
+                email: cred.email
             });
             console.log('Successful sign in')
         } catch (err) {
@@ -40,10 +41,10 @@ export function signUp(cred) {
 export function signIn(cred) {
     return dispatch => {
         axios.post(`${BASE_URL}/auth/signin`, cred).then(res => {
-            console.log('Signin Resp:', res);
             localStorage.setItem('token', res.data.token);
             dispatch({
-                type: types.SIGN_IN
+                type: types.SIGN_IN,
+                email: cred.email
             });
         }).catch(err => {
             dispatch({
