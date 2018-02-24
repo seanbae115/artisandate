@@ -5,11 +5,14 @@ const test = require('../test.js');
 module.exports = function(app, path){
     app.post('/send', (req, res) => {
         const output = `
-        <ul>
-            <li>Events: ${test.events.name}</li>
-            <li>Food: ${test.food.name}</li>
-            <li>Drinks: ${test.drinks.name}</li>
-        </ul>
+        <div style="border: 3px solid red">
+            <ul>
+                <li><img src="${test.events.image_url}" style="width:50px;height:50px;"> Events: ${test.events.name}</li>
+                <li><img src="${test.food.image_url}" style="width:50px;height:50px;"> Food: ${test.food.name}</li>
+                <li><img src="${test.drinks.image_url}" style="width:50px;height:50px;"> Drinks: ${test.drinks.name}</li>
+            </ul>
+        </div>
+        
     `
             
         nodemailer.createTestAccount((err, account) => {

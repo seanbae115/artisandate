@@ -5,10 +5,17 @@ import types from './types';
 const BASE_URL = "http://localhost:8000";
 
 export function getPlanner(zip){
-    const request = axios.post(`${BASE_URL}/getEverything`, zip);
-    return {
-        type: types.GET_EVENT,
-        payload: request
+
+    return async dispatch => {
+        try {
+            const request = await axios.post(`${BASE_URL}/getEverything`, zip);
+            dispatch({
+                type: types.GET_EVENT,
+                payload: request
+            })
+        } catch (err) {
+            console.log(err)
+        }
     }
 }
 
@@ -53,5 +60,12 @@ export function signIn(cred) {
                 error: 'Invalid Username and/or Password'
             });
         });
+    }
+}
+/**********************NON AXIOS****************************/
+export function locationDetails(id) {
+    return{
+        type: types.LOCATION_ID,
+        payload: id
     }
 }
