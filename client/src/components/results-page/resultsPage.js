@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import"./resultsPage.css"
-import {getPlanner} from "../../actions";
+import { getPlanner } from "../../actions";
 import { Link } from 'react-router-dom';
 import NavBar from "../nav-bar/navBar";
 import EventBrowser from "./eventBrowser";
@@ -9,7 +9,6 @@ import EventBrowser from "./eventBrowser";
 
 class ResultsPage extends Component {
     componentDidMount(){
-        this.props.getPlanner();
         this.props.getPlanner(this.props.match.params);
     }
 
@@ -30,9 +29,9 @@ class ResultsPage extends Component {
 
 function mapStateToProps(state){
     return {
-        event: state.datePlan.events,
-        dinner: state.datePlan.food,
-        drinks: state.datePlan.drinks
+        event: state.results.events,
+        dinner: state.results.food,
+        drinks: state.results.drinks
 
     }
 }

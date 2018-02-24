@@ -15,10 +15,9 @@ connection.connect(function (err) {
     console.log("connected to db");
 });
 
-module.exports = function(app,  path){
+module.exports = (app,  path) => {
     app.post('/addCompletedDate', (req, res) => {
         let request = testObject;
-        console.log(request);
         var events = function () {
             const { name, id, location, url, image_url, coordinates } = request.events;
             let query = 'INSERT INTO locations (??, ??, ??, ??, ??, ??, ??) VALUES (?, ?, ?, ?, ?, ?, ?)';
@@ -65,14 +64,13 @@ module.exports = function(app,  path){
         }()
     });
 
-    const output = {
-        events: null,
-        food: null,
-        drinks: null
-    };
-
     //results endpoint
     app.post('/getEverything', (req, res) => {
+        var output = {
+            events: null,
+            food: null,
+            drinks: null
+        };
         var temp = {};
         var zip = req.body.zip;
         var ts = Math.floor(new Date().getTime() / 1000);
@@ -83,9 +81,12 @@ module.exports = function(app,  path){
             radius: 8000,
             limit: 10
         })
-            .then(
-                response => response.jsonBody.businesses
-            );
+        .then(
+            response => response.jsonBody.businesses
+        ).catch(
+            err => console.log('error', err)
+        )
+
         var events = axios({
             url: 'https://api.yelp.com/v3/events',
             headers: { 'Authorization': 'Bearer xkA9Hp5U6wElMNSf3MGcF_L6R0Io18O69Xsth-G-OsV50MIfoVyiWfQmmQgFHpmFvgFatiEW8sppCiAVWrfRgpy1-pNH905xO-Okl1TV6nIqp_RXCSDmvJFOEqKLWnYx' },
@@ -98,9 +99,11 @@ module.exports = function(app,  path){
             },
             responseType: 'json'
         })
-            .then(
-                response => response.data.events
-            );
+        .then(
+            response => response.data.events
+        ).catch(
+            err => console.log('error', err)
+        )
 
         var food = client.search({
             term: 'restaurant',
@@ -108,9 +111,11 @@ module.exports = function(app,  path){
             radius: 8000,
             limit: 10
         })
-            .then(
-                response => response.jsonBody.businesses
-            );
+        .then(
+            response => response.jsonBody.businesses
+        ).catch(
+            err => console.log('error', err)
+        )
 
         var drinks = client.search({
             term: 'coffee',
@@ -118,32 +123,37 @@ module.exports = function(app,  path){
             radius: 8000,
             limit: 10
         })
-            .then(
-                response => response.jsonBody.businesses
-            );
+        .then(
+            response => response.jsonBody.businesses
+        ).catch(
+            err => console.log('error', err)
+        )
 
-        places.then((v) => {
+        places.then(v => {
             temp.places = v;
         });
 
-        events.then((v) => {
+        events.then(v => {
             temp.events = v;
         });
 
-        food.then((v) => {
+        food.then(v => {
             output.food = v;
         });
 
-        drinks.then((v) => {
+        drinks.then(v => {
             output.drinks = v;
         });
+
         var p = Promise.all([places, events, food, drinks]);
 
         p.then(function (v) {
             var result = temp.places.concat(temp.events);
             output.events = result;
             res.send(output);
-        });
+        }).catch(
+            err => console.log("Sean Bae what the fuck")
+        );
     });
     //google places call for food
     app.get('/getDinner', (req, res)=>{
@@ -197,8 +207,8 @@ module.exports = function(app,  path){
     app.get('/getOneBusiness', (req, res) => {
         const id= req.body.id;
         axios({
-            url: `https://api.yelp.com/v3/businesses/${id}`,
-            // url: `https://api.yelp.com/v3/businesses/four-sons-brewing-huntington-beach-5`,
+            // url: `https://api.yelp.com/v3/businesses/${id}`,
+            url: `https://api.yelp.com/v3/businesses/four-sons-brewing-huntington-beach-5`,
             headers: {'Authorization': 'Bearer xkA9Hp5U6wElMNSf3MGcF_L6R0Io18O69Xsth-G-OsV50MIfoVyiWfQmmQgFHpmFvgFatiEW8sppCiAVWrfRgpy1-pNH905xO-Okl1TV6nIqp_RXCSDmvJFOEqKLWnYx'},
             responseType: 'json'
         })
