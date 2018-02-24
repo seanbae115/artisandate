@@ -16,6 +16,11 @@ class SignUpPage extends Component {
 
     render(){
         const { handleSubmit } = this.props;
+        
+        if (this.props.auth) {
+            this.props.history.push('/location-page');
+        }
+
         return ( 
             <div>
                 <NavBar/>
@@ -55,9 +60,17 @@ function validate(values) {
     return error;
 }
 
+function mapStateToProps(state) {
+    console.log('this is state', state)
+    return {
+        auth: state.user.auth,
+        error: state.user.error
+    }
+}
+
 SignUpPage = reduxForm({
     form: 'sign-up',
     validate: validate
 })(SignUpPage);
 
-export default connect(null, { signUp })(SignUpPage);
+export default connect(mapStateToProps, { signUp })(SignUpPage);

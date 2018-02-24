@@ -34,15 +34,8 @@ class ResultsPage extends Component {
 function mapStateToProps(state){
     return {
         events: state.datePlan.events,
-        eventsId: "",
-        eventsSaved: false,
         food: state.datePlan.food,
-        foodId: "",
-        foodSaved: false,
         drinks: state.datePlan.drinks,
-        drinksId: "",
-        drinksSaved: false,
-        locationDetails: ""
     }
 }
 
