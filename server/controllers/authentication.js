@@ -8,15 +8,15 @@ function tokenForUser(user) {
     const ts = new Date().getTime();
 
     return jwt.encode({
-        uid: user.id,
+        uid: user.ID,
         ts: ts
     }, secret);
 }
 
 exports.signup = (req, res, next) => {
-    const { email, password, username } = req.body;
+    const { email, password } = req.body;
 
-    if (!email || !password || !username) {
+    if (!email || !password) {
         const output = [];
 
         if (!email) {
@@ -29,22 +29,22 @@ exports.signup = (req, res, next) => {
         return res.status(422).send(output);
     }
 
-    let sql = User.userSearchSQL(email) 
-    
-    connection.query(sql, function (err, results, fields) {
-        if (err) { return done(err) }
-        if (results[0]) {
-            return done(null, false);
-        } else {
-            let sql = userCreateSQL(email, password);
-            connection.query(sql, function (err, results, fields) {
-                if (err) throw err;
+    let user = User.userSearchSQL(email) 
+    let newUser = User.createUser(email, password);
+    connection.query(user, function (err, results, fields) {
+        console.log('What the fuck:', results);
+        if (err) return next(err);
 
-                return done(null, results.insertId);
+        if (results[0]) {
+            return res.status(422).send(['Email already in use'])
+        } else {
+            connection.query(newUser, function (err, results, fields) {
+                console.log('Justin What The Fuck: ', results);
+                if (err) throw err;
             });
         }
         res.send({
-            username,
+            email: email,
             token: tokenForUser(newUser)
         });
     });
@@ -52,7 +52,7 @@ exports.signup = (req, res, next) => {
 
 exports.signin = (req, res, next) => {
     res.send({
-        username: req.user.username,
+        username: req.email,
         token: tokenForUser(req.user)
     });
 }
