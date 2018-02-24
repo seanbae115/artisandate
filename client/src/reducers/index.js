@@ -7,7 +7,7 @@ import user from './user_reducer';
 export default combineReducers({
     datePlan: resultsReducer,
     locationDetail: browserReducer,
-    form: formReducer
+    form: formReducer,
     user: user
 });
 
