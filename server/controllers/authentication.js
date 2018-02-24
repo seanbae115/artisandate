@@ -32,14 +32,13 @@ exports.signup = (req, res, next) => {
     let user = User.userSearchSQL(email) 
     let newUser = User.createUser(email, password);
     connection.query(user, function (err, results, fields) {
-        console.log('What the fuck:', results);
+        console.log('error, user already exists:', results);
         if (err) return next(err);
-
         if (results[0]) {
             return res.status(422).send(['Email already in use'])
         } else {
             connection.query(newUser, function (err, results, fields) {
-                console.log('Justin What The Fuck: ', results);
+                console.log('signUp in Authentication: ', results);
                 if (err) throw err;
             });
         }
