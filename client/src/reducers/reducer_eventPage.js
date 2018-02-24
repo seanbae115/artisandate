@@ -7,8 +7,9 @@ const DEFAULT_STATE = {
 export default function (state = DEFAULT_STATE, action) {
     switch (action.type) {
         case types.GET_DETAILS:
-            const { details } = action.payload.data;
-            return { ...state, details };
+        console.log("this is action.payload.data: ", action.payload.data)
+            const { data } = action.payload;
+            return { ...state, data };
         default:
             return state;
     }

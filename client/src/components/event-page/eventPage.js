@@ -10,17 +10,17 @@ import Environment from './environment';
 
 class EventPage extends Component{
     componentDidMount(){
-        console.log('props are: ', this.props)
-        this.props.getIndividual();
+        this.props.getIndividual(this.props.match.params);
     }
     render(){
+        console.log("props in event page: ",this.props);
         return (
             <div className = 'structure'>
                 <NavBar/>
-                <Title/>
-                <JumboImg/>
-                <Info/>
-                <Environment/>
+                <Title business = {this.props.details}/>
+                <JumboImg business={this.props.details}/>
+                <Info business={this.props.details}/>
+                <Environment business={this.props.details}/>
             </div>
         );
     }
@@ -28,7 +28,7 @@ class EventPage extends Component{
 
 function mapStateToProps(state){
     return {
-        business: state.detail
+        details: state.detail.data
     }
 }
 

@@ -9,7 +9,7 @@ import LocationBrowser from "./locationBrowser";
 
 class ResultsPage extends Component {
     sendId(id){
-        this.props.history.push('/event-page');
+        this.props.history.push('/summary-page');
     }
     componentDidMount(){
         this.props.getPlanner(this.props.match.params);

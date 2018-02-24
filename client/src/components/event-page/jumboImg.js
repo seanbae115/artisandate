@@ -5,12 +5,21 @@ import './jumboImg.css';
 
 
 
-function JumboImg(){
+function JumboImg(props){
+    
+
+    if(!props.business){
+        return <h1>Loading...</h1>
+    }
+
+    console.log('these are jumboImg props: ', props.business.image_url);
+
+
     return (
     <div id="jumboImg">
         <div className="row">
             <div className="col s12 center-align">
-                <img  className = 'multi' src={lola} alt="Lola Gaspar"/>
+                <img  className = 'multi' src={props.business.photos[2]} alt={props.business.id}/>
             </div>
         </div>
     </div>

@@ -204,16 +204,16 @@ module.exports = (app,  path) => {
         })
     });
 
-    app.get('/getOneBusiness', (req, res) => {
+    app.post('/getOneBusiness', (req, res) => {
         const id= req.body.id;
         axios({
-            // url: `https://api.yelp.com/v3/businesses/${id}`,
-            url: `https://api.yelp.com/v3/businesses/four-sons-brewing-huntington-beach-5`,
+            url: `https://api.yelp.com/v3/businesses/${id}`,
+            // url: `https://api.yelp.com/v3/businesses/four-sons-brewing-huntington-beach-5`,
             headers: {'Authorization': 'Bearer xkA9Hp5U6wElMNSf3MGcF_L6R0Io18O69Xsth-G-OsV50MIfoVyiWfQmmQgFHpmFvgFatiEW8sppCiAVWrfRgpy1-pNH905xO-Okl1TV6nIqp_RXCSDmvJFOEqKLWnYx'},
             responseType: 'json'
         })
         .then(function(response){
-                console.log('=========   Photos:  =========',response.data.photos);
+                console.log('=========   Photos:  =========',response.data);
                 res.send(response.data);
         })
         .catch(function(err){
