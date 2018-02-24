@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import"./resultsPage.css"
-import {getPlanner} from "../../actions";
+import { getPlanner } from "../../actions";
 import { Link } from 'react-router-dom';
 import NavBar from "../nav-bar/navBar";
 import LocationBrowser from "./locationBrowser";

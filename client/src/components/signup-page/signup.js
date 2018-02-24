@@ -5,36 +5,30 @@ import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import { renderInput } from '../../helpers';
 import NavBar from '../nav-bar/navBar';
+import { signUp } from '../../actions';
 
 class SignUpPage extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-        }
-    }
 
-    signup(){
-        const serverRoute = "http://localhost:8000/signup";
-        const request = axios.post()
+    handleSignUp(values) {
+        console.log('Sign Up form submitted: ', values)
+        this.props.signUp(values);
     }
 
     render(){
+        const { handleSubmit } = this.props;
         return ( 
             <div>
                 <NavBar/>
                 <div className="container amber">
-                    <div className="card grey lighten-1">
+                    <div className="card blue lighten-1">
                         <div className="card-content">
-                            <form>
-                                <h3 className='center-align'>Sign Up</h3>
-                                <label>Email</label>
-                                <Field id='email-signup' name='email' value='name' type="email" component={renderInput}/>
-                                <label>Password</label>
-                                <Field id='password-signup' name='password' value='password' type='password' component={renderInput}/>
-                                <label>Confirm Password</label>
-                                <Field id='conf-password' name='conf-password' value='conf-password' type='password' component={renderInput} />
+                            <form onSubmit={handleSubmit(this.handleSignUp.bind(this))}>
+                                <h3 className='card-heading'>Sign Up</h3>
+                                <Field component={ renderInput } id='email' name='email' />
+                                <Field component={ renderInput } id='password' name='password' type='password' />
+                                <Field component={ renderInput } id='confirmPassword' name='confirmPassword' type='password' />
                                 <div className='center-align'>
-                                    <Link to='/login-page 'id='register' className='btn amber darken-3' type='button'>Sign Up</Link>
+                                    <button className='btn amber darken-3' type='submit'>Sign Up</button>
                                 </div>
                             </form>
                         </div>
@@ -45,8 +39,25 @@ class SignUpPage extends Component {
     }
 }
 
+function validate(values) {
+    const error = {};
+
+    if (!values.email) {
+        error.email = 'please enter an email'
+    }
+    if (!values.password) {
+        error.password = 'please choose a password'
+    }
+    if (values.password !== values.confirmPassword) {
+        error.confirmPassword = 'Passwords do not match'
+    }
+
+    return error;
+}
+
 SignUpPage = reduxForm({
-    form: 'signup-form'
+    form: 'sign-up',
+    validate: validate
 })(SignUpPage);
 
-export default connect(null, {})(SignUpPage);
+export default connect(null, { signUp })(SignUpPage);
