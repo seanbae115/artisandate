@@ -18,8 +18,9 @@ const App = () => (
             <Route path = '/signup-page' component = {SignUp}/>
             <Route path = '/login-page' component = {Login}/>
             <Route path = '/location-page' component = {LocationPage}/>
-            <Route path = '/results-page/:zip' component = {ResultsPage}/>
-            <Route path = '/event-page' component = {EventPage}/>
+            {/*<Route path = '/results-page/:zip' component = {ResultsPage}/>*/}
+            <Route path = '/results-page/:zip/:id' component = {ResultsPage}/>
+            <Route path = '/event-page/:id' component = {EventPage}/>
             <Route path = '/summary-page' component = {SummaryPage}/>
             <Route path = '/ourteam-page' component = {OurTeam}/>
             <Route path = '/logout' component = {Home}/>
