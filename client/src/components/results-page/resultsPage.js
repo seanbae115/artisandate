@@ -9,9 +9,7 @@ import LocationBrowser from "./locationBrowser";
 
 class ResultsPage extends Component {
     componentDidMount(){
-        console.log("before get planner", this.props);
         this.props.getPlanner(this.props.match.params);
-        console.log("AFTER", this.props);
     }
 
     render() {
@@ -32,7 +30,6 @@ class ResultsPage extends Component {
 }
 
 function mapStateToProps(state){
-    console.log("MSTP", state)
     return {
         events: state.datePlan.events,
         eventsId: "",
