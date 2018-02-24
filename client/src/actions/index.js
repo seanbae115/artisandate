@@ -27,6 +27,7 @@ export function signUp(cred) {
             dispatch({
                 type: types.SIGN_UP
             });
+            console.log('Successful sign in')
         } catch (err) {
             dispatch({
                 type: types.AUTH_ERROR,
@@ -40,9 +41,7 @@ export function signIn(cred) {
     return dispatch => {
         axios.post(`${BASE_URL}/auth/signin`, cred).then(res => {
             console.log('Signin Resp:', res);
-
             localStorage.setItem('token', res.data.token);
-
             dispatch({
                 type: types.SIGN_IN
             });

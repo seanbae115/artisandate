@@ -14,13 +14,16 @@ class SignInPage extends Component {
         }
     }
     handleSignIn(values) {
-        console.log('Sign In form submitted: ', values)
         this.props.signIn(values);
     }
 
+    checkAuth(){
+    }
     render(){
         const { handleSubmit } = this.props;
-
+        if(this.props.auth){
+            this.props.history.push('/location-page');
+        }
         var noAccountStyle = {
             'marginTop': '20px'
         };
@@ -65,9 +68,17 @@ function validate(values) {
     return error;
 }
 
+function mapStateToProps(state){
+    console.log('this is state',state)
+    return {
+        auth: state.user.auth,
+        error: state.user.error
+    }
+}
+
 SignInPage = reduxForm({
     form: 'signin-form',
     validate: validate
 })(SignInPage);
 
-export default connect(null, {signIn})(SignInPage);
+export default connect(mapStateToProps, {signIn})(SignInPage);
