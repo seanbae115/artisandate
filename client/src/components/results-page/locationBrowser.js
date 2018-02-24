@@ -6,6 +6,7 @@ import {connect} from "react-redux";
 import Header from './resultHeader';
 import Body from './resultBody';
 import {locationDetails} from "../../actions";
+import  {getIndividual} from "../../actions";
 import {Carousel} from "react-responsive-carousel";
 
 
@@ -19,7 +20,6 @@ class LocationBrowser extends Component {
         this.updateLocation = this.updateLocation.bind(this);
         this.goToDetails = this.goToDetails.bind(this);
     }
-
     updateLocation(index){
         this.locationIndex = index;
         this.compileDetails(this.locationIndex)

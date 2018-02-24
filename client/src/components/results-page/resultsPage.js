@@ -8,10 +8,12 @@ import LocationBrowser from "./locationBrowser";
 
 
 class ResultsPage extends Component {
+    sendId(id){
+        this.props.history.push('/summary-page');
+    }
     componentDidMount(){
         this.props.getPlanner(this.props.match.params);
     }
-
     render() {
         const { history } = this.props;
 
@@ -22,7 +24,7 @@ class ResultsPage extends Component {
                 <LocationBrowser history={history} locations={this.props.food}/>
                 <LocationBrowser history={history} locations={this.props.drinks}/>
                 <div className="center-align location-info-group">
-                    <Link to='/summary-page' className='btn btn-large'>Confirm</Link>
+                    <button onClick = {this.sendId.bind(this)} className='btn btn-large'>Confirm</button>
                 </div>
             </div>
         )

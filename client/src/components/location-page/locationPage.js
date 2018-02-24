@@ -7,8 +7,8 @@ import { reduxForm, Field } from 'redux-form';
 import { sendZip } from '../../actions';
 
 class LocationPage extends Component {
-    sendData(zip){
-        this.props.history.push(`/results-page/${zip.zip}`);
+    sendData(props){
+        this.props.history.push(`/results-page/${props.zip}`);
     }
     renderInput(props){
         return (
