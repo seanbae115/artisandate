@@ -11,10 +11,7 @@ function JumboImg(props){
     if(!props.business){
         return <h1>Loading...</h1>
     }
-
-    console.log('these are jumboImg props: ', props.business.image_url);
-
-
+    
     return (
     <div id="jumboImg">
         <div className="row">
