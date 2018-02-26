@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import './eventPage.css'
 import { getIndividual } from '../../actions';
 import NavBar from '../nav-bar/navBar';
-import Title from './title';
+import TitleImage from './title';
 import JumboImg from './jumboImg';
 import Info from './info';
 import Environment from './environment';
+
 
 class EventPage extends Component{
     componentDidMount(){
@@ -17,10 +18,8 @@ class EventPage extends Component{
         return (
             <div className = 'structure'>
                 <NavBar/>
-                <Title business = {this.props.details}/>
-                <JumboImg business={this.props.details}/>
+                <TitleImage business = {this.props.details}/>
                 <Info business={this.props.details}/>
-                <Environment business={this.props.details}/>
             </div>
         );
     }
