@@ -10,7 +10,8 @@ class SummaryButtons extends Component {
         super(props);
         this.state = {};
         this.data = {
-            email: this.props.email
+            email: this.props.email,
+            dateData: this.props.dateData
         };
     };
     
@@ -37,8 +38,10 @@ class SummaryButtons extends Component {
 };
 
 function mapStateToProps(state){
+    console.log(state);
     return {
-        email: state.user.email
+        email: state.user.email,
+        dateData: state.datePlan
     }
 }
 export default connect(mapStateToProps, {sendMail})(SummaryButtons);

@@ -4,7 +4,9 @@ const test = require('../test.js');
 
 module.exports = function(app, path){
     app.post('/send', (req, res) => {
-        console.log('What the fuck request: ', req);
+        const event = req.body.dateData.mainEvent;
+        const food = req.body.dateData.mainFood;
+        const drinks = req.body.dateData.mainDrinks;
         const output = `
         <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
             <tr>
@@ -26,13 +28,13 @@ module.exports = function(app, path){
                                         <tr>
                                             <td align="center" valign="top" style="width: 10%; padding:30px 5px">
                                                     <span class="x_retina">
-                                                            <img data-imagetype="External" src=${test.events.image_url}
+                                                            <img data-imagetype="External" src=${event.image_url}
                                                                 alt="" width="110px"
                                                                 style="border:0; margin:0; padding:0; border-radius:15px; ">
                                                     </span>
                                             </td>
                                             <td align="center" valign="top" style="width: 45%; padding:30px 5px; text-align: left; font-size:20px;">
-                                                <span>${test.events.name}</span><br>
+                                                <span>${event.name}</span><br>
                                                 <img data-imagetype="External" src="4-star.png"
                                                     alt="" width="135px"
                                                     style="border:0; margin:0; padding:10px 0 0 0; ">
@@ -41,9 +43,9 @@ module.exports = function(app, path){
                                                  
                                             </td>
                                             <td align="center" valign="top" style="width: 45%; padding:30px 5px; text-align: right; font-size:18px;">
-                                                <span>100 Goldenwest St</span><br>
-                                                <span>Huntington Beach </span><span>CA 92648</span><br>                                             
-                                                <span>(714) 841-8644</span><br>
+                                                <span>${event.location.address1}</span><br>
+                                                <span>${event.location.city} </span><span>${event.location.state} ${event.location.zip_code}</span><br>                                             
+                                                <span>${event.display_phone}</span><br>
                                             </td>                                            
                                         </tr>     
                                 </table>
@@ -52,14 +54,14 @@ module.exports = function(app, path){
                                     <tr>
                                         <td align="center" valign="top" style="width: 10%; padding:30px 5px">
                                                     <span class="x_retina">
-                                                            <img data-imagetype="External" src=${test.food.image_url}
+                                                            <img data-imagetype="External" src=${food.image_url}
                                                                 alt="" width="110px"
                                                                 style="border:0; margin:0; padding:0; border-radius:15px; ">
                                                     </span>    
 
                                         </td>
                                         <td align="center" valign="top" style="width: 45%; padding:30px 5px; text-align: left; font-size:20px;">
-                                                <span>${test.food.name}</span><br>
+                                                <span>${food.name}</span><br>
                                                 <img data-imagetype="External" src="4-star.png"
                                                     alt="" width="135px"
                                                     style="border:0; margin:0; padding:10px 0 0 0; ">
@@ -68,9 +70,9 @@ module.exports = function(app, path){
                                                  
                                         </td>
                                         <td align="center" valign="top" style="width: 45%; padding:30px 5px; text-align: right; font-size:18px;">
-                                                <span>100 Goldenwest St</span><br>
-                                                <span>Huntington Beach </span><span>CA 92648</span><br>                                             
-                                                <span>(714) 841-8644</span><br>
+                                            <span>${food.location.address1}</span><br>
+                                            <span>${food.location.city} </span><span>${food.location.state} ${food.location.zip_code}</span><br>                                             
+                                            <span>${food.display_phone}</span><br>
                                         </td>                                            
                                     </tr>     
                             </table>
@@ -79,14 +81,14 @@ module.exports = function(app, path){
                                 <tr>
                                         <td align="center" valign="top" style="width: 10%; padding:30px 5px">
                                                 <span class="x_retina">
-                                                        <img data-imagetype="External" src=${test.drinks.image_url}
+                                                        <img data-imagetype="External" src=${drinks.image_url}
                                                             alt="" width="110px"
                                                             style="border:0; margin:0; padding:0; border-radius:15px; ">
                                                 </span> 
 
                                         </td>
                                         <td align="center" valign="top" style="width: 45%; padding:30px 5px; text-align: left; font-size:20px;">
-                                            <span>${test.drinks.name}</span><br>
+                                            <span>${drinks.name}</span><br>
                                             <img data-imagetype="External" src="4-star.png"
                                                 alt="" width="135px"
                                                 style="border:0; margin:0; padding:10px 0 0 0; ">
@@ -95,9 +97,9 @@ module.exports = function(app, path){
                                              
                                         </td>
                                         <td align="center" valign="top" style="width: 45%; padding:30px 5px; text-align: right; font-size:18px;">
-                                            <span>100 Goldenwest St</span><br>
-                                            <span>Huntington Beach </span><span>CA 92648</span><br>                                             
-                                            <span>(714) 841-8644</span><br>
+                                            <span>${drinks.location.address1}</span><br>
+                                            <span>${drinks.location.city} </span><span>${drinks.location.state} ${drinks.location.zip_code}</span><br>                                             
+                                            <span>${drinks.display_phone}</span><br>
                                         </td>                                            
                                     </tr>     
                         </table>
