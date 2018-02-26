@@ -35,7 +35,7 @@ class SummaryButtons extends Component {
                 </div>
             </div>
         )}
-};
+}
 
 function mapStateToProps(state){
     console.log(state);
