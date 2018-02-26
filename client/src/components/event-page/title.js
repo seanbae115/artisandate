@@ -7,7 +7,10 @@ function TitleImage(props){
     if (!props.business) {
         return <h1>Loading...</h1>
     }
-    console.log("this is buniness name: ", props.business.name);
+    
+    const picture = props.business.photos;
+    const randomPic = picture.sort(function(a,b) {return 0.5 - Math.random()});
+
     return (
         <div>
             <div id="title">
@@ -20,7 +23,7 @@ function TitleImage(props){
             <div id="jumboImg">
                 <div className="row">
                     <div className="col s12 center-align">
-                        <img className='multi' src={props.business.photos[0]} alt={props.business.id} />
+                        <img className='multi' src={randomPic[0]} alt={props.business.id} />
                     </div>
                 </div>
             </div>
