@@ -1,5 +1,10 @@
 #title{
-    height: 15vh;
+    height: 9vh;
+}
+
+#title h1{
+    margin: 1vh auto;
+    box-sizing: border-box;
 }
 
 .lobster{

@@ -22,6 +22,7 @@ class ResultsPage extends Component {
     componentDidMount(){
         this.props.getPlanner(this.props.match.params);
     }
+  
     goToSummary(){
         // const finalPlan = {
         //     event: this.props.mainEvent,
@@ -31,6 +32,7 @@ class ResultsPage extends Component {
         console.log("CONFIRM CLICK props: ", this.props);
         this.props.history.push(`/summary-page`);
     }
+
     render() {
         const { history } = this.props;
 

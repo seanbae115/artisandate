@@ -5,7 +5,7 @@ function Environment (props){
     return (
     <div>
         <div id="environment">
-            <div className="container">
+            <div>
                 <div className="row">
                     <div className="col s12 center-align">
                         <h3 className = 'roboto'>Environment</h3>

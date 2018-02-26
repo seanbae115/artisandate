@@ -17,13 +17,14 @@ class SignInPage extends Component {
         this.props.signIn(values);
     }
 
-    checkAuth(){
+    sendData(props){
+        if(this.props.auth){
+            this.props.history.push(`/location-page/:${this.props.auth}`);
+        }
     }
+
     render(){
         const { handleSubmit } = this.props;
-        if(this.props.auth){
-            this.props.history.push('/location-page');
-        }
         var noAccountStyle = {
             'marginTop': '20px'
         };
@@ -33,7 +34,7 @@ class SignInPage extends Component {
                 <div className="container amber">
                     <div className="card grey lighten-1">
                         <div className="card-content">
-                            <form onSubmit={handleSubmit(this.handleSignIn.bind(this))}>
+                            <form onSubmit={handleSubmit(this.handleSignIn.bind(this), this.sendData(this.props))}>
                                 <h3 className='card-heading'>Sign In</h3>
                                 <Field name='email' component={renderInput}/>
                                 <Field name='password' type="password" component={renderInput} />
@@ -57,7 +58,6 @@ class SignInPage extends Component {
 
 function validate(values) {
     const error = {};
-
     if (!values.email) {
         error.email = 'please enter an email'
     }
@@ -68,10 +68,11 @@ function validate(values) {
     return error;
 }
 
-function mapStateToProps(state){
-    console.log('this is state',state)
+function mapStateToProps(state) {
+    console.log('this is state', state)
     return {
         auth: state.user.auth,
+        email: state.user.email,
         error: state.user.error
     }
 }

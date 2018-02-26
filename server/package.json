@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node webserver.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon --inspect webserver.js",
+    "server": "nodemon webserver.js",
     "dev": "npm run dev --prefix .."
   },
   "repository": {

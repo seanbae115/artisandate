@@ -64,6 +64,7 @@ function mapStateToProps(state) {
     console.log('this is state', state)
     return {
         auth: state.user.auth,
+        email: state.user.email,
         error: state.user.error
     }
 }

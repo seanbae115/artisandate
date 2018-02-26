@@ -1,18 +1,22 @@
 import React from 'react';
-// import lola from '../../assets/images/lola.jpg';
+import lola from '../../assets/images/lola.jpg';
 import './jumboImg.css';
 
 
 
 
-function JumboImg(){
+function JumboImg(props){
+    
+
+    if(!props.business){
+        return <h1>Loading...</h1>
+    }
+    
     return (
     <div id="jumboImg">
-        <div className="container">
-            <div className="row">
-                <div className="col s12 center-align">
-                    {/*<img  className = 'multi' src={lola} alt="Lola Gaspar"/>*/}
-                </div>
+        <div className="row">
+            <div className="col s12 center-align">
+                <img  className = 'multi' src={props.business.photos[2]} alt={props.business.id}/>
             </div>
         </div>
     </div>
