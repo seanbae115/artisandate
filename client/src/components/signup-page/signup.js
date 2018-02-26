@@ -14,12 +14,14 @@ class SignUpPage extends Component {
         this.props.signUp(values);
     }
 
+    sendData(props) {
+        if (this.props.auth) {
+            this.props.history.push(`/location-page/:${this.props.auth}`);
+        }
+    }
+
     render(){
         const { handleSubmit } = this.props;
-        
-        if (this.props.auth) {
-            this.props.history.push('/location-page');
-        }
 
         return ( 
             <div>
@@ -27,7 +29,7 @@ class SignUpPage extends Component {
                 <div className="container amber">
                     <div className="card blue lighten-1">
                         <div className="card-content">
-                            <form onSubmit={handleSubmit(this.handleSignUp.bind(this))}>
+                            <form onSubmit={handleSubmit(this.handleSignUp.bind(this), this.sendData(this.props))}>
                                 <h3 className='card-heading'>Sign Up</h3>
                                 <Field component={ renderInput } id='email' name='email' />
                                 <Field component={ renderInput } id='password' name='password' type='password' />
