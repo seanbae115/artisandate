@@ -21,15 +21,15 @@ class ResultsPage extends Component {
 
     componentDidMount(){
         this.props.getPlanner(this.props.match.params);
-        console.log("RESULTS PROPS: ", this.props);
     }
     goToSummary(){
-        const finalPlan = {
-            event: this.props.mainEvent,
-            food: this.props.mainFood,
-            drinks: this.props.mainDrinks
-        };
-        console.log("CONFIRM CLICK props: ", finalPlan);
+        // const finalPlan = {
+        //     event: this.props.mainEvent,
+        //     food: this.props.mainFood,
+        //     drinks: this.props.mainDrinks
+        // };
+        console.log("CONFIRM CLICK props: ", this.props);
+        this.props.history.push(`/summary-page`);
     }
     render() {
         const { history } = this.props;
@@ -41,7 +41,6 @@ class ResultsPage extends Component {
                 <LocationBrowser initial={this.initialUpdate} name="food" history={history} locations={this.props.food}/>
                 <LocationBrowser initial={this.initialUpdate} name="drinks" history={history} locations={this.props.drinks}/>
                 <div className="center-align location-info-group">
-                    {/*<Link to='/summary-page' className='btn btn-large'>Confirm</Link>*/}
                     <button onClick={this.goToSummary.bind(this)} className='btn btn-large'>Confirm</button>
                 </div>
             </div>

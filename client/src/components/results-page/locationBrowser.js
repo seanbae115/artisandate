@@ -14,47 +14,33 @@ class LocationBrowser extends Component {
         super(props);
 
         this.locationId = "";
-        // this.locationIndex = 0;
         this.details = {};
         this.updateLocation = this.updateLocation.bind(this);
         this.goToDetails = this.goToDetails.bind(this);
     }
 
-    componentDidMount(){
-        // this.updateLocation(0);
-    }
-
     componentWillReceiveProps(nextProps){
-        console.log('==========CWRP=========:', nextProps);
 
         if(!this.props.initial.complete){
-            console.log('Not Complete');
             this.updateLocation(0, nextProps.locations);
             this.props.initial[nextProps.name] = true;
 
             if(this.props.initial.events && this.props.initial.food && this.props.initial.drinks){
-                console.log('All data loaded');
                 this.props.initial.complete = true;
             }
         }
     }
 
     updateLocation(index, locations){
-
-        console.log('Update Location:', index, locations);
-
-        if(locations){
-            console.log('Given location...');
+        if(this.props.locations.length === 0){
             this.locationId = locations[index].id;
             this.props.locationDetails(locations[index], this.props.name);
             return;
         }
 
-        console.log("BROWSER PROPS: ", this.props);
         this.locationId = this.props.locations[index].id;
         this.details = this.props.locations[index];
         this.props.locationDetails(this.details, this.props.name);
-        console.log("the new detail: ", this.details);
     }
 
     goToDetails(){
@@ -66,7 +52,32 @@ class LocationBrowser extends Component {
         const { locations } = this.props;
 
         if(!locations.length){
-            return <p>Loading...</p>;
+            return (
+                <div className="location-info-group">
+                    <div className="row valign-wrapper">
+                        <div className="col s12 content-list center-align">
+                            Loading...
+                        </div>
+                    </div>
+                    <div className="row valign-wrapper bottom-pad">
+                        <div className="col s4 offset-s2">
+                            <button className='btn thin-btn'>Details</button>
+                        </div>
+                        {/*toggle switch */}
+                        <div className="col s5">
+                            <div className="switch">
+                                <label>
+                                    Omit
+                                    <input type="checkbox"/>
+                                    <span className="lever"/>
+                                    Include
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="divider"/>
+                </div>
+            );
         }
 
         const result = locations.map((item, index) => {
