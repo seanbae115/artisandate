@@ -6,8 +6,8 @@ import { reducer as formReducer } from 'redux-form';
 import user from './user_reducer';
 
 export default combineReducers({
-    datePlan: resultsReducer,
-    locationDetail: browserReducer,
+    dateResults: resultsReducer,
+    datePlan: browserReducer,
     form: formReducer,
     user: user,
     detail: detailReducer
