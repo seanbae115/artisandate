@@ -20,11 +20,9 @@ export function getPlanner(zip){
 }
 
 export function getIndividual(id){
-    console.log("The ID:", id);
     return async dispatch => {
         try {
             const request = await axios.post(`${BASE_URL}/getOneBusiness`, id);
-            console.log("This is request.data: ",request.data)
             dispatch({
                 type: types.GET_DETAILS,
                 payload: request
