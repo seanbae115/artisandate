@@ -10,14 +10,14 @@ import {MapComponent} from './map';
 class Summary extends Component{
     render() {
         console.log("Summary Page Props: ", this.props);
-        console.log('Latitude: ', this.props.event.coordinates.latitude);
+        // console.log('Latitude: ', this.props.event.coordinates.latitude);
         return (
             <div>
                 <NavBar/>
                 <SummaryEvent eventType="Event" eventName={this.props.event.name}/>
                 <SummaryEvent eventType="Food" eventName={this.props.food.name}/>
                 <SummaryEvent eventType="Drinks" eventName={this.props.drinks.name}/>
-                <MapComponent eventLoc={this.props.event.coordinates} foodLoc={this.props.food.coordinates} drinkLoc={this.props.drinks.coordinates} />
+                <MapComponent eventLoc={this.props.event} foodLoc={this.props.food} drinkLoc={this.props.drinks} />
                 <SummaryButtons/>
             </div>
         );
