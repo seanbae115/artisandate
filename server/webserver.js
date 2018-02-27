@@ -13,6 +13,10 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '..', 'client', 'dist', 'index.html'));
+});
+
 require('./config/passport.js');
 
 require('./routes/auth.js')(app);
