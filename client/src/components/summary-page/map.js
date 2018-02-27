@@ -3,13 +3,17 @@ import { compose, withProps, withStateHandlers } from "recompose";
 // import FaAnchor from 'react-icons/lib/fa/anchor';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps";
 import { MarkerWithLabel } from "react-google-maps/lib/components/addons/MarkerWithLabel";
+import DrinkMarker from "../../assets/images/drink_marker.png";
+import FoodMarker from "../../assets/images/food_marker.png";
+import EventMarker from "../../assets/images/event_marker.png";
 
 export class MapComponent extends React.PureComponent {
     state = {
         isMarkerShown: false,
     };
     
-    MyMapComponent(){ 
+    MyMapComponent(){
+        console.log("maps props", this.props)
         return compose(
             withStateHandlers(() => ({
                 isOpen: false,
@@ -29,38 +33,41 @@ export class MapComponent extends React.PureComponent {
         )((props) =>
             <GoogleMap
                 defaultZoom={11}
-                defaultCenter={{ lat: 33.7743, lng: -117.9380 }}
+                defaultCenter={{ lat: this.props.eventLoc.latitude, lng: this.props.eventLoc.longitude }}
             >
                 <MarkerWithLabel
                     // onClick={}
-                    position={{ lat: 33.7743, lng: -117.9380 }}
+                    position={{ lat: this.props.eventLoc.latitude, lng: this.props.eventLoc.longitude }}
+                    icon={EventMarker}
                     labelAnchor={new google.maps.Point(0, 0)}
                     labelStyle={{ background: 'rgba(255,0,0, 0.6)', fontSize: "20px", padding: "8px", }}
                 >
                     <div>
-                        <p>Pho 76
+                        <p>Event
                         <br />
-                            Garden Grove,
-                        <br />
-                            CA, 91740
-                    </p>
+                            Costa Mesa,
+                        {/*<br />*/}
+                            {/*CA, 91740*/}
+                        </p>
                     </div>
                 </MarkerWithLabel>
 
                 <MarkerWithLabel
                     // onClick={}
-                    position={{ lat: 33.7846, lng: -117.8265 }}
+                    position={{ lat: this.props.foodLoc.latitude, lng: this.props.foodLoc.longitude }}
+                    icon={FoodMarker}
                     labelAnchor={new google.maps.Point(-20, 3)}
                     labelStyle={{ background: 'rgba(255,255,0, 0.6)', fontSize: "20px", padding: "8px", }}
                 >
                     <div>
-                        <p>The Block<br />Orange, CA, 91740</p>
+                        <p>Food<br />Orange, CA, 91740</p>
                     </div>
                 </MarkerWithLabel>
 
                 <MarkerWithLabel
                     // onClick={}
-                    position={{ lat: 33.9184, lng: -117.7265 }}
+                    position={{ lat: this.props.drinkLoc.latitude, lng: this.props.drinkLoc.longitude }}
+                    icon={DrinkMarker}
                     labelAnchor={new google.maps.Point(-20, 3)}
                     labelStyle={{ background: 'rgba(0,0,255, 0.6)', fontSize: "20px", padding: "8px", }}
                 >
