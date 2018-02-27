@@ -7,6 +7,9 @@ module.exports = function(app, path){
         const event = req.body.dateData.mainEvent;
         const food = req.body.dateData.mainFood;
         const drinks = req.body.dateData.mainDrinks;
+        const eventPrice = (event.price === undefined) ? ' ' : event.price;
+        const foodPrice = (food.price === undefined) ? ' ' : food.price;
+        const drinksPrice = (drinks.price === undefined) ? ' ' : drinks.price;
         const output = `
         <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
             <tr>
@@ -34,12 +37,12 @@ module.exports = function(app, path){
                                                     </span>
                                             </td>
                                             <td align="center" valign="top" style="width: 45%; padding:30px 5px; text-align: left; font-size:20px;">
-                                                <span>${event.name}</span><br>
+                                                <a href="http://localhost:3000/event-page/${event.id}"><span>${event.name}</span></a><br>
                                                 <img data-imagetype="External" src="4-star.png"
                                                     alt="" width="135px"
                                                     style="border:0; margin:0; padding:10px 0 0 0; ">
                                                 <br>
-                                                <span style="color:#ffc107; font-size:22px; ">$$</span>
+                                                <span style="color:#ffc107; font-size:22px; ">${eventPrice}</span>
                                                  
                                             </td>
                                             <td align="center" valign="top" style="width: 45%; padding:30px 5px; text-align: right; font-size:18px;">
@@ -61,12 +64,12 @@ module.exports = function(app, path){
 
                                         </td>
                                         <td align="center" valign="top" style="width: 45%; padding:30px 5px; text-align: left; font-size:20px;">
-                                                <span>${food.name}</span><br>
+                                        <a href="http://localhost:3000/event-page/${food.id}"><span>${food.name}</span></a><br>
                                                 <img data-imagetype="External" src="4-star.png"
                                                     alt="" width="135px"
                                                     style="border:0; margin:0; padding:10px 0 0 0; ">
                                                 <br>
-                                                <span style="color:#ffc107; font-size:22px; ">$$</span>
+                                                <span style="color:#ffc107; font-size:22px; ">${foodPrice}</span>
                                                  
                                         </td>
                                         <td align="center" valign="top" style="width: 45%; padding:30px 5px; text-align: right; font-size:18px;">
@@ -88,12 +91,12 @@ module.exports = function(app, path){
 
                                         </td>
                                         <td align="center" valign="top" style="width: 45%; padding:30px 5px; text-align: left; font-size:20px;">
-                                            <span>${drinks.name}</span><br>
+                                        <a href="http://localhost:3000/event-page/${drinks.id}"><span>${drinks.name}</span></a><br>
                                             <img data-imagetype="External" src="4-star.png"
                                                 alt="" width="135px"
                                                 style="border:0; margin:0; padding:10px 0 0 0; ">
                                             <br>
-                                            <span style="color:#ffc107; font-size:22px; ">$$</span>
+                                            <span style="color:#ffc107; font-size:22px; ">${drinksPrice}</span>
                                              
                                         </td>
                                         <td align="center" valign="top" style="width: 45%; padding:30px 5px; text-align: right; font-size:18px;">
