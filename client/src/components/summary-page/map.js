@@ -38,7 +38,7 @@ export class MapComponent extends React.PureComponent {
                 <MarkerWithLabel
                     // onClick={}
                     position={{ lat: this.props.eventLoc.latitude, lng: this.props.eventLoc.longitude }}
-                    icon={{EventMarker}}
+                    icon={EventMarker}
                     labelAnchor={new google.maps.Point(0, 0)}
                     labelStyle={{ background: 'rgba(255,0,0, 0.6)', fontSize: "20px", padding: "8px", }}
                 >
@@ -55,7 +55,7 @@ export class MapComponent extends React.PureComponent {
                 <MarkerWithLabel
                     // onClick={}
                     position={{ lat: this.props.foodLoc.latitude, lng: this.props.foodLoc.longitude }}
-                    icon={{FoodMarker}}
+                    icon={FoodMarker}
                     labelAnchor={new google.maps.Point(-20, 3)}
                     labelStyle={{ background: 'rgba(255,255,0, 0.6)', fontSize: "20px", padding: "8px", }}
                 >
@@ -67,7 +67,7 @@ export class MapComponent extends React.PureComponent {
                 <MarkerWithLabel
                     // onClick={}
                     position={{ lat: this.props.drinkLoc.latitude, lng: this.props.drinkLoc.longitude }}
-                    icon={{DrinkMarker}}
+                    icon={DrinkMarker}
                     labelAnchor={new google.maps.Point(-20, 3)}
                     labelStyle={{ background: 'rgba(0,0,255, 0.6)', fontSize: "20px", padding: "8px", }}
                 >
