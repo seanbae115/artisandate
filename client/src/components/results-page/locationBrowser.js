@@ -55,7 +55,7 @@ class LocationBrowser extends Component {
             return (
                 <div className="location-info-group">
                     <div className="row valign-wrapper">
-                        <div className="col s12 content-list center-align">
+                        <div style={{height: "147.19px"}} className="col s12 content-list center-align">
                             Loading...
                         </div>
                     </div>
@@ -94,7 +94,7 @@ class LocationBrowser extends Component {
                         <MaterialIcon icon='chevron_left' size='small'/>
                     </div>
                     <div className="col s10 content-list">
-                        <Carousel showThumbs={false} showStatus={false} infiniteLoop={true} onChange={this.updateLocation}>
+                        <Carousel showThumbs={false} showStatus={false} infiniteLoop={true} showIndicators={false} onChange={this.updateLocation}>
                             {result}
                         </Carousel>
                     </div>

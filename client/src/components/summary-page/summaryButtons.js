@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Link } from "react-router-dom";
 import { sendMail } from "../../actions";
 import { connect } from "react-redux";
+import "./summaryPage.css"
 import axios from 'axios';
 
 
@@ -19,7 +20,7 @@ class SummaryButtons extends Component {
 
     render(){
         return (
-            <div className="row">
+            <div className="row body-buffer">
                 <div className="col s4 center">
                     {/*Will change these to Link later but they don't exist yet and it blows up without Router being in place*/}
                     
@@ -38,7 +39,7 @@ class SummaryButtons extends Component {
 }
 
 function mapStateToProps(state){
-    console.log(state);
+    console.log("Summary Buttons", state);
     return {
         email: state.user.email,
         dateData: state.datePlan

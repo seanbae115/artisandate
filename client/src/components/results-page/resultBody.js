@@ -19,7 +19,7 @@ export default props => {
                     <div style={locationImage} className="z-depth-2"></div>
                 </div>
                 <div className="col s6">
-                    <div className="row">
+                    <div className="row left-align">
                         <h5 className="truncate">{name}</h5>
                         <p>{address.address1}</p>
                         <p>{`${address.city}, ${address.state} ${address.zip_code}`}</p>

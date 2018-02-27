@@ -6,14 +6,26 @@ import { MarkerWithLabel } from "react-google-maps/lib/components/addons/MarkerW
 import DrinkMarker from "../../assets/images/drink_marker.png";
 import FoodMarker from "../../assets/images/food_marker.png";
 import EventMarker from "../../assets/images/event_marker.png";
+import eventPage from "../event-page/eventPage";
+import "./summaryPage.css";
 
 export class MapComponent extends React.PureComponent {
     state = {
         isMarkerShown: false,
     };
-    
-    MyMapComponent(){
-        console.log("maps props", this.props)
+
+    SummaryMap(){
+        console.log("maps props", this.props);
+        const labelBg = {
+            background: 'linear-gradient(#fff, #fafafa)',
+            boxShadow: "2px 2px 10px 2px rgba(0, 0, 0, 0.5)",
+            borderRadius: "3px",
+            fontSize: "12px",
+            padding: "0.5em",
+            marginLeft: "0",
+            width: "150px"
+        };
+        const {eventLoc, foodLoc, drinkLoc} = this.props;
         return compose(
             withStateHandlers(() => ({
                 isOpen: false,
@@ -25,54 +37,56 @@ export class MapComponent extends React.PureComponent {
             withProps({
                 googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyAl82-QVgSS43dlCQqr6flx8BaCbREVOTA&v=3.exp&libraries=geometry,drawing,places",
                 loadingElement: <div style={{ height: `100%` }} />,
-                containerElement: <div style={{ height: `400px` }} />,
+                containerElement: <div className="container" style={{ height: "66vh", marginTop: "2%"}} />,
                 mapElement: <div style={{ height: `100%` }} />,
             }),
             withScriptjs,
             withGoogleMap
         )((props) =>
+
             <GoogleMap
                 defaultZoom={11}
-                defaultCenter={{ lat: this.props.eventLoc.latitude, lng: this.props.eventLoc.longitude }}
+                defaultCenter={{ lat: eventLoc.coordinates.latitude, lng: eventLoc.coordinates.longitude }}
             >
                 <MarkerWithLabel
                     // onClick={}
-                    position={{ lat: this.props.eventLoc.latitude, lng: this.props.eventLoc.longitude }}
+                    position={{ lat: eventLoc.coordinates.latitude, lng: eventLoc.coordinates.longitude }}
                     icon={EventMarker}
                     labelAnchor={new google.maps.Point(0, 0)}
-                    labelStyle={{ background: 'rgba(255,0,0, 0.6)', fontSize: "20px", padding: "8px", }}
+                    labelStyle={labelBg}
                 >
-                    <div>
-                        <p>Event
-                        <br />
-                            Costa Mesa,
-                        {/*<br />*/}
-                            {/*CA, 91740*/}
-                        </p>
+                    <div className="container">
+                        {eventLoc.location.display_address.map((item,index) => {
+                            return (<p key={index} className="address-line">{item}</p>);
+                        })}
                     </div>
                 </MarkerWithLabel>
 
                 <MarkerWithLabel
                     // onClick={}
-                    position={{ lat: this.props.foodLoc.latitude, lng: this.props.foodLoc.longitude }}
+                    position={{ lat: foodLoc.coordinates.latitude, lng: foodLoc.coordinates.longitude }}
                     icon={FoodMarker}
-                    labelAnchor={new google.maps.Point(-20, 3)}
-                    labelStyle={{ background: 'rgba(255,255,0, 0.6)', fontSize: "20px", padding: "8px", }}
+                    labelAnchor={new google.maps.Point(0, 0)}
+                    labelStyle={labelBg}
                 >
-                    <div>
-                        <p>Food<br />Orange, CA, 91740</p>
+                    <div className="container">
+                        {foodLoc.location.display_address.map((item,index) => {
+                            return (<p key={index} className="address-line">{item}</p>);
+                        })}
                     </div>
                 </MarkerWithLabel>
 
                 <MarkerWithLabel
                     // onClick={}
-                    position={{ lat: this.props.drinkLoc.latitude, lng: this.props.drinkLoc.longitude }}
+                    position={{ lat: drinkLoc.coordinates.latitude, lng: drinkLoc.coordinates.longitude }}
                     icon={DrinkMarker}
-                    labelAnchor={new google.maps.Point(-20, 3)}
-                    labelStyle={{ background: 'rgba(0,0,255, 0.6)', fontSize: "20px", padding: "8px", }}
+                    labelAnchor={new google.maps.Point(0, 0)}
+                    labelStyle={labelBg}
                 >
-                    <div>
-                        <p>The Shoppes<br />Chino Hills</p>
+                    <div className="container">
+                        {drinkLoc.location.display_address.map((item,index) => {
+                            return (<p key={index} className="address-line">{item}</p>);
+                        })}
                     </div>
                 </MarkerWithLabel>
             </GoogleMap>
@@ -95,9 +109,9 @@ export class MapComponent extends React.PureComponent {
     };
 
     render() {
-        const MyMapComponent = this.MyMapComponent()
+        const SummaryMap = this.SummaryMap();
         return (
-            <MyMapComponent
+            <SummaryMap
                 isMarkerShown={this.state.isMarkerShown}
                 onMarkerClick={this.handleMarkerClick}
             />
