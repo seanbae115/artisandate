@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './info.css';
-import yelp from '../../assets/images/Yelp-Stars.png';
 import fourstar from '../../assets/images/4-star.png';
 import fourhalfstar from '../../assets/images/4-2-star.png';
 import fivestar from '../../assets/images/5-star.png';
@@ -23,23 +22,23 @@ class Info extends Component{
         }
     }
     render(){
+
         if (!this.props.business) {
             return <p>Loading</p>;
         }
 
-        console.log(this.props.business.rating)
+        const { rating, price } = this.props.business;
+
         return (
             <div>
                 <div id="rating">
                     <div>
-                        <div className="row">
+                        <div className="row valign-wrapper">
                             <div className="col s6">
-                                {this.stars(this.props.business.rating)}
+                                <span>{this.stars(rating)}</span>
                             </div>
                             <div className="col s6 center-align">
-                                <i className="small material-icons">attach_money</i>
-                                <i className="small material-icons">attach_money</i>
-                                <i className="small material-icons">attach_money</i>
+                                <span className = 'dollarSign amber-text'>{price}</span>
                             </div>
                         </div>
                     </div>
