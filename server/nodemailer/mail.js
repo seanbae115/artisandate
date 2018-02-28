@@ -3,7 +3,7 @@ const { email } = require('../config/credentials.js');
 const test = require('../test.js');
 
 module.exports = function(app, path){
-    app.post('/send', (req, res) => {
+    app.post('/mailer/send', (req, res) => {
         const event = req.body.dateData.mainEvent;
         const food = req.body.dateData.mainFood;
         const drinks = req.body.dateData.mainDrinks;
