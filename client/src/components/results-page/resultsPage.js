@@ -28,7 +28,6 @@ class ResultsPage extends Component {
         //     food: this.props.mainFood,
         //     drinks: this.props.mainDrinks
         // };
-        console.log("CONFIRM CLICK props: ", this.props);
         this.props.history.push(`/summary-page`);
     }
 

@@ -61,7 +61,6 @@ class NavBar extends Component {
         }
     }
     render() {
-        console.log("props are: ", this.props.location.pathname);
         return (
             <nav>
                 <div className="amber nav-wrapper">
