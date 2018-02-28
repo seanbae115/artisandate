@@ -20,26 +20,30 @@ class SignInPage extends Component {
         var noAccountStyle = {
             'marginTop': '20px'
         };
+        var containerStyle = {
+            'height': '100vh',
+            'width': '100vw'
+        };
         return ( 
-            <div>
-                <div className="container amber">
-                    <div className="card grey lighten-1">
-                        <div className="card-content">
-                            <form onSubmit={this.props.handleSubmit(this.handleSignIn.bind(this))}>
-                                <h3 className='card-heading'>Sign In</h3>
-                                <Field name='email' component={renderInput}/>
-                                <Field name='password' type="password" component={renderInput} />
-                                <div className='center-align'>
-                                    <button className='btn amber darken-3'>Sign In</button>
-                                </div>
-                            </form>
+            <div className="grey lighten-4" style={containerStyle}>
+                <div className="row">
+                    <form onSubmit={this.props.handleSubmit(this.handleSignIn.bind(this))}>
+                        <h3 className='card-heading center-align'>Sign In</h3>
+                        <div className='col s8 offset-s2'>
+                            <Field name='email' component={renderInput}/>
+                            <Field name='password' type="password" component={renderInput} />
                         </div>
-                        <div className='no-account container center-align' style={noAccountStyle}>
-                            <h4 className='col s12'>Don't have an account?</h4>
-                            <div>
-                                <Link to='/signup-page' className='btn green'>Create one</Link>
+                        <div className="row">
+                            <div className='col s12 center-align'>
+                                <button className='btn amber darken-3'>Sign In</button>
                             </div>
                         </div>
+                    </form>
+                </div>
+                <div className='no-account container center-align' style={noAccountStyle}>
+                    <h4 className='col s12'>Don't have an account?</h4>
+                    <div>
+                        <Link to='/signup-page' className='btn green'>Create one</Link>
                     </div>
                 </div>
             </div>
