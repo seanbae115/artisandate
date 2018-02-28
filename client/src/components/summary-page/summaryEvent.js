@@ -3,7 +3,7 @@ import React from "react";
 const SummaryEvent = props => {
 
     return (
-            <div>
+            <div className="row">
                 <div className="col s11 offset-s1 left-align event-title">
                     {props.eventType}
                 </div>
