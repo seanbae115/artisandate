@@ -44,7 +44,7 @@ class LocationBrowser extends Component {
     }
 
     goToDetails(){
-        console.log('location id is: ',this.locationId);
+        // console.log('location id is: ',this.locationId);
         this.props.history.push(`/event-page/${this.locationId}`);
     }
 
@@ -61,11 +61,11 @@ class LocationBrowser extends Component {
                         </div>
                     </div>
                     <div className="row valign-wrapper bottom-pad">
-                        <div className="col s4 offset-s2">
+                        <div className="col s3 offset-s7 center-align">
                             <button className='btn thin-btn'>Details</button>
                         </div>
                         {/*toggle switch */}
-                        <div className="col s5">
+                        {/* <div className="col s5">
                             <div className="switch">
                                 <label>
                                     Omit
@@ -74,7 +74,7 @@ class LocationBrowser extends Component {
                                     Include
                                 </label>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="divider"/>
                 </div>
@@ -104,7 +104,7 @@ class LocationBrowser extends Component {
                     </div> */}
                 </div>
                 <div className="row valign-wrapper bottom-pad">
-                    <div className="col s12 center-align">
+                    <div className="col s3 offset-s7 center-align">
                         <button onClick={this.goToDetails} className='btn thin-btn'>Details</button>
                     </div>
                     {/*toggle switch */}

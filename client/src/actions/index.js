@@ -5,7 +5,7 @@ import types from './types';
 const BASE_URL = "http://localhost:8000";
 
 export function getPlanner(zip){
-    console.log("The ZIP:", zip);
+    // console.log("The ZIP:", zip);
     return async dispatch => {
         try {
             const request = await axios.post(`${BASE_URL}/getEverything`, zip);
@@ -42,7 +42,7 @@ export function signUp(cred) {
                 type: types.SIGN_UP,
                 email: cred.email
             });
-            console.log('Successful sign in')
+            // console.log('Successful sign in')
         } catch (err) {
             dispatch({
                 type: types.AUTH_ERROR,

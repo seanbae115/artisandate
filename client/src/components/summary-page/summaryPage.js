@@ -8,8 +8,6 @@ import {MapComponent} from './map';
 
 class Summary extends Component{
     render() {
-        console.log("Summary Page Props: ", this.props);
-        // console.log('Latitude: ', this.props.event.coordinates.latitude);
         return (
             <div>
                 <SummaryEvent eventType="Event" eventName={this.props.event.name}/>

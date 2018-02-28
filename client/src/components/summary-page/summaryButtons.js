@@ -16,8 +16,6 @@ class SummaryButtons extends Component {
         };
     };
     
-    
-
     render(){
         return (
             <div className="row body-buffer">
@@ -35,7 +33,7 @@ class SummaryButtons extends Component {
 }
 
 function mapStateToProps(state){
-    console.log("Summary Buttons", state);
+    // console.log("Summary Buttons", state);
     return {
         email: state.user.email,
         dateData: state.datePlan
