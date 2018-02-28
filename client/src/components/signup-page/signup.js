@@ -22,12 +22,15 @@ class SignUpPage extends Component {
             'height': '100vh',
             'width': '100vw'
         };
+        var h3Style = {
+            'marginTop': '0rem'
+        }
 
         return (
             <div className="grey lighten-4" style={containerStyle}>
                 <div className="row">
                     <form onSubmit={this.props.handleSubmit(this.handleSignUp.bind(this))}>
-                        <h3 className='card-heading center-align'>Sign Up</h3>
+                        <h3 className='center-align' style={h3Style}>Sign Up</h3>
 
                         <div className='col s8 offset-s2'>
                             <Field component={ renderInput } id='email' name='email' />

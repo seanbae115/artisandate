@@ -24,11 +24,14 @@ class SignInPage extends Component {
             'height': '100vh',
             'width': '100vw'
         };
+        var h3Style = {
+            'marginTop': '0rem'
+        }
         return ( 
             <div className="grey lighten-4" style={containerStyle}>
                 <div className="row">
                     <form onSubmit={this.props.handleSubmit(this.handleSignIn.bind(this))}>
-                        <h3 className='card-heading center-align'>Sign In</h3>
+                        <h3 className='center-align' style={h3Style}>Sign In</h3>
                         <div className='col s8 offset-s2'>
                             <Field name='email' component={renderInput}/>
                             <Field name='password' type="password" component={renderInput} />
