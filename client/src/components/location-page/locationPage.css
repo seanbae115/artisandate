@@ -71,8 +71,16 @@
     /*background-color: #ffc107;*/
 }
 
-goButtonContainer {
+.goButtonContainer {
     margin-top: 5%;
     margin-bottom: 5%;
 }
 
+.inputText {
+    font-size: 2rem !important;
+    color: grey;
+}
+
+.zipText {
+    font-size: 2rem;
+}

@@ -12,34 +12,35 @@ class LocationPage extends Component {
     }
     renderInput(props){
         return (
-            <input {...props.input} placeholder = 'Zip Code' type = 'number'/>
+            <input {...props.input} placeholder = 'Zip Code' type = 'number' className='inputText center-align'/>
         )
     }
     render(){
         console.log('location props:', this.props);
         return (
-            <div>
+            <div className='grey lighten-4 location-page-container'>
                 <NavBar/>
-                <div className="location-page-container">
-                    <div className="row location-page-row">
-                        <div className="text-align-center">
-                            <div className="grey-text text-darken-3 date-location">Let us know your date location to get started.</div>
-                            <div className="card grey lighten-1">
-                                <div className="card-content">
+                {/*<div className="location-page-container">*/}
+                    <div className="row ">
+                        {/*<div className="text-align-center">*/}
+                            <div className="grey-text text-darken-3 date-location center-align">Let us know your date location to get started.</div>
+                            {/*<div className="card lighten-1">*/}
+                                {/*<div className="card-content">*/}
                                     <form onSubmit = {this.props.handleSubmit(this.sendData.bind(this))}>
-                                        <h3 className='card-heading'>Zip Code</h3>
-                                        <Field label = 'zip' name = 'zip' component = {this.renderInput}/>
+                                        <h3 className='card-heading zipText center-align'>Zip Code</h3>
+                                        <div className='col s8 offset-s2'>
+                                            <Field label = 'zip' name = 'zip' component = {this.renderInput}/>
+                                        </div>
+                                        <div className='row'>
+                                        <div className= 'col s12 center-align'>
+                                            <button className="btn-large blue go">Go</button>
+                                        </div>
+                                        </div>
                                     </form>
-                                    <div className= 'goButtonContainer'>
-                                        <button className="btn-large blue go">Go</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
+                                {/*</div>*/}
+                            {/*</div>*/}
+                        {/*</div>*/}
                     </div>
-
-                </div>
             </div>
         )
     }
