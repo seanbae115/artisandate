@@ -44,6 +44,7 @@ class LocationBrowser extends Component {
     }
 
     goToDetails(){
+        console.log('location id is: ',this.locationId);
         this.props.history.push(`/event-page/${this.locationId}`);
     }
 
