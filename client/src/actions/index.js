@@ -53,19 +53,20 @@ export function signUp(cred) {
 }
 
 export function signIn(cred) {
-    return dispatch => {
-        axios.post(`${BASE_URL}/auth/signin`, cred).then(res => {
-            localStorage.setItem('token', res.data.token);
+    return async dispatch => {
+        try {
+            const request = await axios.post(`${BASE_URL}/auth/signin`, cred);
+            localStorage.setItem('token', request.data.token);
             dispatch({
                 type: types.SIGN_IN,
                 email: cred.email
             });
-        }).catch(err => {
+        } catch(err) {
             dispatch({
                 type: types.AUTH_ERROR,
                 error: 'Invalid Username and/or Password'
             });
-        });
+        }
     }
 }
 
