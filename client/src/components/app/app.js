@@ -1,6 +1,7 @@
 import "materialize-css/dist/css/materialize.min.css";
 import React from 'react';
 import { Route } from 'react-router-dom';
+import NavBar from '../nav-bar/navBar';
 import Home from '../home/home';
 import ResultsPage from '../results-page/resultsPage';
 import LocationPage from '../location-page/locationPage';
@@ -14,6 +15,7 @@ import OurTeam from '../ourteam-page/ourTeam';
 
 const App = () => (
         <div>
+            <Route path="/" component={NavBar}/>
             <Route exact path = '/' component = {Home}/>
             <Route path = '/signup-page' component = {SignUp}/>
             <Route path = '/signin-page' component = {SignIn}/>
