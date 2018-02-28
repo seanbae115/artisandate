@@ -2,3 +2,8 @@
     transition-timing-function: ease-out;
     transition-duration: 0.25s;
 }
+
+.arrow{
+    display: inline-block;
+    margin-left: 5vw;
+}

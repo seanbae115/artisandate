@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import Phones from '../../assets/images/phones.png';
-import NavBar from '../nav-bar/navBar';
 import TestImage from '../../assets/images/test.jpg';
 import GitHub from '../../assets/images/github.png'
 
@@ -15,7 +14,6 @@ export default class Login extends Component {
     render() {
         return (
             <div>
-                <NavBar />
                 <div className="container amber">
                     <h3 className='center-align'>OurTeam</h3>
                     <div className="card grey lighten-1">

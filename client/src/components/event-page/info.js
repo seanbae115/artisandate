@@ -21,16 +21,26 @@ class Info extends Component{
                 break;
         }
     }
+    open(is_closed){
+        if(is_closed){
+            return <p className= 'red accent-4'>CURRENTLY CLOSED</p>
+        }else{
+            return <p className = 'lobster pSize'>CURRENTLY OPEN</p>
+        }
+    }
     render(){
 
-        if (!this.props.business) {
-            return <p>Loading</p>;
-        }
-
-        const { rating, price } = this.props.business;
+        const { rating, price, is_closed, display_phone } = this.props.business;
 
         return (
             <div>
+                <div id = "openOrClosed">
+                    <div className = 'row valign-wrapper center-align'>
+                        <div className = 'col s12'>
+                            {this.open(is_closed)}
+                        </div>
+                    </div>
+                </div>
                 <div id="rating">
                     <div>
                         <div className="row valign-wrapper">
@@ -45,9 +55,10 @@ class Info extends Component{
                 </div>
                 <div id="description">
                     <div>
-                        <div className="row">
-                            <div className="col s12">
-                                <p className = 'flow-text justify roboto'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, porro!</p>
+                        <div className="row valign-wrapper">
+                            <div className="col s12 center-align">
+                                <p className = 'lobster pSize'>For More Information Please Contact:</p>
+                                <span className='pSize'>{<a href = {`tel:${display_phone}`}>{display_phone}</a>}</span>
                             </div>
                         </div>
                     </div>

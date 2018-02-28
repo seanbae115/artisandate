@@ -18,6 +18,7 @@ class NavBar extends Component {
         };
         this.slideOutMenu = this.slideOutMenu.bind(this);
         this.returnMenu = this.returnMenu.bind(this);
+        this.backButton = this.backButton.bind(this);
     }
     slideOutMenu(){
         const shadowBox = {...this.state.dragStyle};
@@ -49,30 +50,41 @@ class NavBar extends Component {
             }
         });
     }
+    backButton(){
+        switch(this.props.location.pathname){
+            case "/":
+                return ""
+            default:
+                return (
+                    <a  className = "arrow" onClick={() => { this.props.history.goBack();}}><i className = 'material-icons'>arrow_back</i></a>
+                );
+        }
+    }
     render() {
         return (
             <nav>
                 <div className="amber nav-wrapper">
+                    {this.backButton()}
                     <a href="#!" className="brand-logo">Artisan Date</a>
                     <a href="#" className="right button-collapse" onClick={this.slideOutMenu}>
                         <i className="material-icons amber-text text-darken-3">menu</i>
                     </a>
                     <ul className="right hide-on-med-and-down">
                         <li><Link to='/'>Home</Link></li>
-                        <li><Link to='/location-page'>Get Started</Link></li>
+                        {/* <li><Link to='/location-page'>Get Started</Link></li> */}
                         <li><Link to='/signup-page'>Sign Up</Link></li>
                         <li><Link to='/signin-page'>Sign In</Link></li>
                         <li><Link to='/ourteam-page'>Our Team</Link></li>
-                        <li><Link to='/logout'>Log Out</Link></li>
+                        {/* <li><Link to='/logout'>Log Out</Link></li> */}
                     </ul>
                     <div>
                         <ul className="side-nav right-aligned" style={this.state.navStyle}>
                             <li><Link to='/'>Home</Link></li>
-                            <li><Link to='/location-page'>Get Started</Link></li>
+                            {/* <li><Link to='/location-page'>Get Started</Link></li> */}
                             <li><Link to='/signup-page'>Sign Up</Link></li>
                             <li><Link to='/signin-page'>Sign In</Link></li>
                             <li><Link to='/ourteam-page'>Our Team</Link></li>
-                            <li><Link to='/logout'>Log Out</Link></li>
+                            {/* <li><Link to='/logout'>Log Out</Link></li> */}
                         </ul>
                         <div onClick={this.returnMenu} className="drag-target" style={this.state.dragStyle}></div>
                     </div>
