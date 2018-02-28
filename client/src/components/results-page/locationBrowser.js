@@ -125,18 +125,4 @@ class LocationBrowser extends Component {
     }
 }
 
-// function mapStateToProps(state){
-//     if (this.props === undefined){
-//         return {};
-//     }
-//     switch (this.props.name){
-//         case "events":
-//             return {mainEvent: state.datePlan.mainEvent};
-//         case "food":
-//             return {mainFood: state.datePlan.mainFood};
-//         case "drinks":
-//             return {mainDrinks: state.datePlan.mainDrinks}
-//     }
-// }
-
 export default connect(null, {locationDetails})(LocationBrowser);

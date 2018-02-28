@@ -15,7 +15,7 @@ export default class Home extends Component {
     render(){
         return (
             <div className="full-page">
-                <div className="splash-image"></div>
+                <div className="splash-image"/>
                 <div className="gradient valign-wrapper">
                     <div className="row">
                         <div className="col s-12 center-align">

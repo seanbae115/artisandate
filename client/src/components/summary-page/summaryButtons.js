@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Link } from "react-router-dom";
-import { sendMail } from "../../actions";
+import { sendMail, loadSpinner } from "../../actions";
 import { connect } from "react-redux";
 import "./summaryPage.css"
 import axios from 'axios';
@@ -9,20 +9,41 @@ import axios from 'axios';
 class SummaryButtons extends Component {
     constructor(props){
         super(props);
-        this.state = {};
         this.data = {
             email: this.props.email,
-            dateData: this.props.dateData
+            dateData: this.props.dateData,
         };
-    };
+
+        this.sendItinerary = this.sendItinerary.bind(this)
+    }
     
-    
+    sendItinerary(){
+
+        console.log("User data: ", this.props);
+        if (!this.props.sent){
+            this.props.loadSpinner();
+            this.props.sendMail(this.data);
+        }
+    }
+
 
     render(){
-        return (
+        const {status} = this.props;
+        let emailButton;
+        switch(status){
+            case 'sending':
+                emailButton = <div className="btn blue" style={{paddingTop: "0.6rem"}}><div className="loading"/></div>;
+                break;
+            case 'sent':
+                emailButton = <div className="btn grey">Sent</div>;
+                break;
+            default:
+                emailButton = <div onClick={this.sendItinerary} className="btn blue">Email</div>;
+        }
+         return (
             <div className="row body-buffer">
                 <div className="col s6 center-align">
-                    <div onClick={()=>sendMail(this.data)} className="btn blue">Email</div>
+                    {emailButton}
                 </div>
                 {/* <div className="col s4 center">
                     <div to="/emailPage" className="btn blue">Add Calendar</div>
@@ -35,13 +56,15 @@ class SummaryButtons extends Component {
 }
 
 function mapStateToProps(state){
-    console.log("Summary Buttons", state);
+    console.log("This is the button state: ", state.mail);
     return {
         email: state.user.email,
-        dateData: state.datePlan
+        dateData: state.datePlan,
+        sent: state.mail.emailSent,
+        status: state.mail.status
     }
 }
-export default connect(mapStateToProps, {sendMail})(SummaryButtons);
+export default connect(mapStateToProps, {sendMail, loadSpinner})(SummaryButtons);
 
 
 //calendarPage button must route to "calendar page to make a google calendar? How to do this?"
