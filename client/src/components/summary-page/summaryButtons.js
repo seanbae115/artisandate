@@ -18,7 +18,6 @@ class SummaryButtons extends Component {
     }
     
     sendItinerary(){
-
         console.log("User data: ", this.props);
         if (!this.props.sent){
             this.props.loadSpinner();
@@ -38,7 +37,7 @@ class SummaryButtons extends Component {
                 emailButton = <div className="btn grey">Sent</div>;
                 break;
             default:
-                emailButton = <div onClick={this.sendItinerary} className="btn blue">Email</div>;
+                emailButton = <div onClick={this.sendItinerary} className="btn">Email</div>;
         }
          return (
             <div className="row body-buffer">
@@ -49,14 +48,18 @@ class SummaryButtons extends Component {
                     <div to="/emailPage" className="btn blue">Add Calendar</div>
                 </div> */}
                 <div className="col s6 center-align">
+<<<<<<< HEAD
                     <div onClick={this.props.openModal}className="btn red">Home</div>
+=======
+                    <Link to="/" className="btn">Home</Link>
+>>>>>>> aa374e99cf4bb2c73b2ec4ec046ff33bc2b3467b
                 </div>
             </div>
         )}
 }
 
 function mapStateToProps(state){
-    console.log("This is the button state: ", state.mail);
+    // console.log("Summary Buttons", state);
     return {
         email: state.user.email,
         dateData: state.datePlan,

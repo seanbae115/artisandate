@@ -15,7 +15,7 @@ export class MapComponent extends React.PureComponent {
     };
 
     SummaryMap(){
-        console.log("maps props", this.props);
+        // console.log("maps props", this.props);
         const labelBg = {
             background: 'linear-gradient(#fff, #fafafa)',
             boxShadow: "2px 2px 10px 2px rgba(0, 0, 0, 0.5)",

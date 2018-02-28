@@ -7,23 +7,16 @@ import { renderInput } from '../../helpers';
 import { signIn } from '../../actions';
 
 class SignInPage extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-        }
-    }
-    handleSignIn(values) {
-        this.props.signIn(values);
-    }
 
-    sendData(props){
-        if(this.props.auth){
-            this.props.history.push(`/location-page/:${this.props.auth}`);
-        }
+    handleSignIn(values) {
+        this.props.signIn(values).then(() => {
+            if(this.props.auth){
+                this.props.history.push(`/location-page/`);
+            }
+        });
     }
 
     render(){
-        const { handleSubmit } = this.props;
         var noAccountStyle = {
             'marginTop': '20px'
         };
@@ -32,7 +25,7 @@ class SignInPage extends Component {
                 <div className="container amber">
                     <div className="card grey lighten-1">
                         <div className="card-content">
-                            <form onSubmit={handleSubmit(this.handleSignIn.bind(this), this.sendData(this.props))}>
+                            <form onSubmit={this.props.handleSubmit(this.handleSignIn.bind(this))}>
                                 <h3 className='card-heading'>Sign In</h3>
                                 <Field name='email' component={renderInput}/>
                                 <Field name='password' type="password" component={renderInput} />
@@ -67,7 +60,6 @@ function validate(values) {
 }
 
 function mapStateToProps(state) {
-    console.log('this is state', state)
     return {
         auth: state.user.auth,
         email: state.user.email,

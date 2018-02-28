@@ -1,14 +1,13 @@
-import axios from "axios"; 
+import axios from "axios";
 import { browserHistory } from 'react-router';
 import types from './types';
 
-const BASE_URL = "http://localhost:8000";
 
 export function getPlanner(zip){
-    console.log("The ZIP:", zip);
+    // console.log("The ZIP:", zip);
     return async dispatch => {
         try {
-            const request = await axios.post(`${BASE_URL}/getEverything`, zip);
+            const request = await axios.post(`/api/getEverything`, zip);
             dispatch({
                 type: types.SEND_ZIP,
                 payload: request
@@ -22,7 +21,7 @@ export function getPlanner(zip){
 export function getIndividual(id){
     return async dispatch => {
         try {
-            const request = await axios.post(`${BASE_URL}/getOneBusiness`, id);
+            const request = await axios.post(`/api/getOneBusiness`, id);
             dispatch({
                 type: types.GET_DETAILS,
                 payload: request
@@ -36,13 +35,13 @@ export function getIndividual(id){
 export function signUp(cred) {
     return async dispatch => {
         try {
-            const request = await axios.post(`${BASE_URL}/auth/signup`, cred);
+            const request = await axios.post(`/auth/signup`, cred);
             localStorage.setItem('token', request.data.token);
             dispatch({
                 type: types.SIGN_UP,
                 email: cred.email
             });
-            console.log('Successful sign in')
+            // console.log('Successful sign in')
         } catch (err) {
             dispatch({
                 type: types.AUTH_ERROR,
@@ -53,28 +52,26 @@ export function signUp(cred) {
 }
 
 export function signIn(cred) {
-    return dispatch => {
-        axios.post(`${BASE_URL}/auth/signin`, cred).then(res => {
-            localStorage.setItem('token', res.data.token);
+    return async dispatch => {
+        try {
+            const request = await axios.post(`/auth/signin`, cred);
+            localStorage.setItem('token', request.data.token);
             dispatch({
                 type: types.SIGN_IN,
                 email: cred.email
             });
-        }).catch(err => {
+        } catch(err) {
             dispatch({
                 type: types.AUTH_ERROR,
                 error: 'Invalid Username and/or Password'
             });
-        });
+        }
     }
 }
 
 export function sendMail(data) {
     return dispatch => {
-        console.log('Button Clicked');
-        console.log('Email: ', data.email);
         axios.post(`${BASE_URL}/send`, data).then (res =>{
-            console.log('INCOMING', res);
             dispatch({
                 type: types.SEND_MAIL,
                 payload: res

@@ -61,7 +61,6 @@ class NavBar extends Component {
         }
     }
     render() {
-        console.log("props are: ", this.props.location.pathname);
         return (
             <nav>
                 <div className="amber nav-wrapper">
@@ -72,20 +71,20 @@ class NavBar extends Component {
                     </a>
                     <ul className="right hide-on-med-and-down">
                         <li><Link to='/'>Home</Link></li>
-                        <li><Link to='/location-page'>Get Started</Link></li>
+                        {/* <li><Link to='/location-page'>Get Started</Link></li> */}
                         <li><Link to='/signup-page'>Sign Up</Link></li>
                         <li><Link to='/signin-page'>Sign In</Link></li>
                         <li><Link to='/ourteam-page'>Our Team</Link></li>
-                        <li><Link to='/logout'>Log Out</Link></li>
+                        {/* <li><Link to='/logout'>Log Out</Link></li> */}
                     </ul>
                     <div>
                         <ul className="side-nav right-aligned" style={this.state.navStyle}>
                             <li><Link to='/'>Home</Link></li>
-                            <li><Link to='/location-page'>Get Started</Link></li>
+                            {/* <li><Link to='/location-page'>Get Started</Link></li> */}
                             <li><Link to='/signup-page'>Sign Up</Link></li>
                             <li><Link to='/signin-page'>Sign In</Link></li>
                             <li><Link to='/ourteam-page'>Our Team</Link></li>
-                            <li><Link to='/logout'>Log Out</Link></li>
+                            {/* <li><Link to='/logout'>Log Out</Link></li> */}
                         </ul>
                         <div onClick={this.returnMenu} className="drag-target" style={this.state.dragStyle}></div>
                     </div>

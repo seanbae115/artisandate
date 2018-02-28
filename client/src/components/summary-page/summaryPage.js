@@ -32,9 +32,8 @@ class Summary extends Component{
     }
 
     render() {
-        console.log("Summary Page Props: ", this.props);
-        // console.log('Latitude: ', this.props.event.coordinates.latitude);
         return (
+<<<<<<< HEAD
             <div>
                 <SummaryEvent eventType="Event" eventName={this.props.event.name}/>
                 <SummaryEvent eventType="Food" eventName={this.props.food.name}/>
@@ -42,6 +41,18 @@ class Summary extends Component{
                 <MapComponent eventLoc={this.props.event} foodLoc={this.props.food} drinkLoc={this.props.drinks} />
                 <SummaryButtons openModal={this.openModal}/>
                 <SummaryModal display={this.state.displayModal} closeModal={this.closeModal} />
+=======
+            <div className='row'>
+                <div className="col s12">
+                    <SummaryEvent eventType="Event" eventName={this.props.event.name}/>
+                    <SummaryEvent eventType="Food" eventName={this.props.food.name}/>
+                    <SummaryEvent eventType="Drinks" eventName={this.props.drinks.name}/>
+                </div>
+                <div className="col s12">
+                    <MapComponent eventLoc={this.props.event} foodLoc={this.props.food} drinkLoc={this.props.drinks} />
+                    <SummaryButtons/>
+                </div>
+>>>>>>> aa374e99cf4bb2c73b2ec4ec046ff33bc2b3467b
             </div>
         );
     }

@@ -28,7 +28,6 @@ class ResultsPage extends Component {
         //     food: this.props.mainFood,
         //     drinks: this.props.mainDrinks
         // };
-        console.log("CONFIRM CLICK props: ", this.props);
         this.props.history.push(`/summary-page`);
     }
 
@@ -41,7 +40,7 @@ class ResultsPage extends Component {
                 <LocationBrowser initial={this.initialUpdate} name="food" history={history} locations={this.props.food}/>
                 <LocationBrowser initial={this.initialUpdate} name="drinks" history={history} locations={this.props.drinks}/>
                 <div className="center-align location-info-group">
-                    <button onClick={this.goToSummary.bind(this)} className='btn btn-large'>Confirm</button>
+                    <button onClick={this.goToSummary.bind(this)} className='btn'>Next</button>
                 </div>
             </div>
         )

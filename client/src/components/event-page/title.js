@@ -4,9 +4,9 @@ import './jumboImg.css';
 
 function TitleImage(props){
 
-    if (!props.business) {
-        return <h1>Loading...</h1>
-    }
+    // if (!props.business) {
+    //     return <h1>Loading...</h1>
+    // }
 
     const picture = props.business.photos;
     const randomPic = picture.sort(function(a,b) {return 0.5 - Math.random()});
