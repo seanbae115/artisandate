@@ -1,7 +1,7 @@
 /* choose-location */
 
 .transparent-input {
-    background-color: transparent !important;
+    /*background-color: transparent !important;*/
     border: 2px solid #fff;
     font-size: 2em;
     padding: 0;
@@ -13,10 +13,11 @@
     width: 150px !important;
     text-align: center;
 }
-::placeholder {
-    color: #fff;
-    opacity: 1;
-}
+
+/*::placeholder {*/
+    /*color: lightgrey;*/
+    /*opacity: 1;*/
+/*}*/
 
 .text-align-center {
     text-align: center;
@@ -24,7 +25,8 @@
 
 .zip-code {
     margin-top: 60px;
-    font-size: 1.2em;
+    font-size: 1.5em;
+    color: black;
 }
 
 .location-page-row {
@@ -33,6 +35,8 @@
 
 .date-location {
     font-size: 2em;
+    margin-top: 20%;
+    margin-bottom: 10%;
 }
 
 .location-page-input {
@@ -62,8 +66,21 @@
 
 /*maybe delete this class*/
 .location-page-container {
-    /*height: 100%;*/
-    /*width: 100%;*/
-    background-color: #ffc107;
+    height: 100vh;
+    width: 100vw;
+    /*background-color: #ffc107;*/
 }
 
+.goButtonContainer {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.inputText {
+    font-size: 2rem !important;
+    color: grey;
+}
+
+.zipText {
+    font-size: 2rem;
+}
