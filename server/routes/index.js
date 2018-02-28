@@ -152,7 +152,7 @@ module.exports = (app,  path) => {
             output.events = result;
             res.send(output);
         }).catch(
-            err => console.log("Sean Bae what the fuck")
+            err => console.log(err)
         );
     });
     //google places call for food
