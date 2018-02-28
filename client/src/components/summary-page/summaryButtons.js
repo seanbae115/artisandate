@@ -48,11 +48,7 @@ class SummaryButtons extends Component {
                     <div to="/emailPage" className="btn blue">Add Calendar</div>
                 </div> */}
                 <div className="col s6 center-align">
-<<<<<<< HEAD
                     <div onClick={this.props.openModal}className="btn red">Home</div>
-=======
-                    <Link to="/" className="btn">Home</Link>
->>>>>>> aa374e99cf4bb2c73b2ec4ec046ff33bc2b3467b
                 </div>
             </div>
         )}

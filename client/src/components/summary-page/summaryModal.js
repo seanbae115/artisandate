@@ -15,7 +15,7 @@ class SummaryModal extends Component {
                     <div className="row">
                         <h3 className="modalConfirmation col s8 offset-s2 center-align">Are You Sure You Want To Continue?</h3>
                     </div>
-                    <div className="row center-align bodybuffer">
+                    <div className="row center-align">
                         <Link to="/location-page" className="btn red">Yes</Link>
                         <div onClick={this.props.closeModal} className="btn blue">No</div>
                     </div>
