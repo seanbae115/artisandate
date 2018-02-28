@@ -65,7 +65,7 @@ module.exports = (app,  path) => {
     });
 
     //results endpoint
-    app.post('/getEverything', (req, res) => {
+    app.post('/api/getEverything', (req, res) => {
         var output = {
             events: null,
             food: null,
@@ -81,11 +81,11 @@ module.exports = (app,  path) => {
             radius: 8000,
             limit: 10
         })
-        .then(
-            response => response.jsonBody.businesses
-        ).catch(
-            err => console.log('error', err)
-        )
+            .then(
+                response => response.jsonBody.businesses
+            ).catch(
+                err => console.log('error', err)
+            )
 
         var events = axios({
             url: 'https://api.yelp.com/v3/events',
@@ -99,11 +99,11 @@ module.exports = (app,  path) => {
             },
             responseType: 'json'
         })
-        .then(
-            response => response.data.events
-        ).catch(
-            err => console.log('error', err)
-        )
+            .then(
+                response => response.data.events
+            ).catch(
+                err => console.log('error', err)
+            )
 
         var food = client.search({
             term: 'restaurant',
@@ -111,11 +111,11 @@ module.exports = (app,  path) => {
             radius: 8000,
             limit: 10
         })
-        .then(
-            response => response.jsonBody.businesses
-        ).catch(
-            err => console.log('error', err)
-        )
+            .then(
+                response => response.jsonBody.businesses
+            ).catch(
+                err => console.log('error', err)
+            )
 
         var drinks = client.search({
             term: 'coffee',
@@ -123,11 +123,11 @@ module.exports = (app,  path) => {
             radius: 8000,
             limit: 10
         })
-        .then(
-            response => response.jsonBody.businesses
-        ).catch(
-            err => console.log('error', err)
-        )
+            .then(
+                response => response.jsonBody.businesses
+            ).catch(
+                err => console.log('error', err)
+            )
 
         places.then(v => {
             temp.places = v;
@@ -167,7 +167,7 @@ module.exports = (app,  path) => {
                 rankby: 'distance'
             },
             responseType: 'json'
-        }) 
+        })
             .then(function(response){
                 var results = response.data.results;
                 res.json(results[3].photos[0].photo_reference);
@@ -190,21 +190,21 @@ module.exports = (app,  path) => {
             },
             responseType: 'json'
         })
-        .then(function(response){
-            var results = response.data.events;
-            var output = [];
-            for(var i = 0; i < results.length; i++){
-                var img = '<img src='+results[i].image_url+' height="300" width="300">';
-                output.push(img);
-            }
-            res.send(output.join('\n'));
-        })
-        .catch(function(err){
-            console.log(err);
-        })
+            .then(function(response){
+                var results = response.data.events;
+                var output = [];
+                for(var i = 0; i < results.length; i++){
+                    var img = '<img src='+results[i].image_url+' height="300" width="300">';
+                    output.push(img);
+                }
+                res.send(output.join('\n'));
+            })
+            .catch(function(err){
+                console.log(err);
+            })
     });
 
-    app.post('/getOneBusiness', (req, res) => {
+    app.post('/api/getOneBusiness', (req, res) => {
         const id= req.body.id;
         axios({
             url: `https://api.yelp.com/v3/businesses/${id}`,
@@ -212,12 +212,12 @@ module.exports = (app,  path) => {
             headers: {'Authorization': 'Bearer xkA9Hp5U6wElMNSf3MGcF_L6R0Io18O69Xsth-G-OsV50MIfoVyiWfQmmQgFHpmFvgFatiEW8sppCiAVWrfRgpy1-pNH905xO-Okl1TV6nIqp_RXCSDmvJFOEqKLWnYx'},
             responseType: 'json'
         })
-        .then(function(response){
+            .then(function(response){
                 res.send(response.data);
-        })
-        .catch(function(err){
-            console.log(err);
-        })
+            })
+            .catch(function(err){
+                console.log(err);
+            })
     })
 
 // app.get('/getdata', (req, res) => {
