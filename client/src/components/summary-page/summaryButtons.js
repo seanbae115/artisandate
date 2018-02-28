@@ -49,7 +49,7 @@ class SummaryButtons extends Component {
                     <div to="/emailPage" className="btn blue">Add Calendar</div>
                 </div> */}
                 <div className="col s6 center-align">
-                    <Link to="/" className="btn blue">Home</Link>
+                    <div onClick={this.props.openModal}className="btn red">Home</div>
                 </div>
             </div>
         )}

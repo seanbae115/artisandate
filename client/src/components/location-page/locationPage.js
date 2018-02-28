@@ -19,7 +19,6 @@ class LocationPage extends Component {
         console.log('location props:', this.props);
         return (
             <div className='grey lighten-4 location-page-container'>
-                <NavBar/>
                 <div className="valign-wrapper">
                     <div className="row">
                         <div className="grey-text text-darken-3 date-location center-align">Let us know your date location to get started.</div>
