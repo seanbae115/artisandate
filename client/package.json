@@ -9,9 +9,6 @@
     },
     "/api/*": {
       "target": "http://localhost:8000"
-    },
-    "/send/*": {
-      "target": "http://localhost:8000"
     }
   },
   "scripts": {

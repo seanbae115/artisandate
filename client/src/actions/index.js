@@ -1,11 +1,10 @@
-import axios from "axios"; 
+import axios from "axios";
 import { browserHistory } from 'react-router';
 import types from './types';
 
-const BASE_URL = "http://localhost:8000";
 
 export function getPlanner(zip){
-    console.log("The ZIP:", zip);
+    // console.log("The ZIP:", zip);
     return async dispatch => {
         try {
             const request = await axios.post(`/api/getEverything`, zip);
@@ -42,7 +41,7 @@ export function signUp(cred) {
                 type: types.SIGN_UP,
                 email: cred.email
             });
-            console.log('Successful sign in')
+            // console.log('Successful sign in')
         } catch (err) {
             dispatch({
                 type: types.AUTH_ERROR,
@@ -53,32 +52,34 @@ export function signUp(cred) {
 }
 
 export function signIn(cred) {
-    return dispatch => {
-        axios.post(`/auth/signin`, cred).then(res => {
-            localStorage.setItem('token', res.data.token);
+    return async dispatch => {
+        try {
+            const request = await axios.post(`/auth/signin`, cred);
+            localStorage.setItem('token', request.data.token);
             dispatch({
                 type: types.SIGN_IN,
                 email: cred.email
             });
-        }).catch(err => {
+        } catch(err) {
             dispatch({
                 type: types.AUTH_ERROR,
                 error: 'Invalid Username and/or Password'
             });
-        });
+        }
     }
 }
 
 export function sendMail(data) {
-    console.log('Button Clicked');
-    console.log('Email: ', data.email);
-    axios.post(`${BASE_URL}/send`, data)
-        .then(res => {
-            console.log('Response: ',res);
-        })
-        .catch(err => {
+    return dispatch => {
+        axios.post(`${BASE_URL}/send`, data).then (res =>{
+            dispatch({
+                type: types.SEND_MAIL,
+                payload: res
+            })
+        }).catch (err => {
             console.log('ERRORRRR: ', err);
-    })
+        })
+    }
 }
 
 /**********************NON AXIOS****************************/
@@ -86,5 +87,11 @@ export function locationDetails(props, name) {
     return{
         type: name,
         payload: props
+    }
+}
+
+export function loadSpinner(){
+    return{
+        type: "sending"
     }
 }
