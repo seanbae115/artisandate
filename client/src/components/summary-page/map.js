@@ -4,7 +4,7 @@ import { compose, withProps, withStateHandlers } from "recompose";
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps";
 import { MarkerWithLabel } from "react-google-maps/lib/components/addons/MarkerWithLabel";
 import DrinkMarker from "../../assets/images/drink_marker.png";
-import FoodMarker from "../../assets/images/food_marker.png";
+import FoodMarker from "../../assets/images/burger_marker.png";
 import EventMarker from "../../assets/images/event_marker.png";
 import eventPage from "../event-page/eventPage";
 import "./summaryPage.css";
