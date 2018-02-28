@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import NavBar from "../nav-bar/navBar";
 import SummaryEvent from "./summaryEvent";
 import SummaryButtons from "./summaryButtons";
 import "./summaryPage.css";
@@ -13,7 +12,6 @@ class Summary extends Component{
         // console.log('Latitude: ', this.props.event.coordinates.latitude);
         return (
             <div>
-                <NavBar/>
                 <SummaryEvent eventType="Event" eventName={this.props.event.name}/>
                 <SummaryEvent eventType="Food" eventName={this.props.food.name}/>
                 <SummaryEvent eventType="Drinks" eventName={this.props.drinks.name}/>

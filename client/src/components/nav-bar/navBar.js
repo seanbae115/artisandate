@@ -18,6 +18,7 @@ class NavBar extends Component {
         };
         this.slideOutMenu = this.slideOutMenu.bind(this);
         this.returnMenu = this.returnMenu.bind(this);
+        this.backButton = this.backButton.bind(this);
     }
     slideOutMenu(){
         const shadowBox = {...this.state.dragStyle};
@@ -49,10 +50,22 @@ class NavBar extends Component {
             }
         });
     }
+    backButton(){
+        switch(this.props.location.pathname){
+            case "/":
+                return ""
+            default:
+                return (
+                    <a  className = "arrow" onClick={() => { this.props.history.goBack();}}><i className = 'material-icons'>arrow_back</i></a>
+                );
+        }
+    }
     render() {
+        console.log("props are: ", this.props.location.pathname);
         return (
             <nav>
                 <div className="amber nav-wrapper">
+                    {this.backButton()}
                     <a href="#!" className="brand-logo">Artisan Date</a>
                     <a href="#" className="right button-collapse" onClick={this.slideOutMenu}>
                         <i className="material-icons amber-text text-darken-3">menu</i>

@@ -4,7 +4,6 @@ import axios from 'axios';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import { renderInput } from '../../helpers';
-import NavBar from '../nav-bar/navBar';
 import { signUp } from '../../actions';
 
 class SignUpPage extends Component {
@@ -25,7 +24,6 @@ class SignUpPage extends Component {
 
         return ( 
             <div>
-                <NavBar/>
                 <div className="container amber">
                     <div className="card blue lighten-1">
                         <div className="card-content">
