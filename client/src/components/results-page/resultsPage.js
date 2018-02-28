@@ -3,7 +3,6 @@ import {connect} from "react-redux";
 import"./resultsPage.css"
 import { getPlanner, locationDetails } from "../../actions";
 import { Link } from 'react-router-dom';
-import NavBar from "../nav-bar/navBar";
 import LocationBrowser from "./locationBrowser";
 
 
@@ -38,7 +37,6 @@ class ResultsPage extends Component {
 
         return (
             <div>
-                <NavBar/>
                 <LocationBrowser initial={this.initialUpdate} name="events" history={history} locations={this.props.events}/>
                 <LocationBrowser initial={this.initialUpdate} name="food" history={history} locations={this.props.food}/>
                 <LocationBrowser initial={this.initialUpdate} name="drinks" history={history} locations={this.props.drinks}/>

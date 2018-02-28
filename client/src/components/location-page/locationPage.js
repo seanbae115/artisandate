@@ -19,7 +19,6 @@ class LocationPage extends Component {
         console.log('location props:', this.props);
         return (
             <div>
-                <NavBar/>
                 <div className="location-page-container container amber">
                     <div className="row location-page-row">
                         <div className="text-align-center">

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import NavBar from '../nav-bar/navBar';
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import { reduxForm, Field } from 'redux-form';
@@ -30,7 +29,6 @@ class SignInPage extends Component {
         };
         return ( 
             <div>
-                <NavBar/>
                 <div className="container amber">
                     <div className="card grey lighten-1">
                         <div className="card-content">

@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import './home.css';
 import { Link } from "react-router-dom";
-// import Phones from '../../assets/images/phones.png';
-import NavBar from '../nav-bar/navBar';
+
 
 export default class Home extends Component {
     constructor(props){
@@ -17,7 +16,6 @@ export default class Home extends Component {
         return (
             <div className="full-page">
                 <div className="splash-image"></div>
-                <NavBar/>
                 <div className="gradient valign-wrapper">
                     <div className="row">
                         <div className="col s-12 center-align">
