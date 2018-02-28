@@ -12,7 +12,6 @@ class SummaryButtons extends Component {
         this.data = {
             email: this.props.email,
             dateData: this.props.dateData,
-            sendState: 'idle'
         };
 
         this.sendItinerary = this.sendItinerary.bind(this)
@@ -36,23 +35,20 @@ class SummaryButtons extends Component {
                 emailButton = <div className="btn blue" style={{paddingTop: "0.6rem"}}><div className="loading"/></div>;
                 break;
             case 'sent':
-                emailButton = <div className="btn grey">SENT</div>;
+                emailButton = <div className="btn grey">Sent</div>;
                 break;
             default:
-                emailButton = <div onClick={this.sendItinerary} className="btn blue">EMAIL</div>;
+                emailButton = <div onClick={this.sendItinerary} className="btn blue">Email</div>;
         }
          return (
             <div className="row body-buffer">
-                <div className="col s4 center">
-                    {/*Will change these to Link later but they don't exist yet and it blows up without Router being in place*/}
+                <div className="col s6 center-align">
                     {emailButton}
                 </div>
-                <div className="col s4 center">
-                    {/*Will change these to Link later but they don't exist yet and it blows up without Router being in place*/}
+                {/* <div className="col s4 center">
                     <div to="/emailPage" className="btn blue">Add Calendar</div>
-                </div>
-                <div className="col s4 center">
-                    {/*Will change these to Link later but they don't exist yet and it blows up without Router being in place*/}
+                </div> */}
+                <div className="col s6 center-align">
                     <Link to="/" className="btn blue">Home</Link>
                 </div>
             </div>
