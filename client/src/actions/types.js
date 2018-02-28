@@ -7,5 +7,6 @@ export default {
     GET_DETAILS: "get_details", 
     SIGN_UP: 'sign_up',
     SIGN_IN: 'sign_in',
+    SEND_MAIL: "send_mail",
     AUTH_ERROR: 'auth_error'
 };

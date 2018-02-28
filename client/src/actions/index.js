@@ -70,15 +70,19 @@ export function signIn(cred) {
 }
 
 export function sendMail(data) {
-    console.log('Button Clicked');
-    console.log('Email: ', data.email);
-    axios.post(`${BASE_URL}/send`, data)
-        .then(res => {
-            console.log('Response: ',res);
-        })
-        .catch(err => {
+    return dispatch => {
+        console.log('Button Clicked');
+        console.log('Email: ', data.email);
+        axios.post(`${BASE_URL}/send`, data).then (res =>{
+            console.log('INCOMING', res);
+            dispatch({
+                type: types.SEND_MAIL,
+                payload: res
+            })
+        }).catch (err => {
             console.log('ERRORRRR: ', err);
-    })
+        })
+    }
 }
 
 /**********************NON AXIOS****************************/
@@ -86,5 +90,11 @@ export function locationDetails(props, name) {
     return{
         type: name,
         payload: props
+    }
+}
+
+export function loadSpinner(){
+    return{
+        type: "sending"
     }
 }

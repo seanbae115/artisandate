@@ -134,12 +134,12 @@ module.exports = function(app, path){
         
             transporter.sendMail(mailOptions, (error, info) => {
                 if (error) {
-                    return console.log(error);
+                    res.send(error);
                 }
                 console.log('Message sent: %s', info.messageId);
                 console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
 
-                res.send('email sent!')
+                res.send({sent: true})
             });
         });
     })
