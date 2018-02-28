@@ -91,24 +91,24 @@ class LocationBrowser extends Component {
         return (
             <div className="location-info-group">
                 <div className="row valign-wrapper">
-                    <div className="col s1">
+                    {/* <div className="col s1">
                         <MaterialIcon icon='chevron_left' size='small'/>
-                    </div>
-                    <div className="col s10 content-list">
-                        <Carousel showThumbs={false} showStatus={false} infiniteLoop={true} showIndicators={false} onChange={this.updateLocation}>
+                    </div> */}
+                    <div className="col s12 content-list">
+                        <Carousel showThumbs={false} showStatus={false} showArrows={true} infiniteLoop={true} showIndicators={false} onChange={this.updateLocation}>
                             {result}
                         </Carousel>
                     </div>
-                    <div className="col s1">
+                    {/* <div className="col s1">
                         <MaterialIcon icon='chevron_right' size='small'/>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="row valign-wrapper bottom-pad">
-                    <div className="col s4 offset-s2">
+                    <div className="col s12 center-align">
                         <button onClick={this.goToDetails} className='btn thin-btn'>Details</button>
                     </div>
                     {/*toggle switch */}
-                    <div className="col s5">
+                    {/* <div className="col s5">
                         <div className="switch">
                             <label>
                                 Omit
@@ -117,7 +117,7 @@ class LocationBrowser extends Component {
                                 Include
                             </label>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="divider"/>
             </div>
