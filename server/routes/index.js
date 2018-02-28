@@ -76,10 +76,11 @@ module.exports = (app,  path) => {
         var ts = Math.floor(new Date().getTime() / 1000);
 
         var places = client.search({
-            term: 'hike, beach, park',
+            term: 'night',
             location: zip,
-            radius: 8000,
-            limit: 10
+            radius: 10000,
+            rating: "4, 4.5, 5"
+            // limit: 10
         })
             .then(
                 response => response.jsonBody.businesses
