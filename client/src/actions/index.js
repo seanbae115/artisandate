@@ -71,7 +71,7 @@ export function signIn(cred) {
 
 export function sendMail(data) {
     return dispatch => {
-        axios.post(`${BASE_URL}/send`, data).then (res =>{
+        axios.post(`/mailer/send`, data).then (res =>{
             dispatch({
                 type: types.SEND_MAIL,
                 payload: res
