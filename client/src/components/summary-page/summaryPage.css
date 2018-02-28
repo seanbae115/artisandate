@@ -25,7 +25,7 @@ div.s2.event-contain{
     font-size: 2rem;
 }
 .event-title{
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: #90a4ae;
     margin-bottom: 0;
 }
@@ -42,4 +42,22 @@ div.s2.event-contain{
 }
 .address-line{
     margin: 0;
+}
+
+/*SPINNER taken from Alan Shortis via code pen*/
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.loading {
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    border: .25rem solid rgba(255, 255, 255, 0.2);
+    border-top-color: #fff;
+    animation: spin 750ms infinite linear;
 }

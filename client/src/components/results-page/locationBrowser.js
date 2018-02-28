@@ -60,7 +60,7 @@ class LocationBrowser extends Component {
                             Loading...
                         </div>
                     </div>
-                    <div className="row valign-wrapper bottom-pad">
+                    {/* <div className="row valign-wrapper bottom-pad">
                         <div className="col s3 offset-s7 center-align">
                             <button className='btn thin-btn'>Details</button>
                         </div>
@@ -74,8 +74,8 @@ class LocationBrowser extends Component {
                                     Include
                                 </label>
                             </div>
-                        </div> */}
-                    </div>
+                        </div>
+                    </div> */}
                     <div className="divider"/>
                 </div>
             );
@@ -124,19 +124,5 @@ class LocationBrowser extends Component {
         )
     }
 }
-
-// function mapStateToProps(state){
-//     if (this.props === undefined){
-//         return {};
-//     }
-//     switch (this.props.name){
-//         case "events":
-//             return {mainEvent: state.datePlan.mainEvent};
-//         case "food":
-//             return {mainFood: state.datePlan.mainFood};
-//         case "drinks":
-//             return {mainDrinks: state.datePlan.mainDrinks}
-//     }
-// }
 
 export default connect(null, {locationDetails})(LocationBrowser);
