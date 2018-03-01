@@ -64,8 +64,8 @@ class LocationBrowser extends Component {
                         <div className="col s3 offset-s7 center-align">
                             <button className='btn thin-btn'>Details</button>
                         </div>
-                        {/*toggle switch */}
-                        {/* <div className="col s5">
+                        /*toggle switch */
+                        /* <div className="col s5">
                             <div className="switch">
                                 <label>
                                     Omit
