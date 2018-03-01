@@ -23,7 +23,7 @@ class SignUpPage extends Component {
         };
 
         return (
-            <div className="grey lighten-4 valign-wrapper" style={containerStyle}>
+            <div className="grey lighten-4" style={containerStyle}>
                 <div className="row card-width">
                     <div className="col s10 offset-s1">
                         <div className="card white">
