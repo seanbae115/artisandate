@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import axios from 'axios';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import { renderInput } from '../../helpers';
@@ -17,36 +16,40 @@ class SignInPage extends Component {
     }
 
     render(){
-        var noAccountStyle = {
-            'marginTop': '20px'
-        };
-        var containerStyle = {
-            'height': '100vh',
+        const containerStyle = {
+            'height': '91.54vh',
             'width': '100vw'
         };
-        var h3Style = {
-            'marginTop': '0rem'
-        }
         return ( 
-            <div className="grey lighten-4" style={containerStyle}>
+            <div className="grey lighten-4 valign-wrapper" style={containerStyle}>
                 <div className="row">
-                    <form onSubmit={this.props.handleSubmit(this.handleSignIn.bind(this))}>
-                        <h3 className='center-align' style={h3Style}>Sign In</h3>
-                        <div className='col s8 offset-s2'>
-                            <Field name='email' component={renderInput}/>
-                            <Field name='password' type="password" component={renderInput} />
-                        </div>
-                        <div className="row">
-                            <div className='col s12 center-align'>
-                                <button className='btn amber darken-3'>Sign In</button>
+                    <div className="col s10 offset-s1">
+                        <div className="card white">
+                            <div className="card-content">
+                                <span className='card-title center-align'>Sign In</span>
+                                <form onSubmit={this.props.handleSubmit(this.handleSignIn.bind(this))}>
+                                    <Field name='email' component={renderInput}/>
+                                    <Field name='password' type="password" component={renderInput} />
+                                    <div className="row" style={{marginBottom: "5%"}}>
+                                        <div className='center-align'>
+                                            <button className='btn cyan'>Sign In</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div className="card-action">
+                                    <div className="row">
+                                        <div className='col-s12 center-align'>
+                                            <div className='card-title'>Don't have an account?</div>
+                                            <div className='row'>
+                                                <div className='col-s12'>
+                                                    <Link to='/signup-page' className='btn amber'>Create one</Link>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </form>
-                </div>
-                <div className='no-account container center-align' style={noAccountStyle}>
-                    <h4 className='col s12'>Don't have an account?</h4>
-                    <div>
-                        <Link to='/signup-page' className='btn green'>Create one</Link>
                     </div>
                 </div>
             </div>
