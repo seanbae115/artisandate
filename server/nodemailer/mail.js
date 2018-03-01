@@ -37,7 +37,7 @@ module.exports = function(app, path){
                                                     </span>
                                             </td>
                                             <td align="center" valign="top" style="width: 45%; padding:30px 5px; text-align: left; font-size:20px;">
-                                                <a href="http://localhost:3000/event-page/${event.id}"><span>${event.name}</span></a><br>
+                                                <a href="http://artisandate.com/event-page/${event.id}"><span>${event.name}</span></a><br>
                                                 <img data-imagetype="External" src="4-star.png"
                                                     alt="" width="135px"
                                                     style="border:0; margin:0; padding:10px 0 0 0; ">
@@ -64,7 +64,7 @@ module.exports = function(app, path){
 
                                         </td>
                                         <td align="center" valign="top" style="width: 45%; padding:30px 5px; text-align: left; font-size:20px;">
-                                        <a href="http://localhost:3000/event-page/${food.id}"><span>${food.name}</span></a><br>
+                                        <a href="http://artisandate.com/event-page/${food.id}"><span>${food.name}</span></a><br>
                                                 <img data-imagetype="External" src="4-star.png"
                                                     alt="" width="135px"
                                                     style="border:0; margin:0; padding:10px 0 0 0; ">
@@ -91,7 +91,7 @@ module.exports = function(app, path){
 
                                         </td>
                                         <td align="center" valign="top" style="width: 45%; padding:30px 5px; text-align: left; font-size:20px;">
-                                        <a href="http://localhost:3000/event-page/${drinks.id}"><span>${drinks.name}</span></a><br>
+                                        <a href="http://artisandate.com/event-page/${drinks.id}"><span>${drinks.name}</span></a><br>
                                             <img data-imagetype="External" src="4-star.png"
                                                 alt="" width="135px"
                                                 style="border:0; margin:0; padding:10px 0 0 0; ">
