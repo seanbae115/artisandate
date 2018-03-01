@@ -47,8 +47,8 @@ div.s2.event-contain{
 .homeModal {
     display: none;
     position: fixed;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     z-index: 50;
     overflow: hidden;
     left:0;
@@ -61,6 +61,10 @@ div.s2.event-contain{
     font-size: 2rem;
     margin-top: 10%;
     margin-bottom: 10%;
+}
+
+.centering-card {
+    /*transform: translate(50%, 25%);*/
 }
 
 /*SPINNER taken from Alan Shortis via code pen*/
