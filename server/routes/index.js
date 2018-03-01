@@ -76,17 +76,23 @@ module.exports = (app,  path) => {
         var ts = Math.floor(new Date().getTime() / 1000);
 
         var places = client.search({
-            term: 'night',
+            term: 'activity',
+            // category: 'comedy',
             location: zip,
-            radius: 10000,
-            rating: "4, 4.5, 5"
-            // limit: 10
+            radius: 8000,
+            rating: "5 ",
+            sort_by: "distance",
+
+            sort_by: "rating",
+            // sort_by: "review_count",
+            limit: 10
         })
             .then(
                 response => response.jsonBody.businesses
             ).catch(
                 err => console.log('error', err)
             )
+            
 
         var events = axios({
             url: 'https://api.yelp.com/v3/events',
@@ -119,9 +125,12 @@ module.exports = (app,  path) => {
             )
 
         var drinks = client.search({
-            term: 'coffee',
+            term: 'bars',
             location: zip,
             radius: 8000,
+            limit: 10,
+            rating: "3.5, 4",
+            sort_by: "rating",
             limit: 10
         })
             .then(
