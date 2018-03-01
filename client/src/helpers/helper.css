@@ -9,3 +9,6 @@ input:focus{
 .last-btn{
     margin-bottom: 1%;
 }
+.card-width{
+    width: 90%;
+}
