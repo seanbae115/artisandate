@@ -13,7 +13,7 @@ export default class OurTeam extends Component {
 
     render() {
         const containerStyle = {
-            'height': '91.54vh',
+            'height': 'auto',
             'width': '100vw'
         };
         return (

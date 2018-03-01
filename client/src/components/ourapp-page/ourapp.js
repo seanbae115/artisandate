@@ -10,7 +10,7 @@ export default class OurApp extends Component {
 
     render() {
         const containerStyle = {
-            'height': '92.5vh',
+            'height': 'auto',
             'width': '100vw'
         };
         return (
