@@ -53,7 +53,7 @@ class NavBar extends Component {
     backButton(){
         switch(this.props.location.pathname){
             case "/":
-                return ""
+                return "";
             default:
                 return (
                     <a  className = "arrow" onClick={() => { this.props.history.goBack();}}><i className = 'material-icons'>arrow_back</i></a>
@@ -79,14 +79,14 @@ class NavBar extends Component {
                     </ul>
                     <div>
                         <ul className="side-nav right-aligned" style={this.state.navStyle}>
-                            <li><Link to='/'>Home</Link></li>
+                            <li><Link to='/' onClick={this.returnMenu}>Home</Link></li>
                             {/* <li><Link to='/location-page'>Get Started</Link></li> */}
-                            <li><Link to='/signup-page'>Sign Up</Link></li>
-                            <li><Link to='/signin-page'>Sign In</Link></li>
-                            <li><Link to='/ourteam-page'>Our Team</Link></li>
+                            <li><Link to='/signup-page' onClick={this.returnMenu}>Sign Up</Link></li>
+                            <li><Link to='/signin-page' onClick={this.returnMenu}>Sign In</Link></li>
+                            <li><Link to='/ourteam-page' onClick={this.returnMenu}>Our Team</Link></li>
                             {/* <li><Link to='/logout'>Log Out</Link></li> */}
                         </ul>
-                        <div onClick={this.returnMenu} className="drag-target" style={this.state.dragStyle}></div>
+                        <div onClick={this.returnMenu} className="drag-target" style={this.state.dragStyle}/>
                     </div>
                 </div>
             </nav>

@@ -18,22 +18,29 @@ class SignUpPage extends Component {
     }
 
     render(){
+        var containerStyle = {
+            'height': '100vh',
+            'width': '100vw'
+        };
+        var h3Style = {
+            'marginTop': '0rem'
+        }
+
         return (
-            <div>
-                <div className="container amber">
-                    <div className="card blue lighten-1">
-                        <div className="card-content">
-                            <form onSubmit={this.props.handleSubmit(this.handleSignUp.bind(this))}>
-                                <h3 className='card-heading'>Sign Up</h3>
-                                <Field component={ renderInput } id='email' name='email' />
-                                <Field component={ renderInput } id='password' name='password' type='password' />
-                                <Field component={ renderInput } id='confirmPassword' name='confirmPassword' type='password' />
-                                <div className='center-align'>
-                                    <button className='btn amber darken-3' type='submit'>Sign Up</button>
-                                </div>
-                            </form>
+            <div className="grey lighten-4" style={containerStyle}>
+                <div className="row">
+                    <form onSubmit={this.props.handleSubmit(this.handleSignUp.bind(this))}>
+                        <h3 className='center-align' style={h3Style}>Sign Up</h3>
+
+                        <div className='col s8 offset-s2'>
+                            <Field component={ renderInput } id='email' name='email' />
+                            <Field component={ renderInput } id='password' name='password' type='password' />
+                            <Field component={ renderInput } id='confirmPassword' name='confirmPassword' type='password' />
                         </div>
-                    </div>
+                        <div className='col s12 center-align'>
+                            <button className='btn amber darken-3' type='submit'>Sign Up</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         )
