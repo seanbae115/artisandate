@@ -76,7 +76,7 @@ module.exports = (app,  path) => {
         var ts = Math.floor(new Date().getTime() / 1000);
 
         var places = client.search({
-            term: 'nightlife',
+            term: 'theatre',
             // category: 'comedy',
             location: zip,
             radius: 10000,
