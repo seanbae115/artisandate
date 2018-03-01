@@ -12,15 +12,19 @@ class SummaryModal extends Component {
         return (
             <div style={displayModal} className="homeModal valign-wrapper">
                 <div className="row">
-                    <div className="col s10 offset-s1 center-align">
-                        <div className="card blue-grey darken-1">
-                            <div className="card-content white-text center-align">
-                                <p>Are You Sure You Want To Continue?</p>
+                    <div className="col s12 center-align">
+                        <div className="card grey lighten-3">
+                            <div className="card-content center-align">
+                                <p className="modal-font">Are You Sure You Want To Start Over?</p>
                             </div>
                             <div className="card-action">
-                                <div className="row center-align">
-                                    <Link to="/location-page" className="btn red">Yes</Link>
-                                    <div onClick={this.props.closeModal} className="btn blue">No</div>
+                                <div className="row">
+                                    <div className="col s6 center-align">
+                                        <Link to="/location-page" className="btn cyan">Yes</Link>
+                                    </div>
+                                    <div className="col s6 center-align">
+                                        <button onClick={this.props.closeModal} className="btn red darken-2">No</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -63,8 +63,8 @@ div.s2.event-contain{
     margin-bottom: 10%;
 }
 
-.centering-card {
-    /*transform: translate(50%, 25%);*/
+.modal-font {
+    font-size: 1.5rem;
 }
 
 /*SPINNER taken from Alan Shortis via code pen*/

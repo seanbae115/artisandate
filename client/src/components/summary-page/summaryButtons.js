@@ -37,7 +37,7 @@ class SummaryButtons extends Component {
                 emailButton = <div className="btn grey">Sent</div>;
                 break;
             default:
-                emailButton = <div onClick={this.sendItinerary} className="btn">Email</div>;
+                emailButton = <div onClick={this.sendItinerary} className="btn cyan">Email</div>;
         }
          return (
             <div className="row body-buffer">
