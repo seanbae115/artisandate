@@ -41,23 +41,19 @@ class Info extends Component{
                         </div>
                     </div>
                 </div>
-                <div id="rating">
-                    <div>
-                        <div className="row valign-wrapper">
-                            <div className="col s6">
+                <div className="col s12 center-align" id="rating">
+                            <div className="col">
                                 <span>{this.stars(rating)}</span>
                             </div>
-                            <div className="col s6 center-align">
+                            <div className="col">
                                 <span className = 'dollarSign amber-text'>{price}</span>
-                            </div>
                         </div>
-                    </div>
                 </div>
                 <div id="description">
                     <div>
                         <div className="row valign-wrapper">
                             <div className="col s12 center-align">
-                                <p className = 'lobster pSize'>For More Information Please Contact:</p>
+                                <p className = 'pSize'>For More Information Please Contact:</p>
                                 <span className='pSize'>{<a href = {`tel:${display_phone}`}>{display_phone}</a>}</span>
                             </div>
                         </div>
