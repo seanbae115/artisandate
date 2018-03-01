@@ -17,7 +17,7 @@ class SignInPage extends Component {
 
     render(){
         const containerStyle = {
-            'height': '91.54vh',
+            'height': '92.5vh',
             'width': '100vw'
         };
         return ( 

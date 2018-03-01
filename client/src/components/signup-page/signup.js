@@ -19,7 +19,7 @@ class SignUpPage extends Component {
 
     render(){
         var containerStyle = {
-            'height': '100vh',
+            'height': '92.5vh',
             'width': '100vw'
         };
         var h3Style = {

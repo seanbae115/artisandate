@@ -83,6 +83,7 @@ class NavBar extends Component {
                             {/* <li><Link to='/location-page'>Get Started</Link></li> */}
                             <li><Link to='/signup-page' onClick={this.returnMenu}>Sign Up</Link></li>
                             <li><Link to='/signin-page' onClick={this.returnMenu}>Sign In</Link></li>
+                            <li><Link to='/ourapp-page' onClick={this.returnMenu}>Our App</Link></li>
                             <li><Link to='/ourteam-page' onClick={this.returnMenu}>Our Team</Link></li>
                             {/* <li><Link to='/logout'>Log Out</Link></li> */}
                         </ul>
