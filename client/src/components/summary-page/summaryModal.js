@@ -6,18 +6,24 @@ class SummaryModal extends Component {
 
     render(){
         const displayModal = {
-            display: this.props.display ? "block" : "none"
+            display: this.props.display ? "flex" : "none"
         }
 
         return (
-            <div style={displayModal} className="homeModal">
-                <div className="modalContent">
-                    <div className="row">
-                        <h3 className="modalConfirmation col s8 offset-s2 center-align">Are You Sure You Want To Continue?</h3>
-                    </div>
-                    <div className="row center-align">
-                        <Link to="/location-page" className="btn red">Yes</Link>
-                        <div onClick={this.props.closeModal} className="btn blue">No</div>
+            <div style={displayModal} className="homeModal valign-wrapper">
+                <div className="row">
+                    <div className="col s10 offset-s1 center-align">
+                        <div className="card blue-grey darken-1">
+                            <div className="card-content white-text center-align">
+                                <p>Are You Sure You Want To Continue?</p>
+                            </div>
+                            <div className="card-action">
+                                <div className="row center-align">
+                                    <Link to="/location-page" className="btn red">Yes</Link>
+                                    <div onClick={this.props.closeModal} className="btn blue">No</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
