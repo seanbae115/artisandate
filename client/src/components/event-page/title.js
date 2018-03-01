@@ -16,7 +16,8 @@ function TitleImage(props){
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         height: "33vh",
-        width: "100%"
+        width: "100%",
+        borderRadius: "10px"
     };
     const { name } = props.business;
 
@@ -25,14 +26,14 @@ function TitleImage(props){
             <div id="title">
                 <div className="row">
                     <div className="col s12">
-                        <h1 className = 'center-align lobster'>{name}</h1>
+                        <h3 className ="center-align" style={{marginTop: '25px'}}>{name}</h3>   
                     </div>
                 </div>
             </div>
             <div id="jumboImg">
                 <div className="row">
-                    <div className="col s12 center-align">
-                        <div style= {detailImg} className = 'multi'></div>
+                    <div className="col s12 m10 offset-m1 center-align">
+                        <div style= {detailImg}></div>
                     </div>
                 </div>
             </div>

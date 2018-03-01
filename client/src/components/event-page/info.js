@@ -23,9 +23,9 @@ class Info extends Component{
     }
     open(is_closed){
         if(is_closed){
-            return <p className= 'red accent-4'>CURRENTLY CLOSED</p>
+            return <p className= 'red accent-4' style={{margin: '10px'}}>CURRENTLY CLOSED</p>
         }else{
-            return <p className = 'lobster pSize'>CURRENTLY OPEN</p>
+            return <p className = 'pSize' style={{margin: '10px'}}>CURRENTLY OPEN</p>
         }
     }
     render(){
@@ -53,7 +53,7 @@ class Info extends Component{
                     <div>
                         <div className="row valign-wrapper">
                             <div className="col s12 center-align">
-                                <p className = 'pSize'>For More Information Please Contact:</p>
+                                <p className = 'pSize' style={{marginBottom: '10px'}}>For More Information Please Contact:</p>
                                 <span className='pSize'>{<a href = {`tel:${display_phone}`}>{display_phone}</a>}</span>
                             </div>
                         </div>
