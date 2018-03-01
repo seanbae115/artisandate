@@ -10,7 +10,7 @@ export default class OurApp extends Component {
 
     render() {
         const containerStyle = {
-            'height': 'auto',
+            'height': '92.5vh',
             'width': '100vw'
         };
         return (
@@ -28,18 +28,24 @@ export default class OurApp extends Component {
                                     <div className="divider"></div>
                                     <div className="col s12 center-align">
                                         <h4>Technologies Implemented</h4>
-                                        <h5>Javascript</h5>
-                                        <h5>React.js</h5>
-                                        <h5>Redux.js</h5>
-                                        <h5>Materialize</h5>
-                                        <h5>NPM</h5>
-                                        <h5>Node.js</h5>
-                                        <h5>Express.js</h5>
-                                        <h5>Passport.js</h5>
-                                        <h5>MySQL</h5>
-                                        <h5>Yelp API</h5>
-                                        <h5>Google API</h5>
-                                        <h5>Amazon Web Services</h5>
+                                        <div className="row">
+                                            <div className="col s6">
+                                                <h5>Javascript</h5>
+                                                <h5>React.js</h5>
+                                                <h5>Redux.js</h5>
+                                                <h5>Materialize</h5>
+                                                <h5>NPM</h5>
+                                                <h5>Node.js</h5>
+                                            </div>
+                                            <div className="col s6">
+                                                <h5>Express.js</h5>
+                                                <h5>Passport.js</h5>
+                                                <h5>MySQL</h5>
+                                                <h5>Yelp API</h5>
+                                                <h5>Google API</h5>
+                                                <h5>Amazon Web Services</h5>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div className="col s12 center-align">

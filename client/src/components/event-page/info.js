@@ -17,7 +17,11 @@ class Info extends Component{
                 return <img className='responseive-img' src={fivestar} alt='Stars' />;
                 break;
             default:
+<<<<<<< HEAD
+                return <h4>Ratings Not Provided</h4>;
+=======
                 return <h4>rating not provided</h4>;
+>>>>>>> 0ca34538c640afc751234192a1eb1cd523ef4fec
                 break;
         }
     }
