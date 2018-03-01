@@ -17,13 +17,8 @@ class SignUpPage extends Component {
     }
 
     render(){
-<<<<<<< HEAD
         var containerStyle = {
             'height': '92.5vh',
-=======
-        const containerStyle = {
-            'height': '91.54vh',
->>>>>>> 61fc7dba365b8fb35add369de8edc71acc02371e
             'width': '100vw'
         };
 
