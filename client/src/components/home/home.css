@@ -27,7 +27,8 @@
     border: 2px solid;
     width: 45vmin;
     height: 9vmax;
-    line-height: 9vmax
+    line-height: 9vmax;
+    border-radius: 5px;
 }
 .home-btn:hover{
     background-color: #ffc107;

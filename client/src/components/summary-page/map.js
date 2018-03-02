@@ -25,7 +25,7 @@ export class MapComponent extends React.PureComponent {
             marginLeft: "0",
             width: "150px"
         };
-        const {eventLoc, foodLoc, drinkLoc} = this.props;
+        const { eventLoc, foodLoc, drinkLoc } = this.props;
         return compose(
             withStateHandlers(() => ({
                 isOpen: false,
@@ -49,13 +49,13 @@ export class MapComponent extends React.PureComponent {
                 defaultCenter={{ lat: eventLoc.coordinates.latitude, lng: eventLoc.coordinates.longitude }}
             >
                 <MarkerWithLabel
-                    // onClick={}
                     position={{ lat: eventLoc.coordinates.latitude, lng: eventLoc.coordinates.longitude }}
                     icon={EventMarker}
                     labelAnchor={new google.maps.Point(0, 0)}
                     labelStyle={labelBg}
                 >
                     <div className="container">
+                        {/* <p>{eventLoc.name}</p> */}
                         {eventLoc.location.display_address.map((item,index) => {
                             return (<p key={index} className="address-line">{item}</p>);
                         })}
@@ -63,13 +63,13 @@ export class MapComponent extends React.PureComponent {
                 </MarkerWithLabel>
 
                 <MarkerWithLabel
-                    // onClick={}
                     position={{ lat: foodLoc.coordinates.latitude, lng: foodLoc.coordinates.longitude }}
                     icon={FoodMarker}
                     labelAnchor={new google.maps.Point(0, 0)}
                     labelStyle={labelBg}
                 >
                     <div className="container">
+                        {/* <p>{foodLoc.name}</p> */}
                         {foodLoc.location.display_address.map((item,index) => {
                             return (<p key={index} className="address-line">{item}</p>);
                         })}
@@ -77,13 +77,13 @@ export class MapComponent extends React.PureComponent {
                 </MarkerWithLabel>
 
                 <MarkerWithLabel
-                    // onClick={}
                     position={{ lat: drinkLoc.coordinates.latitude, lng: drinkLoc.coordinates.longitude }}
                     icon={DrinkMarker}
                     labelAnchor={new google.maps.Point(0, 0)}
                     labelStyle={labelBg}
                 >
                     <div className="container">
+                        {/* <p>{drinkLoc.name}</p> */}
                         {drinkLoc.location.display_address.map((item,index) => {
                             return (<p key={index} className="address-line">{item}</p>);
                         })}
@@ -110,6 +110,7 @@ export class MapComponent extends React.PureComponent {
 
     render() {
         const SummaryMap = this.SummaryMap();
+
         return (
             <SummaryMap
                 isMarkerShown={this.state.isMarkerShown}
