@@ -17,19 +17,15 @@ class Info extends Component{
                 return <img className='responseive-img' src={fivestar} alt='Stars' />;
                 break;
             default:
-<<<<<<< HEAD
                 return <h4>Ratings Not Provided</h4>;
-=======
-                return <h4>rating not provided</h4>;
->>>>>>> 0ca34538c640afc751234192a1eb1cd523ef4fec
                 break;
         }
     }
     open(is_closed){
         if(is_closed){
-            return <p className= 'red accent-4' style={{margin: '10px'}}>CURRENTLY CLOSED</p>
+            return <p className= 'red accent-4'>CURRENTLY CLOSED</p>
         }else{
-            return <p className = 'pSize' style={{margin: '10px'}}>CURRENTLY OPEN</p>
+            return <p className = 'lobster pSize'>CURRENTLY OPEN</p>
         }
     }
     render(){
@@ -57,7 +53,7 @@ class Info extends Component{
                     <div>
                         <div className="row valign-wrapper">
                             <div className="col s12 center-align">
-                                <p className = 'pSize' style={{marginBottom: '10px'}}>For More Information Please Contact:</p>
+                                <p className = 'pSize'>For More Information Please Contact:</p>
                                 <span className='pSize'>{<a href = {`tel:${display_phone}`}>{display_phone}</a>}</span>
                             </div>
                         </div>
