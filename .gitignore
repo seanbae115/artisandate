@@ -1,0 +1,7 @@
+.idea
+.vscode
+logins.rtf
+.DS_Store
+node_modules
+credentials.js
+email_config.php

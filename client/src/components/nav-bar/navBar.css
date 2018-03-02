@@ -1,0 +1,28 @@
+.side-nav.right-aligned{
+    transition-timing-function: ease-out;
+    transition-duration: 0.25s;
+}
+
+.arrow{
+    float: left;
+    margin-left: 5vw;
+}
+
+.hide-on-med-and-down {
+    text-transform: uppercase;   
+}
+.hide-on-med-and-down li a {
+    font-size: 1.4em;   
+}
+
+
+@media only screen and (min-width: 992px) {
+    nav .brand-logo {
+        margin-left: 30px;
+    }
+
+    nav .hide-on-med-and-down {
+        margin-right: 30px;
+    }
+}
+

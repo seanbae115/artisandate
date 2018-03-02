@@ -1,0 +1,12 @@
+.row .col.marker{
+    padding-top: 2%;
+}
+
+img{
+    height:4vh;
+}
+
+.event-spacer{
+    padding-top: 2%;
+    box-sizing: border-box;
+}

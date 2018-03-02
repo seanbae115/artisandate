@@ -1,0 +1,42 @@
+.full-page{
+    width: 100vw;
+    height: 92vh;
+}
+.splash-image {
+    background-image: url("../../assets/images/couple.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(3px);
+    height: 92vh;
+    width: 100vw;
+    position: absolute;
+    z-index: -1;
+}
+.gradient{
+    background: linear-gradient(45deg, rgba(41,147,225,.8), rgba(157,197,246,.6));
+    height: 92vh;
+    width: 100vw;
+}
+
+.home-btn {
+    font-size: 3.4vmax;
+    margin-top: 30px;
+    text-transform: initial;
+    background-color: rgba(0,0,0,0);
+    border: 2px solid;
+    width: 45vmin;
+    height: 9vmax;
+    line-height: 9vmax;
+    border-radius: 5px;
+}
+.home-btn:hover{
+    background-color: #ffc107;
+}
+.home-btn:focus{
+    background-color: #ff8f00;
+}
+
+.top-phones {
+    margin-left: 30px;
+}

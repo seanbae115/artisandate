@@ -1,0 +1,13 @@
+#title{
+    height: 9vh;
+}
+
+#title h1{
+    margin: 2vh auto;
+    box-sizing: border-box;
+}
+
+.lobster{
+    font-family: 'Lobster', cursive;
+}
+

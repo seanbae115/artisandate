@@ -1,0 +1,37 @@
+/* index */
+
+.hero-image {
+    display:flex; 
+    justify-content: center; 
+    margin-top: 140px
+}
+.hero-image-container {
+    display: flex;
+    align-items: center;   
+    text-align: center;
+    font-size: 3em;
+    font-style: italic;
+    font-weight: bold;
+}
+.bottom-phones-container {
+    display:flex; 
+    justify-content:center; 
+    margin-top: 70px;
+}
+.bottom-phones {
+    display: none;
+    margin-bottom: 70px;
+} 
+
+/* Custom Breakpoint for index */
+@media (max-width: 740px) { 
+    .top-phones {
+        display: none !important;
+    }
+    .hero-image {
+        margin-top: 60px;
+    }
+    .bottom-phones {
+        display: initial !important;
+    }
+}

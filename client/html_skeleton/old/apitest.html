@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <script>
+        $(document).ready(addHandlers);
+        function addHandlers(){
+            $('#submit').on('click',()=>{
+                submit();
+            })
+            $('#getData').on('click', () => {
+                getData();
+            })
+        }
+        function submit(){
+            const dateData = $('#dateData').val();
+            console.log(JSON.stringify(dateData));
+            $.ajax({
+                url: '/addCompletedDate',
+                method: 'post',
+                data: dateData,
+                dataType: 'JSON',
+                success: res => {
+                    console.log('add data response', res)
+                },
+                error: err => {
+                    console.log('get data error', err)
+                }
+            })
+        }
+        function getData(){
+            console.log('running get data')
+            $.ajax({
+                url: '/getEverything',
+                method: 'post',
+                success: res => {
+                    console.log('get data response', res)
+                },
+                error: err => {
+                    console.log('get data error', err)
+                }
+            })
+        }
+    </script>
+    <title>API TEST</title>
+</head>
+<body>
+    <div class="container center-align">
+        <form>
+            <div class="row center-align">
+                <input type="text" name='cuisine' class='col s6 offset-s3' placeholder='enter a type of food'/>
+                <input type="text" name='drinks' class='col s6 offset-s3' placeholder='enter a type of drink'/>
+                <input type="text" name='zipcode' class='col s6 offset-s3' placeholder='enter zip'/>
+            </div>
+            <div class="row center-align">
+                <button type='button' id='getData' class='btn amber darken-2'>Get Data</button>
+            </div>
+        </form>
+    </div>
+    <div class="container center-align">
+        <form>
+            <div class="row center-align">
+                <div class="input-field col s6 offset-s3">
+                    <textarea type="text" id='dateData' class="materialize-textarea" placeholder='enter test object'></textarea>
+                </div>
+            </div>
+            <div class="row center-align">
+                <button type='button' id='submit' class='btn red darken-2'>Submit Data</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
