@@ -34,9 +34,8 @@
 }
 
 .date-location {
-    font-size: 2em;
-    margin-top: 20%;
-    margin-bottom: 10%;
+    font-size: 1.6em;
+    margin-bottom: 5%;
 }
 
 .location-page-input {
@@ -66,7 +65,7 @@
 
 /*maybe delete this class*/
 .location-page-container {
-    height: 100vh;
+    height: 91.54vh;
     width: 100vw;
     /*background-color: #ffc107;*/
 }
@@ -81,6 +80,7 @@
     color: grey;
 }
 
-.zipText {
-    font-size: 2rem;
+.card-title.grey-text.zipText {
+    font-size: 1.4rem;
+    line-height: 16px;
 }

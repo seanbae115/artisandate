@@ -4,6 +4,7 @@ import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import { renderInput } from '../../helpers';
 import { signIn } from '../../actions';
+import "../../helpers/helper.css"
 
 class SignInPage extends Component {
 
@@ -17,12 +18,12 @@ class SignInPage extends Component {
 
     render(){
         const containerStyle = {
-            'height': '91.54vh',
+            'height': '92.5vh',
             'width': '100vw'
         };
         return ( 
             <div className="grey lighten-4 valign-wrapper" style={containerStyle}>
-                <div className="row">
+                <div className="row card-width">
                     <div className="col s10 offset-s1">
                         <div className="card white">
                             <div className="card-content">
@@ -31,7 +32,7 @@ class SignInPage extends Component {
                                     <Field name='email' component={renderInput}/>
                                     <Field name='password' type="password" component={renderInput} />
                                     <div className="row" style={{marginBottom: "5%"}}>
-                                        <div className='center-align'>
+                                        <div className='col s12 center-align'>
                                             <button className='btn cyan'>Sign In</button>
                                         </div>
                                     </div>
@@ -39,7 +40,7 @@ class SignInPage extends Component {
                                 <div className="card-action">
                                     <div className="row">
                                         <div className='col-s12 center-align'>
-                                            <div className='card-title'>Don't have an account?</div>
+                                            <span className='card-title' style={{fontSize: "1.6rem"}}>Don't have an account?</span>
                                             <div className='row'>
                                                 <div className='col-s12'>
                                                     <Link to='/signup-page' className='btn amber'>Create one</Link>

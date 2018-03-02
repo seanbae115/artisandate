@@ -9,6 +9,7 @@ import EventPage from '../event-page/eventPage';
 import SummaryPage from "../summary-page/summaryPage";
 import SignUp from '../signup-page/signup';
 import SignIn from '../signin-page/signin';
+import OurApp from '../ourapp-page/ourapp';
 import OurTeam from '../ourteam-page/ourTeam';
 
 
@@ -24,6 +25,7 @@ const App = () => (
             {/*<Route path = '/results-page/:zip/:id' component = {ResultsPage}/>*/}
             <Route path = '/event-page/:id' component = {EventPage}/>
             <Route path = '/summary-page' component = {SummaryPage}/>
+            <Route path = '/ourapp-page' component = {OurApp}/>
             <Route path = '/ourteam-page' component = {OurTeam}/>
             <Route path = '/logout' component = {Home}/>
         </div>
