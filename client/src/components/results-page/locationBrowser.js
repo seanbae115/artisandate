@@ -105,7 +105,7 @@ class LocationBrowser extends Component {
                 </div>
                 <div className="row valign-wrapper bottom-pad">
                     <div className="col s3 offset-s7 center-align">
-                        <button onClick={this.goToDetails} className='btn thin-btn'>Details</button>
+                        <button onClick={this.goToDetails} className='btn thin-btn cyan'>Details</button>
                     </div>
                     {/*toggle switch */}
                     {/* <div className="col s5">

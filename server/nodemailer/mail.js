@@ -126,9 +126,9 @@ module.exports = function(app, path){
             });
         
             let mailOptions = {
-                from: 'Datenight '+ email.user,
+                from: 'Artisan Date '+ email.user,
                 to: req.body.email,
-                subject: 'Your Dateplan has been setup',
+                subject: 'Here is your date plan. Enjoy!',
                 html: output
             };
         

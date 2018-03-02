@@ -40,7 +40,7 @@ class ResultsPage extends Component {
                 <LocationBrowser initial={this.initialUpdate} name="food" history={history} locations={this.props.food}/>
                 <LocationBrowser initial={this.initialUpdate} name="drinks" history={history} locations={this.props.drinks}/>
                 <div className="center-align location-info-group">
-                    <button onClick={this.goToSummary.bind(this)} className='btn'>Next</button>
+                    <button onClick={this.goToSummary.bind(this)} className='btn cyan'>Next</button>
                 </div>
             </div>
         )
