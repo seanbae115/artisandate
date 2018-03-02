@@ -80,12 +80,12 @@ module.exports = (app,  path) => {
             // category: 'comedy',
             location: zip,
             radius: 8000,
-            rating: "5 ",
+            rating: "5",
             sort_by: "distance",
 
             sort_by: "rating",
             // sort_by: "review_count",
-            limit: 10
+            limit: 5
         })
             .then(
                 response => response.jsonBody.businesses

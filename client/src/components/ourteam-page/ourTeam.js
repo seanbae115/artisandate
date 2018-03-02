@@ -117,7 +117,7 @@ export default class OurTeam extends Component {
                                             <div className="divider"></div>
                                             <div className="row center-align">
                                                 <div className="col s12">
-                                                    <h4>Marcos Gonzales</h4>
+                                                    <h4>Marcos Gonzalez</h4>
                                                 </div>
                                                 <div className="col s4">
                                                     <a href="https://github.com/marc-gonzalez" target='_blank' rel="noopener noreferrer">
