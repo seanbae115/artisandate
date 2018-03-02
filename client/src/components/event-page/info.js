@@ -25,7 +25,7 @@ class Info extends Component{
         if(is_closed){
             return <p className= 'red accent-4'>CURRENTLY CLOSED</p>
         }else{
-            return <p className = 'lobster pSize'>CURRENTLY OPEN</p>
+            return <p className = 'pSize'>CURRENTLY OPEN</p>
         }
     }
     render(){

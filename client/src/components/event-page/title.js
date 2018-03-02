@@ -26,7 +26,7 @@ function TitleImage(props){
             <div id="title">
                 <div className="row">
                     <div className="col s12">
-                        <h3 className ="center-align" style={{marginTop: '25px'}}>{name}</h3>   
+                        <h4 className ="center-align" style={{marginTop: '25px'}}>{name}</h4>   
                     </div>
                 </div>
             </div>

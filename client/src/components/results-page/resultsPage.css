@@ -30,3 +30,10 @@ div.row {
 .flow{
     display: block;
 }
+.slide .left-align p {
+    font-size: 1.3em;
+    margin: 5px 0;
+}
+.truncate {
+    margin-bottom: 11px;
+}
