@@ -56,7 +56,7 @@ class NavBar extends Component {
                 return "";
             default:
                 return (
-                    <a  className = "arrow" onClick={() => { this.props.history.goBack();}}><i className = 'material-icons'>arrow_back</i></a>
+                    <a className="arrow" style={{cursor: 'pointer'}} onClick={() => { this.props.history.goBack();}}><i className = 'material-icons'>arrow_back</i></a>
                 );
         }
     }
