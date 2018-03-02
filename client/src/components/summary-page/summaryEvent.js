@@ -7,33 +7,32 @@ import drinks from '../../assets/images/drinks_legend.png';
 
 const SummaryEvent = props => {
     const icons = [event, food, drinks];
-
-    const markerSelect = function(icon){
-        switch(icon){
+    let markerSelect = <div/>;
+        switch(props.eventType){
             case 'Event':
-                return <div className = 'marker'><img src={icons[0]} alt=""/></div>
+                markerSelect = <div className = 'col s2 center-align marker'><img src={icons[0]} alt=""/></div>;
                 break;
             case 'Food':
-                return <div className='marker'><img src={icons[1]} alt="" /></div>
+                markerSelect = <div className='col s2 center-align marker'><img src={icons[1]} alt="" /></div>;
                 break;
             case 'Drinks':
-                return <div className='marker'><img src={icons[2]} alt="" /></div>
+                markerSelect = <div className='col s2 center-align marker'><img src={icons[2]} alt="" /></div>;
                 break;
             default:
-                return ''
                 break;
         }
-    };
 
     return (
-            <div className="row">
-                <div className="col s7 offset-s1 left-align event-title">
-                    {props.eventType}
+            <div className="row event-spacer">
+                <div className="col s10 event-title">
+                    <div className="row">
+                        <div className="col s12">{props.eventType}</div>
+                    </div>
+                    <div className="row">
+                        <div className="col s11 offset-s1 event-font truncate">{props.eventName}</div>
+                    </div>
                 </div>
-                {markerSelect(props.eventType)}
-                <div className="col s6 offset-s2 left-align">
-                    <div className="event-font truncate">{props.eventName}</div>
-                </div>
+                {markerSelect}
             </div>
         );
 };
