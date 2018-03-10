@@ -24,7 +24,7 @@ class SignInPage extends Component {
         return ( 
             <div className="grey lighten-4 valign-wrapper" style={containerStyle}>
                 <div className="row card-width">
-                    <div className="col s10 offset-s1">
+                    <div className="col s12">
                         <div className="card white">
                             <div className="card-content">
                                 <span className='card-title center-align'>Sign In</span>
@@ -33,7 +33,7 @@ class SignInPage extends Component {
                                     <Field name='password' type="password" component={renderInput} />
                                     <div className="row" style={{marginBottom: "5%"}}>
                                         <div className='col s12 center-align'>
-                                            <button className='btn cyan'>Sign In</button>
+                                            <button className='btn-large cyan'>Sign In</button>
                                         </div>
                                     </div>
                                 </form>
