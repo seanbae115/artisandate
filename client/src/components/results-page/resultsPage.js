@@ -35,7 +35,7 @@ class ResultsPage extends Component {
         const { history } = this.props;
 
         return (
-            <div>
+            <div className="grey lighten-4">
                 <LocationBrowser initial={this.initialUpdate} name="events" history={history} locations={this.props.events}/>
                 <LocationBrowser initial={this.initialUpdate} name="food" history={history} locations={this.props.food}/>
                 <LocationBrowser initial={this.initialUpdate} name="drinks" history={history} locations={this.props.drinks}/>
