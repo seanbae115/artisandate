@@ -37,3 +37,14 @@ div.row {
 .truncate {
     margin-bottom: 11px;
 }
+.card .card-content {
+    padding: 4px;
+}
+.card .card-action {
+    padding: 4px;
+}
+span.card-title {
+    line-height: 20px;
+    font-size: 2rem;
+    text-align: center;
+}

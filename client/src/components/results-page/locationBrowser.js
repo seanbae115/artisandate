@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import MaterialIcon, { colorPallet } from 'material-icons-react';
-import"./resultsPage.css"
 import "./carousel.css"
+import"./resultsPage.css"
 import {connect} from "react-redux";
-import Header from './resultHeader';
 import Body from './resultBody';
 import {locationDetails} from "../../actions";
 import  {getIndividual} from "../../actions";
@@ -44,39 +43,30 @@ class LocationBrowser extends Component {
     }
 
     goToDetails(){
-        // console.log('location id is: ',this.locationId);
         this.props.history.push(`/event-page/${this.locationId}`);
     }
 
 
     render() {
-        const { locations } = this.props;
+        const { locations, name } = this.props;
 
         if(!locations.length){
             return (
-                <div className="location-info-group">
-                    <div className="row valign-wrapper">
-                        <div style={{height: "147.19px"}} className="col s12 content-list center-align">
-                            Loading...
-                        </div>
-                    </div>
-                    {/* <div className="row valign-wrapper bottom-pad">
-                        <div className="col s3 offset-s7 center-align">
-                            <button className='btn thin-btn'>Details</button>
-                        </div>
-                        /*toggle switch */
-                        /* <div className="col s5">
-                            <div className="switch">
-                                <label>
-                                    Omit
-                                    <input type="checkbox"/>
-                                    <span className="lever"/>
-                                    Include
-                                </label>
+                <div className="row">
+                    <div className="col s12 content-list">
+                        <div className="card">
+                            <div className="card-content center-align">
+                                <div style={{height: "165.39px"}}>Loading...</div>
+                            </div>
+                            <div className="card-action">
+                                <div className="row valign-wrapper bottom-pad">
+                                    <div className="col s3 offset-s7 center-align">
+                                        <div style={{height: "21px"}}/>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div> */}
-                    <div className="divider"/>
+                    </div>
                 </div>
             );
         }
@@ -89,39 +79,26 @@ class LocationBrowser extends Component {
         });
 
         return (
-            <div className="location-info-group">
-                <div className="row valign-wrapper">
-                    {/* <div className="col s1">
-                        <MaterialIcon icon='chevron_left' size='small'/>
-                    </div> */}
-                    <div className="col s12 content-list">
-                        <Carousel showThumbs={false} showStatus={false} showArrows={true} infiniteLoop={true} showIndicators={false} onChange={this.updateLocation}>
-                            {result}
-                        </Carousel>
-                    </div>
-                    {/* <div className="col s1">
-                        <MaterialIcon icon='chevron_right' size='small'/>
-                    </div> */}
-                </div>
-                <div className="row valign-wrapper bottom-pad">
-                    <div className="col s3 offset-s7 center-align">
-                        <button onClick={this.goToDetails} className='btn thin-btn cyan'>Details</button>
-                    </div>
-                    {/*toggle switch */}
-                    {/* <div className="col s5">
-                        <div className="switch">
-                            <label>
-                                Omit
-                                <input type="checkbox"/>
-                                <span className="lever"/>
-                                Include
-                            </label>
+            <div className="row valign-wrapper">
+                <div className="col s12 content-list">
+                    <div className="card">
+                        <div className="card-content">
+                            <span className="card-title">{name}</span>
+                            <Carousel showThumbs={false} showStatus={false} showArrows={true} infiniteLoop={true} showIndicators={false} onChange={this.updateLocation}>
+                                {result}
+                            </Carousel>
                         </div>
-                    </div> */}
+                        <div className="card-action">
+                            <div className="row valign-wrapper bottom-pad">
+                                <div className="col s3 offset-s7 center-align">
+                                    <button onClick={this.goToDetails} className='btn thin-btn cyan'>Details</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div className="divider"/>
             </div>
-        )
+        );
     }
 }
 

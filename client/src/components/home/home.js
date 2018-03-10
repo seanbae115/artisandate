@@ -16,7 +16,7 @@ export default class Home extends Component {
         return (
             <div className="full-page">
                 <div className="splash-image"/>
-                <div className="gradient valign-wrapper">
+                <div className="gradient x`valign-wrapper">
                     <div className="row">
                         <div className="col s-12 center-align">
                             <div className="grey-text text-darken-3"><h2>Planning a date is hard.</h2></div>
