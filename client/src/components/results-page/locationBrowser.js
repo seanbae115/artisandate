@@ -84,7 +84,7 @@ class LocationBrowser extends Component {
                     <div className="card">
                         <div className="card-content">
                             <span className="card-title">{name}</span>
-                            <Carousel showThumbs={false} showStatus={false} showArrows={true} infiniteLoop={true} showIndicators={false} onChange={this.updateLocation}>
+                            <Carousel showThumbs={false} showStatus={false} showArrows={true} infiniteLoop={true} showIndicators={false} swipeScrollTolerance={20} onChange={this.updateLocation}>
                                 {result}
                             </Carousel>
                         </div>
