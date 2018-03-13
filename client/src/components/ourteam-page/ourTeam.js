@@ -14,17 +14,17 @@ export default class OurTeam extends Component {
     }
 
     render() {
-        const containerStyle = {
-            'height': 'auto',
-            'width': '100vw'
-        };
+        // const containerStyle = {
+        //     'height': 'auto',
+        //     'width': '100vw'
+        // };
         return (
-            <div className="grey lighten-4 valign-wrapper" style={containerStyle}>
+            <div className="grey lighten-4 valign-wrapper containerStyle">
                 <div className="row">
                     <div className="col s12">
                         <div className="card white">
                             <div className="card-content">
-                                <h3 className='card-title center-align dev-team-margins'>Meet Our Dev Team</h3>
+                                <h3 className='card-title center-align dev-team'>Meet Our Dev Team</h3>
                                 <div className="row">
                                     <div className="col s12 center-align">
                                         <div className="col s12">

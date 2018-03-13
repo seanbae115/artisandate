@@ -14,7 +14,7 @@ export default class OurApp extends Component {
             'width': '100vw'
         };
         return (
-            <div className="grey lighten-4 valign-wrapper" style={containerStyle}>
+            <div className="grey lighten-4 containerStyle" style={containerStyle}>
                 <div className="row">
                     <div className="col s12">
                         <div className="card white">
