@@ -1,6 +1,10 @@
 #jumboImg{
     margin: 2vh;
 }
+.multi{
+        height: 40vh;
+        margin: 3vh auto;
+    }
 #rating .container{
     margin-top: 5vh;
 }
