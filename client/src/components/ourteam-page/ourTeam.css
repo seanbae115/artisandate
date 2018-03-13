@@ -36,15 +36,15 @@
 
 }
 
-/*@media only screen and (min-device-width: 768px) and (max-device-width: 1024px)and (-webkit-min-device-pixel-ratio: 2) {*/
-    /*.containerStyle {*/
-        /*height: 95vh;*/
-        /*width: 100vw;*/
-    /*}*/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px)and (-webkit-min-device-pixel-ratio: 2) {
+    .containerStyle {
+        height: 95vh;
+        width: 100vw;
+    }
 
-/*}*/
+}
 
 @media only screen
-and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2) {
+and (min-device-width: 1025px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2) {
 
 }
