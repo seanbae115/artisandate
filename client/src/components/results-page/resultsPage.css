@@ -48,3 +48,8 @@ span.card-title {
     font-size: 2rem;
     text-align: center;
 }
+.card .card-content .card-title {
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 500;
+}
