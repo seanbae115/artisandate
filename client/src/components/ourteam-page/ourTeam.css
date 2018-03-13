@@ -1,0 +1,13 @@
+/*Media Queries*/
+@media only screen and (min-device-width: 601px)
+{
+    .dev-team-margins {
+        font-size: 6em !important;
+        margin-bottom: 5% !important;
+    }
+
+    .left-to-right {
+        display: none;
+    }
+
+}
