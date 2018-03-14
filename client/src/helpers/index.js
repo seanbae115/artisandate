@@ -6,6 +6,7 @@ export function renderInput({ input, type, placeholder, meta: { touched, error }
     return (
         <div className='input-field'>
             <input {...input} className={touched ? "input-validation" : ""} type={ type ? type : 'text' } placeholder={ touched ? invalidInput : input.name }/>
+            <span>{error}</span>
         </div>
     )
 }
