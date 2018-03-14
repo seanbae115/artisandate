@@ -28,7 +28,7 @@ input:focus{
 }
 @media screen and (min-width: 601px) and (max-width: 992px) {
     .card-width {
-        width: 65%;
+        width: 70%;
     }
 
     .card-title.center-align{
@@ -43,13 +43,13 @@ input:focus{
         margin-top: 4em;
     }
     input[type=text]:not(.browser-default), input[type=password]:not(.browser-default){
-        font-size: 4em;
+        font-size: 3em;
         height: 5rem;
     }
 }
 @media screen and (min-width: 993px){
     .card-width {
-        width: 60%;
+        width: 70%;
     }
 
     .card-title.center-align{
@@ -64,11 +64,22 @@ input:focus{
         margin-top: 4em;
     }
     input[type=text]:not(.browser-default), input[type=password]:not(.browser-default){
-        font-size: 4em;
+        font-size: 3em;
         height: 8rem;
     }
     .btn-large{
         font-size: 2rem;
         width: 10vw;
+    }
+}
+
+@media screen and (min-width: 1230px){
+    .card-width {
+        width: 55%;
+    }
+
+    input[type=text]:not(.browser-default), input[type=password]:not(.browser-default){
+        font-size: 3em;
+        height: 5rem;
     }
 }
