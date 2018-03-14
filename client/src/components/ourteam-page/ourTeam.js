@@ -19,7 +19,7 @@ export default class OurTeam extends Component {
         //     'width': '100vw'
         // };
         return (
-            <div className="grey lighten-4 valign-wrapper containerStyle">
+            <div className="grey lighten-4 valign-wrapper team-container">
                 <div className="row">
                     <div className="col s12">
                         <div className="card white">
