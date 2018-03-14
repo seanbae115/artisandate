@@ -12,6 +12,14 @@ input:focus{
 .card-width{
     width: 90%;
 }
+
+.signin-card-title {
+    font-size: 2em !important;
+}
+
+.signup-card-title {
+    font-size: 2em !important;
+}
 @media screen and (max-width: 600px) {
     .card-title.center-align{
         font-size: 5em;
@@ -27,6 +35,14 @@ input:focus{
     }
 }
 @media screen and (min-width: 601px) and (max-width: 992px) {
+    .signin-card-title {
+        font-size: 3em !important;
+    }
+
+    .signup-card-title {
+        font-size: 3em !important;
+    }
+
     .card-width {
         width: 70%;
     }
@@ -48,17 +64,21 @@ input:focus{
     }
 }
 @media screen and (min-width: 993px){
+    .signin-card-title {
+        font-size: 3em !important;
+    }
+    .signup-card-title {
+        font-size: 3em !important;
+    }
     .card-width {
         width: 70%;
     }
-
     .card-title.center-align{
         font-size: 10em;
     }
     .card .card-content .card-title.center-align{
         margin-bottom: 0%;
         margin-top: 3%;
-
     }
     .input-field{
         margin-top: 4em;
