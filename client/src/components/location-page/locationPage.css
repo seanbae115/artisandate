@@ -84,3 +84,25 @@
     font-size: 1.4rem;
     line-height: 16px;
 }
+
+@media only screen and (min-device-width: 601px) and (max-device-width: 992px) {
+    .date-location {
+        font-size: 2.1em;
+    }
+
+    .zipText {
+        font-size: 1.8em !important;
+    }
+
+}
+
+@media only screen and (min-device-width: 992px) and (max-device-width: 1200px) {
+    .date-location {
+        font-size: 2.4em;
+    }
+
+    .zipText {
+        font-size: 1.8em !important;
+    }
+
+}
