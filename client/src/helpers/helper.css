@@ -27,6 +27,10 @@ input:focus{
     }
 }
 @media screen and (min-width: 601px) and (max-width: 992px) {
+    .card-width {
+        width: 65%;
+    }
+
     .card-title.center-align{
         font-size: 10em;
     }
@@ -44,6 +48,10 @@ input:focus{
     }
 }
 @media screen and (min-width: 993px){
+    .card-width {
+        width: 60%;
+    }
+
     .card-title.center-align{
         font-size: 10em;
     }
