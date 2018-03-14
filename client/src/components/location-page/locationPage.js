@@ -18,7 +18,7 @@ class LocationPage extends Component {
         return (
             <div className='grey lighten-4 valign-wrapper location-page-container'>
                 <div className="row card-width">
-                    <div className="col s10 offset-s1">
+                    <div className="col s10 offset-s1 m8 offset-m2 l6 offset-l3">
                         <div className="card white">
                             <div className="card-content">
                                 <div className="grey-text text-darken-3 date-location center-align">Let us know your date location to get started.</div>
