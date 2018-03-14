@@ -27,7 +27,7 @@ class SignInPage extends Component {
                     <div className="col s12">
                         <div className="card white">
                             <div className="card-content">
-                                <span className='card-title center-align'>Sign In</span>
+                                <span className='card-title center-align signin-card-title'>Sign In</span>
                                 <form onSubmit={this.props.handleSubmit(this.handleSignIn.bind(this))}>
                                     <Field name='email' component={renderInput}/>
                                     <Field name='password' type="password" component={renderInput} />

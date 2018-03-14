@@ -28,7 +28,7 @@ class SignUpPage extends Component {
                     <div className="col s10 offset-s1">
                         <div className="card white">
                             <div className="card-content">
-                                <span className='card-title center-align'>Sign Up</span>
+                                <span className='card-title center-align signup-card-title'>Sign Up</span>
                                 <form onSubmit={this.props.handleSubmit(this.handleSignUp.bind(this))}>
                                     <Field component={ renderInput } id='email' name='email' />
                                     <Field component={ renderInput } id='password' name='password' type='password' />
