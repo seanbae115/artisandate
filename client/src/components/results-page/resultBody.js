@@ -16,7 +16,7 @@ export default props => {
     return (
             <div className="row">
                 <div className="col s6">
-                    <div style={locationImage} className="z-depth-2"></div>
+                    <div style={locationImage} className="z-depth-2"/>
                 </div>
                 <div className="col s6">
                     <div className="row left-align">

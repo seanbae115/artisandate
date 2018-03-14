@@ -8,11 +8,11 @@ const DEFAULT_STATE = {
 
 export default function (state = DEFAULT_STATE, action){
     switch (action.type){
-        case "events":
+        case "Events":
             return {...state, mainEvent: action.payload};
-        case "food":
+        case "Food":
             return {...state, mainFood: action.payload};
-        case "drinks":
+        case "Drinks":
             return {...state, mainDrinks: action.payload};
         default:
             return state;

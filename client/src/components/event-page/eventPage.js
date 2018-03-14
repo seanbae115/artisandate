@@ -10,7 +10,7 @@ class EventPage extends Component{
         this.props.getIndividual(this.props.match.params);
     }
     render(){
-        console.log("props in event page: ",this.props);
+        // console.log("props in event page: ",this.props);
         if (!this.props.details){
             return <h1>loading...</h1>
         }

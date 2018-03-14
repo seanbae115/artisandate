@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
-import MaterialIcon, { colorPallet } from 'material-icons-react';
 import "./carousel.css"
 import"./resultsPage.css"
 import {connect} from "react-redux";
 import Body from './resultBody';
-import {locationDetails} from "../../actions";
-import  {getIndividual} from "../../actions";
+import {locationDetails, getIndividual} from "../../actions";
 import {Carousel} from "react-responsive-carousel";
 
 
@@ -36,7 +34,6 @@ class LocationBrowser extends Component {
             this.props.locationDetails(locations[index], this.props.name);
             return;
         }
-
         this.locationId = this.props.locations[index].id;
         this.details = this.props.locations[index];
         this.props.locationDetails(this.details, this.props.name);
@@ -83,10 +80,14 @@ class LocationBrowser extends Component {
                 <div className="col s12 content-list">
                     <div className="card">
                         <div className="card-content">
-                            <span className="card-title">{name}</span>
-                            <Carousel showThumbs={false} showStatus={false} showArrows={true} infiniteLoop={true} showIndicators={false} onChange={this.updateLocation}>
-                                {result}
-                            </Carousel>
+                            <div className="row">
+                                <div className="col s12">
+                                    <span className="card-title">{name}</span>
+                                    <Carousel showThumbs={false} showStatus={false} showArrows={true} infiniteLoop={true} showIndicators={false} swipeScrollTolerance={20} onChange={this.updateLocation}>
+                                        {result}
+                                    </Carousel>
+                                </div>
+                            </div>
                         </div>
                         <div className="card-action">
                             <div className="row valign-wrapper bottom-pad">
