@@ -5,10 +5,14 @@
 #title h1{
     margin: 2vh auto;
     box-sizing: border-box;
-    font-size: 6rem;
+    font-size: 4rem;
 }
 @media screen and (min-width: 993px){
     .responsive-img{
-        height: 43vh !important;
+        height: 35vh !important;
+    }
+
+    #title {
+        height: 5vh;
     }
 }

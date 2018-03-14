@@ -15,7 +15,7 @@ class EventPage extends Component{
             return <h1>loading...</h1>
         }
         return (
-            <div className = 'structure'>
+            <div className = 'structure container'>
                 <TitleImage business = {this.props.details}/>
                 <Info business={this.props.details}/>
             </div>
