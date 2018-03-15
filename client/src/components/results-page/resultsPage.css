@@ -37,8 +37,11 @@ div.row {
 .truncate {
     margin-bottom: 11px;
 }
-.card .card-content {
-    padding: 4px;
+.card-content.no-pad{
+    padding: 0;
+}
+.my-8{
+    margin: 8px 0;
 }
 .card .card-action {
     padding: 4px;

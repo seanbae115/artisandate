@@ -79,10 +79,10 @@ class LocationBrowser extends Component {
             <div className="row valign-wrapper">
                 <div className="col s12 content-list">
                     <div className="card">
-                        <div className="card-content">
+                        <div className="card-content no-pad">
                             <div className="row">
                                 <div className="col s12">
-                                    <span className="card-title">{name}</span>
+                                    <span className="card-title my-8">{name}</span>
                                     <Carousel showThumbs={false} showStatus={false} showArrows={true} infiniteLoop={true} showIndicators={false} swipeScrollTolerance={20} onChange={this.updateLocation}>
                                         {result}
                                     </Carousel>

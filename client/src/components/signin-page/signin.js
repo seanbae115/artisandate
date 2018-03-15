@@ -29,8 +29,8 @@ class SignInPage extends Component {
                             <div className="card-content">
                                 <span className='card-title center-align signin-card-title'>Sign In</span>
                                 <form onSubmit={this.props.handleSubmit(this.handleSignIn.bind(this))}>
-                                    <Field name='email' component={renderInput}/>
-                                    <Field name='password' type="password" component={renderInput} />
+                                    <Field name='email' label="Email" component={renderInput}/>
+                                    <Field name='password' type="password" label="Password" component={renderInput} />
                                     <div className="row" style={{marginBottom: "5%"}}>
                                         <div className='col s12 center-align'>
                                             <button className='btn-large cyan'>Sign In</button>
@@ -60,16 +60,15 @@ class SignInPage extends Component {
 
 function validate(values) {
     const error = {};
+    const validEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
     if (!values.email) {
         error.email = 'please enter an email'
-    }
-    if (values.email !== undefined) {
-        if (!values.email.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
-            error.email = "Please enter a valid email address"
-        }
+    } else if (values.email !== undefined && !values.email.match(validEmail)) {
+        error.email = "Please enter a valid email address"
     }
     if (!values.password) {
-        error.password = 'please choose a password'
+        error.password = 'please enter a password'
     }
 
     return error;

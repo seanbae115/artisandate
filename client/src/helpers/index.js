@@ -1,12 +1,14 @@
 import React from 'react';
 import "./helper.css";
 
-export function renderInput({ input, type, placeholder, meta: { touched, error } }) {
+export function renderInput({ input, type, placeholder, label, id, meta: { touched, error } }) {
+    console.log("id", id);
+    console.log("error", error);
     const invalidInput = touched && error;
     return (
         <div className='input-field'>
-            <input {...input} className={touched ? "input-validation" : ""} type={ type ? type : 'text' } placeholder={ touched ? invalidInput : input.name }/>
-            <span>{error}</span>
+            <input {...input} className={invalidInput ? "input-validation" : ""} type={ type ? type : 'text' } placeholder={ label }/>
+            {touched ? <span className="error-msg">{error}</span> : id === 'password' && error ? <span>Minimum length of 8 characters</span> : <span/>}
         </div>
     )
 }
