@@ -14,7 +14,7 @@ export default class OurApp extends Component {
             <div className="grey lighten-4 our-app-container">
                 <div className="row">
                     <div className="col s12 m8 offset-m2 l6 offset-l3">
-                        <div className="card white">
+                        <div className="card white app">
                             <div className="card-content">
                                 <h3 className='card-title center-align app-card-title'>Welcome to Artisan Date</h3>
                                 <div className="row">
