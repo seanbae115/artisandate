@@ -90,33 +90,15 @@
 }
 
 @media only screen and (min-device-width: 425px){
-    .go {
-        margin-bottom: 10%;
-    }
 
-    .date-location {
-        margin-top: 10%;
-    }
 }
 
 @media only screen and (min-device-width: 601px){
-    .go {
-        margin-bottom: 10%;
-    }
 
-    .date-location {
-        margin-top: 10%;
-    }
 }
 
 @media only screen and (min-device-width: 992px){
-    .go {
-        margin-bottom: 15%;
-    }
 
-    .date-location {
-        margin-top: 15%;
-    }
 }
 @media only screen and (min-device-width: 601px) and (max-device-width: 992px) {
     .date-location {

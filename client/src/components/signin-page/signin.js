@@ -24,30 +24,18 @@ class SignInPage extends Component {
         return ( 
             <div className="grey lighten-4 valign-wrapper" style={containerStyle}>
                 <div className="row card-width">
-                    <div className="col s12">
+                    <div className="col s10 offset-s1 m8 offset-m2 l6 offset-l3">
                         <div className="card white">
                             <div className="card-content">
                                 <span className='card-title center-align signin-card-title'>Sign In</span>
-                                <form onSubmit={this.props.handleSubmit(this.handleSignIn.bind(this))}>
+                                <form onSubmit={this.props.handleSubmit(this.handleSignIn.bind(this))} className="center-align">
                                     <Field name='email' label="Email" component={renderInput}/>
                                     <Field name='password' type="password" label="Password" component={renderInput} />
-                                    <div className="row" style={{marginBottom: "5%"}}>
-                                        <div className='col s12 center-align'>
-                                            <button className='btn-large cyan'>Sign In</button>
-                                        </div>
-                                    </div>
+                                    <button className='btn-large cyan'>Sign In</button>
                                 </form>
-                                <div className="card-action">
-                                    <div className="row">
-                                        <div className='col-s12 center-align'>
-                                            <span className='card-title' style={{fontSize: "1.6rem"}}>Don't have an account?</span>
-                                            <div className='row'>
-                                                <div className='col-s12'>
-                                                    <Link to='/signup-page' className='btn amber'>Create one</Link>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div className="card-action center-align">
+                                    <span className='card-title' style={{fontSize: "1.6rem"}}>Don't have an account?</span>
+                                    <Link to='/signup-page' className='btn amber'>Create one</Link>
                                 </div>
                             </div>
                         </div>

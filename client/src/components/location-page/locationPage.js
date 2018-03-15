@@ -9,9 +9,13 @@ class LocationPage extends Component {
     sendData(props){
         this.props.history.push(`/results-page/${props.zip}`);
     }
-    renderInput(props){
+    renderInput({ input, meta: {touched, error} }){
+        const invalidInput = touched && error;
         return (
-            <input {...props.input}  type = 'number' className='inputText center-align'/>
+            <div className="input-field center-align">
+                <input {...input}  type = 'number' className={`inputText center-align ${invalidInput ? "input-validation" : ""}`} placeholder='Zip Code'/>
+                {touched ? <span className="error-msg">{error}</span> : <span/>}
+            </div>
         )
     }
     render(){
@@ -21,17 +25,12 @@ class LocationPage extends Component {
                     <div className="col s10 offset-s1 m8 offset-m2 l6 offset-l3">
                         <div className="card white ">
                             <div className="card-content">
-                                <div className="grey-text text-darken-3 date-location center-align">Let us know your date location to get started.</div>
-                                <form onSubmit = {this.props.handleSubmit(this.sendData.bind(this))}>
-                                    <span className='card-title grey-text zipText center-align'>Zip Code</span>
-                                    <div className='col s8 offset-s2'>
-                                        <Field label = 'zip' name = 'zip' component = {this.renderInput}/>
-                                    </div>
-                                    <div className='row'>
-                                        <div className= 'col s12 center-align'>
-                                            <button className="btn-large cyan go">Go</button>
-                                        </div>
-                                    </div>
+                                <div className="grey-text text-darken-3 date-location center-align">
+                                    Let us know your date location to get started.
+                                </div>
+                                <form onSubmit={this.props.handleSubmit(this.sendData.bind(this))} className="center-align">
+                                    <Field label='zip' name='zip' component={this.renderInput}/>
+                                    <button className="btn-large cyan go">Go</button>
                                 </form>
                             </div>
                         </div>
@@ -41,9 +40,20 @@ class LocationPage extends Component {
         )
     }
 }
+function validate(values) {
+    const error ={};
+    const validZip = /(^\d{5}$)|(^\d{5}-\d{4}$)/;
 
+    if (!values.zip){
+        error.zip = 'Please enter a zip code';
+    } else if (!values.zip.match(validZip)){
+        error.zip = 'Please enter a valid zip code';
+    }
+    return error;
+}
 LocationPage = reduxForm({
-    form: 'zip-form'
+    form: 'zip-form',
+    validate: validate
 })(LocationPage);
 
 export default connect(null, { sendZip })(LocationPage);
