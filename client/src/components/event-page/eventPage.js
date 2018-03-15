@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './title.css';
 import { connect } from 'react-redux';
 import { getIndividual } from '../../actions';
 import TitleImage from './title';
@@ -10,9 +11,12 @@ class EventPage extends Component{
         this.props.getIndividual(this.props.match.params);
     }
     render(){
-        // console.log("props in event page: ",this.props);
         if (!this.props.details){
-            return <h1>loading...</h1>
+            return(
+                <div className='incoming'>
+                    <h1>Details Incoming</h1>
+                </div>
+            );
         }
         return (
             <div className = 'structure container'>
