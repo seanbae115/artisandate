@@ -56,3 +56,7 @@ span.card-title {
     line-height: 16px;
     font-weight: 500;
 }
+.temp-width {
+    margin: auto;
+    width: 66% !important;
+}
