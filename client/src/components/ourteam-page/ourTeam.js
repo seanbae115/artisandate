@@ -31,8 +31,8 @@ export default class OurTeam extends Component {
                                             <img className='responsive-img' src={Team} alt="Team Picture"/>
                                             <p className="left-to-right">(from left to right)</p>
                                         </div>
-                                        <div className="container">
-                                            <div className="col s12 m6 center-align">
+                                        <div>
+                                            <div className="col s12 m5 offset-m1 center-align">
                                                 <div className="row">
                                                     <div className="col s12">
                                                         <h4>Eric Wong</h4>
@@ -117,7 +117,7 @@ export default class OurTeam extends Component {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="col s12 m6 center-align">
+                                            <div className="col s12 m5 center-align">
                                                 <div className="divider"></div>
                                                 <div className="row center-align">
                                                     <div className="col s12">
