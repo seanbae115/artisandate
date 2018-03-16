@@ -1,9 +1,7 @@
 import React from 'react';
-import "./helper.css";
+import "./inputCardHelper.css";
 
 export function renderInput({ input, type, placeholder, label, id, meta: { touched, error } }) {
-    console.log("id", id);
-    console.log("error", error);
     const invalidInput = touched && error;
     return (
         <div className='input-field'>

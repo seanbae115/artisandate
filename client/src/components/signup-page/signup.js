@@ -3,7 +3,7 @@ import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import { renderInput } from '../../helpers';
 import { signUp } from '../../actions';
-import "../../helpers/helper.css"
+import "../../helpers/inputCardHelper.css"
 
 class SignUpPage extends Component {
 
@@ -17,13 +17,8 @@ class SignUpPage extends Component {
     }
 
     render(){
-        const containerStyle = {
-            'height': '92.5vh',
-            'width': '100vw'
-        };
-
         return (
-            <div className="grey lighten-4 valign-wrapper" style={containerStyle}>
+            <div className="grey lighten-4 valign-wrapper input-card-container">
                 <div className="row card-width">
                     <div className="col s10 offset-s1">
                         <div className="card white">
@@ -35,7 +30,7 @@ class SignUpPage extends Component {
                                     <Field component={ renderInput } id='confirmPassword' name='confirmPassword' type='password' label='Confirm Password' />
                                     <div className="row">
                                         <div className='col s12 center-align'>
-                                            <button className='btn cyan' type='submit'>Sign Up</button>
+                                            <button className='btn-large bottom-btn cyan' type='submit'>Sign Up</button>
                                         </div>
                                     </div>
                                 </form>
