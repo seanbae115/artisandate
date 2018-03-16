@@ -36,13 +36,11 @@ class ResultsPage extends Component {
 
         return (
             <div className="grey lighten-4">
-                <div className="temp-width">
                 <LocationBrowser initial={this.initialUpdate} name="Events" history={history} locations={this.props.events}/>
                 <LocationBrowser initial={this.initialUpdate} name="Food" history={history} locations={this.props.food}/>
                 <LocationBrowser initial={this.initialUpdate} name="Drinks" history={history} locations={this.props.drinks}/>
                 <div className="center-align location-info-group">
                     <button onClick={this.goToSummary.bind(this)} className='btn cyan'>Next</button>
-                </div>
                 </div>
             </div>
         )
