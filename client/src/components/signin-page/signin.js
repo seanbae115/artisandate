@@ -4,7 +4,7 @@ import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import { renderInput } from '../../helpers';
 import { signIn } from '../../actions';
-import "../../helpers/helper.css"
+import "../../helpers/inputCardHelper.css"
 
 class SignInPage extends Component {
 
@@ -17,12 +17,8 @@ class SignInPage extends Component {
     }
 
     render(){
-        const containerStyle = {
-            'height': '92.5vh',
-            'width': '100vw'
-        };
-        return ( 
-            <div className="grey lighten-4 valign-wrapper" style={containerStyle}>
+        return (
+            <div className="grey lighten-4 valign-wrapper input-card-container">
                 <div className="row card-width">
                     <div className="col s10 offset-s1 m8 offset-m2 l6 offset-l3">
                         <div className="card white">
@@ -31,11 +27,11 @@ class SignInPage extends Component {
                                 <form onSubmit={this.props.handleSubmit(this.handleSignIn.bind(this))} className="center-align">
                                     <Field name='email' label="Email" component={renderInput}/>
                                     <Field name='password' type="password" label="Password" component={renderInput} />
-                                    <button className='btn-large cyan'>Sign In</button>
+                                    <button className='btn-large float-btn cyan'>Sign In</button>
                                 </form>
                                 <div className="card-action center-align">
-                                    <span className='card-title' style={{fontSize: "1.6rem"}}>Don't have an account?</span>
-                                    <Link to='/signup-page' className='btn amber'>Create one</Link>
+                                    <span className='card-subtitle' style={{fontSize: "1.6rem"}}>Don't have an account?</span>
+                                    <Link to='/signup-page' className='btn bottom-btn amber'>Create one</Link>
                                 </div>
                             </div>
                         </div>

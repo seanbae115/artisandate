@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import './locationPage.css';
-import '../../helpers/helper.css'
+import '../../helpers/inputCardHelper.css'
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import { sendZip } from '../../actions';
@@ -20,17 +19,17 @@ class LocationPage extends Component {
     }
     render(){
         return (
-            <div className='grey lighten-4 valign-wrapper location-page-container'>
-                <div className="row location-card-width">
+            <div className='grey lighten-4 valign-wrapper input-card-container'>
+                <div className="row card-width">
                     <div className="col s10 offset-s1 m8 offset-m2 l6 offset-l3">
                         <div className="card white ">
                             <div className="card-content">
-                                <div className="grey-text text-darken-3 date-location center-align">
+                                <div className="grey-text text-darken-3 center-align card-subtitle">
                                     Let us know your date location to get started.
                                 </div>
                                 <form onSubmit={this.props.handleSubmit(this.sendData.bind(this))} className="center-align">
                                     <Field label='zip' name='zip' component={this.renderInput}/>
-                                    <button className="btn-large cyan go">Go</button>
+                                    <button className="btn-large bottom-btn cyan">Go</button>
                                 </form>
                             </div>
                         </div>
