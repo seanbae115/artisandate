@@ -1,4 +1,4 @@
-/******* results*******/
+/******* resultsPage.css *******/
 .row.valign-wrapper{
     margin-bottom: 0;
 }
@@ -57,10 +57,6 @@ span.card-title {
     line-height: 16px;
     font-weight: 500;
 }
-.temp-width {
-    margin: auto;
-    width: 66% !important;
-}
 
 /*small only*/
 @media only screen and (max-width: 600px) {
@@ -69,12 +65,18 @@ span.card-title {
 
 /*medium only*/
 @media only screen and (min-width: 600px) and (max-width: 992px) {
-
+    .active-area {
+        margin: auto;
+        width: 66%;
+    }
 }
 
 /*large and up*/
 @media only screen and (min-width: 993px) {
-
+    .active-area {
+        margin: auto;
+        width: 50%;
+    }
 }
 
 
