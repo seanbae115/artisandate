@@ -20,27 +20,28 @@ export default class OurApp extends Component {
                                 <div className="row">
                                     <div className="col s12 center-align">
                                         <h4 className="about-application-title">About Our Application</h4>
-                                        <h5 className="about-application-text">Our application is a simplified and condensed date itinerary creator. Through the use of multiple web technologies, we provide a plethora of local options for a full night of entertainment.</h5>
+                                        <h5 className="about-application-text">Our application is a simplified and condensed date itinerary creator. Through the use of web technologies and API’s, we provide local options for a full night of entertainment for individuals, couples, or even a group.</h5>
                                     </div>
                                     <div className="divider"></div>
                                     <div className="col s12 center-align">
                                         <h4>Technologies Implemented</h4>
                                         <div className="row">
                                             <div className="col s6">
-                                                <h5>Javascript</h5>
+                                                <h5>Javascript (ES6)</h5>
                                                 <h5>React.js</h5>
                                                 <h5>Redux.js</h5>
-                                                <h5>Materialize</h5>
-                                                <h5>NPM</h5>
+                                                <h5>Materialize-CSS</h5>
                                                 <h5>Node.js</h5>
+                                                <h5>Express.js</h5>
+                                                <h5>NodeMailer</h5>
                                             </div>
                                             <div className="col s6">
-                                                <h5>Express.js</h5>
                                                 <h5>Passport.js</h5>
                                                 <h5>MySQL</h5>
                                                 <h5>Yelp API</h5>
                                                 <h5>Google API</h5>
-                                                <h5>Amazon Web Services</h5>
+                                                <h5>Google Maps</h5>
+                                                <h5>AWS (EC2)</h5>
                                             </div>
                                         </div>
                                     </div>
