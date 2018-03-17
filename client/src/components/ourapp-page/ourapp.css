@@ -1,0 +1,25 @@
+/*ourapp.css*/
+
+.our-app-container {
+    height: 92.5vh;
+    width: 100vw;
+}
+
+.card.white.app{
+    margin-top: 5rem;
+}
+
+@media only screen and (min-width: 601px){
+    .app-card-title{
+        margin-bottom: 2% !important;
+        font-size: 3em !important;
+    }
+
+    .about-application-title {
+        font-size: 2.5em;
+    }
+
+    .about-application-text{
+        font-size: 1.5em;
+    }
+}

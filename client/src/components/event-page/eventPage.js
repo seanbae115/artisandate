@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
+import './title.css';
 import { connect } from 'react-redux';
-import './eventPage.css'
 import { getIndividual } from '../../actions';
 import TitleImage from './title';
 import Info from './info';
-import Environment from './environment';
 
 
 class EventPage extends Component{
@@ -12,12 +11,15 @@ class EventPage extends Component{
         this.props.getIndividual(this.props.match.params);
     }
     render(){
-        console.log("props in event page: ",this.props);
         if (!this.props.details){
-            return <h1>loading...</h1>
+            return(
+                <div className='incoming'>
+                    <h1>Details Incoming</h1>
+                </div>
+            );
         }
         return (
-            <div className = 'structure'>
+            <div className = 'structure container'>
                 <TitleImage business = {this.props.details}/>
                 <Info business={this.props.details}/>
             </div>

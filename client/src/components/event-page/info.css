@@ -1,6 +1,10 @@
 #jumboImg{
     margin: 2vh;
 }
+.multi{
+        height: 40vh;
+        margin: 3vh auto;
+    }
 #rating .container{
     margin-top: 5vh;
 }
@@ -20,3 +24,10 @@
 .pSize{
     font-size: 2em; 
 }
+
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px)and (-webkit-min-device-pixel-ratio: 2) {
+    .responsive-img {
+        height: 25vh !important;
+    }
+}
+

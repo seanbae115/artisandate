@@ -37,7 +37,7 @@ export class MapComponent extends React.PureComponent {
             withProps({
                 googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyAl82-QVgSS43dlCQqr6flx8BaCbREVOTA&v=3.exp&libraries=geometry,drawing,places",
                 loadingElement: <div style={{ height: `100%` }} />,
-                containerElement: <div className="container" style={{ height: "61vh", marginTop: "2%"}} />,
+                containerElement: <div className="map-container"/>,
                 mapElement: <div style={{ height: `100%` }} />,
             }),
             withScriptjs,
@@ -54,7 +54,7 @@ export class MapComponent extends React.PureComponent {
                     labelAnchor={new google.maps.Point(0, 0)}
                     labelStyle={labelBg}
                 >
-                    <div className="container">
+                    <div className="route-container">
                         {/* <p>{eventLoc.name}</p> */}
                         {eventLoc.location.display_address.map((item,index) => {
                             return (<p key={index} className="address-line">{item}</p>);
@@ -68,7 +68,7 @@ export class MapComponent extends React.PureComponent {
                     labelAnchor={new google.maps.Point(0, 0)}
                     labelStyle={labelBg}
                 >
-                    <div className="container">
+                    <div className="route-container">
                         {/* <p>{foodLoc.name}</p> */}
                         {foodLoc.location.display_address.map((item,index) => {
                             return (<p key={index} className="address-line">{item}</p>);
@@ -82,7 +82,7 @@ export class MapComponent extends React.PureComponent {
                     labelAnchor={new google.maps.Point(0, 0)}
                     labelStyle={labelBg}
                 >
-                    <div className="container">
+                    <div className="route-container">
                         {/* <p>{drinkLoc.name}</p> */}
                         {drinkLoc.location.display_address.map((item,index) => {
                             return (<p key={index} className="address-line">{item}</p>);

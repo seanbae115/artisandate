@@ -1,3 +1,4 @@
+/******* resultsPage.css *******/
 .row.valign-wrapper{
     margin-bottom: 0;
 }
@@ -37,3 +38,51 @@ div.row {
 .truncate {
     margin-bottom: 11px;
 }
+.card-content.no-pad{
+    padding: 0;
+}
+.my-8{
+    margin: 8px 0;
+}
+.card .card-action {
+    padding: 4px;
+}
+span.card-title {
+    line-height: 20px;
+    font-size: 2rem;
+    text-align: center;
+}
+.card .card-content .card-title {
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 500;
+}
+
+/*small only*/
+@media only screen and (max-width: 600px) {
+
+}
+
+/*medium only*/
+@media only screen and (min-width: 600px) and (max-width: 992px) {
+    .active-area {
+        margin: auto;
+        width: 66%;
+    }
+}
+
+/*large and up*/
+@media only screen and (min-width: 993px) {
+    .active-area {
+        margin: auto;
+        width: 50%;
+    }
+}
+
+
+
+
+
+
+
+

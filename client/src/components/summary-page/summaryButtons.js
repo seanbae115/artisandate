@@ -31,7 +31,7 @@ class SummaryButtons extends Component {
         let emailButton;
         switch(status){
             case 'sending':
-                emailButton = <div className="btn blue" style={{paddingTop: "0.6rem"}}><div className="loading"/></div>;
+                emailButton = <div className="btn cyan" style={{paddingTop: "0.6rem"}}><div className="loading"/></div>;
                 break;
             case 'sent':
                 emailButton = <div className="btn grey">Sent</div>;
@@ -40,15 +40,19 @@ class SummaryButtons extends Component {
                 emailButton = <div onClick={this.sendItinerary} className="btn cyan">Email</div>;
         }
          return (
-            <div className="row body-buffer">
-                <div className="col s6 center-align">
-                    {emailButton}
-                </div>
-                {/* <div className="col s4 center">
-                    <div to="/emailPage" className="btn blue">Add Calendar</div>
-                </div> */}
-                <div className="col s6 center-align">
-                    <div onClick={this.props.openModal}className="btn red darken-2">Start Over</div>
+            <div className="row">
+                <div className="col s12 m10 offset-m1 l6 offset-l3">
+                    <div className="row">
+                        <div className="col s6 center-align my-8">
+                            {emailButton}
+                        </div>
+                        {/* <div className="col s4 center">
+                            <div to="/emailPage" className="btn blue">Add Calendar</div>
+                        </div> */}
+                        <div className="col s6 center-align my-8">
+                            <div onClick={this.props.openModal} className="btn red darken-2">Start Over</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         )}

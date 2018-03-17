@@ -5,10 +5,12 @@ class SummaryModal extends Component {
 
 
     render(){
+        
         const displayModal = {
-            display: this.props.display ? "flex" : "none"
+            display: this.props.display ? "flex" : "none",
+            justifyContent: this.props.display ? "center" : "none"
         }
-
+        console.log('props in modal: ', this.props);
         return (
             <div style={displayModal} className="homeModal valign-wrapper">
                 <div className="row">
