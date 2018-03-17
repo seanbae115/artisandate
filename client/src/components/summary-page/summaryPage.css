@@ -6,9 +6,6 @@ html{
 div>i.nav-icon-size{
     font-size: 5.6rem;
 }
-.body-buffer{
-    margin-top: 2%;
-}
 .event-contain{
     border-bottom: 1px solid #64b5f6;
     height: 3vh;
@@ -21,20 +18,25 @@ div.s2.event-contain{
     font-size: 1.5rem;
 }
 .event-title{
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     color: #90a4ae;
     margin-bottom: 0;
+}
+.event-card {
+    padding: 0;
+    border-radius: 0 0 2px 2px;
 }
 .btn-confirm{
     width: 80%;
 }
-#map{
-    width: 100%;
-    height: 60vh;
+.map-container {
+    height: 100%;
 }
-.map-contain{
-    width: 100%;
-    height: 90%;
+.nav-contain {
+    height: calc(100vh - 318px);
+}
+.route-container {
+    padding: 5px;
 }
 .address-line{
     margin: 0;
@@ -62,6 +64,10 @@ div.s2.event-contain{
 .modal-font {
     font-size: 1.5rem;
 }
+.legend-img {
+    width: 38px;
+    height: 38px;
+}
 
 /*SPINNER taken from Alan Shortis via code pen*/
 @keyframes spin {
@@ -81,47 +87,33 @@ div.s2.event-contain{
     animation: spin 750ms infinite linear;
 }
 
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px)and (-webkit-min-device-pixel-ratio: 2) {
-    .summary-container {
-        margin-top: 3%;
+/******* Media breakpoints *******/
+/*medium and up*/
+@media only screen and (min-width: 601px) {
+    .nav-contain {
+        height: calc(100vh - 326px);
     }
-
+    .row .col.marker {
+        padding-top: 1.5%;
+    }
 }
-
-@media only screen and (min-device-width: 1024px) and (max-device-width: 1200px) and (-webkit-min-device-pixel-ratio: 2) {
-    .map-container {
-       width: 95% !important;
-       height: 55vh !important;
+/******* iPhone 4 *******/
+@media only screen and (max-width: 320px) {
+    .card {
+        margin: 0.5rem 0 .2rem 0;
     }
-
-    .summary-container {
-        margin-top: 7%;
+    .nav-contain {
+        height: calc(100vh - 246px);
     }
-
-    .summary-page-bottom {
-        margin-top: 5%;
-    }
-
-
-}
-
-@media only screen and (min-device-width: 430px) {
     .event-title {
-        font-size: 1.5rem;
+        font-size: .5rem;
     }
-
-}
-
-@media screen and (min-device-width: 1201px) and (-webkit-min-device-pixel-ratio: 1) {
-    .container {
-        width: 55% !important;
+    .event-font {
+        font-size: 1rem;
     }
-    .map-container {
-        width: 85% !important;
-        height: 55vh !important;
-    }
-
-    .summary-container {
-        margin-top: .5%;
+    .legend-img {
+        width: 28px;
+        height: 28px;
     }
 }
+

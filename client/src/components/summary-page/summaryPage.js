@@ -33,19 +33,21 @@ class Summary extends Component{
 
     render() {
         return (
-                <div className="container summary-container">
+                <div className="grey lighten-4">
                     <div className='row'>
-                        <div className="col s12">
-                            <SummaryEvent eventType="Event" eventName={this.props.event.name}/>
-                            <SummaryEvent eventType="Food" eventName={this.props.food.name}/>
-                            <SummaryEvent eventType="Drinks" eventName={this.props.drinks.name}/>
+                        <div className="col s12 m10 offset-m1 l6 offset-l3">
+                                    <SummaryEvent eventType="Event" eventName={this.props.event.name}/>
+                                    <SummaryEvent eventType="Food" eventName={this.props.food.name}/>
+                                    <SummaryEvent eventType="Drinks" eventName={this.props.drinks.name}/>
                         </div>
-                        <div className="col s12 summary-page-bottom">
+                        <div className="col s12 m10 offset-m1 l6 offset-l3 nav-contain">
                             <MapComponent eventLoc={this.props.event} foodLoc={this.props.food} drinkLoc={this.props.drinks} />
-                            <SummaryButtons openModal={this.openModal}/>
-                            <SummaryModal display={this.state.displayModal} closeModal={this.closeModal} />
+
                         </div>
+
                     </div>
+                        <SummaryButtons openModal={this.openModal}/>
+                        <SummaryModal display={this.state.displayModal} closeModal={this.closeModal} />
                 </div>
         );
     }
