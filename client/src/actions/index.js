@@ -75,6 +75,15 @@ export function signIn(cred) {
     }
 }
 
+export function signOut(){
+
+    localStorage.removeItem('token');
+
+    return {
+        type: types.SIGN_OUT
+    };
+}
+
 export function sendMail(data) {
     return dispatch => {
         axios.post(`/mailer/send`, data).then (res =>{
