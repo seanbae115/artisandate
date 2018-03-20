@@ -17,6 +17,7 @@ class SignInPage extends Component {
     }
 
     render(){
+        console.log('hello this is a test');
         return (
             <div className="grey lighten-4 valign-wrapper input-card-container">
                 <div className="row card-width">
