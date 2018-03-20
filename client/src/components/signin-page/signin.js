@@ -9,6 +9,7 @@ import "../../helpers/inputCardHelper.css"
 class SignInPage extends Component {
 
     handleSignIn(values) {
+        
         this.props.signIn(values).then(() => {
             if(this.props.auth){
                 this.props.history.push(`/location-page/`);
@@ -17,7 +18,6 @@ class SignInPage extends Component {
     }
 
     render(){
-        console.log('hello this is a test');
         return (
             <div className="grey lighten-4 valign-wrapper input-card-container">
                 <div className="row card-width">
