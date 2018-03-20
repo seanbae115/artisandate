@@ -43,12 +43,6 @@ export function signUp(cred) {
             });
             // console.log('Successful sign in')
         } catch (err) {
-            if(err.response){
-                return dispatch({
-                    type: types.AUTH_ERROR,
-                    error: err.response.data
-                });
-            }
             dispatch({
                 type: types.AUTH_ERROR,
                 error: 'Error signing up'

@@ -28,7 +28,6 @@ class SignInPage extends Component {
                                     <Field name='email' label="Email" component={renderInput}/>
                                     <Field name='password' type="password" label="Password" component={renderInput} />
                                     <button className='btn-large float-btn cyan'>Sign In</button>
-                                    <p className="red-text center-align">{this.props.authError}</p>
                                 </form>
                                 <div className="card-action center-align">
                                     <span className='card-subtitle' style={{fontSize: "1.6rem"}}>Don't have an account?</span>
@@ -63,7 +62,7 @@ function mapStateToProps(state) {
     return {
         auth: state.user.auth,
         email: state.user.email,
-        authError: state.user.error
+        error: state.user.error
     }
 }
 
