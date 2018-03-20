@@ -65,14 +65,16 @@ class NavBar extends Component {
     }
     logOutLink(){
         if(this.props.auth){
-            return (
-                <li><a type = 'button' onClick = {() => {this.handleSignOut()}}>Log Out</a></li>
-            );
+            return [
+                <li key='0'><Link to='/location-page'>Home</Link></li>,
+                <li key = '1'><a type = 'button' onClick = {() => {this.handleSignOut()}}>Log Out</a></li>
+            ];
         }
 
         return [
-            <li key = '0'><Link to='/signup-page' onClick={this.returnMenu}>Sign Up</Link></li>,
-            <li key = '1'><Link to='/signin-page' onClick={this.returnMenu}>Sign In</Link></li>
+            <li key = '0'><Link to='/'>Home</Link></li>,
+            <li key = '1'><Link to='/signup-page' onClick={this.returnMenu}>Sign Up</Link></li>,
+            <li key = '2'><Link to='/signin-page' onClick={this.returnMenu}>Sign In</Link></li>
         ];
     }
     handleSignOut(){
@@ -93,7 +95,6 @@ class NavBar extends Component {
                             <i className="material-icons amber-text text-darken-3">menu</i>
                         </a>
                         <ul className="right hide-on-med-and-down">
-                            <li><Link to='/'>Home</Link></li>
                             {/* <li><Link to='/location-page'>Get Started</Link></li> */}
                             {this.logOutLink()}
                             <li><Link to='/ourapp-page'>Our App</Link></li>
@@ -102,7 +103,6 @@ class NavBar extends Component {
                         </ul>
                         <div>
                             <ul className="side-nav right-aligned" style={this.state.navStyle}>
-                                <li><Link to='/' onClick={this.returnMenu}>Home</Link></li>
                                 {/* <li><Link to='/location-page'>Get Started</Link></li> */}
                                 {this.logOutLink()}
                                 <li><Link to='/ourapp-page' onClick={this.returnMenu}>Our App</Link></li>
