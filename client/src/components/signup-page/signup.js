@@ -32,6 +32,7 @@ class SignUpPage extends Component {
                                         <div className='col s12 center-align'>
                                             <button className='btn-large bottom-btn cyan' type='submit'>Sign Up</button>
                                         </div>
+                                        <p className="red-text center-align">{this.props.authError}</p>
                                     </div>
                                 </form>
                             </div>
@@ -68,7 +69,7 @@ function mapStateToProps(state) {
     return {
         auth: state.user.auth,
         email: state.user.email,
-        error: state.user.error
+        authError: state.user.error
     }
 }
 
