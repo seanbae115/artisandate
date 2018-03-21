@@ -13,14 +13,16 @@ const localOptions = { usernameField: 'email' };
 const localLogin = new LocalStrategy(localOptions, (email, password, done) => {
 	let user = Users.userSearchSQL(email);
 	connection.query(user, function (err, results, fields){
-		if (err) return done(err)
-		if (!results[0]) return done(null, false);
-		if (!crypt.checkPassword(password, results[0].password)) { return done(null, false); }
+		if (err) {
+			return done(err, false, {message: 'Incorrect Token!!'})
+		}
+		if (!results[0]) {
+			return done(null, false);
+		}
+		if (!crypt.checkPassword(password, results[0].password)) {
+			return done(null, false);
+		}
 		return done(null, results);
-		//  user.comparePasswords(password, (err, isMatch) => {
-		// 	if(err) return done(err);
-		// 	if(!isMatch) return done(null, false);
-		// 	done(null, user)
 	});
 });
 
