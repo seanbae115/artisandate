@@ -25,6 +25,7 @@ class NavBar extends Component {
         this.slideOutMenu = this.slideOutMenu.bind(this);
         this.returnMenu = this.returnMenu.bind(this);
         this.backButton = this.backButton.bind(this);
+        this.handleSignOut = this.handleSignOut.bind(this)
     }
     slideOutMenu(){
         this.setState({
@@ -66,23 +67,21 @@ class NavBar extends Component {
     logOutLink(){
         if(this.props.auth){
             return [
-                <li key='0'><Link to='/location-page'>Home</Link></li>,
-                <li key = '1'><a type = 'button' onClick = {() => {this.handleSignOut()}}>Log Out</a></li>
+                <li key='0'><Link to='/location-page' onClick={this.returnMenu}>Home</Link></li>,
+                <li key = '1'><a type = 'button' onClick = {this.handleSignOut}>Log Out</a></li>
             ];
         }
 
         return [
-            <li key = '0'><Link to='/'>Home</Link></li>,
+            <li key = '0'><Link to='/' onClick={this.returnMenu}>Home</Link></li>,
             <li key = '1'><Link to='/signup-page' onClick={this.returnMenu}>Sign Up</Link></li>,
             <li key = '2'><Link to='/signin-page' onClick={this.returnMenu}>Sign In</Link></li>
         ];
     }
     handleSignOut(){
-
         this.props.signOut();
-
         this.props.history.push(`/`);
-      
+        this.returnMenu();
     }
     render() {
         return (
@@ -95,14 +94,12 @@ class NavBar extends Component {
                             <i className="material-icons amber-text text-darken-3">menu</i>
                         </a>
                         <ul className="right hide-on-med-and-down">
-                            {/* <li><Link to='/location-page'>Get Started</Link></li> */}
                             {this.logOutLink()}
                             <li><Link to='/ourapp-page'>Our App</Link></li>
                             <li><Link to='/ourteam-page'>Our Team</Link></li>
                         </ul>
                         <div>
                             <ul className="side-nav right-aligned" style={this.state.navStyle}>
-                                {/* <li><Link to='/location-page'>Get Started</Link></li> */}
                                 {this.logOutLink()}
                                 <li><Link to='/ourapp-page' onClick={this.returnMenu}>Our App</Link></li>
                                 <li><Link to='/ourteam-page' onClick={this.returnMenu}>Our Team</Link></li>
