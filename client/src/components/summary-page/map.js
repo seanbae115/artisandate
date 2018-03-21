@@ -25,7 +25,7 @@ export class MapComponent extends React.PureComponent {
             marginLeft: "0",
             width: "150px"
         };
-        const { eventLoc, foodLoc, drinkLoc } = this.props;
+        const { eventLoc, foodLoc, drinkLoc, initialLat, initialLong } = this.props;
         return compose(
             withStateHandlers(() => ({
                 isOpen: false,
@@ -46,7 +46,7 @@ export class MapComponent extends React.PureComponent {
 
             <GoogleMap
                 defaultZoom={11}
-                defaultCenter={{ lat: eventLoc.coordinates.latitude, lng: eventLoc.coordinates.longitude }}
+                defaultCenter={{ lat: initialLat, lng: initialLong }}
             >
                 <MarkerWithLabel
                     position={{ lat: eventLoc.coordinates.latitude, lng: eventLoc.coordinates.longitude }}

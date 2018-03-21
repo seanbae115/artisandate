@@ -31,6 +31,20 @@ class Summary extends Component{
         })
     }
 
+    initialMapCenterLatitude(){
+        let foodLat = this.props.food.coordinates.latitude;
+        let eventLat = this.props.event.coordinates.latitude;
+        let drinksLat = this.props.drinks.coordinates.latitude;
+        console.log(((eventLat + foodLat + drinksLat)/3));
+        return ((eventLat + foodLat + drinksLat)/3);
+    }
+    initialMapCenterLongitude(){
+        let foodLong = this.props.food.coordinates.longitude;
+        let eventLong = this.props.event.coordinates.longitude;
+        let drinksLong = this.props.drinks.coordinates.longitude;
+        return ((eventLong + foodLong + drinksLong)/3);
+    }
+
     render() {
         return (
                 <div className="grey lighten-4">
@@ -41,7 +55,7 @@ class Summary extends Component{
                                     <SummaryEvent eventType="Drinks" eventName={this.props.drinks.name}/>
                         </div>
                         <div className="col s12 m10 offset-m1 l6 offset-l3 nav-contain">
-                            <MapComponent eventLoc={this.props.event} foodLoc={this.props.food} drinkLoc={this.props.drinks} />
+                            <MapComponent eventLoc={this.props.event} foodLoc={this.props.food} drinkLoc={this.props.drinks} initialLat={this.initialMapCenterLatitude()} initialLong={this.initialMapCenterLongitude()} />
 
                         </div>
 
