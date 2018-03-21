@@ -11,6 +11,7 @@ import SignUp from '../signup-page/signup';
 import SignIn from '../signin-page/signin';
 import OurApp from '../ourapp-page/ourapp';
 import OurTeam from '../ourteam-page/ourTeam';
+import auth from '../../hoc/auth';
 
 
 
@@ -21,10 +22,10 @@ const App = () => (
             <Route path = '/signup-page' component = {SignUp}/>
             <Route path = '/signin-page' component = {SignIn}/>
             <Route path = '/location-page' component = {LocationPage}/>
-            <Route path = '/results-page/:zip' component = {ResultsPage}/>
+            <Route path = '/results-page/:zip' component = {auth(ResultsPage)}/>
             {/*<Route path = '/results-page/:zip/:id' component = {ResultsPage}/>*/}
-            <Route path = '/event-page/:id' component = {EventPage}/>
-            <Route path = '/summary-page' component = {SummaryPage}/>
+            <Route path = '/event-page/:id' component = {auth(EventPage)}/>
+            <Route path = '/summary-page' component = {auth(SummaryPage)}/>
             <Route path = '/ourapp-page' component = {OurApp}/>
             <Route path = '/ourteam-page' component = {OurTeam}/>
             <Route path = '/logout' component = {Home}/>

@@ -82,7 +82,7 @@ class NavBar extends Component {
         this.props.signOut();
 
         this.props.history.push(`/`);
-            
+      
     }
     render() {
         return (
@@ -99,7 +99,6 @@ class NavBar extends Component {
                             {this.logOutLink()}
                             <li><Link to='/ourapp-page'>Our App</Link></li>
                             <li><Link to='/ourteam-page'>Our Team</Link></li>
-                            {/* <li><Link to='/logout'>Log Out</Link></li> */}
                         </ul>
                         <div>
                             <ul className="side-nav right-aligned" style={this.state.navStyle}>
@@ -107,7 +106,6 @@ class NavBar extends Component {
                                 {this.logOutLink()}
                                 <li><Link to='/ourapp-page' onClick={this.returnMenu}>Our App</Link></li>
                                 <li><Link to='/ourteam-page' onClick={this.returnMenu}>Our Team</Link></li>
-                                {/* <li><Link to='/logout'>Log Out</Link></li> */}
                             </ul>
                             <div onClick={this.returnMenu} className="drag-target" style={this.state.dragStyle}/>
                         </div>
