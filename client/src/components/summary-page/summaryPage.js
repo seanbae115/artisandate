@@ -17,6 +17,9 @@ class Summary extends Component{
 
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
+        this.initialMapCenterLatitude = this.initialMapCenterLatitude.bind(this);
+        this.initialMapCenterLongitude =   this.initialMapCenterLongitude.bind(this);
+        this.determineMapZoom = this.determineMapZoom.bind(this);
     }
 
     openModal(){
@@ -35,7 +38,6 @@ class Summary extends Component{
         let foodLat = this.props.food.coordinates.latitude;
         let eventLat = this.props.event.coordinates.latitude;
         let drinksLat = this.props.drinks.coordinates.latitude;
-        console.log(((eventLat + foodLat + drinksLat)/3));
         return ((eventLat + foodLat + drinksLat)/3);
     }
     initialMapCenterLongitude(){
@@ -45,7 +47,70 @@ class Summary extends Component{
         return ((eventLong + foodLong + drinksLong)/3);
     }
 
+    calculateDistance(lat, long, midpoint1, midpoint2){
+        const p = 0.017453292519943295;    // Math.PI / 180
+        const c = Math.cos;
+        const a = 0.5 - c((midpoint1 - lat) * p) / 2 +
+            c(lat * p) * c(midpoint1 * p) *
+            (1 - c((midpoint2 - long) * p)) / 2;
+        return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km;
+    }
+
+
+    determineMapZoom() {
+        let zoom = null;
+        let distance = null;
+        let midpointOne = null;
+        let midpointTwo = null;
+
+        let foodLat = this.props.food.coordinates.latitude;
+        let eventLat = this.props.event.coordinates.latitude;
+        let drinksLat = this.props.drinks.coordinates.latitude;
+        let foodLong = this.props.food.coordinates.longitude;
+        let eventLong = this.props.event.coordinates.longitude;
+        let drinksLong = this.props.drinks.coordinates.longitude;
+
+        midpointOne = ((eventLat + foodLat + drinksLat) / 3);
+        console.log(midpointOne);
+        midpointTwo = ((eventLong + foodLong + drinksLong) / 3);
+        console.log(midpointTwo);
+
+        let foodDistance = this.calculateDistance(foodLat, foodLong, midpointOne, midpointTwo);
+        console.log(foodDistance);
+        let greatestDistance = foodDistance;
+
+        let eventDistance = this.calculateDistance(eventLat, eventLong, midpointOne, midpointTwo);
+        console.log(eventDistance);
+
+        if(greatestDistance < eventDistance){
+            greatestDistance = eventDistance;
+        }
+        let drinkDistance = this.calculateDistance(drinksLat, drinksLong, midpointOne, midpointTwo);
+        console.log(drinkDistance);
+
+        if(greatestDistance < drinkDistance){
+            greatestDistance = drinkDistance;
+        }
+        console.log(greatestDistance);
+
+        if(greatestDistance < 3){
+            zoom = 13;
+        }
+        else if(greatestDistance >= 3 || greatestDistance <=10){
+            zoom = 10.85;
+        }
+        else{
+            zoom = 10.5;
+        }
+        return zoom;
+    }
+
+        //formula to calculate distance between midpoint of all 3 locations to one of the three locations taken from Haversine Formula
+
     render() {
+        const latitude = this.initialMapCenterLatitude();
+        const longitude = this.initialMapCenterLongitude();
+        const initialZoom = this.determineMapZoom();
         return (
                 <div className="grey lighten-4">
                     <div className='row'>
@@ -55,7 +120,7 @@ class Summary extends Component{
                                     <SummaryEvent eventType="Drinks" eventName={this.props.drinks.name}/>
                         </div>
                         <div className="col s12 m10 offset-m1 l6 offset-l3 nav-contain">
-                            <MapComponent eventLoc={this.props.event} foodLoc={this.props.food} drinkLoc={this.props.drinks} initialLat={this.initialMapCenterLatitude()} initialLong={this.initialMapCenterLongitude()} />
+                            <MapComponent eventLoc={this.props.event} foodLoc={this.props.food} drinkLoc={this.props.drinks} initialLat={latitude} initialLong={longitude} mapZoom={initialZoom} />
 
                         </div>
 
