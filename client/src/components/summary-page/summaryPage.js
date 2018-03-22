@@ -4,7 +4,7 @@ import SummaryEvent from "./summaryEvent";
 import SummaryButtons from "./summaryButtons";
 import "./summaryPage.css";
 import {MapComponent} from './map';
-import SummaryModal from './summaryModal';
+import Modal from '../modal/Modal';
 
 
 class Summary extends Component{
@@ -13,7 +13,7 @@ class Summary extends Component{
 
         this.state = {
             displayModal: false,
-        }
+        };
 
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
@@ -126,7 +126,7 @@ class Summary extends Component{
 
                     </div>
                         <SummaryButtons openModal={this.openModal}/>
-                        <SummaryModal display={this.state.displayModal} closeModal={this.closeModal} />
+                        <Modal display={this.state.displayModal} closeModal={this.closeModal} />
                 </div>
         );
     }
