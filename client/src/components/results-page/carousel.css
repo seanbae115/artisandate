@@ -40,9 +40,9 @@ ul.slider.animated{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-40%,-60%) rotate(45deg);
-    width: 200%;
-    height: 200%;
+    transform: translate(-44%,-60%) rotate(45deg);
+    width: 163px;
+    height: 28px;
 }
 .carousel .control-disabled.control-arrow {
     opacity: 0;
