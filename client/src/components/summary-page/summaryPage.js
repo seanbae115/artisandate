@@ -46,7 +46,6 @@ class Summary extends Component{
         let drinksLong = this.props.drinks.coordinates.longitude;
         return ((eventLong + foodLong + drinksLong)/3);
     }
-
     calculateDistance(lat, long, midpoint1, midpoint2){
         const p = 0.017453292519943295;    // Math.PI / 180
         const c = Math.cos;
@@ -55,7 +54,6 @@ class Summary extends Component{
             (1 - c((midpoint2 - long) * p)) / 2;
         return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km;
     }
-
 
     determineMapZoom() {
         let zoom = null;
@@ -70,11 +68,13 @@ class Summary extends Component{
         let eventLong = this.props.event.coordinates.longitude;
         let drinksLong = this.props.drinks.coordinates.longitude;
 
+        //formula to calculate the midpoint of all three points
         midpointOne = ((eventLat + foodLat + drinksLat) / 3);
         console.log(midpointOne);
         midpointTwo = ((eventLong + foodLong + drinksLong) / 3);
         console.log(midpointTwo);
 
+        //calculates the distance (in km) between the midpoint and each of the three locations on the map and determines which is the greatest distance
         let foodDistance = this.calculateDistance(foodLat, foodLong, midpointOne, midpointTwo);
         console.log(foodDistance);
         let greatestDistance = foodDistance;
@@ -92,20 +92,27 @@ class Summary extends Component{
             greatestDistance = drinkDistance;
         }
         console.log(greatestDistance);
-
+        //calculates the value of the initial zoom on the map based on the greatest distance in (km).
         if(greatestDistance < 3){
             zoom = 13;
         }
-        else if(greatestDistance >= 3 || greatestDistance <=10){
+        else if(greatestDistance >= 3 && greatestDistance <= 10){
             zoom = 10.85;
         }
-        else{
+        else if(greatestDistance > 10 && greatestDistance <= 20){
             zoom = 10.5;
+        }
+        else if(greatestDistance > 20 && greatestDistance <= 30){
+            zoom = 9.25;
+        }
+        else if(greatestDistance > 30 && greatestDistance <=45){
+            zoom = 9;
+        }
+        else{
+            zoom = 8;
         }
         return zoom;
     }
-
-        //formula to calculate distance between midpoint of all 3 locations to one of the three locations taken from Haversine Formula
 
     render() {
         const latitude = this.initialMapCenterLatitude();
