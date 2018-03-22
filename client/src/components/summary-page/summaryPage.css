@@ -32,8 +32,9 @@ div.s2.event-contain{
 .map-container {
     height: 100%;
 }
-.nav-contain {
+.row .col.nav-contain {
     height: calc(100vh - 318px);
+    min-height: 349px;
 }
 .route-container {
     padding: 5px;
