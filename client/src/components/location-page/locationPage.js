@@ -17,7 +17,6 @@ class LocationPage extends Component {
             </div>
         )
     }
-
     render(){
         return (
             <div className='grey lighten-4 valign-wrapper input-card-container'>
@@ -31,7 +30,6 @@ class LocationPage extends Component {
                                 <form onSubmit={this.props.handleSubmit(this.sendData.bind(this))} className="center-align">
                                     <Field label='zip' name='zip' component={this.renderInput}/>
                                     <button className="btn-large bottom-btn cyan">Go</button>
-                                    <button onClilck={this.getdata.locationCurrent} className="btn-large bottom-btn cyan">Current Location</button>
                                 </form>
                             </div>
                         </div>
