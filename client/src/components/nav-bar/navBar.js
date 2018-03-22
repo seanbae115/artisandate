@@ -13,12 +13,11 @@ class NavBar extends Component {
                 transform: "translateX(105%)"
             },
             dragStyle: {
-                backgroundColor: "#000",
+                backgroundColor: "rgba(0, 0, 0, 0)",
                 width: "100%",
                 height: "100%",
                 touchAction: "pan-y",
                 visibility: "hidden",
-                opacity: "0",
                 transition: ".3s"
             }
         };
@@ -35,7 +34,6 @@ class NavBar extends Component {
             dragStyle: {
                 backgroundColor: "rgba(0, 0, 0, 0.5)",
                 visibility: "visible",
-                opacity: "1",
                 transition: ".3s"
             }
         });
