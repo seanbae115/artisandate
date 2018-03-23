@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import '../../helpers/inputCardHelper.css'
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
-import { getPlanner } from '../../actions';
+import { getPlanner, load } from '../../actions';
 
 class ZipPage extends Component {
     constructor (props){
@@ -17,6 +17,8 @@ class ZipPage extends Component {
             };
             this.props.getPlanner(location.zip).then(() => {
                 this.props.history.push(`/results-page/${props.zip}`);
+            }).catch(() => {
+                console.log("there was an error connecting to the server");
             });
 
         }
@@ -33,6 +35,8 @@ class ZipPage extends Component {
     }
     render(){
         console.log("the props: ", this.props);
+        const {dataLoaded} = this.props;
+
         return (
             <div className='grey lighten-4 valign-wrapper input-card-container'>
                 <div className="row card-width">
