@@ -6,7 +6,7 @@ import { MarkerWithLabel } from "react-google-maps/lib/components/addons/MarkerW
 import DrinkMarker from "../../assets/images/drink_marker.png";
 import FoodMarker from "../../assets/images/food_marker.png";
 import EventMarker from "../../assets/images/event_marker.png";
-import eventPage from "../event-page/eventPage";
+import eventPage from "../details-page/detailsPage";
 import "./summaryPage.css";
 
 export class MapComponent extends React.PureComponent {

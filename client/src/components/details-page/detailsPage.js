@@ -6,7 +6,7 @@ import TitleImage from './title';
 import Info from './info';
 
 
-class EventPage extends Component{
+class DetailsPage extends Component{
     componentDidMount(){
         this.props.getIndividual(this.props.match.params);
     }
@@ -33,5 +33,5 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, { getIndividual })(EventPage);
+export default connect(mapStateToProps, { getIndividual })(DetailsPage);
 

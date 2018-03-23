@@ -19,6 +19,7 @@ class ResultsPage extends Component {
     }
 
     componentDidMount(){
+        console.log(this.props.match.params);
         this.props.getPlanner(this.props.match.params);
     }
   

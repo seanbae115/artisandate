@@ -4,10 +4,11 @@ import types from './types';
 
 
 export function getPlanner(zip){
-    // console.log("The ZIP:", zip);
+    console.log("The ZIP:", zip);
     return async dispatch => {
         try {
             const request = await axios.post(`/api/getEverything`, zip);
+            console.log("In try: ", request);
             dispatch({
                 type: types.SEND_ZIP,
                 payload: request
