@@ -1,12 +1,15 @@
+import '../../helpers/inputCardHelper.css';
+import '../../helpers/loadingSpinner.css';
 import React, {Component} from 'react';
-import '../../helpers/inputCardHelper.css'
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
-import { getPlanner, load } from '../../actions';
+import { getPlanner, loadSpinner } from '../../actions';
 
 class ZipPage extends Component {
     constructor (props){
         super (props);
+
+        this.page = "zip";
 
         this.sendData = this.sendData.bind(this);
     }
@@ -15,7 +18,12 @@ class ZipPage extends Component {
             const location = {
                 zip: props
             };
+            this.props.loadSpinner(this.page);
             this.props.getPlanner(location.zip).then(() => {
+                sessionStorage.setItem("eventsResults", JSON.stringify(this.props.events));
+                sessionStorage.setItem("foodResults", JSON.stringify(this.props.food));
+                sessionStorage.setItem("drinksResults", JSON.stringify(this.props.drinks));
+                sessionStorage.setItem("loadedResults", JSON.stringify(this.props.dataLoaded));
                 this.props.history.push(`/results-page/${props.zip}`);
             }).catch(() => {
                 console.log("there was an error connecting to the server");
@@ -34,8 +42,19 @@ class ZipPage extends Component {
         )
     }
     render(){
-        console.log("the props: ", this.props);
-        const {dataLoaded} = this.props;
+        console.log("the zip props: ", this.props.status);
+        const {status} = this.props;
+        let goButton;
+        switch(status){
+            case 'sending':
+                goButton = <div className="btn-large bottom-btn cyan" style={{paddingTop: "15px", width: "68px"}}><div className="loading"/></div>;
+                break;
+            case 'sent':
+                goButton = <button className="btn-large bottom-btn cyan">Go</button>;
+                break;
+            default:
+                goButton = <button className="btn-large bottom-btn cyan">Go</button>;
+        }
 
         return (
             <div className='grey lighten-4 valign-wrapper input-card-container'>
@@ -48,7 +67,7 @@ class ZipPage extends Component {
                                 </div>
                                 <form onSubmit={this.props.handleSubmit(this.sendData)} className="center-align">
                                     <Field label='zip' name='zip' component={this.renderInput}/>
-                                    <button className="btn-large bottom-btn cyan">Go</button>
+                                    {goButton}
                                 </form>
                             </div>
                         </div>
@@ -75,7 +94,8 @@ function mapStateToProps(state){
         events: state.dateResults.events,
         food: state.dateResults.food,
         drinks: state.dateResults.drinks,
-        dataLoaded: state.dateResults.receivedData
+        dataLoaded: state.dateResults.receivedData,
+        status: state.dateResults.status
     }
 }
 
@@ -84,4 +104,4 @@ ZipPage = reduxForm({
     validate: validate
 })(ZipPage);
 
-export default connect(mapStateToProps, { getPlanner })(ZipPage);
+export default connect(mapStateToProps, { getPlanner, loadSpinner })(ZipPage);
