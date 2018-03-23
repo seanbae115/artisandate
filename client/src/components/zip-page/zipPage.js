@@ -2,11 +2,25 @@ import React, {Component} from 'react';
 import '../../helpers/inputCardHelper.css'
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
-import { sendZip } from '../../actions';
+import { getPlanner } from '../../actions';
 
-class LocationPage extends Component {
+class ZipPage extends Component {
+    constructor (props){
+        super (props);
+
+        this.sendData = this.sendData.bind(this);
+    }
     sendData(props){
-        this.props.history.push(`/results-page/${props.zip}`);
+        if (!this.props.dataLoaded){
+            const location = {
+                zip: props
+            };
+            this.props.getPlanner(location.zip).then(() => {
+                this.props.history.push(`/results-page/${props.zip}`);
+            });
+
+        }
+
     }
     renderInput({ input, meta: {touched, error} }){
         const invalidInput = touched && error;
@@ -18,6 +32,7 @@ class LocationPage extends Component {
         )
     }
     render(){
+        console.log("the props: ", this.props);
         return (
             <div className='grey lighten-4 valign-wrapper input-card-container'>
                 <div className="row card-width">
@@ -27,7 +42,7 @@ class LocationPage extends Component {
                                 <div className="grey-text text-darken-3 center-align card-subtitle">
                                     Let us know your date location to get started.
                                 </div>
-                                <form onSubmit={this.props.handleSubmit(this.sendData.bind(this))} className="center-align">
+                                <form onSubmit={this.props.handleSubmit(this.sendData)} className="center-align">
                                     <Field label='zip' name='zip' component={this.renderInput}/>
                                     <button className="btn-large bottom-btn cyan">Go</button>
                                 </form>
@@ -50,9 +65,19 @@ function validate(values) {
     }
     return error;
 }
-LocationPage = reduxForm({
+
+function mapStateToProps(state){
+    return {
+        events: state.dateResults.events,
+        food: state.dateResults.food,
+        drinks: state.dateResults.drinks,
+        dataLoaded: state.dateResults.receivedData
+    }
+}
+
+ZipPage = reduxForm({
     form: 'zip-form',
     validate: validate
-})(LocationPage);
+})(ZipPage);
 
-export default connect(null, { sendZip })(LocationPage);
+export default connect(mapStateToProps, { getPlanner })(ZipPage);
