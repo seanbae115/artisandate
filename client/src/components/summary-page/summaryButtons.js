@@ -13,6 +13,7 @@ class SummaryButtons extends Component {
             email: this.props.email,
             dateData: this.props.dateData,
         };
+        this.page = "email";
 
         this.sendItinerary = this.sendItinerary.bind(this)
     }
@@ -20,13 +21,14 @@ class SummaryButtons extends Component {
     sendItinerary(){
         console.log("User data: ", this.props);
         if (!this.props.sent){
-            this.props.loadSpinner();
+            this.props.loadSpinner(this.page);
             this.props.sendMail(this.data);
         }
     }
 
 
     render(){
+        console.log("SUMMARY BUTTON PROPS.STATUS: ", this.props.status);
         const {status} = this.props;
         let emailButton;
         switch(status){

@@ -4,11 +4,10 @@ import types from './types';
 
 
 export function getPlanner(zip){
-    console.log("The ZIP:", zip);
     return async dispatch => {
         try {
             const request = await axios.post(`/api/getEverything`, zip);
-            console.log("In try: ", request);
+            // console.log("In try: ", request, "the Zip: ", zip);
             dispatch({
                 type: types.SEND_ZIP,
                 payload: request
@@ -108,8 +107,11 @@ export function locationDetails(props, name) {
     }
 }
 
-export function loadSpinner(){
-    return{
-        type: "sending"
+export function loadSpinner(pageName){
+    switch (pageName){
+        case "zip":
+            return {type: types.ZIP_SENDING};
+        case "email":
+            return {type: types.EMAIL_SENDING};
     }
 }
