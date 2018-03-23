@@ -98,6 +98,8 @@ export function sendMail(data) {
     }
 }
 
+
+
 /**********************NON AXIOS****************************/
 export function locationDetails(props, name) {
     return{

@@ -230,18 +230,18 @@ module.exports = (app,  path) => {
             })
     })
 
-// app.get('/getdata', (req, res) => {
-//     console.log(req.body);
-//     const address = {
-//         address: '92618'
-//     };
-//     googleMaps.geocode(address, function(err, response){
-//         if (!err) {
-//             let lat = response.json.results[0].geometry.location.lat;
-//             let lng = response.json.results[0].geometry.location.lng;
-//         }
-//         res.json(response.json.results[0].geometry.location);
-//     });
+app.get('/getdata', (req, res) => {
+    console.log(req.body);
+    const address = {
+        address: '92618'
+    };
+    googleMaps.geocode(address, function(err, response){
+        if (!err) {
+            let lat = response.json.results[0].geometry.location.lat;
+            let lng = response.json.results[0].geometry.location.lng;
+        }
+        res.json(response.json.results[0].geometry.location);
+    });
 
-// })
+})
 };
