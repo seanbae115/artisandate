@@ -114,6 +114,13 @@ export function reloadPlanner(props){
     }
 }
 
+export function reloadFinalPlan(props){
+    return {
+        type: types.RELOAD_FINAL_PLAN,
+        payload: props
+    }
+}
+
 export function loadSpinner(pageName){
     switch (pageName){
         case "zip":

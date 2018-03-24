@@ -40,7 +40,6 @@ class ResultsPage extends Component {
                 sessionStorage.setItem("foodResults", JSON.stringify(this.props.food));
                 sessionStorage.setItem("drinksResults", JSON.stringify(this.props.drinks));
                 sessionStorage.setItem("loadedResults", JSON.stringify(this.props.dataLoaded));
-                this.props.history.push(`/results-page/${props.zip}`);
             }).catch(() => {
                 console.log("there was an error connecting to the server");
             });
@@ -48,11 +47,12 @@ class ResultsPage extends Component {
     }
   
     goToSummary(){
-        // const finalPlan = {
-        //     event: this.props.mainEvent,
-        //     food: this.props.mainFood,
-        //     drinks: this.props.mainDrinks
-        // };
+        const finalPlan = {
+            event: this.props.mainEvent,
+            food: this.props.mainFood,
+            drinks: this.props.mainDrinks
+        };
+        sessionStorage.setItem("finalPlan", JSON.stringify(finalPlan));
         this.props.history.push(`/summary-page`);
     }
 
@@ -75,6 +75,7 @@ class ResultsPage extends Component {
 }
 
 function mapStateToProps(state){
+    console.log("results PG MSTP: ", state);
     return {
         events: state.dateResults.events,
         food: state.dateResults.food,

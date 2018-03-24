@@ -109,6 +109,7 @@ export class MapComponent extends React.PureComponent {
     };
 
     render() {
+        console.log("Map Component");
         const SummaryMap = this.SummaryMap();
 
         return (

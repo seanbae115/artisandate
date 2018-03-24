@@ -5,6 +5,7 @@ import SummaryButtons from "./summaryButtons";
 import "./summaryPage.css";
 import {MapComponent} from './map';
 import Modal from '../modal/Modal';
+import {reloadFinalPlan} from "../../actions";
 
 
 class Summary extends Component{
@@ -17,9 +18,31 @@ class Summary extends Component{
 
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
-        this.initialMapCenterLatitude = this.initialMapCenterLatitude.bind(this);
-        this.initialMapCenterLongitude =   this.initialMapCenterLongitude.bind(this);
-        this.determineMapZoom = this.determineMapZoom.bind(this);
+        // this.initialMapCenterLatitude = this.initialMapCenterLatitude.bind(this);
+        // this.initialMapCenterLongitude =   this.initialMapCenterLongitude.bind(this);
+        // this.determineMapZoom = this.determineMapZoom.bind(this);
+    }
+
+    componentWillMount(){
+        const sessionLoaded = sessionStorage.getItem("loadedResults");
+        console.log("First part component did mount: ", sessionLoaded);
+        if (JSON.parse(sessionLoaded)) {
+            console.log("calling the reload planner");
+            const sessionFinalPlan = sessionStorage.getItem("finalPlan");
+
+            const sessionDateResults = JSON.parse(sessionFinalPlan);
+            console.log("SUMMARY FINAL: ", sessionDateResults);
+            this.props.reloadFinalPlan(sessionDateResults)
+        } //else {
+        //     this.props.getPlanner(this.props.match.params).then(() => {
+        //         sessionStorage.setItem("eventsResults", JSON.stringify(this.props.events));
+        //         sessionStorage.setItem("foodResults", JSON.stringify(this.props.food));
+        //         sessionStorage.setItem("drinksResults", JSON.stringify(this.props.drinks));
+        //         sessionStorage.setItem("loadedResults", JSON.stringify(this.props.dataLoaded));
+        //     }).catch(() => {
+        //         console.log("there was an error connecting to the server");
+        //     });
+        // }
     }
 
     openModal(){
@@ -35,12 +58,19 @@ class Summary extends Component{
     }
 
     initialMapCenterLatitude(){
+        console.log("Inkjhdsjkfhasdjkh", this.props.event.coordinates);
+        if (!this.props.food.coordinates || !this.props.food.coordinates || !this.props.food.coordinates){
+            return;
+        }
         let foodLat = this.props.food.coordinates.latitude;
         let eventLat = this.props.event.coordinates.latitude;
         let drinksLat = this.props.drinks.coordinates.latitude;
         return ((eventLat + foodLat + drinksLat)/3);
     }
     initialMapCenterLongitude(){
+        if (!this.props.food.coordinates || !this.props.food.coordinates || !this.props.food.coordinates){
+            return;
+        }
         let foodLong = this.props.food.coordinates.longitude;
         let eventLong = this.props.event.coordinates.longitude;
         let drinksLong = this.props.drinks.coordinates.longitude;
@@ -56,6 +86,9 @@ class Summary extends Component{
     }
 
     determineMapZoom() {
+        if (!this.props.food.coordinates || !this.props.food.coordinates || !this.props.food.coordinates){
+            return;
+        }
         let zoom = null;
         let distance = null;
         let midpointOne = null;
@@ -115,6 +148,7 @@ class Summary extends Component{
     }
 
     render() {
+        console.log("summary Render props: ", this.props);
         const latitude = this.initialMapCenterLatitude();
         const longitude = this.initialMapCenterLongitude();
         const initialZoom = this.determineMapZoom();
@@ -127,7 +161,13 @@ class Summary extends Component{
                                     <SummaryEvent eventType="Drinks" eventName={this.props.drinks.name}/>
                         </div>
                         <div className="col s12 m10 offset-m1 l6 offset-l3 nav-contain">
-                            <MapComponent eventLoc={this.props.event} foodLoc={this.props.food} drinkLoc={this.props.drinks} initialLat={latitude} initialLong={longitude} mapZoom={initialZoom} />
+                            <MapComponent eventLoc={this.props.event}
+                                          foodLoc={this.props.food}
+                                          drinkLoc={this.props.drinks}
+                                          initialLat={latitude}
+                                          initialLong={longitude}
+                                          mapZoom={initialZoom}
+                            />
 
                         </div>
 
@@ -139,6 +179,7 @@ class Summary extends Component{
     }
 }
 function mapStateToProps(state){
+    console.log("MSTP Summary: ", state.datePlan);
     return {
         event: state.datePlan.mainEvent,
         food: state.datePlan.mainFood,
@@ -146,4 +187,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps)(Summary);
+export default connect(mapStateToProps, {reloadFinalPlan})(Summary);
