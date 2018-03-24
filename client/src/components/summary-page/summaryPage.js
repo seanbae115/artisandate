@@ -25,11 +25,20 @@ class Summary extends Component{
     }
 
     componentWillMount(){
+        console.log("COMPONENT WILL MOUNT");
         const sessionLoaded = sessionStorage.getItem("loadedResults");
         if (JSON.parse(sessionLoaded)) {
-            const sessionFinalPlan = sessionStorage.getItem("finalPlan");
-            const sessionDateResults = JSON.parse(sessionFinalPlan);
-            this.props.reloadFinalPlan(sessionDateResults);
+            console.log("the props event length = 0? ", Object.keys(this.props.event).length !== 0);
+            debugger;
+            if (Object.keys(this.props.event).length !== 0){
+                console.log("inside true");
+                return;
+            } else {
+                console.log("inside false");
+                const sessionFinalPlan = sessionStorage.getItem("finalPlan");
+                const sessionDateResults = JSON.parse(sessionFinalPlan);
+                this.props.reloadFinalPlan(sessionDateResults);
+            }
         } //else {
         //     this.props.getPlanner(this.props.match.params).then(() => {
         //         sessionStorage.setItem("eventsResults", JSON.stringify(this.props.events));
