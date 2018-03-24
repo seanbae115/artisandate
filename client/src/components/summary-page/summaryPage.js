@@ -4,7 +4,7 @@ import SummaryEvent from "./summaryEvent";
 import SummaryButtons from "./summaryButtons";
 import "./summaryPage.css";
 import {MapComponent} from './map';
-import Modal from '../modal/Modal';
+import Modal from '../modal/modal';
 import {reloadFinalPlan} from "../../actions";
 
 
@@ -16,23 +16,20 @@ class Summary extends Component{
             displayModal: false,
         };
 
+        this.eventLoc = {lat: null, long: null, address: []};
+        this.foodLoc = {lat: null, long: null, address: []};
+        this.drinkLoc = {lat: null, long: null, address: []};
+
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
-        // this.initialMapCenterLatitude = this.initialMapCenterLatitude.bind(this);
-        // this.initialMapCenterLongitude =   this.initialMapCenterLongitude.bind(this);
-        // this.determineMapZoom = this.determineMapZoom.bind(this);
     }
 
     componentWillMount(){
         const sessionLoaded = sessionStorage.getItem("loadedResults");
-        console.log("First part component did mount: ", sessionLoaded);
         if (JSON.parse(sessionLoaded)) {
-            console.log("calling the reload planner");
             const sessionFinalPlan = sessionStorage.getItem("finalPlan");
-
             const sessionDateResults = JSON.parse(sessionFinalPlan);
-            console.log("SUMMARY FINAL: ", sessionDateResults);
-            this.props.reloadFinalPlan(sessionDateResults)
+            this.props.reloadFinalPlan(sessionDateResults);
         } //else {
         //     this.props.getPlanner(this.props.match.params).then(() => {
         //         sessionStorage.setItem("eventsResults", JSON.stringify(this.props.events));
@@ -58,23 +55,16 @@ class Summary extends Component{
     }
 
     initialMapCenterLatitude(){
-        console.log("Inkjhdsjkfhasdjkh", this.props.event.coordinates);
-        if (!this.props.food.coordinates || !this.props.food.coordinates || !this.props.food.coordinates){
-            return;
-        }
-        let foodLat = this.props.food.coordinates.latitude;
-        let eventLat = this.props.event.coordinates.latitude;
-        let drinksLat = this.props.drinks.coordinates.latitude;
-        return ((eventLat + foodLat + drinksLat)/3);
+        this.eventLoc.lat = this.props.event.business_id ? this.props.event.latitude : this.props.event.coordinates.latitude;
+        this.foodLoc.lat = this.props.food.business_id ? this.props.food.latitude : this.props.food.coordinates.latitude;
+        this.drinkLoc.lat = this.props.drinks.business_id ? this.props.drinks.latitude : this.props.drinks.coordinates.latitude;
+        return ((this.eventLoc.lat + this.foodLoc.lat + this.drinkLoc.lat)/3);
     }
     initialMapCenterLongitude(){
-        if (!this.props.food.coordinates || !this.props.food.coordinates || !this.props.food.coordinates){
-            return;
-        }
-        let foodLong = this.props.food.coordinates.longitude;
-        let eventLong = this.props.event.coordinates.longitude;
-        let drinksLong = this.props.drinks.coordinates.longitude;
-        return ((eventLong + foodLong + drinksLong)/3);
+        this.eventLoc.long = this.props.event.business_id ? this.props.event.longitude : this.props.event.coordinates.longitude;
+        this.foodLoc.long = this.props.food.business_id ? this.props.food.longitude : this.props.food.coordinates.longitude;
+        this.drinkLoc.long = this.props.drinks.business_id ? this.props.drinks.longitude : this.props.drinks.coordinates.longitude;
+        return ((this.eventLoc.long + this.foodLoc.long + this.drinkLoc.long)/3);
     }
     calculateDistance(lat, long, midpoint1, midpoint2){
         const p = 0.017453292519943295;    // Math.PI / 180
@@ -86,45 +76,35 @@ class Summary extends Component{
     }
 
     determineMapZoom() {
-        if (!this.props.food.coordinates || !this.props.food.coordinates || !this.props.food.coordinates){
-            return;
-        }
         let zoom = null;
         let distance = null;
         let midpointOne = null;
         let midpointTwo = null;
 
-        let foodLat = this.props.food.coordinates.latitude;
-        let eventLat = this.props.event.coordinates.latitude;
-        let drinksLat = this.props.drinks.coordinates.latitude;
-        let foodLong = this.props.food.coordinates.longitude;
-        let eventLong = this.props.event.coordinates.longitude;
-        let drinksLong = this.props.drinks.coordinates.longitude;
-
         //formula to calculate the midpoint of all three points
-        midpointOne = ((eventLat + foodLat + drinksLat) / 3);
-        console.log(midpointOne);
-        midpointTwo = ((eventLong + foodLong + drinksLong) / 3);
-        console.log(midpointTwo);
+        midpointOne = ((this.eventLoc.lat + this.foodLoc.lat + this.drinkLoc.lat) / 3);
+        console.log("midpoint 1", midpointOne);
+        midpointTwo = ((this.eventLoc.long + this.foodLoc.long + this.drinkLoc.long) / 3);
+        console.log("midpoint 2", midpointTwo);
 
         //calculates the distance (in km) between the midpoint and each of the three locations on the map and determines which is the greatest distance
-        let foodDistance = this.calculateDistance(foodLat, foodLong, midpointOne, midpointTwo);
-        console.log(foodDistance);
+        let foodDistance = this.calculateDistance(this.foodLoc.lat, this.foodLoc.long, midpointOne, midpointTwo);
+        console.log("Food distance", foodDistance);
         let greatestDistance = foodDistance;
 
-        let eventDistance = this.calculateDistance(eventLat, eventLong, midpointOne, midpointTwo);
-        console.log(eventDistance);
+        let eventDistance = this.calculateDistance(this.eventLoc.lat, this.eventLoc.long, midpointOne, midpointTwo);
+        console.log("Event distance", eventDistance);
 
         if(greatestDistance < eventDistance){
             greatestDistance = eventDistance;
         }
-        let drinkDistance = this.calculateDistance(drinksLat, drinksLong, midpointOne, midpointTwo);
-        console.log(drinkDistance);
+        let drinkDistance = this.calculateDistance(this.drinkLoc.lat, this.drinkLoc.long, midpointOne, midpointTwo);
+        console.log("Drink distance", drinkDistance);
 
         if(greatestDistance < drinkDistance){
             greatestDistance = drinkDistance;
         }
-        console.log(greatestDistance);
+        console.log("Greatest distance", greatestDistance);
         //calculates the value of the initial zoom on the map based on the greatest distance in (km).
         if(greatestDistance < 3){
             zoom = 13;
@@ -148,10 +128,17 @@ class Summary extends Component{
     }
 
     render() {
-        console.log("summary Render props: ", this.props);
+        if (Object.keys(this.props.event).length === 0 || Object.keys(this.props.food).length === 0 || Object.keys(this.props.drinks).length === 0) {
+            return(
+                <div className="grey lighten-4"/>
+            )
+        }
         const latitude = this.initialMapCenterLatitude();
         const longitude = this.initialMapCenterLongitude();
         const initialZoom = this.determineMapZoom();
+        this.eventLoc.address = this.props.event.location.display_address;
+        this.foodLoc.address = this.props.food.location.display_address;
+        this.drinkLoc.address = this.props.drinks.location.display_address;
         return (
                 <div className="grey lighten-4">
                     <div className='row'>
@@ -161,9 +148,9 @@ class Summary extends Component{
                                     <SummaryEvent eventType="Drinks" eventName={this.props.drinks.name}/>
                         </div>
                         <div className="col s12 m10 offset-m1 l6 offset-l3 nav-contain">
-                            <MapComponent eventLoc={this.props.event}
-                                          foodLoc={this.props.food}
-                                          drinkLoc={this.props.drinks}
+                            <MapComponent eventLoc={this.eventLoc}
+                                          foodLoc={this.foodLoc}
+                                          drinkLoc={this.drinkLoc}
                                           initialLat={latitude}
                                           initialLong={longitude}
                                           mapZoom={initialZoom}
@@ -179,7 +166,6 @@ class Summary extends Component{
     }
 }
 function mapStateToProps(state){
-    console.log("MSTP Summary: ", state.datePlan);
     return {
         event: state.datePlan.mainEvent,
         food: state.datePlan.mainFood,

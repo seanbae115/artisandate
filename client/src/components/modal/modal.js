@@ -11,7 +11,6 @@ class Modal extends Component {
             display: this.props.display ? "flex" : "none",
             justifyContent: this.props.display ? "center" : "none"
         };
-        console.log('props in modal: ', this.props);
         return (
             <div style={displayModal} className="homeModal valign-wrapper">
                 <div className="row">

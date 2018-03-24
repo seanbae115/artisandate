@@ -14,7 +14,6 @@ export default function (state = DEFAULT_STATE, action){
         case "Drinks":
             return {...state, mainDrinks: action.payload};
         case types.RELOAD_FINAL_PLAN:
-            console.log("FINAL PLAN BROWSER REDUCE: ", action.payload);
             return {...state, mainEvent: action.payload.event, mainFood: action.payload.food, mainDrinks: action.payload.drinks};
         default:
             return state;
