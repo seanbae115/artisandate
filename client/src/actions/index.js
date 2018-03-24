@@ -7,7 +7,7 @@ export function getPlanner(zip){
     return async dispatch => {
         try {
             const request = await axios.post(`/api/getEverything`, zip);
-            // console.log("In try: ", request, "the Zip: ", zip);
+            console.log("In try: ", request, "the Zip: ", zip);
             dispatch({
                 type: types.SEND_ZIP,
                 payload: request
@@ -103,6 +103,13 @@ export function sendMail(data) {
 export function locationDetails(props, name) {
     return{
         type: name,
+        payload: props
+    }
+}
+
+export function reloadPlanner(props){
+    return {
+        type: types.RELOAD_PLANNER,
         payload: props
     }
 }
