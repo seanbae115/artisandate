@@ -11,5 +11,6 @@ export default {
     SIGN_OUT: 'sign_out',
     SEND_MAIL: "send_mail",
     EMAIL_SENDING: "email_sending",
-    AUTH_ERROR: 'auth_error'
+    AUTH_ERROR: 'auth_error',
+    RELOAD_PLANNER: "reload_planner"
 };
