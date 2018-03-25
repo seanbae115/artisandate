@@ -1,5 +1,5 @@
 import {combineReducers} from "redux";
-import resultsReducer from "./resultsPageReducer";
+import resultsReducer from "./resultsReducer";
 import browserReducer from './locationBrowserReducer';
 import detailReducer from './reducer_eventPage';
 import { reducer as formReducer } from 'redux-form';

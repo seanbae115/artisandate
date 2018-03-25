@@ -4,7 +4,6 @@ import types from './types';
 
 
 export function getPlanner(zip){
-    // console.log("The ZIP:", zip);
     return async dispatch => {
         try {
             const request = await axios.post(`/api/getEverything`, zip);
@@ -43,6 +42,12 @@ export function signUp(cred) {
             });
             // console.log('Successful sign in')
         } catch (err) {
+            if(err.response){
+                return dispatch({
+                    type: types.AUTH_ERROR,
+                    error: err.response.data
+                });
+            }
             dispatch({
                 type: types.AUTH_ERROR,
                 error: 'Error signing up'
@@ -69,6 +74,15 @@ export function signIn(cred) {
     }
 }
 
+export function signOut(){
+
+    localStorage.removeItem('token');
+
+    return {
+        type: types.SIGN_OUT
+    };
+}
+
 export function sendMail(data) {
     return dispatch => {
         axios.post(`/mailer/send`, data).then (res =>{
@@ -82,6 +96,8 @@ export function sendMail(data) {
     }
 }
 
+
+
 /**********************NON AXIOS****************************/
 export function locationDetails(props, name) {
     return{
@@ -90,8 +106,25 @@ export function locationDetails(props, name) {
     }
 }
 
-export function loadSpinner(){
-    return{
-        type: "sending"
+export function reloadPlanner(props){
+    return {
+        type: types.RELOAD_PLANNER,
+        payload: props
+    }
+}
+
+export function reloadFinalPlan(props){
+    return {
+        type: types.RELOAD_FINAL_PLAN,
+        payload: props
+    }
+}
+
+export function loadSpinner(pageName){
+    switch (pageName){
+        case "zip":
+            return {type: types.ZIP_SENDING};
+        case "email":
+            return {type: types.EMAIL_SENDING};
     }
 }

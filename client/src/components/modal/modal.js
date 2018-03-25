@@ -1,7 +1,8 @@
+import "./modal.css"
 import React, {Component} from "react";
 import { Link } from "react-router-dom";
 
-class SummaryModal extends Component {
+class Modal extends Component {
 
 
     render(){
@@ -9,8 +10,7 @@ class SummaryModal extends Component {
         const displayModal = {
             display: this.props.display ? "flex" : "none",
             justifyContent: this.props.display ? "center" : "none"
-        }
-        console.log('props in modal: ', this.props);
+        };
         return (
             <div style={displayModal} className="homeModal valign-wrapper">
                 <div className="row">
@@ -21,11 +21,11 @@ class SummaryModal extends Component {
                             </div>
                             <div className="card-action">
                                 <div className="row">
-                                    <div className="col s6 center-align">
+                                    <div className="col s6 center-align my-8">
                                         <Link to="/location-page" className="btn cyan">Yes</Link>
                                     </div>
                                     <div className="col s6 center-align">
-                                        <button onClick={this.props.closeModal} className="btn red darken-2">No</button>
+                                        <button onClick={this.props.closeModal} className="btn red darken-2 my-8">No</button>
                                     </div>
                                 </div>
                             </div>
@@ -37,4 +37,4 @@ class SummaryModal extends Component {
     }
 }
 
-export default SummaryModal;
+export default Modal;

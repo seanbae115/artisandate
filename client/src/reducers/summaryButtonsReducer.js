@@ -12,7 +12,8 @@ export default function (state = DEFAULT_STATE, action) {
             const {sent} = action.payload.data;
             const status = sent ? "sent" : "idle";
             return {...state, emailSent: sent, status: status};
-        case "sending":
+        case types.EMAIL_SENDING:
+            console.log("Summary Button Sending triggered");
             return {...state, status: "sending"};
         default:
             return state;

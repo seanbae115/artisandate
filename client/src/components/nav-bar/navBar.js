@@ -1,6 +1,8 @@
+import "./navBar.css"
 import React, {Component} from "react";
 import{Link} from 'react-router-dom';
-import "./navBar.css"
+import { connect } from 'react-redux';
+import { signOut } from '../../actions';
 
 class NavBar extends Component {
     constructor (props){
@@ -11,18 +13,18 @@ class NavBar extends Component {
                 transform: "translateX(105%)"
             },
             dragStyle: {
-                backgroundColor: "#000",
+                backgroundColor: "rgba(0, 0, 0, 0)",
                 width: "100%",
                 height: "100%",
                 touchAction: "pan-y",
                 visibility: "hidden",
-                opacity: "0",
                 transition: ".3s"
             }
         };
         this.slideOutMenu = this.slideOutMenu.bind(this);
         this.returnMenu = this.returnMenu.bind(this);
         this.backButton = this.backButton.bind(this);
+        this.handleSignOut = this.handleSignOut.bind(this)
     }
     slideOutMenu(){
         this.setState({
@@ -32,7 +34,6 @@ class NavBar extends Component {
             dragStyle: {
                 backgroundColor: "rgba(0, 0, 0, 0.5)",
                 visibility: "visible",
-                opacity: "1",
                 transition: ".3s"
             }
         });
@@ -57,9 +58,28 @@ class NavBar extends Component {
                 return "";
             default:
                 return (
-                    <a className="arrow" style={{cursor: 'pointer'}} onClick={() => { this.props.history.goBack();}}><i className = 'material-icons'>arrow_back</i></a>
+                    <a className="arrow" style={{cursor: 'pointer'}} onClick={() => { this.props.history.goBack()}}><i className = 'material-icons'>arrow_back</i></a>
                 );
         }
+    }
+    logOutLink(){
+        if(this.props.auth){
+            return [
+                <li key='0'><Link to='/location-page' onClick={this.returnMenu}>Home</Link></li>,
+                <li key = '1'><a type = 'button' onClick = {this.handleSignOut}>Log Out</a></li>
+            ];
+        }
+
+        return [
+            <li key = '0'><Link to='/' onClick={this.returnMenu}>Home</Link></li>,
+            <li key = '1'><Link to='/signup-page' onClick={this.returnMenu}>Sign Up</Link></li>,
+            <li key = '2'><Link to='/signin-page' onClick={this.returnMenu}>Sign In</Link></li>
+        ];
+    }
+    handleSignOut(){
+        this.props.signOut();
+        this.props.history.push(`/`);
+        this.returnMenu();
     }
     render() {
         return (
@@ -72,23 +92,15 @@ class NavBar extends Component {
                             <i className="material-icons amber-text text-darken-3">menu</i>
                         </a>
                         <ul className="right hide-on-med-and-down">
-                            <li><Link to='/'>Home</Link></li>
-                            {/* <li><Link to='/location-page'>Get Started</Link></li> */}
-                            <li><Link to='/signup-page'>Sign Up</Link></li>
-                            <li><Link to='/signin-page'>Sign In</Link></li>
+                            {this.logOutLink()}
                             <li><Link to='/ourapp-page'>Our App</Link></li>
                             <li><Link to='/ourteam-page'>Our Team</Link></li>
-                            {/* <li><Link to='/logout'>Log Out</Link></li> */}
                         </ul>
                         <div>
                             <ul className="side-nav right-aligned" style={this.state.navStyle}>
-                                <li><Link to='/' onClick={this.returnMenu}>Home</Link></li>
-                                {/* <li><Link to='/location-page'>Get Started</Link></li> */}
-                                <li><Link to='/signup-page' onClick={this.returnMenu}>Sign Up</Link></li>
-                                <li><Link to='/signin-page' onClick={this.returnMenu}>Sign In</Link></li>
+                                {this.logOutLink()}
                                 <li><Link to='/ourapp-page' onClick={this.returnMenu}>Our App</Link></li>
                                 <li><Link to='/ourteam-page' onClick={this.returnMenu}>Our Team</Link></li>
-                                {/* <li><Link to='/logout'>Log Out</Link></li> */}
                             </ul>
                             <div onClick={this.returnMenu} className="drag-target" style={this.state.dragStyle}/>
                         </div>
@@ -99,4 +111,11 @@ class NavBar extends Component {
     }
 }
 
-export default NavBar;
+function mapStateToProps(state){
+
+    return {
+        auth: state.user.auth
+    }
+}
+
+export default connect(mapStateToProps, { signOut })(NavBar);
