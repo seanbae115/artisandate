@@ -12,5 +12,6 @@ export default {
     SEND_MAIL: "send_mail",
     EMAIL_SENDING: "email_sending",
     AUTH_ERROR: 'auth_error',
-    RELOAD_PLANNER: "reload_planner"
+    RELOAD_PLANNER: "reload_planner",
+    RELOAD_FINAL_PLAN: "reload_final_plan"
 };

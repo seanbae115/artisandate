@@ -28,7 +28,6 @@ class SummaryButtons extends Component {
 
 
     render(){
-        console.log("SUMMARY BUTTON PROPS.STATUS: ", this.props.status);
         const {status} = this.props;
         let emailButton;
         switch(status){
