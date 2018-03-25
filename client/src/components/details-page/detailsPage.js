@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './title.css';
 import { connect } from 'react-redux';
-import { getIndividual } from '../../actions';
+import { getIndividual, giveNavPath } from '../../actions';
 import TitleImage from './title';
 import Info from './info';
 
@@ -9,12 +9,12 @@ import Info from './info';
 class DetailsPage extends Component{
 
     componentDidMount(){
-        console.log("component Did Mount", this.props.match);
+        console.log("component Did Mount", this.props);
         this.props.getIndividual(this.props.match.params);
+        this.props.giveNavPath(this.props.match.path);
     }
     render(){
         console.log("Details render props", this.props);
-        debugger;
         if (Object.keys(this.props.details).length === 0){
             return(
                 <div className='incoming'>
@@ -38,5 +38,5 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, { getIndividual })(DetailsPage);
+export default connect(mapStateToProps, { getIndividual, giveNavPath })(DetailsPage);
 

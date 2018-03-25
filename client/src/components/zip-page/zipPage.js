@@ -14,6 +14,7 @@ class ZipPage extends Component {
         this.sendData = this.sendData.bind(this);
     }
     sendData(props){
+        console.log("Send data method props: ", props);
         if (!this.props.dataLoaded){
             const location = {
                 zip: props

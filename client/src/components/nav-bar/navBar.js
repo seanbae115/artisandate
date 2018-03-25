@@ -2,7 +2,7 @@ import "./navBar.css"
 import React, {Component} from "react";
 import{Link} from 'react-router-dom';
 import { connect } from 'react-redux';
-import { signOut } from '../../actions';
+import { signOut, clearIndividualDetails } from '../../actions';
 
 class NavBar extends Component {
     constructor (props){
@@ -24,7 +24,8 @@ class NavBar extends Component {
         this.slideOutMenu = this.slideOutMenu.bind(this);
         this.returnMenu = this.returnMenu.bind(this);
         this.backButton = this.backButton.bind(this);
-        this.handleSignOut = this.handleSignOut.bind(this)
+        this.handleSignOut = this.handleSignOut.bind(this);
+        this.handleGoBack = this.handleGoBack.bind(this);
     }
     slideOutMenu(){
         this.setState({
@@ -56,12 +57,30 @@ class NavBar extends Component {
         switch(this.props.location.pathname){
             case "/":
                 return "";
+            case "/location-page/":
+                return "";
             default:
                 return (
-                    <a className="arrow" style={{cursor: 'pointer'}} onClick={() => { this.props.history.goBack()}}><i className = 'material-icons'>arrow_back</i></a>
+                    <a className="arrow" style={{cursor: 'pointer'}} onClick={this.handleGoBack}><i className = 'material-icons'>arrow_back</i></a>
                 );
         }
     }
+
+    handleGoBack(){
+        console.log("in the handle go back: ", this.props.path);
+        switch (this.props.path) {
+            case "/details-page/:id":
+                console.log("In details page case");
+                this.props.history.goBack();
+                this.props.clearIndividualDetails();
+                return;
+            default:
+                console.log("In default case");
+                return this.props.history.goBack();
+        }
+
+    }
+
     logOutLink(){
         if(this.props.auth){
             return [
@@ -82,6 +101,7 @@ class NavBar extends Component {
         this.returnMenu();
     }
     render() {
+        console.log("Nav Bar Render: ", this.props);
         return (
             <div className="navbar-fixed">
                 <nav>
@@ -112,10 +132,10 @@ class NavBar extends Component {
 }
 
 function mapStateToProps(state){
-
     return {
-        auth: state.user.auth
+        auth: state.user.auth,
+        path: state.pagePath.path
     }
 }
 
-export default connect(mapStateToProps, { signOut })(NavBar);
+export default connect(mapStateToProps, { signOut, clearIndividualDetails })(NavBar);
