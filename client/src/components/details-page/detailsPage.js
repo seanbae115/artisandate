@@ -7,11 +7,15 @@ import Info from './info';
 
 
 class DetailsPage extends Component{
+
     componentDidMount(){
+        console.log("component Did Mount", this.props.match);
         this.props.getIndividual(this.props.match.params);
     }
     render(){
-        if (!this.props.details){
+        console.log("Details render props", this.props);
+        debugger;
+        if (Object.keys(this.props.details).length === 0){
             return(
                 <div className='incoming'>
                     <h1>Details Incoming</h1>
@@ -28,6 +32,7 @@ class DetailsPage extends Component{
 }
 
 function mapStateToProps(state){
+    console.log("MSTP", state);
     return {
         details: state.detail.data
     }
