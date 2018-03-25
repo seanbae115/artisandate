@@ -42,7 +42,6 @@ class ZipPage extends Component {
         )
     }
     render(){
-        console.log("the zip props: ", this.props.status);
         const {status} = this.props;
         let goButton;
         switch(status){

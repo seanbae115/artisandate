@@ -45,7 +45,6 @@ class LocationBrowser extends Component {
 
 
     render() {
-        console.log("Location Browser Render: ", this.props);
         const { locations, name } = this.props;
 
         if(!locations.length){

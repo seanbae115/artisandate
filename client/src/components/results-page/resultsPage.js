@@ -21,7 +21,6 @@ class ResultsPage extends Component {
     componentDidMount(){
         const sessionLoaded = sessionStorage.getItem("loadedResults");
         if (JSON.parse(sessionLoaded)) {
-            console.log("calling the reload planner");
             const sessionEvents = sessionStorage.getItem("eventsResults");
             const sessionFood = sessionStorage.getItem("foodResults");
             const sessionDrinks = sessionStorage.getItem("drinksResults");
@@ -75,7 +74,6 @@ class ResultsPage extends Component {
 }
 
 function mapStateToProps(state){
-    console.log("results PG MSTP: ", state);
     return {
         events: state.dateResults.events,
         food: state.dateResults.food,

@@ -25,30 +25,16 @@ class Summary extends Component{
     }
 
     componentWillMount(){
-        console.log("COMPONENT WILL MOUNT");
         const sessionLoaded = sessionStorage.getItem("loadedResults");
         if (JSON.parse(sessionLoaded)) {
-            console.log("the props event length = 0? ", Object.keys(this.props.event).length !== 0);
-            debugger;
             if (Object.keys(this.props.event).length !== 0){
-                console.log("inside true");
                 return;
             } else {
-                console.log("inside false");
                 const sessionFinalPlan = sessionStorage.getItem("finalPlan");
                 const sessionDateResults = JSON.parse(sessionFinalPlan);
                 this.props.reloadFinalPlan(sessionDateResults);
             }
-        } //else {
-        //     this.props.getPlanner(this.props.match.params).then(() => {
-        //         sessionStorage.setItem("eventsResults", JSON.stringify(this.props.events));
-        //         sessionStorage.setItem("foodResults", JSON.stringify(this.props.food));
-        //         sessionStorage.setItem("drinksResults", JSON.stringify(this.props.drinks));
-        //         sessionStorage.setItem("loadedResults", JSON.stringify(this.props.dataLoaded));
-        //     }).catch(() => {
-        //         console.log("there was an error connecting to the server");
-        //     });
-        // }
+        }
     }
 
     openModal(){
@@ -92,28 +78,22 @@ class Summary extends Component{
 
         //formula to calculate the midpoint of all three points
         midpointOne = ((this.eventLoc.lat + this.foodLoc.lat + this.drinkLoc.lat) / 3);
-        console.log("midpoint 1", midpointOne);
         midpointTwo = ((this.eventLoc.long + this.foodLoc.long + this.drinkLoc.long) / 3);
-        console.log("midpoint 2", midpointTwo);
 
         //calculates the distance (in km) between the midpoint and each of the three locations on the map and determines which is the greatest distance
         let foodDistance = this.calculateDistance(this.foodLoc.lat, this.foodLoc.long, midpointOne, midpointTwo);
-        console.log("Food distance", foodDistance);
         let greatestDistance = foodDistance;
 
         let eventDistance = this.calculateDistance(this.eventLoc.lat, this.eventLoc.long, midpointOne, midpointTwo);
-        console.log("Event distance", eventDistance);
 
         if(greatestDistance < eventDistance){
             greatestDistance = eventDistance;
         }
         let drinkDistance = this.calculateDistance(this.drinkLoc.lat, this.drinkLoc.long, midpointOne, midpointTwo);
-        console.log("Drink distance", drinkDistance);
 
         if(greatestDistance < drinkDistance){
             greatestDistance = drinkDistance;
         }
-        console.log("Greatest distance", greatestDistance);
         //calculates the value of the initial zoom on the map based on the greatest distance in (km).
         if(greatestDistance < 3){
             zoom = 13;

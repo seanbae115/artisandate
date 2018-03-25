@@ -7,7 +7,6 @@ export function getPlanner(zip){
     return async dispatch => {
         try {
             const request = await axios.post(`/api/getEverything`, zip);
-            console.log("In try: ", request, "the Zip: ", zip);
             dispatch({
                 type: types.SEND_ZIP,
                 payload: request
