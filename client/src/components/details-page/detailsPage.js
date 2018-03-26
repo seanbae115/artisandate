@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import './title.css';
 import { connect } from 'react-redux';
-import { getIndividual } from '../../actions';
+import { getIndividual, giveNavPath } from '../../actions';
 import TitleImage from './title';
 import Info from './info';
 
 
 class DetailsPage extends Component{
+
     componentDidMount(){
         this.props.getIndividual(this.props.match.params);
+        this.props.giveNavPath(this.props.match.path);
     }
     render(){
-        if (!this.props.details){
+        if (Object.keys(this.props.details).length === 0){
             return(
                 <div className='incoming'>
                     <h1>Details Incoming</h1>
@@ -33,5 +35,5 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, { getIndividual })(DetailsPage);
+export default connect(mapStateToProps, { getIndividual, giveNavPath })(DetailsPage);
 

@@ -18,8 +18,10 @@ export function getPlanner(zip){
 }
 
 export function getIndividual(id){
+    console.log("get individual action", id);
     return async dispatch => {
         try {
+            console.log("in the try", id);
             const request = await axios.post(`/api/getOneBusiness`, id);
             dispatch({
                 type: types.GET_DETAILS,
@@ -100,9 +102,22 @@ export function sendMail(data) {
 
 /**********************NON AXIOS****************************/
 export function locationDetails(props, name) {
-    return{
+    return {
         type: name,
         payload: props
+    }
+}
+
+export function clearIndividualDetails(){
+    return {
+        type: types.CLEAR_DETAILS
+    }
+}
+
+export function giveNavPath(path){
+    return {
+        type: types.GET_PATH,
+        payload: path
     }
 }
 

@@ -29,7 +29,6 @@ class Info extends Component{
         }
     }
     render(){
-
         const { rating, price, is_closed, display_phone } = this.props.business;
 
         return (
