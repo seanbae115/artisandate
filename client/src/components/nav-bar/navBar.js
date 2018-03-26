@@ -3,7 +3,7 @@ import React, {Component} from "react";
 import{Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signOut, clearIndividualDetails } from '../../actions';
-import DateLogo from "../../assets/images/DateLogo.png";
+import DateLogo from "../../assets/images/DateLogo.svg";
 
 class NavBar extends Component {
     constructor (props){
