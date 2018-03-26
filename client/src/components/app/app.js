@@ -12,6 +12,7 @@ import SignIn from '../signin-page/signin';
 import OurApp from '../ourapp-page/ourapp';
 import OurTeam from '../ourteam-page/ourTeam';
 import auth from '../../hoc/auth';
+import "./printStyle.css";
 
 
 

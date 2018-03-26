@@ -1,12 +1,11 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import SummaryEvent from "./summaryEvent";
-import SummaryButtons from "./summaryButtons";
-import "./summaryPage.css";
 import {MapComponent} from './map';
 import Modal from '../modal/modal';
+import SummaryEvent from "./summaryEvent";
+import SummaryButtons from "./summaryButtons";
 import {reloadFinalPlan} from "../../actions";
-
+import "./summaryPage.css";
 
 class Summary extends Component{
     constructor(props) {
@@ -137,12 +136,13 @@ class Summary extends Component{
                                     <SummaryEvent eventType="Drinks" eventName={this.props.drinks.name}/>
                         </div>
                         <div className="col s12 m10 offset-m1 l6 offset-l3 nav-contain">
-                            <MapComponent eventLoc={this.eventLoc}
-                                          foodLoc={this.foodLoc}
-                                          drinkLoc={this.drinkLoc}
-                                          initialLat={latitude}
-                                          initialLong={longitude}
-                                          mapZoom={initialZoom}
+                            <MapComponent
+                                eventLoc={this.eventLoc}
+                                foodLoc={this.foodLoc}
+                                drinkLoc={this.drinkLoc}
+                                initialLat={latitude}
+                                initialLong={longitude}
+                                mapZoom={initialZoom}
                             />
 
                         </div>
