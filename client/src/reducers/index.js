@@ -2,7 +2,7 @@ import {combineReducers} from "redux";
 import { reducer as formReducer } from 'redux-form';
 import resultsReducer from "./resultsReducer";
 import browserReducer from './locationBrowserReducer';
-import detailReducer from './reducer_eventPage';
+import detailReducer from './detailsReducer';
 import user from './user_reducer';
 import summaryButtonsReducer from "./summaryButtonsReducer";
 import navReducer from "./navReducer";

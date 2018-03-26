@@ -14,8 +14,6 @@ class ZipPage extends Component {
         this.sendData = this.sendData.bind(this);
     }
     sendData(props){
-        console.log("Send data method props: ", props);
-        if (!this.props.dataLoaded){
             const location = {
                 zip: props
             };
@@ -26,12 +24,9 @@ class ZipPage extends Component {
                 sessionStorage.setItem("drinksResults", JSON.stringify(this.props.drinks));
                 sessionStorage.setItem("loadedResults", JSON.stringify(this.props.dataLoaded));
                 this.props.history.push(`/results-page/${props.zip}`);
-            }).catch(() => {
-                console.log("there was an error connecting to the server");
+            }).catch((error) => {
+                console.log("there was an error connecting to the server", error);
             });
-
-        }
-
     }
     renderInput({ input, meta: {touched, error} }){
         const invalidInput = touched && error;

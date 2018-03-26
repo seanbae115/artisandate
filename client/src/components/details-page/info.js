@@ -29,7 +29,6 @@ class Info extends Component{
         }
     }
     render(){
-        console.log("info component the properties passed", this.props);
         const { rating, price, is_closed, display_phone } = this.props.business;
 
         return (

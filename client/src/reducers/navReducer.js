@@ -7,7 +7,6 @@ const DEFAULT_STATE = {
 export default function (state = DEFAULT_STATE, action) {
     switch (action.type){
         case types.GET_PATH:
-            console.log("Inside Nav Reducer");
             return {...state, path: action.payload};
         default:
             return state;

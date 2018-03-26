@@ -67,15 +67,12 @@ class NavBar extends Component {
     }
 
     handleGoBack(){
-        console.log("in the handle go back: ", this.props.path);
         switch (this.props.path) {
             case "/details-page/:id":
-                console.log("In details page case");
                 this.props.history.goBack();
                 this.props.clearIndividualDetails();
                 return;
             default:
-                console.log("In default case");
                 return this.props.history.goBack();
         }
 
@@ -101,7 +98,6 @@ class NavBar extends Component {
         this.returnMenu();
     }
     render() {
-        console.log("Nav Bar Render: ", this.props);
         return (
             <div className="navbar-fixed">
                 <nav>

@@ -2,7 +2,6 @@ import React from 'react';
 import './title.css';
 
 function TitleImage(props){
-    console.log("Title Component", props);
     const picture = props.business.photos;
     const randomPic = picture.sort(function(a,b) {return 0.5 - Math.random()});
     const detailImg = {
