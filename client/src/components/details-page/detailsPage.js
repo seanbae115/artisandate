@@ -16,7 +16,9 @@ class DetailsPage extends Component{
         if (Object.keys(this.props.details).length === 0){
             return(
                 <div className='incoming'>
-                    <h1>Details Incoming</h1>
+                    <div className="loading-center">
+                        <div className="data-loading"/>
+                    </div>
                 </div>
             );
         }

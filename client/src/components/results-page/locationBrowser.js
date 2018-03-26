@@ -53,7 +53,11 @@ class LocationBrowser extends Component {
                     <div className="col s12 content-list">
                         <div className="card">
                             <div className="card-content center-align">
-                                <div style={{height: "165.39px"}}>Loading...</div>
+                                <div style={{height: "165.39px", position: "relative"}}>
+                                    <div className="loading-center">
+                                        <div className="data-loading"/>
+                                    </div>
+                                </div>
                             </div>
                             <div className="card-action">
                                 <div className="row valign-wrapper bottom-pad">
