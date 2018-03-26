@@ -6,7 +6,6 @@ import SummaryEvent from "./summaryEvent";
 import SummaryButtons from "./summaryButtons";
 import {reloadFinalPlan} from "../../actions";
 import "./summaryPage.css";
-import "./printStyle.css";
 
 class Summary extends Component{
     constructor(props) {
