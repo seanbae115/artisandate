@@ -89,10 +89,10 @@ module.exports = (app,  path) => {
         })
             .then(
                 response => response.jsonBody.businesses
-            ).catch(
-                err => console.log('error', err)
+            ).catch(err =>
+                res.status(400).send(err)
             )
-            
+
 
         var events = axios({
             url: 'https://api.yelp.com/v3/events',
@@ -108,8 +108,8 @@ module.exports = (app,  path) => {
         })
             .then(
                 response => response.data.events
-            ).catch(
-                err => console.log('error', err)
+            ).catch(err =>
+                res.status(400).send(err)
             )
 
         var food = client.search({
@@ -120,8 +120,8 @@ module.exports = (app,  path) => {
         })
             .then(
                 response => response.jsonBody.businesses
-            ).catch(
-                err => console.log('error', err)
+            ).catch(err =>
+                res.status(400).send(err)
             )
 
         var drinks = client.search({
@@ -135,25 +135,37 @@ module.exports = (app,  path) => {
         })
             .then(
                 response => response.jsonBody.businesses
-            ).catch(
-                err => console.log('error', err)
+            ).catch(err =>
+                res.status(400).send(err)
             )
 
         places.then(v => {
             temp.places = v;
-        });
+        })
+        .catch(err =>
+            res.status(400).send(err)
+        );
 
         events.then(v => {
             temp.events = v;
-        });
+        })
+        .catch(err =>
+            res.status(400).send(err)
+        );
 
         food.then(v => {
             output.food = v;
-        });
+        })
+        .catch(err =>
+            res.status(400).send(err)
+        );
 
         drinks.then(v => {
             output.drinks = v;
-        });
+        })
+        .catch(err =>
+            res.status(400).send(err)
+        );
 
         var p = Promise.all([places, events, food, drinks]);
 
@@ -161,8 +173,8 @@ module.exports = (app,  path) => {
             var result = temp.places.concat(temp.events);
             output.events = result;
             res.send(output);
-        }).catch(
-            err => console.log(err)
+        }).catch(err =>
+            res.status(400).send(err)
         );
     });
     //google places call for food
@@ -182,9 +194,9 @@ module.exports = (app,  path) => {
                 var results = response.data.results;
                 res.json(results[3].photos[0].photo_reference);
             })
-            .catch(err => {
-                console.log(err);
-            })
+            .catch(err =>
+            res.status(400).send(err)
+            )
     });
 
     app.get('/getEvents', (req, res) => {
@@ -225,9 +237,9 @@ module.exports = (app,  path) => {
             .then(function(response){
                 res.send(response.data);
             })
-            .catch(function(err){
-                console.log(err);
-            })
+            .catch(err =>
+                res.status(400).send(err)
+            )
     })
 
 app.get('/getdata', (req, res) => {
