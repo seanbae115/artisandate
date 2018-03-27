@@ -9,14 +9,18 @@ import Info from './info';
 class DetailsPage extends Component{
 
     componentDidMount(){
+        console.log("The props Did mount: ", this.props);
         this.props.getIndividual(this.props.match.params);
         this.props.giveNavPath(this.props.match.path);
     }
     render(){
+        console.log("The props in render Deatails: ", this.props);
         if (Object.keys(this.props.details).length === 0){
             return(
                 <div className='incoming'>
-                    <h1>Details Incoming</h1>
+                    <div className="loading-center">
+                        <div className="data-loading"/>
+                    </div>
                 </div>
             );
         }

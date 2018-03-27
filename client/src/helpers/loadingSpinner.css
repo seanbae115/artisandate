@@ -15,3 +15,20 @@
     border-top-color: #fff;
     animation: spin 750ms infinite linear;
 }
+
+.data-loading {
+
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    border: .25rem solid rgba(0, 188, 212, 0.2);
+    border-top-color: #00bcd4;
+    animation: spin 750ms infinite linear;
+}
+
+.loading-center {
+    position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+}

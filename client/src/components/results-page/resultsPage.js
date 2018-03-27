@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import "./resultsPage.css"
-import { getPlanner, locationDetails, reloadPlanner } from "../../actions";
+import { getPlanner, locationDetails, reloadPlanner, giveNavPath } from "../../actions";
 import { Link } from 'react-router-dom';
 import LocationBrowser from "./locationBrowser";
 
@@ -19,6 +19,7 @@ class ResultsPage extends Component {
     }
 
     componentDidMount(){
+        this.props.giveNavPath(this.props.match.path);
         const sessionLoaded = sessionStorage.getItem("loadedResults");
         if (JSON.parse(sessionLoaded)) {
             const sessionEvents = sessionStorage.getItem("eventsResults");
@@ -85,4 +86,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, {getPlanner, reloadPlanner, locationDetails})(ResultsPage);
+export default connect(mapStateToProps, {getPlanner, reloadPlanner, locationDetails, giveNavPath})(ResultsPage);

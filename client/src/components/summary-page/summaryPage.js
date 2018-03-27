@@ -4,7 +4,7 @@ import {MapComponent} from './map';
 import Modal from '../modal/modal';
 import SummaryEvent from "./summaryEvent";
 import SummaryButtons from "./summaryButtons";
-import {reloadFinalPlan} from "../../actions";
+import {reloadFinalPlan, giveNavPath} from "../../actions";
 import "./summaryPage.css";
 
 class Summary extends Component{
@@ -24,6 +24,7 @@ class Summary extends Component{
     }
 
     componentWillMount(){
+        this.props.giveNavPath(this.props.match.path);
         const sessionLoaded = sessionStorage.getItem("loadedResults");
         if (JSON.parse(sessionLoaded)) {
             if (Object.keys(this.props.event).length !== 0){
@@ -162,4 +163,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, {reloadFinalPlan})(Summary);
+export default connect(mapStateToProps, {reloadFinalPlan, giveNavPath})(Summary);
