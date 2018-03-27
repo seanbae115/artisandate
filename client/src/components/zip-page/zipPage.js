@@ -3,7 +3,7 @@ import '../../helpers/loadingSpinner.css';
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
-import { getPlanner, loadSpinner } from '../../actions';
+import { getPlanner, loadSpinner, giveNavPath } from '../../actions';
 
 class ZipPage extends Component {
     constructor (props){
@@ -13,8 +13,10 @@ class ZipPage extends Component {
 
         this.sendData = this.sendData.bind(this);
     }
+    componentDidMount(){
+        this.props.giveNavPath(this.props.match.path);
+    }
     sendData(props){
-        if (!this.props.dataLoaded){
             const location = {
                 zip: props
             };
@@ -25,12 +27,9 @@ class ZipPage extends Component {
                 sessionStorage.setItem("drinksResults", JSON.stringify(this.props.drinks));
                 sessionStorage.setItem("loadedResults", JSON.stringify(this.props.dataLoaded));
                 this.props.history.push(`/results-page/${props.zip}`);
-            }).catch(() => {
-                console.log("there was an error connecting to the server");
+            }).catch((error) => {
+                console.log("there was an error connecting to the server", error);
             });
-
-        }
-
     }
     renderInput({ input, meta: {touched, error} }){
         const invalidInput = touched && error;
@@ -103,4 +102,4 @@ ZipPage = reduxForm({
     validate: validate
 })(ZipPage);
 
-export default connect(mapStateToProps, { getPlanner, loadSpinner })(ZipPage);
+export default connect(mapStateToProps, { getPlanner, loadSpinner, giveNavPath })(ZipPage);

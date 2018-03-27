@@ -12,6 +12,7 @@ import SignIn from '../signin-page/signin';
 import OurApp from '../ourapp-page/ourapp';
 import OurTeam from '../ourteam-page/ourTeam';
 import auth from '../../hoc/auth';
+import "./printStyle.css";
 
 
 
@@ -24,7 +25,7 @@ const App = () => (
             <Route path = '/location-page' component = {ZipPage}/>
             <Route path = '/results-page/:zip' component = {auth(ResultsPage)}/>
             {/*<Route path = '/results-page/:zip/:id' component = {ResultsPage}/>*/}
-            <Route path = '/details-page/:id' component = {auth(DetailsPage)}/>
+            <Route path = '/details-page/:type/:id' component = {auth(DetailsPage)}/>
             <Route path = '/summary-page' component = {auth(SummaryPage)}/>
             <Route path = '/ourapp-page' component = {OurApp}/>
             <Route path = '/ourteam-page' component = {OurTeam}/>

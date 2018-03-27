@@ -42,8 +42,10 @@ input[type=number].input-validation:not(.browser-default) {
 }
 input[type=text]:not(.browser-default),
 input[type=password]:not(.browser-default),
+input[type=email]:not(.browser-default),
 input[type=number]:not(.browser-default){
     margin-bottom: 7px;
+    font-size: 2rem;
 }
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {

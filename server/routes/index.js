@@ -89,10 +89,10 @@ module.exports = (app,  path) => {
         })
             .then(
                 response => response.jsonBody.businesses
-            ).catch(
-                err => console.log('error', err)
+            ).catch(err =>
+                res.status(400).send(err)
             )
-            
+
 
         var events = axios({
             url: 'https://api.yelp.com/v3/events',
@@ -108,8 +108,8 @@ module.exports = (app,  path) => {
         })
             .then(
                 response => response.data.events
-            ).catch(
-                err => console.log('error', err)
+            ).catch(err =>
+                res.status(400).send(err)
             )
 
         var food = client.search({
@@ -120,8 +120,8 @@ module.exports = (app,  path) => {
         })
             .then(
                 response => response.jsonBody.businesses
-            ).catch(
-                err => console.log('error', err)
+            ).catch(err =>
+                res.status(400).send(err)
             )
 
         var drinks = client.search({
@@ -135,34 +135,57 @@ module.exports = (app,  path) => {
         })
             .then(
                 response => response.jsonBody.businesses
-            ).catch(
-                err => console.log('error', err)
+            ).catch(err =>
+                res.status(400).send(err)
             )
 
         places.then(v => {
             temp.places = v;
-        });
+        })
+        .catch(err =>
+            res.status(400).send(err)
+        );
 
         events.then(v => {
             temp.events = v;
-        });
+        })
+        .catch(err =>
+            res.status(400).send(err)
+        );
 
         food.then(v => {
             output.food = v;
-        });
+        })
+        .catch(err =>
+            res.status(400).send(err)
+        );
 
         drinks.then(v => {
             output.drinks = v;
-        });
+        })
+        .catch(err =>
+            res.status(400).send(err)
+        );
 
         var p = Promise.all([places, events, food, drinks]);
 
-        p.then(function (v) {
-            var result = temp.places.concat(temp.events);
-            output.events = result;
-            res.send(output);
-        }).catch(
-            err => console.log(err)
+        p.then(() => {
+            output.events = temp.places.concat(temp.events);
+            if(output.events.length > 0 && output.food.length > 0 && output.drinks.length > 0){
+                res.send(output);
+            }
+            res.status(400).send(
+                {
+                    message: 'We cannot find any locations with this zip code. Please try again.'
+                }
+            )
+        }).catch(err =>
+            res.status(500).send(
+                {
+                    message: 'There were errors on the server',
+                    error: err
+                }
+            )
         );
     });
     //google places call for food
@@ -182,9 +205,9 @@ module.exports = (app,  path) => {
                 var results = response.data.results;
                 res.json(results[3].photos[0].photo_reference);
             })
-            .catch(err => {
-                console.log(err);
-            })
+            .catch(err =>
+            res.status(400).send(err)
+            )
     });
 
     app.get('/getEvents', (req, res) => {
@@ -215,9 +238,9 @@ module.exports = (app,  path) => {
     });
 
     app.post('/api/getOneBusiness', (req, res) => {
-        const id= req.body.id;
+        const {type, id}= req.body;
         axios({
-            url: `https://api.yelp.com/v3/businesses/${id}`,
+            url: `https://api.yelp.com/v3/${type}/${id}`,
             // url: `https://api.yelp.com/v3/businesses/four-sons-brewing-huntington-beach-5`,
             headers: {'Authorization': 'Bearer xkA9Hp5U6wElMNSf3MGcF_L6R0Io18O69Xsth-G-OsV50MIfoVyiWfQmmQgFHpmFvgFatiEW8sppCiAVWrfRgpy1-pNH905xO-Okl1TV6nIqp_RXCSDmvJFOEqKLWnYx'},
             responseType: 'json'
@@ -225,13 +248,12 @@ module.exports = (app,  path) => {
             .then(function(response){
                 res.send(response.data);
             })
-            .catch(function(err){
-                console.log(err);
-            })
+            .catch(err =>
+                res.status(400).send(err)
+            )
     })
 
 app.get('/getdata', (req, res) => {
-    console.log(req.body);
     const address = {
         address: '92618'
     };

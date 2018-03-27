@@ -2,11 +2,11 @@ import React from 'react';
 import './title.css';
 
 function TitleImage(props){
-
+    console.log("titleImage props: ", props);
     const picture = props.business.photos;
-    const randomPic = picture.sort(function(a,b) {return 0.5 - Math.random()});
+    const randomPic = picture ? picture[Math.floor(Math.random() * picture.length)] : null;
     const detailImg = {
-        backgroundImage: `url("${randomPic[0]}")`,
+        backgroundImage: `url("${picture ? randomPic : props.business.image_url}")`,
         backgroundPosition: "center center",
         backgroundRepeat: "no-repeat",
         backgroundSize: "contain",
