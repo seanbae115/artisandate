@@ -40,7 +40,14 @@ class LocationBrowser extends Component {
     }
 
     goToDetails(){
-        this.props.history.push(`/details-page/${this.locationId}`);
+        console.log("location details: ", this.details);
+        if (this.details.business_id){
+            let type = "events";
+            this.props.history.push(`/details-page/${type}/${this.locationId}`);
+        } else {
+            let type = "businesses";
+            this.props.history.push(`/details-page/${type}/${this.locationId}`);
+        }
     }
 
 
@@ -53,7 +60,11 @@ class LocationBrowser extends Component {
                     <div className="col s12 content-list">
                         <div className="card">
                             <div className="card-content center-align">
-                                <div style={{height: "165.39px"}}>Loading...</div>
+                                <div style={{height: "165.39px", position: "relative"}}>
+                                    <div className="loading-center">
+                                        <div className="data-loading"/>
+                                    </div>
+                                </div>
                             </div>
                             <div className="card-action">
                                 <div className="row valign-wrapper bottom-pad">

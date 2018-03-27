@@ -228,9 +228,9 @@ module.exports = (app,  path) => {
     });
 
     app.post('/api/getOneBusiness', (req, res) => {
-        const id= req.body.id;
+        const {type, id}= req.body;
         axios({
-            url: `https://api.yelp.com/v3/businesses/${id}`,
+            url: `https://api.yelp.com/v3/${type}/${id}`,
             // url: `https://api.yelp.com/v3/businesses/four-sons-brewing-huntington-beach-5`,
             headers: {'Authorization': 'Bearer xkA9Hp5U6wElMNSf3MGcF_L6R0Io18O69Xsth-G-OsV50MIfoVyiWfQmmQgFHpmFvgFatiEW8sppCiAVWrfRgpy1-pNH905xO-Okl1TV6nIqp_RXCSDmvJFOEqKLWnYx'},
             responseType: 'json'
@@ -244,7 +244,6 @@ module.exports = (app,  path) => {
     })
 
 app.get('/getdata', (req, res) => {
-    console.log(req.body);
     const address = {
         address: '92618'
     };

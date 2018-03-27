@@ -3,6 +3,7 @@ import React, {Component} from "react";
 import{Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signOut, clearIndividualDetails } from '../../actions';
+import DateLogo from "../../assets/images/DateLogo.svg";
 
 class NavBar extends Component {
     constructor (props){
@@ -103,7 +104,7 @@ class NavBar extends Component {
                 <nav>
                     <div className="amber nav-wrapper">
                         {this.backButton()}
-                        <a href="#!" className="brand-logo">Artisan Date</a>
+                        <div className="brand-logo"><img src={DateLogo} className="logo-img"/>Artisan Date</div>
                         <a href="#" className="right button-collapse" onClick={this.slideOutMenu}>
                             <i className="material-icons amber-text text-darken-3">menu</i>
                         </a>

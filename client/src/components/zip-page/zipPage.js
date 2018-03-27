@@ -3,7 +3,7 @@ import '../../helpers/loadingSpinner.css';
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
-import { getPlanner, loadSpinner } from '../../actions';
+import { getPlanner, loadSpinner, giveNavPath } from '../../actions';
 
 class ZipPage extends Component {
     constructor (props){
@@ -12,6 +12,9 @@ class ZipPage extends Component {
         this.page = "zip";
 
         this.sendData = this.sendData.bind(this);
+    }
+    componentDidMount(){
+        this.props.giveNavPath(this.props.match.path);
     }
     sendData(props){
             const location = {
@@ -99,4 +102,4 @@ ZipPage = reduxForm({
     validate: validate
 })(ZipPage);
 
-export default connect(mapStateToProps, { getPlanner, loadSpinner })(ZipPage);
+export default connect(mapStateToProps, { getPlanner, loadSpinner, giveNavPath })(ZipPage);
