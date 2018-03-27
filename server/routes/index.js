@@ -215,7 +215,6 @@ module.exports = (app,  path) => {
     });
 
     app.post('/api/getOneBusiness', (req, res) => {
-        console.log("In the server request: ", req.body);
         const {type, id}= req.body;
         axios({
             url: `https://api.yelp.com/v3/${type}/${id}`,
@@ -224,7 +223,6 @@ module.exports = (app,  path) => {
             responseType: 'json'
         })
             .then(function(response){
-                console.log("Sending back to the client: ", response);
                 res.send(response.data);
             })
             .catch(function(err){
@@ -233,7 +231,6 @@ module.exports = (app,  path) => {
     })
 
 app.get('/getdata', (req, res) => {
-    console.log(req.body);
     const address = {
         address: '92618'
     };
