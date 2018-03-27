@@ -172,6 +172,7 @@ module.exports = (app,  path) => {
         p.then(function (v) {
             var result = temp.places.concat(temp.events);
             output.events = result;
+            console.log(output)
             res.send(output);
         }).catch(err =>
             res.status(400).send(err)
