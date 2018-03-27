@@ -40,7 +40,14 @@ class LocationBrowser extends Component {
     }
 
     goToDetails(){
-        this.props.history.push(`/details-page/${this.locationId}`);
+        console.log("location details: ", this.details);
+        if (this.details.business_id){
+            let type = "events";
+            this.props.history.push(`/details-page/${type}/${this.locationId}`);
+        } else {
+            let type = "businesses";
+            this.props.history.push(`/details-page/${type}/${this.locationId}`);
+        }
     }
 
 
