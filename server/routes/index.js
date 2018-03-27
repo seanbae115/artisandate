@@ -169,11 +169,12 @@ module.exports = (app,  path) => {
 
         var p = Promise.all([places, events, food, drinks]);
 
-        p.then(function (v) {
-            var result = temp.places.concat(temp.events);
-            output.events = result;
-            console.log(output)
-            res.send(output);
+        p.then(() => {
+            output.events = temp.places.concat(temp.events);
+            if(output.events.length > 0 && output.food.length > 0 && output.drinks.length > 0){
+                res.send(output);
+            }
+            res.status(400).send({message: 'error getting results, zip code may be invalid'})
         }).catch(err =>
             res.status(400).send(err)
         );
