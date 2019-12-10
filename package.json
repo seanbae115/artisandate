@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Learning-Fuze/c12.17_datenight.git"
+    "url": "git+https://github.com/seanbae115/artisandate.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Learning-Fuze/c12.17_datenight/issues"
+    "url": "https://github.com/seanbae115/artisandate/issues"
   },
-  "homepage": "https://github.com/Learning-Fuze/c12.17_datenight#readme",
+  "homepage": "https://github.com/seanbae115/artisandate#readme",
   "devDependencies": {
     "concurrently": "^3.5.1"
   }
